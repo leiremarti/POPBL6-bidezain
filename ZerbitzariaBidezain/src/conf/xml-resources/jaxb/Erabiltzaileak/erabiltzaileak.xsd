@@ -1,0 +1,22 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="erabiltzaileas">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="erabiltzailea" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="abizena"/>
+              <xs:element type="xs:string" name="eposta"/>
+              <xs:element type="xs:string" name="erabiltzailea"/>
+              <xs:element type="xs:byte" name="IDerabiltzailea"/>
+              <xs:element type="xs:string" name="izena"/>
+              <xs:element type="xs:string" name="passwordHash"/>
+              <xs:element type="xs:string" name="passwordSalt"/>
+              <xs:element type="xs:int" name="telefonoa"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

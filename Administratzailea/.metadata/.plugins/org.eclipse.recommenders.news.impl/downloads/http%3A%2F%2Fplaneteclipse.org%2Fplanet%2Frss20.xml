@@ -1,0 +1,566 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+
+<channel>
+	<title>Planet Eclipse</title>
+	<link>http://planeteclipse.org/planet/</link>
+	<language>en</language>
+	<description>Planet Eclipse - http://planeteclipse.org/planet/</description>
+
+<item>
+	<title>Thabang Mashologu: Cloud Native Java Innovation at the Eclipse Foundation</title>
+	<guid isPermaLink="false">https://blogs.eclipse.org/6701 at https://blogs.eclipse.org</guid>
+	<link>https://blogs.eclipse.org/post/thabang-mashologu/cloud-native-java-innovation-eclipse-foundation</link>
+	<description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot;&gt;&lt;p dir=&quot;ltr&quot;&gt;The world’s leading technology vendors, including Fujitsu, IBM, Microsoft, Oracle, Red Hat, SAP, and Tomitribe, are collaborating at the &lt;a href=&quot;https://www.eclipse.org/&quot;&gt;Eclipse Foundation&lt;/a&gt; to advance enterprise Java technologies to support the migration of mission-critical applications to the cloud. &lt;a href=&quot;https://jakarta.ee/&quot;&gt;Jakarta EE&lt;/a&gt; and &lt;a href=&quot;https://microprofile.io/&quot;&gt;Eclipse MicroProfile&lt;/a&gt; offer a path for migrating Java EE legacy applications to a standard enterprise Java stack for a cloud native world. Within the collaborative, vendor-neutral environment provided by the Eclipse Foundation, a vibrant community of developers is directly influencing the future of Java.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;https://blogs.eclipse.org/sites/default/files/users/user160/bigstock--d-Rendering-Cloud-Computing--279310366%20%281%29.jpg&quot; style=&quot;height: 533px; width: 800px;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Establishing Jakarta EE as the place where Java EE will evolve to create this migration path to the cloud is a significant effort, and the community involved in supporting this effort have made tremendous strides. These have included releasing &lt;a href=&quot;https://www.globenewswire.com/news-release/2019/01/29/1706637/0/en/Java-EE-8-Compatible-Eclipse-GlassFish-5-1-Released.html&quot;&gt;Eclipse GlassFish&lt;/a&gt; 5.1 as Java EE 8 certified, thus ensuring backward compatibility, and establishing an open specification process as a replacement for the JCP. Next up is to release Jakarta EE 8 as an established specification and see the commercial vendors support this release, again ensuring the migration path forward. As this happens, all developers are encouraged to participate as Jakarta EE then evolves. The first step in doing this is to join the conversation by visiting &lt;a href=&quot;https://jakarta.ee/connect/&quot;&gt;https://jakarta.ee/connect/&lt;/a&gt;.   &lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;h3 dir=&quot;ltr&quot;&gt;&lt;strong&gt;Jakarta EE Developer Survey Results Show Cloud Native Adoption Accelerating Dramatically with Jakarta EE&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt; &lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;The Eclipse Foundation recently released the &lt;a href=&quot;http://bit.ly/2VaHkTH&quot;&gt;2019 Jakarta EE Developer Survey&lt;/a&gt; that canvassed nearly 1,800 Java developers about their adoption of Jakarta EE and trends in Java programming. The goal of the survey, which was conducted in March 2019, was to help Java ecosystem stakeholders better understand the requirements, priorities, and perceptions of enterprise Java developer communities.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;The findings indicate that cloud native is critically important with a third of developers currently building cloud native architectures and another 30 percent planning to within the next year. Meanwhile, the number of Java applications running in the cloud is projected to increase significantly over the next two years, with 32 percent of respondents expecting that they will be running nearly two-thirds of their Java applications in the cloud in two years. Furthermore, 43 percent of respondents consider the microservices architecture the dominant approach to implementing Java in the cloud.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;While Spring and Spring Boot continue to dominate as the leading framework for building cloud native applications in Java, Eclipse MicroProfile’s usage growth more than doubled in adoption from 13 percent in 2018 to 28 percent today.   &lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;Survey respondents made it clear that as the community-driven evolution of enterprise Java coalesces around Jakarta EE, Java EE remains the platform they rely on most to build enterprise-class applications. According to the results, the top three community priorities for Jakarta EE are a tie at first with better support for microservices and native integration with Kubernetes (both at 61 percent) followed by product quality reference implementation (37 percent).&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt; &lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;Access the full findings of the 2019 Java Community Developer Survey &lt;a href=&quot;http://bit.ly/2VaHkTH&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 dir=&quot;ltr&quot;&gt; &lt;/h3&gt;
+
+&lt;h3 dir=&quot;ltr&quot;&gt;&lt;strong&gt;Key Eclipse Projects for Cloud Native Application Development&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;In addition to Jakarta EE and MicroProfile, the Eclipse community is driving cloud native innovation with the following projects:&lt;/p&gt;
+
+&lt;ul&gt;
+	&lt;li dir=&quot;ltr&quot;&gt;
+	&lt;p dir=&quot;ltr&quot;&gt;&lt;a href=&quot;https://www.eclipse.org/ide/&quot;&gt;Eclipse IDE&lt;/a&gt; — As the leading open platform for professional developers, the standard Eclipse IDE is the critical development environment for more than 4 million active users. The Eclipse IDE was chosen by the Java developer community as the top IDE for building cloud native applications in the 2019 Jakarta EE Developer Survey.&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;li dir=&quot;ltr&quot;&gt;
+	&lt;p dir=&quot;ltr&quot;&gt;&lt;a href=&quot;https://www.eclipse.org/openj9/&quot;&gt;Eclipse OpenJ9&lt;/a&gt; — OpenJ9 is a Java virtual machine (JVM), the engine that runs Java applications, optimized for the cloud and microservices. OpenJ9 comes with improvements to memory overhead and startup times, achieved through shared classes and an aggressive focus on memory footprint.&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;li dir=&quot;ltr&quot;&gt;
+	&lt;p dir=&quot;ltr&quot;&gt;&lt;a href=&quot;https://vertx.io/&quot;&gt;Eclipse Vert.x&lt;/a&gt; — Vert.x is a tool-kit for building reactive applications on the JVM.&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;li dir=&quot;ltr&quot;&gt;
+	&lt;p dir=&quot;ltr&quot;&gt;&lt;a href=&quot;https://projects.eclipse.org/proposals/eclipse-jemo-cloud-application-runtime&quot;&gt;Eclipse Jemo&lt;/a&gt; — Jemo is the leading open source multi-cloud function-as-a-service (FaaS) runtime for JVM based languages. Built to take advantage of Kubernetes, Jemo provides a platform, frameworks, and runtime support for building cloud native applications which run across multiple clouds without the need for re-engineering.&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;li dir=&quot;ltr&quot;&gt;
+	&lt;p dir=&quot;ltr&quot;&gt;&lt;a href=&quot;https://www.theia-ide.org/&quot;&gt;Eclipse Theia&lt;/a&gt; — Theia is an extensible open-source framework to develop multi-language IDEs for the cloud and desktop using state-of-the-art web technologies.&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;li dir=&quot;ltr&quot;&gt;
+	&lt;p dir=&quot;ltr&quot;&gt;&lt;a href=&quot;https://www.eclipse.org/che/&quot;&gt;Eclipse Che&lt;/a&gt; — Che is a next-generation developer workspace server and cloud IDE that allows anyone to contribute to a project without installing any software. Che defines workspaces that include their dependencies including embedded containerized runtimes (including Kubernetes, OpenShift, and Docker support), Web IDE (based on Theia), and project code. This enables true team-based development by making workspaces distributed, collaborative, and portable.&lt;/p&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 dir=&quot;ltr&quot;&gt; &lt;/h3&gt;
+
+&lt;h3 dir=&quot;ltr&quot;&gt;&lt;strong&gt;How to Participate in the Future Of Cloud Native Java&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;To learn more about the collaborative efforts to build tomorrow’s enterprise Java platform for the cloud, check out the &lt;a href=&quot;https://jakartablogs.ee/&quot;&gt;Jakarta Blogs&lt;/a&gt; and participate in the monthly &lt;a href=&quot;https://www.meetup.com/jakartatechtalks_/&quot;&gt;Jakarta Tech Talks&lt;/a&gt;. Don’t forget to subscribe to the Eclipse &lt;a href=&quot;https://www.eclipse.org/community/eclipse_newsletter/&quot;&gt;newsletter&lt;/a&gt; and get involved in Jakarta EE, Eclipse MicroProfile and other cloud native Eclipse projects.&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;field field-name-field-blog-tags field-type-taxonomy-term-reference field-label-above&quot;&gt;&lt;div class=&quot;field-label&quot;&gt;Tags: &lt;/div&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot;&gt;&lt;a href=&quot;https://blogs.eclipse.org/blog-tags/jakarta-ee&quot;&gt;Jakarta EE&lt;/a&gt;&lt;/div&gt;&lt;div class=&quot;field-item odd&quot;&gt;&lt;a href=&quot;https://blogs.eclipse.org/blog-tags/microprofile&quot;&gt;MicroProfile&lt;/a&gt;&lt;/div&gt;&lt;div class=&quot;field-item even&quot;&gt;&lt;a href=&quot;https://blogs.eclipse.org/blog-tags/microservices&quot;&gt;microservices&lt;/a&gt;&lt;/div&gt;&lt;div class=&quot;field-item odd&quot;&gt;&lt;a href=&quot;https://blogs.eclipse.org/blog-tags/faas&quot;&gt;FaaS&lt;/a&gt;&lt;/div&gt;&lt;div class=&quot;field-item even&quot;&gt;&lt;a href=&quot;https://blogs.eclipse.org/blog-tags/eclipse-che&quot;&gt;eclipse che&lt;/a&gt;&lt;/div&gt;&lt;div class=&quot;field-item odd&quot;&gt;&lt;a href=&quot;https://blogs.eclipse.org/blog-tags/kubernetes&quot;&gt;kubernetes&lt;/a&gt;&lt;/div&gt;&lt;div class=&quot;field-item even&quot;&gt;&lt;a href=&quot;https://blogs.eclipse.org/blog-tags/cloud-native&quot;&gt;cloud native&lt;/a&gt;&lt;/div&gt;&lt;div class=&quot;field-item odd&quot;&gt;&lt;a href=&quot;https://blogs.eclipse.org/blog-tags/kubecon-europe-2019&quot;&gt;KubeCon Europe 2019&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+	<pubDate>Tue, 21 May 2019 06:02:36 +0000</pubDate>
+</item>
+<item>
+	<title>Tanja Obradovic: Update for Jakarta EE community: May 2019</title>
+	<guid isPermaLink="false">https://blogs.eclipse.org/6700 at https://blogs.eclipse.org</guid>
+	<link>https://blogs.eclipse.org/post/tanja-obradovic/update-jakarta-ee-community-may-2019</link>
+	<description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot;&gt;&lt;p dir=&quot;ltr&quot;&gt;The Jakarta EE community is the driving force behind the future of cloud-native Java. Active participation represents the best way to drive the vendor-neutral and rapid innovation necessary to modernize enterprise systems for cloud use cases. That said, we’d like to make sure that the community is kept up-to-speed with the latest developments in the Jakarta EE ecosystem.&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;We’re launching a monthly email update for the Jakarta EE community which seeks to highlight news from various committee meetings related to this platform. There are a few ways to get a grip on the work that has been invested in Jakarta EE so far, so if you’d like to learn more about Jakarta EE-related plans and get involved in shaping the future of cloud-native Java, read on. We’d also like to use this opportunity to invite you to get involved in EE4J projects and join the conversation around the Jakarta EE Platform.&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;Without further ado, let’s have a look at what has happened this month:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update on Jakarta EE Rights to Java Trademarks&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;The process of migrating Java EE to the Eclipse Foundation has been a collaborative effort between the Eclipse Foundation staff and the many contributors, committers, members, and stakeholders that are participating. The Eclipse Foundation and Oracle have agreed that the &lt;em&gt;javax &lt;/em&gt;package namespace will not be evolved by the Jakarta EE community. Furthermore, Java trademarks such as the existing specification names will not be used by Jakarta EE specifications.&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;Since the ratified Jakarta EE specifications will be available under a different license (the Eclipse Foundation Specification License), we recommend that you update your contributor and committer agreements.&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;Read more about the implications and what’s next for the Jakarta EE Working Group in Mike Milinkovich’s latest &lt;a href=&quot;https://eclipse-foundation.blog/2019/05/03/jakarta-ee-java-trademarks/&quot;&gt;blog&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;In order to evolve Jakarta EE, we must transition to a new namespace. In an effort to bootstrap the conversation, the Jakarta EE Specification Committee has prepared &lt;a href=&quot;https://docs.google.com/document/d/16xHv34J_r7pA5ZsXg3O0eVAZiC12vVkqWnIqWsoUL74/edit&quot;&gt;two proposals&lt;/a&gt; (Big-bang Jakarta EE 9, Jakarta EE 10 new features and incremental change in Jakarta EE 9 and beyond) on how to make the move into the new namespace smoother. These proposals represent a starting point, but the community is warmly invited to submit more proposals.&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;&lt;strong&gt;&lt;a href=&quot;https://accounts.eclipse.org/mailing-list/jakartaee-platform-dev&quot;&gt;Community discussion&lt;/a&gt; on how to transition to the jakarta namespace will conclude Sunday, June 9th, 2019.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;&lt;strong&gt;EFSP v1.1&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;&lt;a href=&quot;https://www.eclipse.org/projects/efsp/&quot;&gt;Version 1.1&lt;/a&gt; of the Eclipse Foundation Specification Process was approved on March 20, 2019. The EFSP leverages and augments the Eclipse Development Process (EDP), which defines important concepts, including the Open Source Rules of Engagement, the organizational framework for open source projects and teams, releases, reviews, and more.&lt;br /&gt;
+ &lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;&lt;strong&gt;JESP v1.0&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;&lt;a href=&quot;https://jakarta.ee/about/jesp/&quot;&gt;Jakarta EE Specification Process v1.0&lt;/a&gt; was approved on April 3, 2019. Therefore, the Jakarta EE Specification Committee now adopts the EFSP v1.1 as the Jakarta EE Specification Process with a few modifications, including the fact that any changes or revisions of the Jakarta EE Specification Process must be approved by a Super-majority of the Specification Committee.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;&lt;strong&gt;TCK process:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;Work on the TCK process is in progress, with Tomitribe CEO David Blevins leading the effort. The TCK process is expected to be completed in the near future. The document will shed light on aspects such as the materials a TCK must possess in order to be considered suitable for delivering portability, the process for challenging tests and how to resolve them and more.      &lt;br /&gt;
+ &lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;&lt;strong&gt;Jakarta EE 8 release&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;Jakarta EE 8 is a highly-anticipated release, especially since it represents the first release that’s completely based on Java EE to ensure backward compatibility. It relies on four pillars of work, namely specifications for the full platform, TCKs, including documents on how to use them, a compatible implementation for the release of Jakarta EE 8, and marketing aspects such as branding, logo usage guidelines, and marketing and PR activities.&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;&lt;img src=&quot;https://lh4.googleusercontent.com/CRB1UtCT5JqCFpw8pBmmSfOr22F5Z__I4jZEPM6Yzn1SNg3ZN2krNe73RcP87YN5sgS1pubdbdUqfqfwt6G7vCkSMJ8JjcezIWotC0SMQS_HXBK72TsdHAtwdPyrpSP_xynx_-G0&quot; style=&quot;height: 200px; width: 624px;&quot; /&gt;&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;All parties involved are far along with the planning process and work on specifications has already started. Please look at &lt;a href=&quot;https://waynebeaton.wordpress.com/&quot;&gt;Wayne Beaton’s blogs&lt;/a&gt; on the work in progress with regard to specification project names and specification scopes.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;&lt;strong&gt;EE4J GitHub&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;Get involved in &lt;a href=&quot;https://github.com/eclipse-ee4j/&quot;&gt;Eclipse EE4J&lt;/a&gt;! There are currently &lt;a href=&quot;https://github.com/orgs/eclipse-ee4j/projects&quot;&gt;three projects&lt;/a&gt; that you can be a part of, namely Specification Document Names, Jakarta Specification Project Names, and &lt;a href=&quot;https://waynebeaton.wordpress.com/2019/04/08/specification-scope-in-jakarta-ee/&quot;&gt;Jakarta Specification Scope Statements&lt;/a&gt; (for the specifications). Furthermore, there are plenty of &lt;a href=&quot;https://github.com/eclipse-ee4j/&quot;&gt;repos&lt;/a&gt; that require your attention and involvement.&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;But before you dive right in, you should read the &lt;a href=&quot;https://www.eclipse.org/ee4j/news/?date=2019-04-23&quot;&gt;latest blog&lt;/a&gt; from the Jakarta EE Specification committee, which recently approved a handful of naming standards for Jakarta EE Specification projects. While you’re at it, you should read Wayne Beaton’s&lt;a href=&quot;https://waynebeaton.wordpress.com/2019/04/04/renaming-java-ee-specifications-for-jakarta-ee/&quot;&gt; blog&lt;/a&gt; on why changing the names of the specifications and the projects that contain their artifacts is a necessary step.&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;Head over to GitHub and &lt;a href=&quot;https://github.com/orgs/eclipse-ee4j/projects&quot;&gt;join&lt;/a&gt; the conversation!&lt;br /&gt;
+ &lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;&lt;strong&gt;Jakarta EE Platform&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;There’s no better time to get involved in the work for the &lt;a href=&quot;https://projects.eclipse.org/projects/ee4j.jakartaee-platform&quot;&gt;Jakarta EE Platform&lt;/a&gt; than the present. As of now, the projects that demand the community’s attention are the Jakarta EE 8 Platform Specification, which is meant to keep track of the work involved with creating the platform specification for Jakarta EE 8, Jakarta EE 9 Platform Specification, intended to keep track of the work involved with creating the platform specification for Jakarta EE 9 and Jakarta EE.Next Roadmap Planning, which seeks to define a roadmap and plan for the Jakarta EE 9 release.&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;&lt;strong&gt;Community Engagement&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;Speaking of community engagement, there are a few ways to get a grip on the work that has been invested in Jakarta EE so far, learn more about Jakarta EE-related plans and get involved in shaping the future of cloud-native Java. One way to do that is by reading Tanja Obradovic’s &lt;a href=&quot;https://blogs.eclipse.org/blogs/tanja-obradovic&quot;&gt;blog series&lt;/a&gt; on how to get involved.&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;You should also be aware of the newly-created &lt;a href=&quot;https://calendar.google.com/calendar/embed?src=eclipse-foundation.org_3281qms6riu4kdf354jn5idon0%40group.calendar.google.com&amp;amp;ctz=America%2FToronto&quot;&gt;Jakarta EE community calendar&lt;/a&gt;, which is now open to the public and offers an overview of all the activities surrounding Jakarta EE. The community is invited to participate in Jakarta Tech Talks, which take place on a monthly basis, attend Jakarta EE Update monthly calls (the next one is on May 8), help build the &lt;a href=&quot;https://wiki.eclipse.org/Jakarta_EE&quot;&gt;Jakarta EE wiki&lt;/a&gt; with all relevant links and look for opportunities to engage and become part of the community.&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;Last but not least, the Jakarta EE Developer Survey will be released in the next few days. Head over to &lt;a href=&quot;https://jakarta.ee/&quot;&gt;jakarta.ee&lt;/a&gt; to discover the latest trends, the community’s top priorities regarding the future of Jakarta EE and more. Stay tuned!&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;Conclusion:&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;Thank you for your interest in Jakarta EE. To help us build tomorrow’s enterprise Java platform, join the &lt;a href=&quot;http://www.jakarta.ee/&quot;&gt;Jakarta EE community&lt;/a&gt; now or get involved by becoming a contributor or committer to one of the &lt;a href=&quot;https://projects.eclipse.org/projects/ee4j&quot;&gt;EE4J projects&lt;/a&gt;.   &lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;Help steer Jakarta EE toward its exciting future by joining the &lt;a href=&quot;https://www.eclipse.org/org/workinggroups/jakarta_ee_charter.php&quot;&gt;Jakarta EE working group&lt;/a&gt;!&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;field field-name-field-blog-tags field-type-taxonomy-term-reference field-label-above&quot;&gt;&lt;div class=&quot;field-label&quot;&gt;Tags: &lt;/div&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot;&gt;&lt;a href=&quot;https://blogs.eclipse.org/blog-tags/jakartaee-javaee-java-eclipsefdn&quot;&gt;#JakartaEE #JavaEE #Java #EclipseFdn&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+	<pubDate>Sat, 18 May 2019 10:46:43 +0000</pubDate>
+</item>
+<item>
+	<title>Maximilian and Jonas: One size fits all – Rendering Material Design with React and Angular</title>
+	<guid isPermaLink="false">https://eclipsesource.com/?p=41632</guid>
+	<link>https://eclipsesource.com/blogs/2019/05/17/one-size-fits-all-rendering-material-design-with-react-and-angular/</link>
+	<description>&lt;p&gt;JSON Forms is a framework for efficiently developing form-based UIs based on JSON Schema. It provides a simple declarative JSON-based language...&lt;/p&gt;&lt;p&gt;The post &lt;a href=&quot;https://eclipsesource.com/blogs/2019/05/17/one-size-fits-all-rendering-material-design-with-react-and-angular/&quot; rel=&quot;nofollow&quot;&gt;One size fits all – Rendering Material Design with React and Angular&lt;/a&gt; appeared first on &lt;a href=&quot;https://eclipsesource.com&quot; rel=&quot;nofollow&quot;&gt;EclipseSource&lt;/a&gt;.&lt;/p&gt;</description>
+	<pubDate>Fri, 17 May 2019 09:52:03 +0000</pubDate>
+</item>
+<item>
+	<title>Andrey Loskutov: Incompatible Eclipse workspaces</title>
+	<guid isPermaLink="false">tag:blogger.com,1999:blog-342159971341432126.post-3852949671843488587</guid>
+	<link>http://javaclipse.blogspot.com/2019/05/incompatible-eclipse-workspaces.html</link>
+	<description>&lt;div dir=&quot;ltr&quot; style=&quot;text-align: left;&quot;&gt;&lt;br /&gt;Eclipse has mechanism to recognize if the workspace to be used is created with older Eclipse version.&lt;br /&gt;In such case, to be safe, Eclipse shows dialog like:&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;a href=&quot;https://2.bp.blogspot.com/-bzIVjTZG780/XN0sZj-ZbJI/AAAAAAAAjw0/FA3w7k-vlLwAkttD9rsM3asrAl0w8cW-ACLcBGAs/s1600/old_workspace_warning.png&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;https://2.bp.blogspot.com/-bzIVjTZG780/XN0sZj-ZbJI/AAAAAAAAjw0/FA3w7k-vlLwAkttD9rsM3asrAl0w8cW-ACLcBGAs/s1600/old_workspace_warning.png&quot; /&gt;&lt;/a&gt;&lt;br /&gt;&lt;br /&gt;As of today (Eclipse 4.12 M1), if you click on &quot;Cancel&quot; button, Eclipse will behave differently, depending on the use cases &quot;history&quot;:&lt;br /&gt;&lt;br /&gt;&lt;h4 style=&quot;text-align: left;&quot;&gt;A. If the workbench was not started yet:&lt;/h4&gt;&lt;ol style=&quot;text-align: left;&quot;&gt;&lt;li&gt;If Eclipse was started &lt;b&gt;without&lt;/b&gt; &quot;-data&quot; argument and user selects incompatible workspace, Eclipse will show &quot;Older Workspace Version&quot; dialog above and by clicking on &quot;Cancel&quot; it will offer workspace selection dialog.&lt;/li&gt;&lt;li&gt;If Eclipse was started &lt;b&gt;with&lt;/b&gt; &quot;-data&quot; argument pointing to the incompatible workspace, Eclipse will show &quot;Older Workspace Version&quot; dialog above and by clicking on &quot;Cancel&quot; it will &lt;span style=&quot;color: red;&quot;&gt;terminate&lt;/span&gt; (instead of offering to select another workspace).&lt;/li&gt;&lt;/ol&gt;&lt;h4 style=&quot;text-align: left;&quot;&gt;B. If the workbench was started:&lt;/h4&gt;&lt;ol style=&quot;text-align: left;&quot;&gt;&lt;li&gt;If user selects &lt;b&gt;compatible&lt;/b&gt; workspace in the &quot;File -&amp;gt; Switch Workspace&quot; dialog, Eclipse restarts fine.&lt;/li&gt;&lt;li&gt;If user selects &lt;b&gt;incompatible&lt;/b&gt; workspace in the &quot;File -&amp;gt; Switch Workspace&quot; dialog, Eclipse restarts, shows the &quot;Older Workspace Version&quot; dialog above and by clicking on &quot;Cancel&quot; it will &lt;span style=&quot;color: red;&quot;&gt;terminate&lt;/span&gt; (instead of offering to select another workspace).&lt;/li&gt;&lt;/ol&gt;This behavior is inconvenient (at least), so we have &lt;a href=&quot;https://bugs.eclipse.org/bugs/show_bug.cgi?id=538830&quot;&gt;bug 538830&lt;/a&gt;.&lt;br /&gt;&lt;h4 style=&quot;text-align: left;&quot;&gt;Fix Proposal #1&lt;/h4&gt;The proposal is, that &lt;b&gt;independently&lt;/b&gt; on the way Eclipse was started, if user clicks on the &quot;Cancel&quot; button in the &quot;Older Workspace Version&quot; dialog, we &lt;b&gt;always&lt;/b&gt; show the default workspace selection dialog (instead of termination):&lt;br /&gt;&lt;br /&gt;&lt;a href=&quot;https://2.bp.blogspot.com/-U2VeCqT6SEk/XN0uJV2m7EI/AAAAAAAAjxA/D5Kdw_JQKiMOmuzCZmfDJ56abEwLBMXSgCLcBGAs/s1600/workspace_selection_dialog.png&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;https://2.bp.blogspot.com/-U2VeCqT6SEk/XN0uJV2m7EI/AAAAAAAAjxA/D5Kdw_JQKiMOmuzCZmfDJ56abEwLBMXSgCLcBGAs/s1600/workspace_selection_dialog.png&quot; /&gt;&lt;/a&gt;&lt;br /&gt;&lt;br /&gt;In this dialog above user has two choices: launch any workspace or finally terminate Eclipse via &quot;Cancel&quot;.&lt;br /&gt;&lt;h4 style=&quot;text-align: left;&quot;&gt;Proposal #1 Matrix&lt;/h4&gt;&lt;h4&gt;A1. If the workbench was not started yet:&lt;/h4&gt;&lt;ol style=&quot;text-align: left;&quot;&gt;&lt;li&gt;If Eclipse was started &lt;b&gt;with or without&lt;/b&gt; &quot;-data&quot; argument and user selects incompatible workspace, Eclipse will show &quot;Older Workspace Version&quot; dialog above and by clicking on &quot;Cancel&quot; it will offer workspace selection dialog. To terminate Eclipse, user has to click &quot;Cancel&quot; in the workspace selection dialog.&lt;/li&gt;&lt;/ol&gt;&lt;h4&gt;B1. If the workbench was started:&lt;/h4&gt;&lt;ol&gt;&lt;li&gt;If user selects &lt;b&gt;compatible&lt;/b&gt; workspace in the &quot;File -&amp;gt; Switch Workspace&quot; dialog, Eclipse restarts fine.&lt;/li&gt;&lt;li&gt;If user selects &lt;b&gt;incompatible&lt;/b&gt; workspace in the &quot;File -&amp;gt; Switch Workspace&quot; dialog, Eclipse restarts, shows the &quot;Older Workspace Version&quot; dialog above and by clicking on &quot;Cancel&quot; it will offer to select another workspace.&lt;/li&gt;&lt;/ol&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;h4&gt;Fix Proposal #2&lt;/h4&gt;The proposal is, that &lt;b&gt;depending&lt;/b&gt; on the way Eclipse was started, if user clicks on the &quot;Cancel&quot; button in the &quot;Older Workspace Version&quot; dialog, we &lt;b&gt;may or may not&lt;/b&gt; show the default workspace selection dialog. So what happens after &quot;Older Workspace Version&quot; dialog is shown is &lt;b&gt;not predictable&lt;/b&gt; by just looking on this dialog - it depends on the &lt;b&gt;history&lt;/b&gt; of this dialog.&lt;br /&gt;&lt;h4 style=&quot;text-align: left;&quot;&gt;Proposal #2 Matrix&lt;/h4&gt;&lt;h4&gt;A2. If the workbench was not started yet:&lt;/h4&gt;&lt;ol style=&quot;text-align: left;&quot;&gt;&lt;li&gt;If Eclipse was started &lt;b&gt;without&lt;/b&gt; &quot;-data&quot; argument and user selects incompatible workspace, Eclipse will show &quot;Older Workspace Version&quot; dialog above and by clicking on &quot;Cancel&quot; it will offer workspace selection dialog.&lt;/li&gt;&lt;li&gt;If Eclipse was started &lt;b&gt;with&lt;/b&gt; &quot;-data&quot; argument pointing to the incompatible workspace, Eclipse will show &quot;Older Workspace Version&quot; dialog above and by clicking on &quot;Cancel&quot; it will &lt;span style=&quot;color: red;&quot;&gt;terminate&lt;/span&gt; (instead of offering to select another workspace).&lt;/li&gt;&lt;/ol&gt;&lt;h4&gt;B2. If the workbench was started:&lt;/h4&gt;&lt;ol&gt;&lt;li&gt;If user selects &lt;b&gt;compatible&lt;/b&gt; workspace in the &quot;File -&amp;gt; Switch Workspace&quot; dialog, Eclipse restarts fine.&lt;/li&gt;&lt;li&gt;If user selects &lt;b&gt;incompatible&lt;/b&gt; workspace in the &quot;File -&amp;gt; Switch Workspace&quot; dialog, Eclipse restarts, shows the &quot;Older Workspace Version&quot; dialog above and by clicking on &quot;Cancel&quot; it will offer to select another workspace.&lt;/li&gt;&lt;/ol&gt;&lt;h4 style=&quot;text-align: left;&quot;&gt;Similarities&lt;/h4&gt;&lt;div&gt;Both proposals fix second bullet in the use case B2.&lt;/div&gt;&lt;h4 style=&quot;text-align: left;&quot;&gt;Differences&lt;/h4&gt;&lt;div&gt;We see that Proposal #1 has no second bullet for A1 case, and is always consistent in the way how UI behaves after clicking on &quot;Cancel&quot; in the &quot;Older Workspace Version&quot; dialog. Proposal #2 fixes only B2 use case, inconsistency in UI behavior for the second part of A1 use case remains.&lt;/div&gt;&lt;h4 style=&quot;text-align: left;&quot;&gt;Technical (biased) notes:&lt;/h4&gt;&lt;ol style=&quot;text-align: left;&quot;&gt;&lt;li&gt;Proposal #1 is implemented and the &lt;a href=&quot;https://git.eclipse.org/r/142139&quot;&gt;patch is available&lt;/a&gt;, along with the &lt;a href=&quot;https://bugs.eclipse.org/bugs/attachment.cgi?id=278605&quot;&gt;demo video&lt;/a&gt;. To test it live, one has to build Eclipse - but here I have &lt;a href=&quot;https://drive.google.com/drive/folders/0B7vALkuico9heWlDMlhfRGlRbm8&quot;&gt;SDK binaries with the patch applied&lt;/a&gt;. The patch is relatively simple and only affects Platform UI internal code.&lt;/li&gt;&lt;li&gt;Proposal #2 is not implemented yet. I assume that this will require more work compared to the patch #1. We will need a new command line argument for Eclipse to differentiate between &quot;&lt;i&gt;I want you not to terminate even if incompatible -data is supplied because I'm calling you from UI&lt;/i&gt;&quot; and &quot;&lt;i&gt;Please terminate if incompatible data is supplied because I'm calling you from the command line&lt;/i&gt;&quot;. A new command line argument for Eclipse means not just Platform UI internal change, but also requires changes in the Equinox and Help, and also means public interface change.&lt;/li&gt;&lt;/ol&gt;&lt;br /&gt;&lt;h4&gt;Question to the masses!&lt;/h4&gt;&lt;div&gt;&lt;b&gt;&lt;span style=&quot;color: red; font-size: large;&quot;&gt;We want to know your opinion - which proposal should be implemented?&lt;/span&gt;&lt;/b&gt;&lt;br /&gt;&lt;br /&gt;Please reply here or on the &lt;a href=&quot;https://bugs.eclipse.org/bugs/show_bug.cgi?id=538830&quot;&gt;bug 538830&lt;/a&gt;.&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;/div&gt;&lt;/div&gt;</description>
+	<pubDate>Thu, 16 May 2019 12:11:53 +0000</pubDate>
+	<author>noreply@blogger.com (Andrey Loskutov)</author>
+</item>
+<item>
+	<title>Eclipse Announcements: Eclipse Foundation Launches openMobility Working Group</title>
+	<guid isPermaLink="true">http://feedproxy.google.com/~r/eclipse/fnews/~3/5WJvYhp5s1s/Eclipse-Foundation-Launches-openMobility-Working-Group.html</guid>
+	<link>http://feedproxy.google.com/~r/eclipse/fnews/~3/5WJvYhp5s1s/Eclipse-Foundation-Launches-openMobility-Working-Group.html</link>
+	<description>Today we announced the launch of the openMobility Working Group that will focus on open and shared collaboration around one of the major issues in urban planning around autonomous vehicles and future transportation requirements.&lt;img alt=&quot;&quot; height=&quot;1&quot; src=&quot;http://feeds.feedburner.com/~r/eclipse/fnews/~4/5WJvYhp5s1s&quot; width=&quot;1&quot; /&gt;</description>
+	<pubDate>Mon, 13 May 2019 22:30:00 +0000</pubDate>
+</item>
+<item>
+	<title>JBoss Tools Team: Quarkus</title>
+	<guid isPermaLink="true">https://tools.jboss.org/blog/quarkus.html</guid>
+	<link>https://tools.jboss.org/blog/quarkus.html</link>
+	<description>&lt;div&gt;&lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;You’ve probably heard about &lt;a href=&quot;https://quarkus.io&quot;&gt;Quarkus&lt;/a&gt;, the Supersonic Subatomic Java framework tailored for Kubernetes and containers.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;We wrote an article on how to create your first Quarkus project in an Eclipse based IDE (like &lt;a href=&quot;https://developers.redhat.com/products/codeready-studio/overview&quot;&gt;Red Hat CodeReady Studio&lt;/a&gt;).&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;paragraph&quot;&gt;
+      &lt;p&gt;You can read it at &lt;a class=&quot;bare&quot; href=&quot;https://developers.redhat.com/blog/2019/05/09/create-your-first-quarkus-project-with-eclipse-ide-red-hat-codeready-studio/&quot;&gt;https://developers.redhat.com/blog/2019/05/09/create-your-first-quarkus-project-with-eclipse-ide-red-hat-codeready-studio/&lt;/a&gt;&lt;/p&gt;
+      &lt;/div&gt;&lt;/div&gt;</description>
+	<pubDate>Mon, 13 May 2019 12:23:22 +0000</pubDate>
+</item>
+<item>
+	<title>Eclipse Announcements: The Cloud Native Imperative - Results from the 2019 Jakarta EE Developer Survey</title>
+	<guid isPermaLink="true">http://feedproxy.google.com/~r/eclipse/fnews/~3/u5yxKwK914U/cloud-native-imperative-%E2%80%94-results-2019-jakarta-ee-developer-survey</guid>
+	<link>http://feedproxy.google.com/~r/eclipse/fnews/~3/u5yxKwK914U/cloud-native-imperative-%E2%80%94-results-2019-jakarta-ee-developer-survey</link>
+	<description>The results of the 2019 Jakarta EE Developer Survey are out. Almost 1,800 Java developers from around the world have spoken.&lt;img alt=&quot;&quot; height=&quot;1&quot; src=&quot;http://feeds.feedburner.com/~r/eclipse/fnews/~4/u5yxKwK914U&quot; width=&quot;1&quot; /&gt;</description>
+	<pubDate>Fri, 10 May 2019 19:00:00 +0000</pubDate>
+</item>
+<item>
+	<title>Mike Milinkovich: The Cloud Native Imperative — Results from the 2019 Jakarta EE Developer Survey</title>
+	<guid isPermaLink="false">http://eclipse-foundation.blog/?p=1498</guid>
+	<link>https://eclipse-foundation.blog/2019/05/10/results-2019-jakarta-ee-developer-survey/</link>
+	<description>&lt;p&gt;The results of the 2019 Jakarta EE Developer Survey are out. Almost 1,800 Java developers from around the world have spoken. Taken together with the engagement and response to my recent posts on the future of Jakarta EE (see my latest blog &lt;a href=&quot;https://eclipse-foundation.blog/2019/05/08/jakarta-ee-8-faq/&quot;&gt;here&lt;/a&gt;), the survey makes clear the developer community is focused on charting a new course for a cloud native future, beginning with delivering Jakarta EE 8. The Java ecosystem has a strong desire to see Jakarta EE, as the successor to Java EE, continue to evolve to support microservices, containers, and multi-cloud portability.&lt;/p&gt;
+&lt;p&gt;Organized by the &lt;a href=&quot;https://jakarta.ee/&quot; rel=&quot;noopener&quot; target=&quot;_blank&quot;&gt;Jakarta EE Working Group&lt;/a&gt;, the survey was conducted over three weeks in March 2019. Just like last year (see the 2018 results &lt;a href=&quot;http://bit.ly/2BlT3C8&quot; rel=&quot;noopener&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;), Jakarta EE member companies promoted the survey in partnership with the London Java Community, Java User Groups, and other community stakeholders. Thank you to everyone who took the time to participate. Access the full findings of the survey &lt;a href=&quot;http://bit.ly/2VaHkTH&quot; rel=&quot;noopener&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Some of the highlights from this year’s survey include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The top three community priorities for Jakarta EE are: better support for microservices, native integration with Kubernetes (tied at 61 percent), followed by production quality reference implementations (37 percent). To move mission-critical Java EE applications and workloads to the cloud, developers will need specifications, tools, and products backed by a diverse vendor community. Jakarta EE Working Group members have committed to deliver multiple compatible implementations of the Jakarta EE 8 Platform when the Jakarta EE 8 specifications are released.&lt;/li&gt;
+&lt;li&gt;With a third of developers reporting they are currently building cloud native architectures and another 30 percent planning to within the next year, cloud native is critically important today and will continue to be so;&lt;/li&gt;
+&lt;li&gt;The number of Java applications running in the cloud is projected to substantially increase, with 32 percent of respondents expecting that they will be running nearly two-thirds of their Java applications in the cloud within the next two years;&lt;/li&gt;
+&lt;li&gt;Microservices dominates as the architecture approach to implementing Java in the cloud, according to 43 percent of respondents;&lt;/li&gt;
+&lt;li&gt;Spring/Spring Boot again leads as the framework chosen by most developers for building cloud native applications in Java;&lt;/li&gt;
+&lt;li&gt;Eclipse Microprofile’s adoption has surged, with usage growing from 13 percent in 2018 to 28 percent today;&lt;/li&gt;
+&lt;li&gt;Java continues to dominate when it comes to deploying applications in production environments. It comes as no surprise that most companies are committed to protecting their past strategic investments in Java.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Once again, thanks to everyone who completed the survey and to the community members for their help with the promotion.&lt;/p&gt;
+&lt;p&gt;Let me know what you think about this year’s survey findings. We are open to suggestions on how we can improve the survey in the future, so please feel free to share your feedback.&lt;/p&gt;</description>
+	<pubDate>Fri, 10 May 2019 15:17:21 +0000</pubDate>
+</item>
+<item>
+	<title>Eclipse Announcements: New Eclipse Foundation Community Survey of Java Developers Shows Cloud Native Adoption Accelerating Dramatically with Jakarta EE</title>
+	<guid isPermaLink="true">http://feedproxy.google.com/~r/eclipse/fnews/~3/44wjFO4huO0/New-Eclipse-Foundation-Community-Survey-of-Java-Developers-Shows-Cloud-Native-Adoption-Accelerating-Dramatically-with-Jakarta-EE.html</guid>
+	<link>http://feedproxy.google.com/~r/eclipse/fnews/~3/44wjFO4huO0/New-Eclipse-Foundation-Community-Survey-of-Java-Developers-Shows-Cloud-Native-Adoption-Accelerating-Dramatically-with-Jakarta-EE.html</link>
+	<description>Eclipse Foundation enterprise Java survey shows cloud deployments increasing over 2018 findings with 62% of Java developers building cloud native architectures now or within the year&lt;img alt=&quot;&quot; height=&quot;1&quot; src=&quot;http://feeds.feedburner.com/~r/eclipse/fnews/~4/44wjFO4huO0&quot; width=&quot;1&quot; /&gt;</description>
+	<pubDate>Thu, 09 May 2019 19:00:00 +0000</pubDate>
+</item>
+<item>
+	<title>Eclipse Announcements: Eclipse Contributor Agreement 3.0</title>
+	<guid isPermaLink="true">http://feedproxy.google.com/~r/eclipse/fnews/~3/nM_0HQJ23Iw/eclipse-contributor-agreement-30</guid>
+	<link>http://feedproxy.google.com/~r/eclipse/fnews/~3/nM_0HQJ23Iw/eclipse-contributor-agreement-30</link>
+	<description>The Eclipse Foundation's IP Team has been working hard to get the various agreements that we maintain between the Eclipse Foundation and community updated.&lt;img alt=&quot;&quot; height=&quot;1&quot; src=&quot;http://feeds.feedburner.com/~r/eclipse/fnews/~4/nM_0HQJ23Iw&quot; width=&quot;1&quot; /&gt;</description>
+	<pubDate>Wed, 08 May 2019 15:00:00 +0000</pubDate>
+</item>
+<item>
+	<title>Eclipse Announcements: Frequently Asked Questions About Jakarta EE 8</title>
+	<guid isPermaLink="true">http://feedproxy.google.com/~r/eclipse/fnews/~3/eUfMVflBsMM/frequently-asked-questions-about-jakarta-ee-8</guid>
+	<link>http://feedproxy.google.com/~r/eclipse/fnews/~3/eUfMVflBsMM/frequently-asked-questions-about-jakarta-ee-8</link>
+	<description>Have questions about Jakarta EE 8? Check out Mike Milinkovich's newest FAQ blog!&lt;img alt=&quot;&quot; height=&quot;1&quot; src=&quot;http://feeds.feedburner.com/~r/eclipse/fnews/~4/eUfMVflBsMM&quot; width=&quot;1&quot; /&gt;</description>
+	<pubDate>Wed, 08 May 2019 15:00:00 +0000</pubDate>
+</item>
+<item>
+	<title>Mike Milinkovich: Frequently Asked Questions About Jakarta EE 8</title>
+	<guid isPermaLink="false">http://eclipse-foundation.blog/?p=1495</guid>
+	<link>https://eclipse-foundation.blog/2019/05/08/jakarta-ee-8-faq/</link>
+	<description>&lt;p&gt;I’d like to thank the community for the level of engagement we’ve seen in response to my &lt;a href=&quot;https://eclipse-foundation.blog/2019/05/03/jakarta-ee-java-trademarks/&quot;&gt;post&lt;/a&gt; from last week.   This post, which again represents the consensus view of the Jakarta EE Steering Committee, answers some questions about Jakarta EE 8, which is planned as the initial release of Jakarta EE, and is intended to be fully compatible with Java EE 8, including use of the javax namespace.   We thought it would be useful to reiterate the messages we have been delivering about this release.&lt;/p&gt;
+&lt;p&gt;Note that this post is &lt;b&gt;not&lt;/b&gt; about future Jakarta releases where the namespace will be changed. There is a vigorous discussion going on right now on the &lt;a href=&quot;https://accounts.eclipse.org/mailing-list/jakartaee-platform-dev&quot; rel=&quot;noopener&quot; target=&quot;_blank&quot;&gt;jakarta-platform-dev@eclipse.org&lt;/a&gt; list (&lt;a href=&quot;http://dev.eclipse.org/mhonarc/lists/jakartaee-platform-dev&quot; rel=&quot;noopener&quot; target=&quot;_blank&quot;&gt;archive&lt;/a&gt;), so if you are interested in that topic, I would suggest you participate there. We expect that it will be about a month before the Jakarta EE Spec Committee will determine the next steps in the Jakarta EE roadmap.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Will Jakarta EE 8 break existing Java EE applications that rely upon javax APIs?&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;No, Jakarta EE 8 will not break existing existing Java EE applications that rely upon javax APIs.   We expect Jakarta EE 8 to be completely compatible with Java EE 8. We expect Jakarta EE 8 to specify the same javax namespace, and the same javax APIs and the same behavior as is specified in Java EE 8.    We expect that implementations that pass the Java EE 8 TCKs will also pass the Jakarta EE 8 TCKs, because the Jakarta EE 8 TCKs will be based on the same sources as the Java EE 8 TCKs. Jakarta EE 8 will not require any changes to Java EE 8 applications or their use of javax APIs.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;What will Jakarta EE 8 consist of?&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;The Jakarta EE 8 specifications will:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Be fully compatible with Java EE 8 specifications&lt;/li&gt;
+&lt;li&gt;Include the same APIs and Javadoc using the same javax namespace&lt;/li&gt;
+&lt;li&gt;Provide open source licensed Jakarta EE 8 TCKs that are based on, and fully compatible with, the Java EE 8 TCKs.&lt;/li&gt;
+&lt;li&gt;Include a Jakarta EE 8 Platform specification that will describe the same platform integration requirements as the Java EE 8 Platform specification.&lt;/li&gt;
+&lt;li&gt;Reference multiple compatible  implementations of the Jakarta EE 8 Platform when the Jakarta EE 8 specifications are released.&lt;/li&gt;
+&lt;li&gt;Provide a compatibility and branding process for demonstrating that implementations are Jakarta EE 8 compatible.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;b&gt;Will there be Jakarta EE 8 compatible implementations?&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;Yes.  Multiple compatible implementations of the Jakarta EE 8 Platform will be available when the Jakarta EE 8 specifications are released.  We expect that any Java EE 8 compatible implementation would also be Jakarta EE 8 compatible, and the vendors in the Jakarta EE Working Group intend to certify their Java EE 8 compatible implementations as Jakarta EE 8 compatible.  In addition, because the Jakarta EE TCKs are available under an open source license, we will “lower the bar” for other technology providers to demonstrate Jakarta EE compatibility for their implementations. The lower cost and more liberal Jakarta EE trademark licensing will allow more technology providers to leverage and strengthen the Jakarta EE brand in the Enterprise Java community.  Jakarta EE 8 will provide a new baseline for the evolution of the Jakarta EE technologies, under an open, vendor-neutral community-driven process.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;What is the process for delivery of Jakarta EE 8&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;The process for delivery of Jakarta EE 8 specifications will be fully transparent and will follow the Jakarta EE Specification Process.  Expect to see in coming weeks the delivery of initial, draft Jakarta EE 8 component specifications corresponding to Java EE 8 component specifications.  These will contain Javadoc defining the relevant APIs, and TCKs for compatibility testing. To publish specification text, we need to acquire copyright licenses for this text.  We have obtained Oracle and IBM’s copyright licenses for their  contributions, and intend to obtain the remaining copyright licenses required to publish the text of the Jakarta EE 8 Platform specification, and as much as possible of the component specifications. If you contributed to the Java EE specifications at the JCP in the past, expect to be contacted by the Eclipse Foundation to provide a license to use your contributions in Jakarta EE going forward. Providing such a license will be an important step in supporting the new specification process and the Jakarta EE community.  You will see these draft specifications evolve to final specifications in an open community process. Join the specification projects and participate!&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;When will Jakarta EE 8 be delivered?&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;The Jakarta EE Working Group intends to release final Jakarta EE 8 specifications by the fall of 2019.    This is an open community-driven effort, so there will be transparency into the process of driving the Jakarta EE 8 specifications, delivery of the Jakarta EE 8 TCKs, and Jakarta EE 8 compatible implementations.&lt;/p&gt;</description>
+	<pubDate>Wed, 08 May 2019 12:00:22 +0000</pubDate>
+</item>
+<item>
+	<title>InfoQ Eclipse feed: Eclipse and Oracle Unable to Agree on Terms for javax Package Namespace and Trademarks</title>
+	<guid isPermaLink="true">https://www.infoq.com/news/2019/05/end-of-javax-package?utm_campaign=infoq_content&amp;utm_source=infoq&amp;utm_medium=feed&amp;utm_term=Eclipse</guid>
+	<link>https://www.infoq.com/news/2019/05/end-of-javax-package?utm_campaign=infoq_content&amp;utm_source=infoq&amp;utm_medium=feed&amp;utm_term=Eclipse</link>
+	<description>&lt;img src=&quot;https://www.infoq.com/styles/i/logo_bigger.jpg&quot; /&gt;&lt;p&gt;The Eclipse Foundation and Oracle were unable to agree on a path forward for enhancing Java EE's javax namespace, requiring all applications to be ported to a new namespace for Jakarta EE.&lt;/p&gt; &lt;i&gt;By Erik Costlow&lt;/i&gt;</description>
+	<pubDate>Wed, 08 May 2019 05:00:00 +0000</pubDate>
+</item>
+<item>
+	<title>Wayne Beaton: Eclipse Contributor Agreement 3.0</title>
+	<guid isPermaLink="false">http://waynebeaton.wordpress.com/?p=5567</guid>
+	<link>https://waynebeaton.wordpress.com/2019/05/07/eclipse-contributor-agreement-3-0/</link>
+	<description>&lt;p&gt;The &lt;a href=&quot;https://www.eclipse.org/legal/ECA.php&quot;&gt;Eclipse Contributor Agreement&lt;/a&gt; (ECA) is an agreement made by contributors certifying the work they are contributing was authored by them and/or they have the legal authority to contribute as open source under the terms of the project license.&lt;/p&gt;
+
+
+
+&lt;p&gt;The Eclipse Foundation’s IP Team has been working hard to get the various agreements that we maintain between the Eclipse Foundation and community updated. Our first milestone targeted the ECA, and we’re happy to report that a very significant number of our community members have successfully updated theirs. Today, we retired all of the rest of them. Specifically, we’ve revoked all ECAs that predate the ECA version 3.0.&lt;/p&gt;
+
+
+
+&lt;p&gt;We’re confident that we’ve managed to connect and update the ECA for everybody who still wants to be a contributor, so there should be no interruption for anybody who is actively contributing. If we missed you, you’ll be asked to sign the new ECA the next time you try to contribute. Or you can just &lt;a href=&quot;https://accounts.eclipse.org/user/eca&quot;&gt;re-sign it now&lt;/a&gt;.&lt;/p&gt;
+
+
+
+&lt;p&gt;We’ve made some changes with the new agreements that make contributing easier, (but explaining harder). Committers who have signed the &lt;a href=&quot;https://www.eclipse.org/legal/committer_process/EclipseIndividualCommitterAgreementFinal.pdf&quot;&gt;Individual Committer Agreement&lt;/a&gt; (ICA) version 4.0 or work for a company that has signed the &lt;a href=&quot;https://www.eclipse.org/legal/committer_process/EclipseMemberCommitterAgreementFinal.pdf&quot;&gt;Member Committer and Contributor Agreement&lt;/a&gt; do not require an ECA.&lt;/p&gt;
+
+
+
+&lt;p&gt;Contact emo_records@eclipse.org if you’re having trouble with an agreement.&lt;/p&gt;</description>
+	<pubDate>Tue, 07 May 2019 21:03:58 +0000</pubDate>
+</item>
+<item>
+	<title>Eclipse Announcements: Update on Jakarta EE Rights to Java Trademarks</title>
+	<guid isPermaLink="true">http://feedproxy.google.com/~r/eclipse/fnews/~3/palr9ZeHSyY/update-jakarta-ee-rights-java-trademarks</guid>
+	<link>http://feedproxy.google.com/~r/eclipse/fnews/~3/palr9ZeHSyY/update-jakarta-ee-rights-java-trademarks</link>
+	<description>Summary of progress to date and implications of the agreement between Eclipse and Oracle on Jakarta EE and use of Java trademarks and the javax namespace.&lt;img alt=&quot;&quot; height=&quot;1&quot; src=&quot;http://feeds.feedburner.com/~r/eclipse/fnews/~4/palr9ZeHSyY&quot; width=&quot;1&quot; /&gt;</description>
+	<pubDate>Fri, 03 May 2019 20:00:00 +0000</pubDate>
+</item>
+<item>
+	<title>Mike Milinkovich: Update on Jakarta EE Rights to Java Trademarks</title>
+	<guid isPermaLink="false">http://eclipse-foundation.blog/?p=1492</guid>
+	<link>https://eclipse-foundation.blog/2019/05/03/jakarta-ee-java-trademarks/</link>
+	<description>&lt;p&gt;&lt;b&gt;Summary of progress to date and implications of the agreement between Eclipse and Oracle on Jakarta EE and use of Java trademarks and the javax namespace.&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Introduction&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;The migration of Java EE to the Eclipse Foundation has been an enormous effort on behalf of the Eclipse Foundation staff and the many contributors, committers, members, and stakeholders that are participating.&lt;/p&gt;
+&lt;p&gt;This post was reviewed and represents the consensus view of the Jakarta EE Steering Committee.&lt;/p&gt;
+&lt;p&gt;Earlier this year GlassFish 5.1 was certified at Eclipse using the Java EE 8 TCK at the Eclipse Foundation. Since then under the direction of the working group the community established a Jakarta EE Specification Process (JESP) for the evolution of the Jakarta EE specs at the Eclipse Foundation. Specification projects are being created for all of the Jakarta EE specifications. The TCK process is being refined for Jakarta EE in concert with the new Jakarta EE compatibility logo. This is all being done in support of the Jakarta EE 8 release.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Progress to Date&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;The Jakarta community has been busy.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Oracle contributed GlassFish and the Java EE APIs and TCKs to Jakarta EE.&lt;/li&gt;
+&lt;li&gt;The Jakarta EE Working Group was formed and supporting committees to provide governance to the community and facilitate collaboration.&lt;/li&gt;
+&lt;li&gt;Eclipse GlassFish was certified with the Java EE TCK at the Eclipse Foundation.&lt;/li&gt;
+&lt;li&gt;The &lt;a href=&quot;https://www.eclipse.org/projects/efsp/&quot;&gt;Eclipse Foundation Specification Process&lt;/a&gt; was created, and customization created and approved for the &lt;a href=&quot;https://jakarta.ee/about/jesp/&quot;&gt;Jakarta EE Specification Process&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Specification projects are being created and work is underway now within the community to deliver the Jakarta EE 8 release later this year.&lt;/li&gt;
+&lt;li&gt;There is an initiative underway for Oracle, IBM, Red Hat and other members of the JCP to contribute their specification documents created at the JCP to Jakarta.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It had been the mutual intention of the Eclipse Foundation and Oracle to agree to terms that would allow the evolution of the javax package namespace in Jakarta EE specifications.   Unfortunately, following many months of good-faith negotiations, the Eclipse Foundation and Oracle have been unable to agree on terms of an agreement for the Eclipse Foundation community to modify the javax package namespace or to use the Java trademarks currently used in Java EE specifications.  &lt;b&gt; Instead, Eclipse and Oracle have agreed that the &lt;/b&gt;&lt;b&gt;javax&lt;/b&gt;&lt;b&gt; package namespace cannot be evolved by the Jakarta EE community. As well, Java trademarks such as the existing specification names cannot be used by Jakarta EE specifications. &lt;/b&gt; Because of the complexity and confidential nature of our negotiations, the Eclipse Foundation and Oracle have also agreed that we will not attempt to characterize here what has resulted in this outcome. It is the best outcome we could mutually achieve for the community. Some additional context is provided in the &lt;a href=&quot;https://www.eclipse.org/org/foundation/boardminutes/2019_03_26_Minutes.pdf&quot;&gt;Eclipse Foundation Board&lt;/a&gt; and &lt;a href=&quot;https://jakarta.ee/meeting_minutes/&quot;&gt;Jakarta EE Steering Committee&lt;/a&gt; meeting minutes.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;What restrictions does this outcome impose on the Eclipse community?&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;Oracle’s Java trademarks are the property of Oracle and the Eclipse Foundation has no rights to use them.   The implications of this are as follows:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The javax package namespace may be used within Jakarta EE specifications but may be used “as is” only.  No modification to the javax package namespace is permitted within Jakarta EE component specifications. Jakarta EE specifications that continue to use the javax package namespace must remain TCK compatible with the corresponding Java EE specifications.&lt;/li&gt;
+&lt;li&gt;Jakarta EE component specifications using the javax package namespace may be omitted entirely from future Jakarta EE Platform specifications.&lt;/li&gt;
+&lt;li&gt;Specification names must be changed from a “Java EE” naming convention to a “Jakarta EE” naming convention.  This includes acronyms such as EJB, JPA or JAX-RS.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In addition to the above, any specifications which use the javax namespace will continue to carry the certification and container requirements which Java EE has had in the past. I.e., implementations which claim compliance with any version of the Jakarta EE specifications using the javax namespace must test on and distribute containers which embed certified Java SE implementations licensed by Oracle. These restrictions do not apply to Jakarta EE specifications which do not utilize javax, including future revisions of the platform specifications which eliminate javax.&lt;/p&gt;
+&lt;p&gt;Note that the ratified Jakarta EE specifications will be available under a different license (the &lt;a href=&quot;https://www.eclipse.org/legal/efsl.php&quot;&gt;Eclipse Foundation Specification License&lt;/a&gt;). This is the reason why the Eclipse Foundation is currently asking the community to update their contributor and committer agreements.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;What is next for the Jakarta EE Working Group?&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;The Jakarta EE Working Group including Oracle will continue to do what they set out to do: namely, move Java EE to the Eclipse Foundation. The group remains committed to creating a Jakarta EE 8 specification, logoed under the Eclipse Foundation’s Jakarta trademark. Further, the group is also committed to future versions of the Jakarta EE specifications that deliver on the original promises of innovation and evolution in cloud-native Java.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;What does it mean for Jakarta EE to not modify the javax package namespace?&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;The Agreement does allow for modification and evolution under a new namespace, such as jakarta. It is expected that all future evolution and innovation will not use the javax namespace.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;What happens to the Jakarta EE brand?&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;The Jakarta EE compatibility and the Jakarta EE member logos have both been decided on by the community and published. Work is underway to deliver the branding usage guidelines and supporting trademark license agreement. We expect to see the usage of these brands later this year.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Will there be a Jakarta EE 8?&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;Yes. The community is working hard to deliver the Jakarta EE 8 release, which is Java EE 8 delivered from Eclipse. We expect that many application servers will certify as Jakarta EE 8 compatible.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;What happens beyond Jakarta EE 8?&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;The guiding principle for Jakarta EE 9 will be to maximize compatibility with Jakarta EE 8 for future versions without stifling innovation.  This will most likely involve two key topics: migration of some or all of the Jakarta EE specification source to a new namespace for future evolution; means to provide backwards compatibility with javax at a binary level, allowing old applications to run on Jakarta 9 implementations with some form of build or runtime tooling.&lt;/p&gt;
+&lt;p&gt;So while there will be a point in time where future versions of specifications will have to go through a source code incompatible change with respect to the previous javax based packages, this will be a straightforward transformation.&lt;/p&gt;
+&lt;p&gt;Further plans are being evolved by the Jakarta EE community via the &lt;a href=&quot;https://projects.eclipse.org/projects/ee4j.jakartaee-platform&quot;&gt;Jakarta EE Platform Project&lt;/a&gt;. Your comments and participation are encouraged.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;What does this mean for the EE4J projects?&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;The specification projects need to be renamed to not use Oracle’s Java trademarks. The Jakarta community gets to decide on the new names. This is an opportunity to tighten up the naming and get a better level of consistency. The future of Eclipse Enterprise for Java (EE4J) projects will be determined by the community who participate in those specifications and open source projects.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;What is next for Eclipse GlassFish?&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;Work is underway at the Eclipse GlassFish project running the Jakarta EE 8 TCK and being ready to support its role in the TCK for interop testing. The future of Eclipse GlassFish will be determined by the community who participate in the project.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;How will specs be updated beyond Jakarta EE 8?&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;Jakarta EE specifications will be updated according to the approved Jakarta EE Specification Process (JESP). The actual enhancements will be determined by the community who participate in those specification projects.&lt;/p&gt;</description>
+	<pubDate>Fri, 03 May 2019 10:00:07 +0000</pubDate>
+</item>
+<item>
+	<title>Tanja Obradovic: Jakarta EE Community Engagement</title>
+	<guid isPermaLink="false">https://blogs.eclipse.org/6695 at https://blogs.eclipse.org</guid>
+	<link>https://blogs.eclipse.org/post/tanja-obradovic/jakarta-ee-community-engagement</link>
+	<description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot;&gt;&lt;p&gt; &lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;&lt;strong&gt;&lt;img src=&quot;https://lh6.googleusercontent.com/NUmtGPqGwhz-c6FEc7h9imIdBlir0aVqUsXTAdtzG44uCm3qUxkHnuPxXVdS20weW4iJLpFtNPCyW1xvtAJsWf4_X-AuSnAZV14SeLwOTeJCBffRyqO4mmEa3TkNuRvL6nZKtN_h&quot; style=&quot;height: 223px; width: 624px;&quot; /&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;The intention of the blog is to list all the ways we currently (May 2019) engage with the community.&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;&lt;strong&gt;Social media&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;Jakarta EE on social media&lt;/p&gt;
+
+&lt;ul&gt;
+	&lt;li dir=&quot;ltr&quot;&gt;
+	&lt;p dir=&quot;ltr&quot;&gt;Twitter: @JakartaEE&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;li dir=&quot;ltr&quot;&gt;
+	&lt;p dir=&quot;ltr&quot;&gt;Facebook: Jakarta EE&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;li dir=&quot;ltr&quot;&gt;
+	&lt;p dir=&quot;ltr&quot;&gt;LinkedIn Group: Jakarta.EE&lt;/p&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;&lt;strong&gt;Mailing lists&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;Subscribe to our mailing-lists&lt;a href=&quot;https://jakarta.ee/connect/&quot;&gt; https://jakarta.ee/connect/&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+	&lt;li dir=&quot;ltr&quot;&gt;
+	&lt;p dir=&quot;ltr&quot;&gt;&lt;a href=&quot;mailto:jakarta.ee-community@eclipse.org&quot;&gt;jakarta.ee-community@eclipse.org&lt;/a&gt;&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;li dir=&quot;ltr&quot;&gt;
+	&lt;p dir=&quot;ltr&quot;&gt;&lt;a href=&quot;http:// jakarta.ee-wg@eclipse.org&quot;&gt;jakarta.ee-wg@eclipse.org &lt;/a&gt;&lt;/p&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;Note: people involved in a specific project have additional mailing lists available to them.&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;&lt;strong&gt;Newsletter / Blogs / emails&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;&lt;em&gt;Eclipse Newsletter&lt;/em&gt; - while the EF newsletter occurs monthly, once a quarter the newsletter is dedicated to Jakarta EE&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;&lt;em&gt;Jakarta Blogs&lt;/em&gt; - &lt;a href=&quot;https://jakartablogs.ee/&quot;&gt;https://jakartablogs.ee/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;In addition to the above Jakarta blogs that are covering all Java Cloud related topics, we are adding the following&lt;/p&gt;
+
+&lt;ul&gt;
+	&lt;li dir=&quot;ltr&quot;&gt;
+	&lt;p dir=&quot;ltr&quot;&gt;&lt;strong&gt;New &lt;/strong&gt;community &lt;u&gt;blogs on “how are you involved with Jakarta EE”&lt;/u&gt; - &lt;a href=&quot;https://docs.google.com/spreadsheets/d/1JflN_xJ9d5ZWu5VUbDV9Spj7mc8WuPGMfd6EZgabXz0/edit?usp=sharing&quot;&gt;sign up sheet to the community, ideal frequency bi-weekly blogs&lt;/a&gt;, we’d  like to ensure we promote via Eclipse Foundation and other members marketing channels&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;li dir=&quot;ltr&quot;&gt;
+	&lt;p dir=&quot;ltr&quot;&gt;&lt;strong&gt;New &lt;/strong&gt;&lt;u&gt;monthly update emails&lt;/u&gt; to &lt;a href=&quot;mailto:jakarta.ee-community@eclipse.org&quot;&gt;jakarta.ee-community@eclipse.org&lt;/a&gt;, highlighting news from the various calls, Eclipse Foundation to the community&lt;/p&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;&lt;strong&gt;Meetings&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;&lt;em&gt;Jakarta Tech Talks &lt;/em&gt;- open to community &lt;a href=&quot;mailto:jakarta.ee-community@eclipse.org&quot;&gt;jakarta.ee-community@eclipse.org&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+	&lt;li dir=&quot;ltr&quot;&gt;
+	&lt;p dir=&quot;ltr&quot;&gt;&lt;a href=&quot;https://www.meetup.com/jakartatechtalks_/&quot;&gt;Jakarta Tech Talk MeetUp Link &lt;/a&gt;&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;li dir=&quot;ltr&quot;&gt;
+	&lt;p dir=&quot;ltr&quot;&gt;Monthly occurrence, last week of a month, usually Tuesday&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;li dir=&quot;ltr&quot;&gt;
+	&lt;p dir=&quot;ltr&quot;&gt;&lt;a href=&quot;https://docs.google.com/spreadsheets/d/19AfvCUdScUHwJejMYg370tum5mi7zI4bvkZczcQXiUM/edit?usp=sharing&quot;&gt;Jakarta Tech Talk schedule and talks suggestions spreadsheet&lt;/a&gt; - please sign up / propose a talk&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;li dir=&quot;ltr&quot;&gt;
+	&lt;p dir=&quot;ltr&quot;&gt;This is a live stream with recording available on youtube&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;li dir=&quot;ltr&quot;&gt;
+	&lt;p dir=&quot;ltr&quot;&gt;30-40 min technical talk by the community&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;li dir=&quot;ltr&quot;&gt;
+	&lt;p dir=&quot;ltr&quot;&gt;This is also an opportunity for 10-15 min update on Jakarta EE from Eclipse Foundation&lt;/p&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;&lt;em&gt;Jakarta EE Update&lt;/em&gt; (formerly: Jakarta EE WG) calls - open to WG &lt;a href=&quot;http:// jakarta.ee-wg@eclipse.org&quot;&gt;jakarta.ee-wg@eclipse.org &lt;/a&gt; and wider community  &lt;a href=&quot;mailto:jakarta.ee-community@eclipse.org&quot;&gt;jakarta.ee-community@eclipse.org&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+	&lt;li dir=&quot;ltr&quot;&gt;
+	&lt;p dir=&quot;ltr&quot;&gt;The meeting invite is in the new public calendar &lt;a href=&quot;https://calendar.google.com/calendar/embed?src=eclipse-foundation.org_3281qms6riu4kdf354jn5idon0%40group.calendar.google.com&amp;amp;ctz=America%2FToronto&quot;&gt;Jakarta EE Community Calendar &lt;/a&gt;&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;li dir=&quot;ltr&quot;&gt;
+	&lt;p dir=&quot;ltr&quot;&gt;This is a monthly occurrence, every second Wednesday of the month (avoiding the same week as Jakarta Tech Talks)&lt;/p&gt;
+	&lt;/li&gt;
+	&lt;li dir=&quot;ltr&quot;&gt;
+	&lt;p dir=&quot;ltr&quot;&gt;This meeting is to be prepared and organized by the Jakarta EE Working Group members and &lt;a href=&quot;https://docs.google.com/document/d/1U81TZ2F_nhg6WxoE1VnpUUEQ09r8SXWpaN3hf3wiTWQ/edit?usp=sharing&quot;&gt;agenda to be shared with the community &lt;/a&gt;prior to the call&lt;/p&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul&gt;
+	&lt;li dir=&quot;ltr&quot;&gt;
+	&lt;p dir=&quot;ltr&quot;&gt;Use the time slot for occasional updates from Eclipse Foundation and strategic members (Executive Director and panel)  - Jakarta Town Hall&lt;/p&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;&lt;em&gt;Jakarta Town Hall&lt;/em&gt;&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;We had 2 very successful instances of town hall meetings - first at EclipseCon Europe 2018 and A year in review in late January 2019&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;EF organized Events and Conferences&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;JakartaOne Live - virtual one-day event, targeting users and adopters. Planned for the second week of September 2019.&lt;/p&gt;
+
+&lt;p dir=&quot;ltr&quot;&gt;EclipseCon Europe - 4-day Eclipse event, with dedicated Cloud Native Java track, community day event scheduled, likely Jakarta Town Hall.  Scheduled for October 21-24, 2019.&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;field field-name-field-blog-tags field-type-taxonomy-term-reference field-label-above&quot;&gt;&lt;div class=&quot;field-label&quot;&gt;Tags: &lt;/div&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot;&gt;&lt;a href=&quot;https://blogs.eclipse.org/blog-tags/jakartaee&quot;&gt;#JakartaEE&lt;/a&gt;&lt;/div&gt;&lt;div class=&quot;field-item odd&quot;&gt;&lt;a href=&quot;https://blogs.eclipse.org/blog-tags/opensource&quot;&gt;#OpenSource&lt;/a&gt;&lt;/div&gt;&lt;div class=&quot;field-item even&quot;&gt;&lt;a href=&quot;https://blogs.eclipse.org/blog-tags/community-0&quot;&gt;#community&lt;/a&gt;&lt;/div&gt;&lt;div class=&quot;field-item odd&quot;&gt;&lt;a href=&quot;https://blogs.eclipse.org/blog-tags/community-engagement&quot;&gt;#community-engagement&lt;/a&gt;&lt;/div&gt;&lt;div class=&quot;field-item even&quot;&gt;&lt;a href=&quot;https://blogs.eclipse.org/blog-tags/get-involved&quot;&gt;#get-involved&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+	<pubDate>Thu, 02 May 2019 17:35:40 +0000</pubDate>
+</item>
+<item>
+	<title>Donald Raab: Code Duplication</title>
+	<guid isPermaLink="false">https://medium.com/p/1e1f759a7fe3</guid>
+	<link>https://medium.com/@donraab/code-duplication-1e1f759a7fe3?source=rss-df39b86e9f04------2</link>
+	<description>&lt;p&gt;Duplicate code makes me itch, until I scratch it away.&lt;/p&gt;&lt;figure&gt;&lt;img alt=&quot;&quot; src=&quot;https://cdn-images-1.medium.com/max/1024/1*fLJUnvCEnjFcNLhc5Wbgqg.jpeg&quot; /&gt;Itchy scratchy hay!&lt;/figure&gt;&lt;h3&gt;I hate code duplication&lt;/h3&gt;&lt;p&gt;Nothing bothers me quite like code duplication. I get an unbearable itch every time I spot some duplication in a code base. The only way to make the itch go away is to find a suitable way to remove the duplication.&lt;/p&gt;&lt;p&gt;I am always reminded of this quote from a &lt;a href=&quot;https://groups.yahoo.com/neo/groups/testdrivendevelopment/conversations/topics/185?viscount=100&quot;&gt;Yahoo Groups post from Ryan King&lt;/a&gt; many years ago when I spot code duplication.&lt;/p&gt;&lt;blockquote&gt;So, duplication sucks. The more rabidly a person hates duplication, the more I trust their opinions on managing information. A programmer, upon noticing some redundancy, should be thrown into a panic, begin hyperventilating, and stammer something about “¡El diablo! !El diablo está en mi software!”.&lt;/blockquote&gt;&lt;blockquote&gt;— Ryan King&lt;/blockquote&gt;&lt;p&gt;So what can we do when we find code duplication? We can learn ways to remove it. Google and StackOverflow are great resources for finding answers to solving many common programming problems. They can be your first port of call for discovering and learning new APIs that may help reduce some of the duplicate code you may have written previously.&lt;/p&gt;&lt;h3&gt;Simple patterns of duplication&lt;/h3&gt;&lt;p&gt;Sometimes code duplication is easy to spot and to remove. I will start by describing some very simple common patterns of duplication I spot in code bases all the time.&lt;/p&gt;&lt;h4&gt;Boolean Test Pattern&lt;/h4&gt;&lt;p&gt;Testing a boolean value and returning true or false. I’ve seen this pattern of code more than you might imagine over the years.&lt;/p&gt;&lt;pre&gt;public boolean isSomething()&lt;br /&gt;{&lt;br /&gt;    if (!this.calculateSomeBooleanValue())&lt;br /&gt;    {&lt;br /&gt;        return true;&lt;br /&gt;    }&lt;br /&gt;    else&lt;br /&gt;    {&lt;br /&gt;        return false;&lt;br /&gt;    }&lt;br /&gt;}&lt;/pre&gt;&lt;p&gt;Write this instead.&lt;/p&gt;&lt;pre&gt;public boolean isSomething()&lt;br /&gt;{&lt;br /&gt;    return !this.calculateSomeBooleanValue();&lt;br /&gt;}&lt;/pre&gt;&lt;h4&gt;Collection Factory Pattern&lt;/h4&gt;&lt;p&gt;Here’s another simple pattern that can be fixed easily. This kind of code is very commonly written in test cases. It is important to address code duplication issues across your entire code base, including tests.&lt;/p&gt;&lt;pre&gt;List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;&amp;gt;();&lt;br /&gt;list.add(&lt;strong&gt;&quot;one&quot;&lt;/strong&gt;);&lt;br /&gt;list.add(&lt;strong&gt;&quot;two&quot;&lt;/strong&gt;);&lt;br /&gt;list.add(&lt;strong&gt;&quot;three&quot;&lt;/strong&gt;);&lt;/pre&gt;&lt;p&gt;This code can be replaced as follows using Eclipse Collections &lt;a href=&quot;https://medium.com/@donraab/as-a-matter-of-factory-part-1-mutable-75cc2c5d72d9&quot;&gt;mutable factory pattern&lt;/a&gt;.&lt;/p&gt;&lt;pre&gt;List&amp;lt;String&amp;gt; list = Lists.&lt;strong&gt;&lt;em&gt;mutable&lt;/em&gt;&lt;/strong&gt;.with(&lt;strong&gt;&quot;one&quot;&lt;/strong&gt;, &lt;strong&gt;&quot;two&quot;&lt;/strong&gt;, &lt;strong&gt;&quot;three&quot;&lt;/strong&gt;);&lt;/pre&gt;&lt;p&gt;Here’s an answer on StackOverflow that show different &lt;a href=&quot;https://stackoverflow.com/questions/1005073/initialization-of-an-arraylist-in-one-line/28183168#28183168&quot;&gt;ways to initialize a List, Set, and Bag in one line with Eclipse Collections&lt;/a&gt;.&lt;/p&gt;&lt;h4&gt;Unmodifiable Static Collection Initializer Pattern&lt;/h4&gt;&lt;p&gt;The following code used to be common in Java versions prior to Java 9, for creating a static unmodifiable List.&lt;/p&gt;&lt;pre&gt;public static final List&amp;lt;String&amp;gt; &lt;em&gt;LIST&lt;/em&gt;;&lt;br /&gt;&lt;br /&gt;static&lt;br /&gt;{&lt;br /&gt;    List&amp;lt;String&amp;gt; newList = new ArrayList&amp;lt;&amp;gt;();&lt;br /&gt;    newList.add(&lt;strong&gt;&quot;one&quot;&lt;/strong&gt;);&lt;br /&gt;    newList.add(&lt;strong&gt;&quot;two&quot;&lt;/strong&gt;);&lt;br /&gt;    newList.add(&lt;strong&gt;&quot;three&quot;&lt;/strong&gt;);&lt;br /&gt;    &lt;em&gt;LIST &lt;/em&gt;= Collections.&lt;em&gt;unmodifiableList&lt;/em&gt;(newList);&lt;br /&gt;}&lt;/pre&gt;&lt;p&gt;This can be written more simply as follows using plain old Java.&lt;/p&gt;&lt;pre&gt;public static final List&amp;lt;String&amp;gt; &lt;strong&gt;&lt;em&gt;LIST &lt;/em&gt;&lt;/strong&gt;=&lt;br /&gt;        Collections.&lt;em&gt;unmodifiableList&lt;/em&gt;(&lt;br /&gt;                Arrays.&lt;em&gt;asList&lt;/em&gt;(&lt;strong&gt;&quot;one&quot;&lt;/strong&gt;, &lt;strong&gt;&quot;two&quot;&lt;/strong&gt;, &lt;strong&gt;&quot;three&quot;&lt;/strong&gt;));&lt;/pre&gt;&lt;p&gt;This can also be replaced as follows using Eclipse Collections.&lt;/p&gt;&lt;pre&gt;public static final List&amp;lt;String&amp;gt; LIST =&lt;br /&gt;        Lists.&lt;strong&gt;&lt;em&gt;mutable&lt;/em&gt;&lt;/strong&gt;.with(&lt;strong&gt;&quot;one&quot;&lt;/strong&gt;, &lt;strong&gt;&quot;two&quot;&lt;/strong&gt;, &lt;strong&gt;&quot;three&quot;&lt;/strong&gt;).asUnmodifiable();&lt;/pre&gt;&lt;p&gt;As of Java 9, you can also write the following. The method List.of() returns an unmodifiable List.&lt;/p&gt;&lt;pre&gt;public static final List&amp;lt;String&amp;gt; LIST = &lt;br /&gt;        List.&lt;em&gt;of&lt;/em&gt;(&lt;strong&gt;&quot;one&quot;&lt;/strong&gt;, &lt;strong&gt;&quot;two&quot;&lt;/strong&gt;, &lt;strong&gt;&quot;three&quot;&lt;/strong&gt;);&lt;/pre&gt;&lt;p&gt;You can also use an ImmutableList from Eclipse Collections if you want to have a contractually immutable interface like ImmutableList which has no mutating methods.&lt;/p&gt;&lt;pre&gt;public static final ImmutableList&amp;lt;String&amp;gt; LIST = &lt;br /&gt;        Lists.&lt;strong&gt;&lt;em&gt;immutable&lt;/em&gt;&lt;/strong&gt;.with(&lt;strong&gt;&quot;one&quot;&lt;/strong&gt;, &lt;strong&gt;&quot;two&quot;&lt;/strong&gt;, &lt;strong&gt;&quot;three&quot;&lt;/strong&gt;);&lt;/pre&gt;&lt;h4&gt;Static Map Initializer Pattern&lt;/h4&gt;&lt;p&gt;Initializing a static Map can be a bit more challenging, if you have more than three or four key/value pairs in the Map.&lt;/p&gt;&lt;pre&gt;public static final Map&amp;lt;Integer, String&amp;gt; &lt;strong&gt;&lt;em&gt;MAP&lt;/em&gt;&lt;/strong&gt;;&lt;br /&gt;&lt;br /&gt;static&lt;br /&gt;{&lt;br /&gt;    Map&amp;lt;Integer, String&amp;gt; newMap = new HashMap&amp;lt;&amp;gt;();&lt;br /&gt;    newMap.put(1, &lt;strong&gt;&quot;one&quot;&lt;/strong&gt;);&lt;br /&gt;    newMap.put(2, &lt;strong&gt;&quot;two&quot;&lt;/strong&gt;);&lt;br /&gt;    newMap.put(3, &lt;strong&gt;&quot;three&quot;&lt;/strong&gt;);&lt;br /&gt;    newMap.put(4, &lt;strong&gt;&quot;four&quot;&lt;/strong&gt;);&lt;br /&gt;    newMap.put(5, &lt;strong&gt;&quot;five&quot;&lt;/strong&gt;);&lt;br /&gt;    &lt;strong&gt;&lt;em&gt;MAP &lt;/em&gt;&lt;/strong&gt;= Collections.&lt;em&gt;unmodifiableMap&lt;/em&gt;(newMap);&lt;br /&gt;}&lt;/pre&gt;&lt;p&gt;Refactored to use an Eclipse collections unmodifiable map.&lt;/p&gt;&lt;pre&gt;public static final Map&amp;lt;Integer, String&amp;gt; &lt;strong&gt;&lt;em&gt;MAP &lt;/em&gt;&lt;/strong&gt;=&lt;br /&gt;        Maps.&lt;strong&gt;&lt;em&gt;mutable&lt;/em&gt;&lt;/strong&gt;.&amp;lt;Integer, String&amp;gt;empty()&lt;br /&gt;                .withKeyValue(1, &lt;strong&gt;&quot;one&quot;&lt;/strong&gt;)&lt;br /&gt;                .withKeyValue(2, &lt;strong&gt;&quot;two&quot;&lt;/strong&gt;)&lt;br /&gt;                .withKeyValue(3, &lt;strong&gt;&quot;three&quot;&lt;/strong&gt;)&lt;br /&gt;                .withKeyValue(4, &lt;strong&gt;&quot;four&quot;&lt;/strong&gt;)&lt;br /&gt;                .withKeyValue(5, &lt;strong&gt;&quot;five&quot;&lt;/strong&gt;)&lt;br /&gt;                .asUnmodifiable();&lt;/pre&gt;&lt;p&gt;Refactored to use an Eclipse collections ImmutableMap which also has no mutating methods in its interface.&lt;/p&gt;&lt;pre&gt;public static final ImmutableMap&amp;lt;Integer, String&amp;gt; &lt;strong&gt;&lt;em&gt;MAP &lt;/em&gt;&lt;/strong&gt;=&lt;br /&gt;        Maps.&lt;strong&gt;&lt;em&gt;mutable&lt;/em&gt;&lt;/strong&gt;.&amp;lt;Integer, String&amp;gt;empty()&lt;br /&gt;                .withKeyValue(1, &lt;strong&gt;&quot;one&quot;&lt;/strong&gt;)&lt;br /&gt;                .withKeyValue(2, &lt;strong&gt;&quot;two&quot;&lt;/strong&gt;)&lt;br /&gt;                .withKeyValue(3, &lt;strong&gt;&quot;three&quot;&lt;/strong&gt;)&lt;br /&gt;                .withKeyValue(4, &lt;strong&gt;&quot;four&quot;&lt;/strong&gt;)&lt;br /&gt;                .withKeyValue(5, &lt;strong&gt;&quot;five&quot;&lt;/strong&gt;)&lt;br /&gt;                .toImmutable();&lt;/pre&gt;&lt;p&gt;Here’s a an answer on StackOverflow that shows various &lt;a href=&quot;https://stackoverflow.com/questions/507602/how-can-i-initialise-a-static-map/13943037#13943037&quot;&gt;ways to initialize a static map with Eclipse Collections&lt;/a&gt;.&lt;/p&gt;&lt;h3&gt;Iteration Patterns&lt;/h3&gt;&lt;p&gt;One of the primary reasons I started building &lt;a href=&quot;https://github.com/eclipse/eclipse-collections&quot;&gt;Eclipse Collections&lt;/a&gt; was that I would see developers writing the same for-loops over and over again. Developers were constantly reimplementing collection iteration patterns in Java. I saw code duplication everywhere! Developers did this prior to Java 8 because the iteration patterns available to Java developers then were limited to what could be found on the Collections utility class. Eclipse Collections has been in development and used in production since JDK 1.4. &lt;a href=&quot;https://github.com/eclipse/eclipse-collections&quot;&gt;Eclipse Collections&lt;/a&gt; has been my preferred solution for removing duplicate iteration pattern code for the past fifteen years in Java.&lt;/p&gt;&lt;h4&gt;Filter Pattern&lt;/h4&gt;&lt;p&gt;Prior to Java 8, the following was the usual way of filtering a source collection to a target collection based on some condition.&lt;/p&gt;&lt;pre&gt;List&amp;lt;Integer&amp;gt; source = Arrays.asList(1, 2, 3, 4, 5);&lt;br /&gt;List&amp;lt;Integer&amp;gt; target = new ArrayList&amp;lt;&amp;gt;();&lt;br /&gt;for (Integer value : source)&lt;br /&gt;{&lt;br /&gt;    if (value % 2 == 0)&lt;br /&gt;    {&lt;br /&gt;        target.add(value);&lt;br /&gt;    }&lt;br /&gt;}&lt;/pre&gt;&lt;p&gt;Here’s the same code refactored using the Eclipse Collections select method.&lt;/p&gt;&lt;pre&gt;MutableList&amp;lt;Integer&amp;gt; source = Lists.&lt;strong&gt;&lt;em&gt;mutable&lt;/em&gt;&lt;/strong&gt;.with(1, 2, 3, 4, 5);&lt;br /&gt;MutableList&amp;lt;Integer&amp;gt; target = source.select(each -&amp;gt; each % 2 ==0);&lt;/pre&gt;&lt;p&gt;Here’s an &lt;a href=&quot;https://stackoverflow.com/questions/122105/what-is-the-best-way-to-filter-a-java-collection/12573823#12573823&quot;&gt;answer&lt;/a&gt; on StackOverflow to the question of “What is the best way to filter a Java Collection?”&lt;/p&gt;&lt;h4&gt;Transform Pattern&lt;/h4&gt;&lt;p&gt;Prior to Java 8, the following was the typical way of converting one collection type to another.&lt;/p&gt;&lt;pre&gt;List&amp;lt;Integer&amp;gt; source = Arrays.asList(1, 2, 3, 4, 5);&lt;br /&gt;List&amp;lt;String&amp;gt; target = new ArrayList&amp;lt;&amp;gt;();&lt;br /&gt;for (Integer value : source)&lt;br /&gt;{&lt;br /&gt;    target.add(value.toString());&lt;br /&gt;}&lt;/pre&gt;&lt;p&gt;Here’s the same code refactored using the Eclipse Collections collect method.&lt;/p&gt;&lt;pre&gt;MutableList&amp;lt;Integer&amp;gt; source = Lists.&lt;strong&gt;&lt;em&gt;mutable&lt;/em&gt;&lt;/strong&gt;.with(1, 2, 3, 4, 5);&lt;br /&gt;MutableList&amp;lt;String&amp;gt; target = source.collect(Object::toString);&lt;/pre&gt;&lt;h4&gt;Any / All / None Patterns&lt;/h4&gt;&lt;p&gt;Prior to Java 8, you would either use a break statement with a boolean variable or a direct return from inside an if statement to see if any, all, or none of the elements of a collection match a given condition.&lt;/p&gt;&lt;h4&gt;Any Pattern&lt;/h4&gt;&lt;pre&gt;List&amp;lt;Integer&amp;gt; source = Arrays.asList(1, 2, 3, 4, 5);&lt;br /&gt;boolean &lt;strong&gt;anyEvens &lt;/strong&gt;= false;&lt;br /&gt;for (Integer value : source)&lt;br /&gt;{&lt;br /&gt;    if (value % 2 == 0)&lt;br /&gt;    {&lt;br /&gt;        &lt;strong&gt;anyEvens &lt;/strong&gt;= true;&lt;br /&gt;        break;&lt;br /&gt;    }&lt;br /&gt;}&lt;/pre&gt;&lt;p&gt;Refactored with Eclipse Collections anySatisfy method.&lt;/p&gt;&lt;pre&gt;MutableList&amp;lt;Integer&amp;gt; source = Lists.&lt;strong&gt;&lt;em&gt;mutable&lt;/em&gt;&lt;/strong&gt;.with(1, 2, 3, 4, 5);&lt;br /&gt;boolean anyEvens = source.anySatisfy(each -&amp;gt; each % 2 == 0);&lt;/pre&gt;&lt;h4&gt;All Pattern&lt;/h4&gt;&lt;pre&gt;List&amp;lt;Integer&amp;gt; source = Arrays.asList(1, 2, 3, 4, 5);&lt;br /&gt;boolean &lt;strong&gt;allEvens &lt;/strong&gt;= true;&lt;br /&gt;for (Integer value : source)&lt;br /&gt;{&lt;br /&gt;    if (value % 2 != 0)&lt;br /&gt;    {&lt;br /&gt;        &lt;strong&gt;allEvens &lt;/strong&gt;= false;&lt;br /&gt;        break;&lt;br /&gt;    }&lt;br /&gt;}&lt;/pre&gt;&lt;p&gt;Refactored with Eclipse Collections allSatisfy method.&lt;/p&gt;&lt;pre&gt;MutableList&amp;lt;Integer&amp;gt; source = Lists.&lt;strong&gt;&lt;em&gt;mutable&lt;/em&gt;&lt;/strong&gt;.with(1, 2, 3, 4, 5);&lt;br /&gt;boolean allEvens = source.allSatisfy(each -&amp;gt; each % 2 == 0);&lt;/pre&gt;&lt;h4&gt;None Pattern&lt;/h4&gt;&lt;pre&gt;List&amp;lt;Integer&amp;gt; source = Arrays.asList(1, 2, 3, 4, 5);&lt;br /&gt;boolean &lt;strong&gt;noneEvens &lt;/strong&gt;= true;&lt;br /&gt;for (Integer value : source)&lt;br /&gt;{&lt;br /&gt;    if (value % 2 == 0)&lt;br /&gt;    {&lt;br /&gt;        &lt;strong&gt;noneEvens &lt;/strong&gt;= false;&lt;br /&gt;        break;&lt;br /&gt;    }&lt;br /&gt;}&lt;/pre&gt;&lt;p&gt;Refactored with Eclipse Collections noneSatisfy method.&lt;/p&gt;&lt;pre&gt;MutableList&amp;lt;Integer&amp;gt; source = Lists.&lt;strong&gt;&lt;em&gt;mutable&lt;/em&gt;&lt;/strong&gt;.with(1, 2, 3, 4, 5);&lt;br /&gt;boolean noneEvens = source.noneSatisfy(each -&amp;gt; each % 2 == 0);&lt;/pre&gt;&lt;h4&gt;Other Iteration Patterns&lt;/h4&gt;&lt;p&gt;There are many other iteration patterns available in Eclipse Collections that can help you remove duplicate code. There are over one hundred variations of iteration patterns and other APIs available on the &lt;a href=&quot;https://www.eclipse.org/collections/javadoc/9.2.0/org/eclipse/collections/api/RichIterable.html&quot;&gt;&lt;em&gt;RichIterable&lt;/em&gt;&lt;/a&gt; parent interface alone.&lt;/p&gt;&lt;figure&gt;&lt;img alt=&quot;&quot; src=&quot;https://cdn-images-1.medium.com/max/1024/1*Br4eQEhSsLeRZ1EVZIHhPA.png&quot; /&gt;RichIterable APIs&lt;/figure&gt;&lt;h3&gt;Sometimes code duplication is necessary&lt;/h3&gt;&lt;p&gt;Occasionally code duplication is the best available solution to solve a performance problem. A great example in Eclipse Collections is the primitive collections. Eclipse Collections has primitive collection support for Lists, Sets, Bags, Stacks and Maps for all eight primitive combinations (boolean, byte, char, double, float, int, long, short). The code to implement all of these container types is nearly identical. So if you read the code for an IntArrayList it will look eerily similar to the code in ShortArrayList and LongArrayList. What is important in cases where you want to provide library support for primitive types in Java is to leverage a code generation strategy wherever possible and to not duplicate the code by hand. With Eclipse Collections, we use the &lt;a href=&quot;https://www.stringtemplate.org/&quot;&gt;StringTemplate&lt;/a&gt; library and write templates once for each container type that are then used to generate the eight container types required to support all of the primitives.&lt;/p&gt;&lt;p&gt;In the future, if the work in &lt;a href=&quot;https://openjdk.java.net/projects/valhalla/&quot;&gt;Project Valhalla&lt;/a&gt; becomes part of a JDK release and we get support for generic specialization over primitive types, we may have new language level strategies in Java to reduce the amount of generated code we have to produce today to support primitive types. I am very excited to see how this support may potentially reduce our code duplication burden.&lt;/p&gt;&lt;h3&gt;Additional Patterns of Duplication&lt;/h3&gt;&lt;p&gt;There are a lot more patterns of duplication out there. Your IDE and various code analysis tools can sometimes help you find the obvious ones caused by copy and paste. Other times you may just need to read your code and see if you can recognize patterns where some code is going into too much detail about &lt;strong&gt;how&lt;/strong&gt; to do something (for loops are sometimes a cue). Code that is written well should tell you clearly &lt;strong&gt;what&lt;/strong&gt; it is doing, not how it is doing it.&lt;/p&gt;&lt;p&gt;Deleting duplicate code makes me feel very satisfied. It helps reduce the total cost of ownership for a an application or library. Less code to read, test, maintain, and deploy means less potential bugs to discover, debug and fix.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/eclipse/eclipse-collections&quot;&gt;&lt;em&gt;Eclipse Collections&lt;/em&gt;&lt;/a&gt;&lt;em&gt; is open for &lt;/em&gt;&lt;a href=&quot;https://github.com/eclipse/eclipse-collections/blob/master/CONTRIBUTING.md&quot;&gt;&lt;em&gt;contributions&lt;/em&gt;&lt;/a&gt;&lt;em&gt;. If you like the library, you can let us know by starring it on GitHub.&lt;/em&gt;&lt;/p&gt;&lt;img height=&quot;1&quot; src=&quot;https://medium.com/_/stat?event=post.clientViewed&amp;amp;referrerSource=full_rss&amp;amp;postId=1e1f759a7fe3&quot; width=&quot;1&quot; /&gt;</description>
+	<pubDate>Wed, 01 May 2019 03:49:42 +0000</pubDate>
+</item>
+<item>
+	<title>Chris Aniszczyk: Ways your company can support and sustain open source</title>
+	<guid isPermaLink="false">https://www.aniszczyk.org/?p=4282</guid>
+	<link>https://www.aniszczyk.org/2019/04/30/ways-your-company-can-support-and-sustain-open-source/</link>
+	<description>&lt;p&gt;&lt;em&gt;Note: this article was original posted on &lt;/em&gt;&lt;a href=&quot;https://opensource.com/article/19/4/ways-support-sustain-open-source&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;https://opensource.com/article/19/4/ways-support-sustain-open-source&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;To make sure open source continues to thrive, we all need to find ways to sustain the communities and projects we depend on&lt;/p&gt;
+&lt;p&gt;The success of open source continues to grow; surveys show that the &lt;a href=&quot;https://www.slideshare.net/blackducksoftware/2016-future-of-open-source-survey-results&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;majority of companies&lt;/a&gt;use some form of open source, &lt;a href=&quot;https://www.redhat.com/cms/managed-files/rh-enterprise-open-source-ebook-f16984bf-201904-en_0.pdf&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;99% of enterprises see open source as important&lt;/a&gt;, and &lt;a href=&quot;https://insights.stackoverflow.com/survey/2018#developer-profile-_-contributing-to-open-source&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;almost half of developers&lt;/a&gt; are contributing back. It’s important to note that companies aren’t contributing to open source for purely altruistic reasons. Recent &lt;a href=&quot;https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3091831&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;research&lt;/a&gt; from Harvard shows that open source-contributing companies capture up to 100% more productive value from open source than companies that do not contribute back. Another research &lt;a href=&quot;https://hbswk.hbs.edu/item/government-technology-policy-social-value-and-national-competitiveness&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;study&lt;/a&gt; concluded countries adopting modern open source practices saw:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;“a 0.6%–5.4% yearly increase in companies that use OSS, a 9%–18% yearly increase in the number of IT-related startups, a 6.6%–14% yearly increase in the number of individuals employed in IT related jobs, and a 5%–16% yearly decrease in software-related patents. All of these outcomes help to increase productivity and competitiveness at the national level. In aggregate, these results show that changes in government technology policy that favor OSS can have a positive impact on both global social value and domestic national competitiveness.”&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;In the end, there are many ways for a company or organization to sustain open source. It could be as simple as training your organization to contribute to open source projects you depend on or hiring engineers to work on open source projects. Here are eight ways your organization can contribute back to open source, based on examples in the industry.&lt;/p&gt;
+&lt;h2&gt;Hire open source maintainers to work on open source&lt;/h2&gt;
+&lt;p&gt;Companies with strategies to leverage open source often find the highest returns from hiring a maintainer of the projects they depend the most on. It’s no surprise if you look at the &lt;a href=&quot;https://www.linuxfoundation.org/2017-linux-kernel-report-landing-page/&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Who Writes the Linux Kernel report&lt;/a&gt; that the top contributors are all employed by companies like ARM, Google, Facebook, Intel, Red Hat, Samsung, and more.&lt;/p&gt;
+&lt;p&gt;Having a maintainer (full time or part time) on your staff can help your organization learn how to work within the project community and enable prioritization of upstream contributions based on understanding of what the community is focused on. Hiring the maintainers also means that the project will have people with enough time to focus on the details and the rigor that’s needed for a project to be useful; think security reviews, bug cleanup, release management, and more. A more predictable and reliable upstream project can benefit many in your organization while also improving the overall project community. As a bonus, maintainers can also become advocates for your organization and help with recruiting too!&lt;/p&gt;
+&lt;h2&gt;Develop an open source award program or peer bonus fund&lt;/h2&gt;
+&lt;p&gt;It is common for companies to have internal employee recognition programs that recognize individuals who go above and beyond. As an example, Red Hat has a &lt;a href=&quot;https://opensource.com/article/19/2/community-awards-2019&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;community award program&lt;/a&gt; through Opensource.com. Some other companies have expanded their recognition programs to include open source contributors. For example, Google has an &lt;a href=&quot;https://opensource.google.com/docs/growing/peer-bonus/&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;open source peer bonus program&lt;/a&gt; that recognizes external people who have made exceptional contributions to open source.&lt;/p&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;
+&lt;p dir=&quot;ltr&quot; lang=&quot;en&quot;&gt;Congratulations to our Open Source Peer Bonus winners! &lt;a href=&quot;https://t.co/LA1MsnsSQf&quot;&gt;https://t.co/LA1MsnsSQf&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;— Google Open Source (@GoogleOSS) &lt;a href=&quot;https://twitter.com/GoogleOSS/status/1121825826939424768?ref_src=twsrc%5Etfw&quot;&gt;April 26, 2019&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h2&gt;Start an open source program office&lt;/h2&gt;
+&lt;p&gt;Many internet-scale companies, including Amazon, Google, Facebook, Twitter and more, have &lt;a href=&quot;https://opensource.com/article/18/1/how-start-open-source-program-your-company&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;established formal open source programs&lt;/a&gt; (colloquially called OSPOs) within their organizations to manage open source strategy along with the consumption and contribution of open source.&lt;/p&gt;
+&lt;p&gt;If you want to increase your contributions to open source, &lt;a href=&quot;https://github.com/todogroup/survey/tree/master/2018#companies-with-an-open-source-program-more-likely-to-contribute&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;research&lt;/a&gt; has shown that companies with formal open source programs are more likely to contribute back. If you want to learn from organizations with formal open source programs, I recommend you read the &lt;a href=&quot;https://todogroup.org/guides/&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;TODO Group Open Source Program Guides&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Launch an open source fund&lt;/h2&gt;
+&lt;p&gt;Some organizations contribute fiscally to the open source projects that are important to them. For example, Comcast’s &lt;a href=&quot;https://innovationfund.comcast.com/&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Open Source Development Grants&lt;/a&gt; “are intended to fund new or continued development of open source software in areas of interest to Comcast or of benefit to the Internet and broadband industries.” This isn’t just for big companies; small companies have open source funds, too. For example, CarGurus launched an &lt;a href=&quot;https://www.cargurus.com/press/cargurus_engineers_launch_open_source_fund.html&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;open source fund&lt;/a&gt; and &lt;a href=&quot;https://blog.geteventbot.com/2019/01/06/how-we-support-open-source-software.html&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Eventbot&lt;/a&gt; is supporting open source with a small percentage of its company revenue. Another interesting approach is what Indeed has done by &lt;a href=&quot;https://fosdem.org/2019/schedule/event/community_sustaining_foss_projects_democratizing_sponsorship/&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;democratizing the open source funding process&lt;/a&gt; with its employees.&lt;/p&gt;
+&lt;h2&gt;Contribute a portion of your company equity to open source&lt;/h2&gt;
+&lt;p&gt;Consider donating a portion of your organization’s equity to an open source project you depend on. For example, Citus Data recently &lt;a href=&quot;https://www.citusdata.com/blog/2018/10/24/why-citus-data-is-donating-1-percent-equity/&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;donated one percent of its equity&lt;/a&gt; to the PostgreSQL community. This worked out nicely; Citus Data was acquired by Microsoft recently, so the PostgreSQL community will benefit from that acquisition, too.&lt;/p&gt;
+&lt;h2&gt;Support and join open source foundations&lt;/h2&gt;
+&lt;p&gt;There are many open source foundations that house open source projects your organization depends on, including the &lt;a href=&quot;https://apache.org/&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Apache Foundation&lt;/a&gt;, &lt;a href=&quot;https://eclipse.org/&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Eclipse Foundation&lt;/a&gt;, &lt;a href=&quot;https://cncf.io/&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Cloud Native Computing Foundation&lt;/a&gt; (home of Kubernetes), &lt;a href=&quot;https://graphql.org/&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;GraphQL Foundation&lt;/a&gt;, &lt;a href=&quot;https://letsencrypt.org/&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Let’s Encrypt&lt;/a&gt;, &lt;a href=&quot;https://www.linuxfoundation.org/&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Linux Foundation&lt;/a&gt;, &lt;a href=&quot;https://opensource.org/&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Open Source Initiative&lt;/a&gt; (OSI), &lt;a href=&quot;https://openstack.org/&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;OpenStack Foundation&lt;/a&gt;, &lt;a href=&quot;https://nodejs.org/&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;NodeJS Foundation&lt;/a&gt;, and more.&lt;/p&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;
+&lt;p dir=&quot;ltr&quot; lang=&quot;en&quot;&gt;CNCF's Annual Report just published &amp;amp; it's packed with stats around the Foundation's growth, &lt;a href=&quot;https://twitter.com/hashtag/KubeCon?src=hash&amp;amp;ref_src=twsrc%5Etfw&quot;&gt;#KubeCon&lt;/a&gt; + &lt;a href=&quot;https://twitter.com/hashtag/CloudNativeCon?src=hash&amp;amp;ref_src=twsrc%5Etfw&quot;&gt;#CloudNativeCon&lt;/a&gt; data, &lt;a href=&quot;https://twitter.com/hashtag/cloudnative?src=hash&amp;amp;ref_src=twsrc%5Etfw&quot;&gt;#cloudnative&lt;/a&gt; project updates + maintainer satisfaction, ecosystem tools like &lt;a href=&quot;https://twitter.com/hashtag/DevStats?src=hash&amp;amp;ref_src=twsrc%5Etfw&quot;&gt;#DevStats&lt;/a&gt; &amp;amp; more! Make sure to check it out &lt;img alt=&quot;📄&quot; class=&quot;wp-smiley&quot; src=&quot;https://s.w.org/images/core/emoji/11.2.0/72x72/1f4c4.png&quot; style=&quot;height: 1em;&quot; /&gt;&lt;img alt=&quot;☁&quot; class=&quot;wp-smiley&quot; src=&quot;https://s.w.org/images/core/emoji/11.2.0/72x72/2601.png&quot; style=&quot;height: 1em;&quot; /&gt;&lt;img alt=&quot;➡&quot; class=&quot;wp-smiley&quot; src=&quot;https://s.w.org/images/core/emoji/11.2.0/72x72/27a1.png&quot; style=&quot;height: 1em;&quot; /&gt; &lt;a href=&quot;https://t.co/9E1mpmzTf5&quot;&gt;https://t.co/9E1mpmzTf5&lt;/a&gt; &lt;a href=&quot;https://t.co/5euDVnPnMC&quot;&gt;pic.twitter.com/5euDVnPnMC&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;— CNCF (@CloudNativeFdn) &lt;a href=&quot;https://twitter.com/CloudNativeFdn/status/1092544807900110848?ref_src=twsrc%5Etfw&quot;&gt;February 4, 2019&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;h2&gt;Fund and participate in open source internships or retreats&lt;/h2&gt;
+&lt;p&gt;There are many open source internship programs that you can participate in and help fund. &lt;a href=&quot;https://summerofcode.withgoogle.com/&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Google Summer of Code&lt;/a&gt; (GSoC) is the largest, and it requires mentorship from employees who work on open source projects as part of the program. Or you can sponsor internships for underrepresented minorities in open source through &lt;a href=&quot;https://www.outreachy.org/&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Outreachy&lt;/a&gt; and &lt;a href=&quot;https://communitybridge.org/faq/#people&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;CommunityBridge&lt;/a&gt;.&lt;/p&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;
+&lt;p dir=&quot;ltr&quot; lang=&quot;en&quot;&gt;Introducing CommunityBridge, a platform to accelerate innovation, sustainability, funding, security, mentoring, and diversity in open source projects. Join the private early access program: &lt;a href=&quot;https://t.co/22eGhqNbCt&quot;&gt;https://t.co/22eGhqNbCt&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;— The Linux Foundation (@linuxfoundation) &lt;a href=&quot;https://twitter.com/linuxfoundation/status/1105581918278635521?ref_src=twsrc%5Etfw&quot;&gt;March 12, 2019&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Another approach is to host an open source retreat at your company. For example, &lt;a href=&quot;https://stripe.com/blog/stripe-open-source-retreat&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Stripe hosts open source retreats&lt;/a&gt; to contribute to open source projects it depends on.&lt;/p&gt;
+&lt;h2&gt;Include open source in your corporate philanthropy initiatives&lt;/h2&gt;
+&lt;p&gt;If your organization has a corporate sustainability or philanthropic arm, consider working with that team to include open source as a part of its work. For example, &lt;a href=&quot;https://events.linuxfoundation.org/wp-content/uploads/2017/12/Software-Philanthropy-for-Everyone-Kevin-P.-Fleming-Bloomberg.pdf&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Bloomberg has a software philanthropy budget&lt;/a&gt; for projects it depends on, from Git to Eclipse to Python and more. In the future, I hope to see more &lt;a href=&quot;https://en.wikipedia.org/wiki/Corporate_sustainability&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;corporate sustainability&lt;/a&gt; and philanthropy efforts—like &lt;a href=&quot;https://pledge1percent.org/&quot; rel=&quot;nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Pledge 1%&lt;/a&gt;—that focus on funding critical open source infrastructure.&lt;/p&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;In conclusion, giving back to open source is not only the right thing to do, according to research, it’s also good for your business. To make sure open source continues to thrive and is sustainable in the long run, we all need to ensure that companies find ways to sustain the open source communities they depend on.&lt;/p&gt;</description>
+	<pubDate>Tue, 30 Apr 2019 13:49:22 +0000</pubDate>
+</item>
+<item>
+	<title>Eclipse Ditto: Announcing Ditto Milestone 0.9.0-M2</title>
+	<guid isPermaLink="true">https://www.eclipse.org/ditto/2019-04-29-milestone-announcement-090-M2.html</guid>
+	<link>https://www.eclipse.org/ditto/2019-04-29-milestone-announcement-090-M2.html</link>
+	<description>&lt;p&gt;The second milestone of the upcoming release 
+&lt;a href=&quot;https://projects.eclipse.org/projects/iot.ditto/releases/0.9.0&quot;&gt;0.9.0&lt;/a&gt; was released today.&lt;/p&gt;
+
+&lt;p&gt;Have a look at the Milestone &lt;a href=&quot;https://www.eclipse.org/ditto/release_notes_090-M2.html&quot;&gt;0.9.0-M2 release notes&lt;/a&gt; for what changed in detail.&lt;/p&gt;
+
+&lt;p&gt;The main changes and new features since the last milestone &lt;a href=&quot;https://www.eclipse.org/ditto/release_notes_090-M1.html&quot;&gt;0.9.0-M1&lt;/a&gt; are&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;rewrite of Ditto’s “search” service in order to use the same index and have the same query performance for API v1 and v2&lt;/li&gt;
+  &lt;li&gt;several contributions in order to operate Eclipse Ditto on Microsoft Azure&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;artifacts&quot;&gt;Artifacts&lt;/h2&gt;
+
+&lt;p&gt;The new Java artifacts have been published at the &lt;a href=&quot;https://repo.eclipse.org/content/repositories/ditto/&quot;&gt;Eclipse Maven repository&lt;/a&gt;
+as well as &lt;a href=&quot;https://repo1.maven.org/maven2/org/eclipse/ditto/&quot;&gt;Maven central&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The Docker images have been pushed to Docker Hub:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://hub.docker.com/r/eclipse/ditto-policies/&quot;&gt;eclipse/ditto-policies&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://hub.docker.com/r/eclipse/ditto-things/&quot;&gt;eclipse/ditto-things&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://hub.docker.com/r/eclipse/ditto-things-search/&quot;&gt;eclipse/ditto-things-search&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://hub.docker.com/r/eclipse/ditto-gateway/&quot;&gt;eclipse/ditto-gateway&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://hub.docker.com/r/eclipse/ditto-connectivity/&quot;&gt;eclipse/ditto-connectivity&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://hub.docker.com/r/eclipse/ditto-concierge/&quot;&gt;eclipse/ditto-concierge&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img alt=&quot;Ditto&quot; class=&quot;docimage&quot; src=&quot;https://www.eclipse.org/ditto/images/ditto.svg&quot; /&gt;&lt;/figure&gt;
+
+&lt;p&gt;–&lt;br /&gt;
+The Eclipse Ditto team&lt;/p&gt;</description>
+	<pubDate>Mon, 29 Apr 2019 04:00:00 +0000</pubDate>
+</item>
+
+</channel>
+</rss>
