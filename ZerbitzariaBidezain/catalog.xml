@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/D:/Users/user/Documents/MONDRA/3.MAILA/2.%20KUATRI/Web%20II/Errekuperaketa/ZerbitzariaBidezain/erabiltzaileak.xsd" uri="src/conf/xml-resources/jaxb/Erabiltzaileak/erabiltzaileak.xsd"/>
+    <system systemId="file:/D:/Users/user/Documents/MONDRA/3.MAILA/POPBL6/POPBL6-bidezain/ZerbitzariaBidezain/erabiltzaileak.xsd" uri="src/conf/xml-resources/jaxb/Erabiltzaileak/erabiltzaileak.xsd"/>
+</catalog>
