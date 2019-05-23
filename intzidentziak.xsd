@@ -1,0 +1,29 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="raiz">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="incidenciaGeolocalizada" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="tipo"/>
+              <xs:element type="xs:string" name="autonomia"/>
+              <xs:element type="xs:string" name="provincia"/>
+              <xs:element type="xs:string" name="matricula"/>
+              <xs:element type="xs:string" name="causa"/>
+              <xs:element type="xs:string" name="poblacion"/>
+              <xs:element type="xs:string" name="fechahora_ini"/>
+              <xs:element type="xs:string" name="nivel"/>
+              <xs:element type="xs:string" name="carretera"/>
+              <xs:element type="xs:string" name="pk_inicial"/>
+              <xs:element type="xs:string" name="pk_final"/>
+              <xs:element type="xs:string" name="sentido"/>
+              <xs:element type="xs:string" name="nombre" minOccurs="0"/>
+              <xs:element type="xs:float" name="longitud"/>
+              <xs:element type="xs:float" name="latitud"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
