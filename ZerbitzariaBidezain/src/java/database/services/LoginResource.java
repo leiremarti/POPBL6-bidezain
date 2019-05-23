@@ -7,10 +7,14 @@ package database.services;
 
 import generated.Erabiltzaileas;
 import generated.Erabiltzaileas.Erabiltzailea;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.StringReader;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -42,6 +46,9 @@ public class LoginResource {
 
     @Context
     private UriInfo context;
+    
+    private final String SERVER_DIR = "localhost:8080";
+    private final String SERVICE_PATH = "/ZerbitzariaBidezain/webresources";
 
     /**
      * Creates a new instance of LoginResource
@@ -74,7 +81,7 @@ public class LoginResource {
         
         String s = "";
         try {
-            URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/database.utils.erabiltzailea");
+            URL u = new URL("http://"+SERVER_DIR+SERVICE_PATH+"/database.utils.erabiltzailea");
              URLConnection con = u.openConnection();
              Reader reader = new InputStreamReader(con.getInputStream());
              while (true) {
@@ -114,15 +121,11 @@ public class LoginResource {
                 break;
             }
         }
-      // ErabiltzaileaFacadeREST service = new ErabiltzaileaFacadeREST();
-      //  List<Erabiltzailea> erabiltzaileak = service.findAll();      // ErabiltzaileaFacadeREST service = new ErabiltzaileaFacadeREST();
-      //  List<Erabiltzailea> erabiltzaileak = service.findAll();
         
-      /*          
-        */
         return String.valueOf(login);
     }
     
+        
     /**
      * PUT method for updating or creating an instance of LoginResource
      * @param content representation for the resource
