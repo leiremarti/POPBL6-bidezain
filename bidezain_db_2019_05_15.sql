@@ -124,7 +124,6 @@ CREATE TABLE langileak_aktiboak(
    CONSTRAINT `AK_FK` FOREIGN KEY (`ID_aktiboa`) REFERENCES `aktiboak` (`ID_aktiboa`),
    CONSTRAINT `LAN_FK` FOREIGN KEY (`ID_langilea`) REFERENCES `langileak` (`ID_langilea`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-erabiltzailea
 
 
 INSERT INTO erabiltzailea (izena,abizena,erabiltzailea,passwordHash,passwordSalt,eposta,telefonoa) VALUES("Jon","Braun","indiotxikia",1,1,"jonB@gmail.com","324124514");
