@@ -51,46 +51,6 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String action = request.getParameter("action");
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		String email = request.getParameter("email");
-		HttpSession session = request.getSession(true);
-			
-		System.out.println("--->"+action);
-		System.out.println(username);
-		System.out.println(password);
-		
-		if(action!=null && action.equals("login")) {
-			URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/login/login");
-			HttpURLConnection con = (HttpURLConnection) u.openConnection();
-			con.setRequestMethod("POST");
-			con.setRequestProperty("Content-Type", "application/x-www-form-urlencode");
-			String params = username+"_"+password;
-			con.setRequestProperty("Content-Length", Integer.toString(params.getBytes().length));
-			con.setUseCaches(false);
-			con.setDoInput(true);
-			con.setDoOutput(true);
-			
-			DataOutputStream dos = new DataOutputStream(con.getOutputStream());
-			dos.writeBytes(params);
-			dos.flush();
-			dos.close();
-			
-			InputStream is = con.getInputStream();
-			BufferedReader br = new BufferedReader(new InputStreamReader(is));
-			String line;
-			StringBuffer loginResponse = new StringBuffer();
-			while((line = br.readLine())!=null) {
-				loginResponse.append(line);
-				loginResponse.append('\r');
-			}
-			
-			br.close();
-			System.out.println(loginResponse.toString());
-		}
-		
-		
 		
 		
 		/*
@@ -140,8 +100,58 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		boolean loginOK = false;
+		
+		String action = request.getParameter("action");
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		String email = request.getParameter("email");
+		HttpSession session = request.getSession(true);
+		
+		
+		if(action!=null && action.equals("login")) {
+			
+			
+			System.out.println("--->"+action);
+			System.out.println(username);
+			System.out.println(password);
+			
+			URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/login/login");
+			HttpURLConnection con = (HttpURLConnection) u.openConnection();
+			con.setRequestMethod("POST");
+			con.setRequestProperty("Content-Type", "application/x-www-form-urlencode");
+			String params = username+"_"+password;
+			con.setRequestProperty("Content-Length", Integer.toString(params.getBytes().length));
+			con.setUseCaches(false);
+			con.setDoInput(true);
+			con.setDoOutput(true);
+			
+			DataOutputStream dos = new DataOutputStream(con.getOutputStream());
+			dos.writeBytes(params);
+			dos.flush();
+			dos.close();
+			
+			InputStream is = con.getInputStream();
+			BufferedReader br = new BufferedReader(new InputStreamReader(is));
+			String line;
+			StringBuffer loginResponse = new StringBuffer();
+			while((line = br.readLine())!=null) {
+				loginResponse.append(line);
+				loginResponse.append('\r');
+			}
+			
+			br.close();
+			
+			loginOK = Boolean.parseBoolean(loginResponse.toString().replaceAll("\\r|\\n", ""));
+			
+		}
+		
+		if(loginOK) {
+			response.sendRedirect(request.getContextPath() + "/home");
+		}else {
+			doGet(request, response);
+		}
 	}
 
 }
