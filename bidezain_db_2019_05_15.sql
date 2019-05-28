@@ -13,6 +13,7 @@ CREATE TABLE erabiltzailea(
 	passwordSalt BINARY(64) NOT NULL,
 	eposta VARCHAR(40) NOT NULL,
 	telefonoa VARCHAR(9) DEFAULT NULL,
+	aktibo BOOL DEFAULT TRUE,
    PRIMARY KEY (`ID_erabiltzailea`)
 );
 
@@ -94,6 +95,7 @@ CREATE TABLE langileak(
 	eposta VARCHAR(40) NOT NULL,
 	telefonoa VARCHAR(9) DEFAULT NULL,
 	ID_mota SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+	aktibo BOOL DEFAULT TRUE,
    PRIMARY KEY (`ID_langilea`),
 	KEY `LAN_MOT_FK` (`ID_mota`),
    CONSTRAINT `LAN_MOT_FK` FOREIGN KEY (`ID_mota`) REFERENCES `langile_motak` (`ID_langile_mota`)
