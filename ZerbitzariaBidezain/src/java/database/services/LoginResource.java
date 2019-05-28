@@ -121,7 +121,7 @@ public class LoginResource {
                 break;
             }
         }
-        
+        System.out.println(login);
         return String.valueOf(login);
     }
     

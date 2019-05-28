@@ -6,6 +6,7 @@
 package database.services;
 
 import database.utils.Erabiltzailea;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -46,6 +47,33 @@ public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
     public void edit(@PathParam("id") Short id, Erabiltzailea entity) {
         super.edit(entity);
     }
+    
+    @POST
+    @Path("baja")
+    public void bajanEman(String ids) {
+      //super.edit(entity);
+        System.err.println("EDITATUUU: "+ ids);
+        String idArray[] = ids.split(";");
+        System.err.println("EDITATUUU22: "+ idArray[0]+idArray[1]);
+        
+        EntityManager entitymanager = getEntityManager();
+        entitymanager.getTransaction( ).begin( );
+        for(int i=0; i<idArray.length; i++){
+            Erabiltzailea employee = entitymanager.find( Erabiltzailea.class, idArray[i] );
+
+            //before update
+            System.out.println( employee );
+            employee.setSalary( 46000 );
+            entitymanager.getTransaction( ).commit( );
+
+            //after update
+            System.out.println( employee );
+        }
+        
+        entitymanager.close();
+        
+        
+    }
 
     @DELETE
     @Path("{id}")
@@ -62,9 +90,23 @@ public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
 
     @GET
     @Override
-    @Produces({"application/xml", "application/json"})
+    @Produces({"application/json", "application/xml"})
     public List<Erabiltzailea> findAll() {
         return super.findAll();
+    }
+    
+    @GET
+    @Path("safe")
+    @Produces({"application/json"})
+    public List<Erabiltzailea> safeFindAll() {
+        List<Erabiltzailea> fresh = new ArrayList<>();
+        for(Erabiltzailea e : super.findAll()){
+            byte[] data = new byte[0];
+            e.setPasswordHash(data);
+            e.setPasswordSalt(data);
+            fresh.add(e);            
+        }
+        return fresh;
     }
 
     @GET

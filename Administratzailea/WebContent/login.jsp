@@ -1,9 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<!DOCTYPE html>
 <head>
 
-<meta charset="utf-8">
+<meta charset=" utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -31,6 +33,21 @@
 		<!-- Outer Row -->
 		<div class="row justify-content-center">
 
+			<c:if test="${not empty requestScope.error}">
+				<div class="col-lg-4 mb-4">
+					<div class="card bg-danger text-white shadow">
+						<div class="card-body">
+							<c:out value="${requestScope.error}" />
+						</div>
+					</div>
+				</div>
+			</c:if>
+			<c:if test="${not empty requestScope.message}">
+				<p class="message">
+					<c:out value="${requestScope.message}" />
+				</p>
+			</c:if>
+
 			<div class="col-xl-10 col-lg-12 col-md-9">
 
 				<div class="card o-hidden border-0 shadow-lg my-5">
@@ -45,16 +62,18 @@
 									</div>
 									<form class="user" method="POST">
 										<div class="form-group">
-											<input type="text" class="form-control form-control-user" name="username"
-												id="exampleInputEmail" aria-describedby="emailHelp"
-												placeholder="Enter Username..." required>
+											<input type="text" class="form-control form-control-user"
+												name="username" id="exampleInputEmail"
+												aria-describedby="emailHelp" placeholder="Enter Username..."
+												required>
 										</div>
 										<div class="form-group">
-											<input type="password" class="form-control form-control-user" name="password"
-												id="exampleInputPassword" placeholder="Password" required>
+											<input type="password" class="form-control form-control-user"
+												name="password" id="exampleInputPassword"
+												placeholder="Password" required>
 										</div>
 										<button type="submit" name="action" value="login"
-											class="btn btn-primary btn-user btn-block"> Login </button>
+											class="btn btn-primary btn-user btn-block">Login</button>
 										<hr>
 										<div class="text-center">
 											<a class="small" href="forgot-password.html">Forgot
@@ -63,7 +82,7 @@
 										<div class="text-center">
 											<a class="small" href="register">Create an Account!</a>
 										</div>
-									</form>	
+									</form>
 								</div>
 							</div>
 						</div>

@@ -92,7 +92,7 @@ public class Login extends HttpServlet {
 
 		/*
 		*/
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/login.html");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/login.jsp");
 		dispatcher.forward(request, response);	
 	}
 
@@ -110,8 +110,7 @@ public class Login extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		
 		
-		if(action!=null && action.equals("login")) {
-			
+		if(action!=null && action.equals("login")) {			
 			
 			System.out.println("--->"+action);
 			System.out.println(username);
@@ -144,14 +143,21 @@ public class Login extends HttpServlet {
 			br.close();
 			
 			loginOK = Boolean.parseBoolean(loginResponse.toString().replaceAll("\\r|\\n", ""));
+			if(loginOK) {
+				session.setAttribute("isLoged", true);
+				request.setAttribute("message", "Wellcome!");
+				response.sendRedirect(request.getContextPath() + "/home");
+			}
 			
 		}
-		
-		if(loginOK) {
-			response.sendRedirect(request.getContextPath() + "/home");
-		}else {
+
+		if(!loginOK) {
+			session.setAttribute("isLoged", false);
+			request.setAttribute("error", "Incorrect userame or password.");
 			doGet(request, response);
 		}
+		
 	}
 
+	
 }
