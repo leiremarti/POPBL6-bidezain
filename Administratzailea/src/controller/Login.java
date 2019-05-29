@@ -145,7 +145,8 @@ public class Login extends HttpServlet {
 			loginOK = Boolean.parseBoolean(loginResponse.toString().replaceAll("\\r|\\n", ""));
 			if(loginOK) {
 				session.setAttribute("isLoged", true);
-				request.setAttribute("message", "Wellcome!");
+				session.setAttribute("user", username);
+				request.setAttribute("success", "Wellcome "+username+"!");
 				response.sendRedirect(request.getContextPath() + "/home");
 			}
 			

@@ -1,6 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<!DOCTYPE html>
 <head>
 
 <meta charset="utf-8">
@@ -35,6 +37,9 @@
 <!-- link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,900" rel="stylesheet">
 	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700" rel="stylesheet"-->
 
+
+
+
 </head>
 
 <body id="page-top">
@@ -51,8 +56,10 @@
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
 				href="index.html">
-				<div class="sidebar-brand-icon rotate-n-15">
-					<i class="fas fa-laugh-wink"></i>
+				<div class="sidebar-brand-icon">
+					<img src="img/BIDEZAIN.png" alt="Smiley face" height="42"
+						width="42">
+					<!--<i   class="fas fa-laugh-wink" src=""></i>-->
 				</div>
 				<div class="sidebar-brand-text mx-3">
 					SB Admin <sup>2</sup>
@@ -168,114 +175,6 @@
 								</form>
 							</div></li>
 
-						<!-- Nav Item - Alerts -->
-						<li class="nav-item dropdown no-arrow mx-1"><a
-							class="nav-link dropdown-toggle" href="#" id="alertsDropdown"
-							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> <i class="fas fa-bell fa-fw"></i> <!-- Counter - Alerts -->
-								<span class="badge badge-danger badge-counter">3+</span>
-						</a> <!-- Dropdown - Alerts -->
-							<div
-								class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-								aria-labelledby="alertsDropdown">
-								<h6 class="dropdown-header">Alerts Center</h6>
-								<a class="dropdown-item d-flex align-items-center" href="#">
-									<div class="mr-3">
-										<div class="icon-circle bg-primary">
-											<i class="fas fa-file-alt text-white"></i>
-										</div>
-									</div>
-									<div>
-										<div class="small text-gray-500">December 12, 2019</div>
-										<span class="font-weight-bold">A new monthly report is
-											ready to download!</span>
-									</div>
-								</a> <a class="dropdown-item d-flex align-items-center" href="#">
-									<div class="mr-3">
-										<div class="icon-circle bg-success">
-											<i class="fas fa-donate text-white"></i>
-										</div>
-									</div>
-									<div>
-										<div class="small text-gray-500">December 7, 2019</div>
-										$290.29 has been deposited into your account!
-									</div>
-								</a> <a class="dropdown-item d-flex align-items-center" href="#">
-									<div class="mr-3">
-										<div class="icon-circle bg-warning">
-											<i class="fas fa-exclamation-triangle text-white"></i>
-										</div>
-									</div>
-									<div>
-										<div class="small text-gray-500">December 2, 2019</div>
-										Spending Alert: We've noticed unusually high spending for your
-										account.
-									</div>
-								</a> <a class="dropdown-item text-center small text-gray-500"
-									href="#">Show All Alerts</a>
-							</div></li>
-
-						<!-- Nav Item - Messages -->
-						<li class="nav-item dropdown no-arrow mx-1"><a
-							class="nav-link dropdown-toggle" href="#" id="messagesDropdown"
-							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> <i class="fas fa-envelope fa-fw"></i>
-								<!-- Counter - Messages --> <span
-								class="badge badge-danger badge-counter">7</span>
-						</a> <!-- Dropdown - Messages -->
-							<div
-								class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-								aria-labelledby="messagesDropdown">
-								<h6 class="dropdown-header">Message Center</h6>
-								<a class="dropdown-item d-flex align-items-center" href="#">
-									<div class="dropdown-list-image mr-3">
-										<img class="rounded-circle"
-											src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
-										<div class="status-indicator bg-success"></div>
-									</div>
-									<div class="font-weight-bold">
-										<div class="text-truncate">Hi there! I am wondering if
-											you can help me with a problem I've been having.</div>
-										<div class="small text-gray-500">Emily Fowler · 58m</div>
-									</div>
-								</a> <a class="dropdown-item d-flex align-items-center" href="#">
-									<div class="dropdown-list-image mr-3">
-										<img class="rounded-circle"
-											src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
-										<div class="status-indicator"></div>
-									</div>
-									<div>
-										<div class="text-truncate">I have the photos that you
-											ordered last month, how would you like them sent to you?</div>
-										<div class="small text-gray-500">Jae Chun · 1d</div>
-									</div>
-								</a> <a class="dropdown-item d-flex align-items-center" href="#">
-									<div class="dropdown-list-image mr-3">
-										<img class="rounded-circle"
-											src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
-										<div class="status-indicator bg-warning"></div>
-									</div>
-									<div>
-										<div class="text-truncate">Last month's report looks
-											great, I am very happy with the progress so far, keep up the
-											good work!</div>
-										<div class="small text-gray-500">Morgan Alvarez · 2d</div>
-									</div>
-								</a> <a class="dropdown-item d-flex align-items-center" href="#">
-									<div class="dropdown-list-image mr-3">
-										<img class="rounded-circle"
-											src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
-										<div class="status-indicator bg-success"></div>
-									</div>
-									<div>
-										<div class="text-truncate">Am I a good boy? The reason I
-											ask is because someone told me that people say this to all
-											dogs, even if they aren't good...</div>
-										<div class="small text-gray-500">Chicken the Dog · 2w</div>
-									</div>
-								</a> <a class="dropdown-item text-center small text-gray-500"
-									href="#">Read More Messages</a>
-							</div></li>
 
 						<div class="topbar-divider d-none d-sm-block"></div>
 
@@ -283,10 +182,12 @@
 						<li class="nav-item dropdown no-arrow"><a
 							class="nav-link dropdown-toggle" href="#" id="userDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> <span
-								class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie
-									Luna</span> <img class="img-profile rounded-circle"
-								src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+							aria-expanded="false"> <c:if
+									test="${not empty sessionScope.user}">
+									<span class="mr-2 d-none d-lg-inline text-gray-600 small">
+										<c:out value="${sessionScope.user}" />
+									</span>
+								</c:if> <i class="fas fa-user rounded-circle"></i>
 						</a> <!-- Dropdown - User Information -->
 							<div
 								class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -323,54 +224,25 @@
 
 							<!-- Color System -->
 							<div class="row">
-								<div class="col-lg-4 mb-4">
-									<div class="card bg-primary text-white shadow">
-										<div class="card-body">
-											Primary
-											<div class="text-white-50 small">#4e73df</div>
+
+								<c:if test="${not empty requestScope.success}">
+									<div class="col-lg-4 mb-4">
+										<div class="card bg-danger text-white shadow">
+											<div class="card-body">
+
+												<div class="col-lg-4 mb-4">
+													<div class="card bg-success text-white shadow">
+														<div class="card-body">
+															<c:out value="${requestScope.success}" />
+														</div>
+													</div>
+												</div>
+
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class="col-lg-4 mb-4">
-									<div class="card bg-success text-white shadow">
-										<div class="card-body">
-											Success
-											<div class="text-white-50 small">#1cc88a</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 mb-4">
-									<div class="card bg-info text-white shadow">
-										<div class="card-body">
-											Info
-											<div class="text-white-50 small">#36b9cc</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 mb-4">
-									<div class="card bg-warning text-white shadow">
-										<div class="card-body">
-											Warning
-											<div class="text-white-50 small">#f6c23e</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 mb-4">
-									<div class="card bg-danger text-white shadow">
-										<div class="card-body">
-											Danger
-											<div class="text-white-50 small">#e74a3b</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 mb-4">
-									<div class="card bg-secondary text-white shadow">
-										<div class="card-body">
-											Secondary
-											<div class="text-white-50 small">#858796</div>
-										</div>
-									</div>
-								</div>
+								</c:if>
+
 							</div>
 
 						</div>
@@ -403,127 +275,268 @@
 
 							<div class="row">
 								<!-- Earnings (Monthly) Card Example -->
-								<div class="col-xl-6 col-md-6 mb-4">
+								<div class="col-xl-4 col-md-6 mb-4">
 									<div class="card border-left-primary shadow h-100 py-2">
 										<div class="card-body">
 											<div class="row no-gutters align-items-center">
 												<div class="col mr-2">
-													<div
-														class="text-xs font-weight-bold text-primary text-uppercase mb-1">Metereológica</div>
-													<div class="h5 mb-0 font-weight-bold text-gray-800">10</div>
+
+													<div class="row">
+														<div
+															class="text-xs font-weight-bold text-primary text-uppercase mb-1">Metereológica</div>
+													</div>
+
+													<div class="row"
+														style="display: flex; justify-content: space-around;">
+														<div class="h5 mb-0 font-weight-bold text-gray-800">10</div>
+														<div class="col-auto">
+															<i class="fas fa-snowflake fa-2x text-gray-300"></i>
+														</div>
+													</div>
+
+
+
 												</div>
-												<div class="col-auto">
-													<i class="fas fa-snowflake fa-2x text-gray-300"></i>
-												</div>
+
 											</div>
 										</div>
 									</div>
 								</div>
 
 								<!-- Earnings (Monthly) Card Example -->
-								<div class="col-xl-6 col-md-6 mb-4">
+								<div class="col-xl-4 col-md-6 mb-4">
 									<div class="card border-left-success shadow h-100 py-2">
 										<div class="card-body">
 											<div class="row no-gutters align-items-center">
 												<div class="col mr-2">
-													<div
-														class="text-xs font-weight-bold text-success text-uppercase mb-1">Accidente</div>
-													<div class="h5 mb-0 font-weight-bold text-gray-800">20</div>
+
+													<div class="row">
+														<div
+															class="text-xs font-weight-bold text-success text-uppercase mb-1">Accidente</div>
+													</div>
+
+													<div class="row">
+														<div class="h5 mb-0 font-weight-bold text-gray-800">20</div>
+														<div class="col-auto">
+															<i class="fas fa-car-crash fa-2x text-gray-300"></i>
+														</div>
+													</div>
+
+
+
 												</div>
-												<div class="col-auto">
-													<i class="fas fa-car-crash fa-2x text-gray-300"></i>
-												</div>
+
 											</div>
 										</div>
 									</div>
 								</div>
-							</div>
 
-							<div class="row">
 								<!-- Earnings (Monthly) Card Example -->
-								<div class="col-xl-6 col-md-6 mb-4">
+								<div class="col-xl-4 col-md-6 mb-4">
 									<div class="card border-left-info shadow h-100 py-2">
 										<div class="card-body">
 											<div class="row no-gutters align-items-center">
 												<div class="col mr-2">
-													<div
-														class="text-xs font-weight-bold text-info text-uppercase mb-1">Retención</div>
-													<div class="row no-gutters align-items-center">
+
+													<div class="row">
+														<div
+															class="text-xs font-weight-bold text-info text-uppercase mb-1">Retención</div>
+													</div>
+
+													<div class="row">
+														<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">9</div>
 														<div class="col-auto">
-															<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">9</div>
+															<i class="fas fa-traffic-light fa-2x text-gray-300"></i>
 														</div>
 													</div>
+
+
 												</div>
-												<div class="col-auto">
-													<i class="fas fa-traffic-light fa-2x text-gray-300"></i>
-												</div>
+
 											</div>
 										</div>
 									</div>
 								</div>
+							</div>
+
+							<div class="row">
+
 
 								<!-- Pending Requests Card Example -->
-								<div class="col-xl-6 col-md-6 mb-4">
+								<div class="col-xl-4 col-md-6 mb-4">
 									<div class="card border-left-danger shadow h-100 py-2">
 										<div class="card-body">
 											<div class="row no-gutters align-items-center">
 												<div class="col mr-2">
-													<div
-														class="text-xs font-weight-bold text-danger text-uppercase mb-1">Seguridad
-														vial</div>
-													<div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+
+													<div class="row">
+														<div
+															class="text-xs font-weight-bold text-danger text-uppercase mb-1">Seguridad
+															vial</div>
+													</div>
+
+													<div class="row"
+														style="display: flex; justify-content: space-around;">
+														<div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+														<div class="col-auto">
+															<i class="fas fa-shield-alt fa-2x text-gray-300"></i>
+														</div>
+													</div>
+
 												</div>
-												<div class="col-auto">
-													<i class="fas fa-shield-alt fa-2x text-gray-300"></i>
-												</div>
+
 											</div>
 										</div>
 									</div>
 								</div>
 
-
-							</div>
-
-							<div class="row">
 								<!-- Pending Requests Card Example -->
-								<div class="col-xl-6 col-md-6 mb-4">
+								<div class="col-xl-4 col-md-6 mb-4">
 									<div class="card border-left-warning shadow h-100 py-2">
 										<div class="card-body">
 											<div class="row no-gutters align-items-center">
 												<div class="col mr-2">
-													<div
-														class="text-xs font-weight-bold text-warning text-uppercase mb-1">Obrak
+
+													<div class="row">
+														<div
+															class="text-xs font-weight-bold text-warning text-uppercase mb-1">Puertos
+															de montaña</div>
 													</div>
-													<div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+
+													<div class="row"
+														style="display: flex; justify-content: space-around;">
+														<div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+														<div class="col-auto">
+															<i class="fas fa-mountain fa-2x text-gray-300"></i>
+														</div>
+													</div>
 												</div>
-												<div class="col-auto">
-													<i class="fas fa-tools fa-2x text-gray-300"></i>
-												</div>
+
 											</div>
 										</div>
 									</div>
 								</div>
-								
+
 								<!-- Pending Requests Card Example -->
-								<div class="col-xl-6 col-md-6 mb-4">
+								<div class="col-xl-4 col-md-6 mb-4">
 									<div class="card border-left-secondary shadow h-100 py-2">
 										<div class="card-body">
 											<div class="row no-gutters align-items-center">
 												<div class="col mr-2">
-													<div
-														class="text-xs font-weight-bold text-secondary text-uppercase mb-1">Aurreikus-<br>penak
+													<div class="row">
+														<div
+															class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
+															Vialidad invernal tramos</div>
 													</div>
-													<div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+
+													<div class="row"
+														style="display: flex; justify-content: space-around;">
+														<div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+														<div class="col-auto">
+															<i class="fas fa-snowplow fa-2x text-gray-300"></i>
+														</div>
+													</div>
 												</div>
-												<div class="col-auto">
-													<i class="fas fa-eye fa-2x text-gray-300"></i>
-												</div>
+
 											</div>
 										</div>
 									</div>
 								</div>
+
 							</div>
-							
+
+							<div class="row"></div>
+
+							<div class="row">
+								<!-- Pending Requests Card Example -->
+								<div class="col-xl-4 col-md-6 mb-4">
+									<div class="card border-left-warning shadow h-100 py-2">
+										<div class="card-body">
+											<div class="row no-gutters align-items-center">
+												<div class="col mr-2">
+
+													<div class="row">
+														<div
+															class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pruebas
+															deportivas</div>
+													</div>
+
+													<div class="row"
+														style="display: flex; justify-content: space-around;">
+														<div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+														<div class="col-auto">
+															<i class="fas fa-running fa-2x text-gray-300"></i>
+														</div>
+													</div>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- Pending Requests Card Example -->
+								<div class="col-xl-4 col-md-6 mb-4">
+									<div class="card border-left-warning shadow h-100 py-2">
+										<div class="card-body">
+											<div class="row no-gutters align-items-center">
+												<div class="col mr-2">
+
+													<div class="row">
+														<div
+															class="text-xs font-weight-bold text-warning text-uppercase mb-1">Otras
+															incidencias</div>
+													</div>
+
+													<div class="row"
+														style="display: flex; justify-content: space-around;">
+														<div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+														<div class="col-auto">
+															<i class="fas fa-exclamation-circle fa-2x text-gray-300"></i>
+														</div>
+													</div>
+
+
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- Pending Requests Card Example -->
+								<div class="col-xl-4 col-md-6 mb-4">
+									<div class="card border-left-secondary shadow h-100 py-2">
+										<div class="card-body">
+											<div class="row no-gutters align-items-center">
+												<div class="col mr-2">
+													<div class="row">
+														<div
+															class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
+															Aurreikus-<br>penak
+														</div>
+													</div>
+
+													<div class="row"
+														style="display: flex; justify-content: space-around;">
+														<div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+														<div class="col-auto">
+															<i class="fas fa-eye fa-2x text-gray-300"></i>
+														</div>
+													</div>
+
+
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="row"></div>
+
 						</div>
 
 
@@ -543,7 +556,7 @@
 			<footer class="sticky-footer bg-white">
 				<div class="container my-auto">
 					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; Your Website 2019</span>
+						<span>Copyright &copy; Bidezain 2019</span>
 					</div>
 				</div>
 			</footer>
@@ -600,6 +613,20 @@
 	<script src="js/demo/chart-area-demo.js"></script>
 	<script src="js/demo/chart-pie-demo.js"></script>
 
+	<style>
+#map {
+	width: 960px;
+	height: 500px;
+}
+
+/* css to customize Leaflet default styles  */
+.custom .leaflet-popup-tip, .custom #popup {
+	background: #e93434;
+	color: #ffffff;
+}
+</style>
+
+
 	<!-- Map Ajax -->
 	<script>
 		var mymap = L.map('mapid').setView([ 43.0612711, -2.5042125 ], 9);
@@ -615,24 +642,23 @@
 							id : 'mapbox.streets'
 						}).addTo(mymap);
 
-		
-	    var customPopup = "<b>Hello world!</b><br />I am a popup.";	    
-	    var customOptions =
-	        {
-	        'maxWidth': '500',
-	        'className' : 'custom'
-	        }
-	    
-		L.marker([ 43.0612711, -2.5042125 ]).addTo(mymap).bindPopup(customPopup,customOptions).openPopup();
+		var customPopup = "<b>Hello world!</b><br />I am a popup.";
+		var customOptions = {
+			'maxWidth' : '500',
+			'className' : 'custom'
+		}
 
-	    var customPopup2 = "<b>Hello world!</b><br />I am another popup.";
-	    var customOptions2 =
-	        {
-	        'maxWidth': '500',
-	        'color' : 'red'
-	        }
-	    
-		L.marker([ 43.1118121, -2.4197103 ]).addTo(mymap).bindPopup(customPopup2,customOptions2).openPopup();
+		L.marker([ 43.0612711, -2.5042125 ]).addTo(mymap).bindPopup(
+				customPopup, customOptions).openPopup();
+
+		var customPopup2 = "<b>Hello world!</b><br />I am another popup.";
+		var customOptions2 = {
+			'maxWidth' : '500',
+			'className' : 'custom'
+		}
+
+		L.marker([ 43.1118121, -2.4197103 ]).addTo(mymap).bindPopup(
+				customPopup2, customOptions2).openPopup();
 
 		L.circle([ 43.0612711, -2.5042125 ], 500, {
 			color : 'red',
