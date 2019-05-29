@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package database.services;
+package database.utils.services;
 
-import database.utils.Langileak;
+import database.utils.IntzidentziaMotak;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -24,26 +24,26 @@ import javax.ws.rs.Produces;
  * @author user
  */
 @Stateless
-@Path("database.utils.langileak")
-public class LangileakFacadeREST extends AbstractFacade<Langileak> {
-    @PersistenceContext(unitName = "ZerbitzariaBidezainPU")
+@Path("database.utils.intzidentziamotak")
+public class IntzidentziaMotakFacadeREST extends AbstractFacade<IntzidentziaMotak> {
+    @PersistenceContext(unitName = "ZerbitzariaBidezain2PU")
     private EntityManager em;
 
-    public LangileakFacadeREST() {
-        super(Langileak.class);
+    public IntzidentziaMotakFacadeREST() {
+        super(IntzidentziaMotak.class);
     }
 
     @POST
     @Override
     @Consumes({"application/xml", "application/json"})
-    public void create(Langileak entity) {
+    public void create(IntzidentziaMotak entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
     @Consumes({"application/xml", "application/json"})
-    public void edit(@PathParam("id") Short id, Langileak entity) {
+    public void edit(@PathParam("id") Short id, IntzidentziaMotak entity) {
         super.edit(entity);
     }
 
@@ -56,21 +56,21 @@ public class LangileakFacadeREST extends AbstractFacade<Langileak> {
     @GET
     @Path("{id}")
     @Produces({"application/xml", "application/json"})
-    public Langileak find(@PathParam("id") Short id) {
+    public IntzidentziaMotak find(@PathParam("id") Short id) {
         return super.find(id);
     }
 
     @GET
     @Override
     @Produces({"application/xml", "application/json"})
-    public List<Langileak> findAll() {
+    public List<IntzidentziaMotak> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces({"application/xml", "application/json"})
-    public List<Langileak> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+    public List<IntzidentziaMotak> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 

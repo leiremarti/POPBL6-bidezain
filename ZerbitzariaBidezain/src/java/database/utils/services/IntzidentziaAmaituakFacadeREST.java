@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package database.services;
+package database.utils.services;
 
-import database.utils.IntzidentziaMotak;
+import database.utils.IntzidentziaAmaituak;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -24,26 +24,26 @@ import javax.ws.rs.Produces;
  * @author user
  */
 @Stateless
-@Path("database.utils.intzidentziamotak")
-public class IntzidentziaMotakFacadeREST extends AbstractFacade<IntzidentziaMotak> {
-    @PersistenceContext(unitName = "ZerbitzariaBidezainPU")
+@Path("database.utils.intzidentziaamaituak")
+public class IntzidentziaAmaituakFacadeREST extends AbstractFacade<IntzidentziaAmaituak> {
+    @PersistenceContext(unitName = "ZerbitzariaBidezain2PU")
     private EntityManager em;
 
-    public IntzidentziaMotakFacadeREST() {
-        super(IntzidentziaMotak.class);
+    public IntzidentziaAmaituakFacadeREST() {
+        super(IntzidentziaAmaituak.class);
     }
 
     @POST
     @Override
     @Consumes({"application/xml", "application/json"})
-    public void create(IntzidentziaMotak entity) {
+    public void create(IntzidentziaAmaituak entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
     @Consumes({"application/xml", "application/json"})
-    public void edit(@PathParam("id") Short id, IntzidentziaMotak entity) {
+    public void edit(@PathParam("id") Short id, IntzidentziaAmaituak entity) {
         super.edit(entity);
     }
 
@@ -56,21 +56,21 @@ public class IntzidentziaMotakFacadeREST extends AbstractFacade<IntzidentziaMota
     @GET
     @Path("{id}")
     @Produces({"application/xml", "application/json"})
-    public IntzidentziaMotak find(@PathParam("id") Short id) {
+    public IntzidentziaAmaituak find(@PathParam("id") Short id) {
         return super.find(id);
     }
 
     @GET
     @Override
     @Produces({"application/xml", "application/json"})
-    public List<IntzidentziaMotak> findAll() {
+    public List<IntzidentziaAmaituak> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces({"application/xml", "application/json"})
-    public List<IntzidentziaMotak> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+    public List<IntzidentziaAmaituak> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 

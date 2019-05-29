@@ -40,7 +40,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Langileak.findByAbizena", query = "SELECT l FROM Langileak l WHERE l.abizena = :abizena"),
     @NamedQuery(name = "Langileak.findByErabiltzailea", query = "SELECT l FROM Langileak l WHERE l.erabiltzailea = :erabiltzailea"),
     @NamedQuery(name = "Langileak.findByEposta", query = "SELECT l FROM Langileak l WHERE l.eposta = :eposta"),
-    @NamedQuery(name = "Langileak.findByTelefonoa", query = "SELECT l FROM Langileak l WHERE l.telefonoa = :telefonoa")})
+    @NamedQuery(name = "Langileak.findByTelefonoa", query = "SELECT l FROM Langileak l WHERE l.telefonoa = :telefonoa"),
+    @NamedQuery(name = "Langileak.findByAktibo", query = "SELECT l FROM Langileak l WHERE l.aktibo = :aktibo")})
 public class Langileak implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -81,6 +82,8 @@ public class Langileak implements Serializable {
     @Size(max = 9)
     @Column(name = "telefonoa")
     private String telefonoa;
+    @Column(name = "aktibo")
+    private Boolean aktibo;
     @ManyToMany(mappedBy = "langileakCollection")
     private Collection<Aktiboak> aktiboakCollection;
     @JoinColumn(name = "ID_mota", referencedColumnName = "ID_langile_mota")
@@ -166,6 +169,14 @@ public class Langileak implements Serializable {
 
     public void setTelefonoa(String telefonoa) {
         this.telefonoa = telefonoa;
+    }
+
+    public Boolean getAktibo() {
+        return aktibo;
+    }
+
+    public void setAktibo(Boolean aktibo) {
+        this.aktibo = aktibo;
     }
 
     @XmlTransient

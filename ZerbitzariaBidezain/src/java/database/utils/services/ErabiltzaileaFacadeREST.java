@@ -3,13 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package database.services;
+package database.utils.services;
 
 import database.utils.Erabiltzailea;
-import java.util.ArrayList;
+import database.utils.Erabiltzaileak;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.jms.Session;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -19,6 +29,10 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 
 /**
  *
@@ -27,7 +41,7 @@ import javax.ws.rs.Produces;
 @Stateless
 @Path("database.utils.erabiltzailea")
 public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
-    @PersistenceContext(unitName = "ZerbitzariaBidezainPU")
+    @PersistenceContext(unitName = "ZerbitzariaBidezain2PU")
     private EntityManager em;
 
     public ErabiltzaileaFacadeREST() {
@@ -47,33 +61,6 @@ public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
     public void edit(@PathParam("id") Short id, Erabiltzailea entity) {
         super.edit(entity);
     }
-    
-    @POST
-    @Path("baja")
-    public void bajanEman(String ids) {
-      //super.edit(entity);
-        System.err.println("EDITATUUU: "+ ids);
-        String idArray[] = ids.split(";");
-        System.err.println("EDITATUUU22: "+ idArray[0]+idArray[1]);
-        
-        EntityManager entitymanager = getEntityManager();
-        entitymanager.getTransaction( ).begin( );
-        for(int i=0; i<idArray.length; i++){
-            Erabiltzailea employee = entitymanager.find( Erabiltzailea.class, idArray[i] );
-
-            //before update
-            System.out.println( employee );
-            employee.setSalary( 46000 );
-            entitymanager.getTransaction( ).commit( );
-
-            //after update
-            System.out.println( employee );
-        }
-        
-        entitymanager.close();
-        
-        
-    }
 
     @DELETE
     @Path("{id}")
@@ -90,23 +77,9 @@ public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
 
     @GET
     @Override
-    @Produces({"application/json", "application/xml"})
+    @Produces({"application/xml", "application/json"})
     public List<Erabiltzailea> findAll() {
         return super.findAll();
-    }
-    
-    @GET
-    @Path("safe")
-    @Produces({"application/json"})
-    public List<Erabiltzailea> safeFindAll() {
-        List<Erabiltzailea> fresh = new ArrayList<>();
-        for(Erabiltzailea e : super.findAll()){
-            byte[] data = new byte[0];
-            e.setPasswordHash(data);
-            e.setPasswordSalt(data);
-            fresh.add(e);            
-        }
-        return fresh;
     }
 
     @GET
@@ -126,6 +99,40 @@ public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
     @Override
     protected EntityManager getEntityManager() {
         return em;
+    }
+    
+    @POST
+    @Path("baja")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes({"application/x-www-form-urlencode"})
+    public String bajanEman(String ids) throws JAXBException {
+        boolean todoOk=false;
+        String idArray[] = new String[1];
+        idArray[0] = ids;
+        try{
+            System.err.println("EDITATUUU: "+ ids);
+            idArray = ids.split(";");
+        }catch(ArrayIndexOutOfBoundsException e){
+            System.err.println("Bakarrik balore bat dau");
+        }
+        
+        EntityManager entitymanager = getEntityManager();
+               
+        for(int i=0; i<idArray.length; i++){
+            
+            try {
+                Erabiltzailea e = entitymanager.find( Erabiltzailea.class, Short.parseShort(idArray[i]));
+                System.out.println( "**************************"+e );
+                e.setAktibo(false);
+            } catch (NumberFormatException e){     
+                System.out.println("exception");
+            }
+            
+        }
+        todoOk=true;
+                
+        return String.valueOf(todoOk);
+        
     }
     
 }

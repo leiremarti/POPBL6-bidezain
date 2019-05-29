@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package database.services;
+package database.utils.services;
 
-import database.utils.AktiboMotak;
+import database.utils.Kontaktuak;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -24,26 +24,26 @@ import javax.ws.rs.Produces;
  * @author user
  */
 @Stateless
-@Path("database.utils.aktibomotak")
-public class AktiboMotakFacadeREST extends AbstractFacade<AktiboMotak> {
-    @PersistenceContext(unitName = "ZerbitzariaBidezainPU")
+@Path("database.utils.kontaktuak")
+public class KontaktuakFacadeREST extends AbstractFacade<Kontaktuak> {
+    @PersistenceContext(unitName = "ZerbitzariaBidezain2PU")
     private EntityManager em;
 
-    public AktiboMotakFacadeREST() {
-        super(AktiboMotak.class);
+    public KontaktuakFacadeREST() {
+        super(Kontaktuak.class);
     }
 
     @POST
     @Override
     @Consumes({"application/xml", "application/json"})
-    public void create(AktiboMotak entity) {
+    public void create(Kontaktuak entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
     @Consumes({"application/xml", "application/json"})
-    public void edit(@PathParam("id") Short id, AktiboMotak entity) {
+    public void edit(@PathParam("id") Short id, Kontaktuak entity) {
         super.edit(entity);
     }
 
@@ -56,21 +56,21 @@ public class AktiboMotakFacadeREST extends AbstractFacade<AktiboMotak> {
     @GET
     @Path("{id}")
     @Produces({"application/xml", "application/json"})
-    public AktiboMotak find(@PathParam("id") Short id) {
+    public Kontaktuak find(@PathParam("id") Short id) {
         return super.find(id);
     }
 
     @GET
     @Override
     @Produces({"application/xml", "application/json"})
-    public List<AktiboMotak> findAll() {
+    public List<Kontaktuak> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces({"application/xml", "application/json"})
-    public List<AktiboMotak> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+    public List<Kontaktuak> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 

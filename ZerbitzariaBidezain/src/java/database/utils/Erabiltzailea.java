@@ -34,7 +34,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Erabiltzailea.findByAbizena", query = "SELECT e FROM Erabiltzailea e WHERE e.abizena = :abizena"),
     @NamedQuery(name = "Erabiltzailea.findByErabiltzailea", query = "SELECT e FROM Erabiltzailea e WHERE e.erabiltzailea = :erabiltzailea"),
     @NamedQuery(name = "Erabiltzailea.findByEposta", query = "SELECT e FROM Erabiltzailea e WHERE e.eposta = :eposta"),
-    @NamedQuery(name = "Erabiltzailea.findByTelefonoa", query = "SELECT e FROM Erabiltzailea e WHERE e.telefonoa = :telefonoa")})
+    @NamedQuery(name = "Erabiltzailea.findByTelefonoa", query = "SELECT e FROM Erabiltzailea e WHERE e.telefonoa = :telefonoa"),
+    @NamedQuery(name = "Erabiltzailea.findByAktibo", query = "SELECT e FROM Erabiltzailea e WHERE e.aktibo = :aktibo")})
 public class Erabiltzailea implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -75,6 +76,8 @@ public class Erabiltzailea implements Serializable {
     @Size(max = 9)
     @Column(name = "telefonoa")
     private String telefonoa;
+    @Column(name = "aktibo")
+    private Boolean aktibo;
 
     public Erabiltzailea() {
     }
@@ -155,6 +158,14 @@ public class Erabiltzailea implements Serializable {
 
     public void setTelefonoa(String telefonoa) {
         this.telefonoa = telefonoa;
+    }
+
+    public Boolean getAktibo() {
+        return aktibo;
+    }
+
+    public void setAktibo(Boolean aktibo) {
+        this.aktibo = aktibo;
     }
 
     @Override
