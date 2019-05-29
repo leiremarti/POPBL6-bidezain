@@ -193,10 +193,10 @@ public class Erabiltzailea implements Serializable {
         
         String resp = "[ \"" + izena + "\", \"" + abizena + "\", \"" + erabiltzailea + "\",\"" + eposta + "\",\"" + telefonoa + "\"";
         if(aktibo){
-            resp+=", \"<input type=checkbox name=button_clicked value"+iDerabiltzailea+">\"";
+            resp+=", \"<input type=checkbox name=button_clicked value="+iDerabiltzailea+">Altan\"";
         }
         else{
-            resp+=", \"\"";
+            resp+=", \"<font color=red>Bajan</font>\"";
         }
         resp += "]";
         return resp;
