@@ -190,7 +190,16 @@ public class Erabiltzailea implements Serializable {
 
     @Override
     public String toString() {
-        return "database.utils.Erabiltzailea[ iDerabiltzailea=" + iDerabiltzailea + " ]";
+        
+        String resp = "[ \"" + izena + "\", \"" + abizena + "\", \"" + erabiltzailea + "\",\"" + eposta + "\",\"" + telefonoa + "\"";
+        if(aktibo){
+            resp+=", \"<input type=checkbox name=button_clicked value"+iDerabiltzailea+">\"";
+        }
+        else{
+            resp+=", \"\"";
+        }
+        resp += "]";
+        return resp;
     }
     
 }

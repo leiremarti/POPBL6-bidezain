@@ -78,14 +78,14 @@
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseTwo"
 				aria-expanded="true" aria-controls="collapseTwo"> <i
-					class="fas fa-fw fa-cog"></i> <span>Components</span>
+					class="fas fa-fw fa-cog"></i> <span>Eragiketak</span>
 			</a>
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<h6 class="collapse-header">Custom Components:</h6>
-						<a class="collapse-item" href="buttons.html">Buttons</a> <a
-							class="collapse-item" href="cards.html">Cards</a>
+						<h6 class="collapse-header">Administratzaile aukerak:</h6>
+						<a class="collapse-item" href="buttons.html">Langilea gehitu</a> <a
+							class="collapse-item" href="cards.html">Besteak</a>
 					</div>
 				</div></li>
 
@@ -308,26 +308,29 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">Tables</h1>
+					<h1 class="h3 mb-2 text-gray-800">Erabiltzaileak</h1>
 					<p class="mb-4">
-						DataTables is a third party plugin that is used to generate the
-						demo table below. For more information about DataTables, please
-						visit the <a target="_blank" href="https://datatables.net">official
-							DataTables documentation</a>.
+						Bidezain produktuaren erabiltzaileen zerrenda. 
 					</p>
 
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
 						<form class="erabiltzaileak" method="POST">
 							<div class="card-header py-3">
-								<div class="col-lg-6" style="margin:0px;">
-									<h6 class="m-0 font-weight-bold text-primary">DataTables
-										Example</h6>
+							
+								<div class="row">
+									<div class="col-lg-6">
+										<h6 class="m-0 font-weight-bold text-primary">DataTables
+											Example</h6>
+									</div>
+									<div class="col-lg-6">
+										<button class="btn btn-primary pull-right" name="bajan_eman" value="baja">Bajan
+											eman</button>
+									</div>
+								
 								</div>
-								<div class="col-lg-6" style="margin:0px;">
-									<button class="btn btn-primary pull-right" name="bajan_eman" value="baja">Bajan
-										eman</button>
-								</div>
+							
+								
 							</div>
 							<div class="card-body">
 								<div class="table-responsive">
@@ -413,16 +416,16 @@
 	$( window ).on('load',function() {
 		
 		//Iristen da web xerbitzaria, baño honek xml bat bueltatzen dionez faio bat ematen do. Saiau Zerbitzaritio Json bat lortzen.
-		
+		/*
 		$.ajax({
-			url : "http://localhost:8080/ZerbitzariaBidezain/webresources/database.utils.erabiltzailea/safe",
+			url : "http://localhost:8080/ZerbitzariaBidezain/webresources/erabiltzaileak/safe",
 		    type: "GET",
 		    dataType: "jsonp",
 	        cors: false ,
-	        contentType:'application/json',
 	        secure: false,
 	        headers: {
 	          	'Access-Control-Allow-Origin': '*',
+	          	'Origin': 'localhost:8080',
 	        },
 	        beforeSend: function (xhr) {
 	          	xhr.setRequestHeader ("Authorization", "Basic " + btoa(""));
@@ -435,36 +438,36 @@
 				console.log(xhr);
 		    }
 		});		
+		*/
 		
-		/*var response = [{
-		      "rank":"9",
-		      "content":"Alon",
-		      "UID":"5"
-		     },
-		     {
-		       "rank":"6",
-		       "content":"Tala",
-		       "UID":"6"
-		    }];*/
-		// convert string to JSON
-		//response = $.parseJSON(response);
-		var dataSet =[
-			["9","Alon","5","","","<input type=\"checkbox\" name=\"button_clicked\" value=\"A\"> A<br>"],
-		    ["6","Tala","6","","","<input type=\"checkbox\" name=\"button_clicked\" value=\"B\"> B<br>"]
-		    ];
+		var req = new XMLHttpRequest();
+		req.open('GET', 'http://localhost:8080/ZerbitzariaBidezain/webresources/erabiltzaileak/safe', true);
+		req.onreadystatechange = function (aEvt) {
+		  if (req.readyState == 4) {
+		     if(req.status == 200){
+
+			     console.log(req.responseText);
+			     var dataSet = req.responseText;
+		    	 table = $('#myDataTable').DataTable( {  	 		
+		   	 		
+		 	        columns: [
+		 	            { title: "Izena" },
+		 	            { title: "Abizena" },
+		 	            { title: "Erabiltzailea" },
+		 	            { title: "E-posta" },
+		 	            { title: "Telefonoa" },
+		 	            { title: "Altan/bajan" }
+		 	        ],
+		 	        data: JSON.parse(dataSet)
+		 	    } );
+		     }
+		    			    	 
+		     else console.log("Error loading page\n");
+		  }
+		};
+		req.send(null);
+		   	 	
 		
-		
-		table = $('#myDataTable').DataTable( {
-	        data: dataSet,
-	        columns: [
-	            { title: "Izena" },
-	            { title: "Abizena" },
-	            { title: "Erabiltzailea" },
-	            { title: "E-posta" },
-	            { title: "Telefonoa" },
-	            { title: "Altan/bajan" }
-	        ]
-	    } );
 	});
   </script>
 </body>

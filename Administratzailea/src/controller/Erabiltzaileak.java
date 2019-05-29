@@ -40,8 +40,8 @@ public class Erabiltzaileak extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String s = "";
-		try {
-			URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/database.utils.erabiltzailea/safe");
+		/*try {
+			URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/erabiltzaileak/safe");
 			URLConnection con = u.openConnection();
 			               Reader reader = new InputStreamReader(con.getInputStream());
 			               while (true) {
@@ -57,7 +57,7 @@ public class Erabiltzaileak extends HttpServlet {
 			} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			}
+			}*/
 		System.out.println(s);
 		
 		

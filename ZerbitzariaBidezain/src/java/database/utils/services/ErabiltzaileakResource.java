@@ -26,6 +26,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
+import javax.ws.rs.core.Response;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -60,8 +61,8 @@ public class ErabiltzaileakResource {
 
     @GET
     @Path("safe")
-    @Produces({"application/json"})
-    public List<Erabiltzailea> safeFindAll() {
+  //  @Produces({"application/json"})
+    public Response safeFindAll() {
         List<Erabiltzailea> fresh = new ArrayList<>();
         
         String s = "";
@@ -105,9 +106,16 @@ public class ErabiltzaileakResource {
             Logger.getLogger(ErabiltzaileakResource.class.getName()).log(Level.SEVERE, null, ex);
         }  
         
+        Erabiltzaileak erabiltzaileak = new Erabiltzaileak();
+        erabiltzaileak.setErabiltzailea(fresh);
         
+        Response.ResponseBuilder rb = Response.ok(erabiltzaileak.toString());
+        Response response = rb.header("Access-Control-Allow-Origin", "http://localhost:8081")
+                                .header("origin", "*")
+                            .build();
+        return response;
         
-        return fresh;
+        //return fresh;
     }
     
     /**

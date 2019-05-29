@@ -30,5 +30,23 @@ public class Erabiltzaileak {
         }
         return this.erabiltzailea;
     }
+    
+     public void setErabiltzailea(List<Erabiltzailea> e) {
+        this.erabiltzailea = e;
+    }
 
+    @Override
+    public String toString() {
+        
+        String resp = "[";
+        Erabiltzailea azkena = erabiltzailea.get(erabiltzailea.size()-1);
+        for(Erabiltzailea e : erabiltzailea){
+            resp = resp.concat(e.toString());
+            if(e != azkena)resp = resp.concat(",");
+        }
+        resp = resp.concat("]");
+        return resp; //To change body of generated methods, choose Tools | Templates.
+    }
+
+     
 }
