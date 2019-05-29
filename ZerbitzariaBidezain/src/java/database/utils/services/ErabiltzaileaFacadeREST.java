@@ -6,20 +6,9 @@
 package database.utils.services;
 
 import database.utils.Erabiltzailea;
-import database.utils.Erabiltzaileak;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.StringReader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.List;
 import javax.ejb.Stateless;
-import javax.jms.Session;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -30,9 +19,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
 
 /**
  *
@@ -41,7 +28,7 @@ import javax.xml.bind.Unmarshaller;
 @Stateless
 @Path("database.utils.erabiltzailea")
 public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
-    @PersistenceContext(unitName = "ZerbitzariaBidezain2PU")
+    @PersistenceContext(unitName = "ZerbitzariaBidezainPU")
     private EntityManager em;
 
     public ErabiltzaileaFacadeREST() {
@@ -100,6 +87,7 @@ public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
     protected EntityManager getEntityManager() {
         return em;
     }
+    
     
     @POST
     @Path("baja")

@@ -26,7 +26,7 @@ import javax.ws.rs.Produces;
 @Stateless
 @Path("database.utils.intzidentziamotak")
 public class IntzidentziaMotakFacadeREST extends AbstractFacade<IntzidentziaMotak> {
-    @PersistenceContext(unitName = "ZerbitzariaBidezain2PU")
+    @PersistenceContext(unitName = "ZerbitzariaBidezainPU")
     private EntityManager em;
 
     public IntzidentziaMotakFacadeREST() {

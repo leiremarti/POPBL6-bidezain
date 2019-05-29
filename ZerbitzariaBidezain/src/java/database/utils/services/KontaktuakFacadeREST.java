@@ -26,7 +26,7 @@ import javax.ws.rs.Produces;
 @Stateless
 @Path("database.utils.kontaktuak")
 public class KontaktuakFacadeREST extends AbstractFacade<Kontaktuak> {
-    @PersistenceContext(unitName = "ZerbitzariaBidezain2PU")
+    @PersistenceContext(unitName = "ZerbitzariaBidezainPU")
     private EntityManager em;
 
     public KontaktuakFacadeREST() {

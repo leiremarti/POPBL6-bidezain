@@ -26,7 +26,7 @@ import javax.ws.rs.Produces;
 @Stateless
 @Path("database.utils.aktibomotak")
 public class AktiboMotakFacadeREST extends AbstractFacade<AktiboMotak> {
-    @PersistenceContext(unitName = "ZerbitzariaBidezain2PU")
+    @PersistenceContext(unitName = "ZerbitzariaBidezainPU")
     private EntityManager em;
 
     public AktiboMotakFacadeREST() {
@@ -43,20 +43,20 @@ public class AktiboMotakFacadeREST extends AbstractFacade<AktiboMotak> {
     @PUT
     @Path("{id}")
     @Consumes({"application/xml", "application/json"})
-    public void edit(@PathParam("id") Short id, AktiboMotak entity) {
+    public void edit(@PathParam("id") String id, AktiboMotak entity) {
         super.edit(entity);
     }
 
     @DELETE
     @Path("{id}")
-    public void remove(@PathParam("id") Short id) {
+    public void remove(@PathParam("id") String id) {
         super.remove(super.find(id));
     }
 
     @GET
     @Path("{id}")
     @Produces({"application/xml", "application/json"})
-    public AktiboMotak find(@PathParam("id") Short id) {
+    public AktiboMotak find(@PathParam("id") String id) {
         return super.find(id);
     }
 

@@ -26,7 +26,7 @@ import javax.ws.rs.Produces;
 @Stateless
 @Path("database.utils.langilemotak")
 public class LangileMotakFacadeREST extends AbstractFacade<LangileMotak> {
-    @PersistenceContext(unitName = "ZerbitzariaBidezain2PU")
+    @PersistenceContext(unitName = "ZerbitzariaBidezainPU")
     private EntityManager em;
 
     public LangileMotakFacadeREST() {
@@ -43,20 +43,20 @@ public class LangileMotakFacadeREST extends AbstractFacade<LangileMotak> {
     @PUT
     @Path("{id}")
     @Consumes({"application/xml", "application/json"})
-    public void edit(@PathParam("id") Short id, LangileMotak entity) {
+    public void edit(@PathParam("id") String id, LangileMotak entity) {
         super.edit(entity);
     }
 
     @DELETE
     @Path("{id}")
-    public void remove(@PathParam("id") Short id) {
+    public void remove(@PathParam("id") String id) {
         super.remove(super.find(id));
     }
 
     @GET
     @Path("{id}")
     @Produces({"application/xml", "application/json"})
-    public LangileMotak find(@PathParam("id") Short id) {
+    public LangileMotak find(@PathParam("id") String id) {
         return super.find(id);
     }
 

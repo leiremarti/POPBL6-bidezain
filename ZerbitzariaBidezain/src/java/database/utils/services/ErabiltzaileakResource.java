@@ -67,7 +67,7 @@ public class ErabiltzaileakResource {
         String s = "";
         try {
             
-            URL u = new URL("http://localhost:8080/ZerbitzariaBidezain2/webresources/database.utils.erabiltzailea");
+            URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/database.utils.erabiltzailea");
             URLConnection con = u.openConnection();
 	    Reader reader = new InputStreamReader(con.getInputStream());
 	    while (true) {

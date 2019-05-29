@@ -26,7 +26,7 @@ import javax.ws.rs.Produces;
 @Stateless
 @Path("database.utils.aurreikuspenak")
 public class AurreikuspenakFacadeREST extends AbstractFacade<Aurreikuspenak> {
-    @PersistenceContext(unitName = "ZerbitzariaBidezain2PU")
+    @PersistenceContext(unitName = "ZerbitzariaBidezainPU")
     private EntityManager em;
 
     public AurreikuspenakFacadeREST() {
