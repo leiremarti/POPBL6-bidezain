@@ -53,7 +53,7 @@ public class LangileMotak implements Serializable {
     @Column(name = "deskribapena")
     private String deskribapena;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "iDmota")
-    private Collection<Langileak> langileakCollection;
+    private Collection<Langilea> langileakCollection;
 
     public LangileMotak() {
     }
@@ -93,11 +93,11 @@ public class LangileMotak implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Langileak> getLangileakCollection() {
+    public Collection<Langilea> getLangileakCollection() {
         return langileakCollection;
     }
 
-    public void setLangileakCollection(Collection<Langileak> langileakCollection) {
+    public void setLangileakCollection(Collection<Langilea> langileakCollection) {
         this.langileakCollection = langileakCollection;
     }
 

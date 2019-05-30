@@ -44,7 +44,7 @@ public class Aktiboak implements Serializable {
         @JoinColumn(name = "ID_aktiboa", referencedColumnName = "ID_aktiboa")}, inverseJoinColumns = {
         @JoinColumn(name = "ID_langilea", referencedColumnName = "ID_langilea")})
     @ManyToMany
-    private Collection<Langileak> langileakCollection;
+    private Collection<Langilea> langileakCollection;
     @JoinColumn(name = "ID_mota", referencedColumnName = "ID_aktibo_mota")
     @ManyToOne(optional = false)
     private AktiboMotak iDmota;
@@ -65,11 +65,11 @@ public class Aktiboak implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Langileak> getLangileakCollection() {
+    public Collection<Langilea> getLangileakCollection() {
         return langileakCollection;
     }
 
-    public void setLangileakCollection(Collection<Langileak> langileakCollection) {
+    public void setLangileakCollection(Collection<Langilea> langileakCollection) {
         this.langileakCollection = langileakCollection;
     }
 

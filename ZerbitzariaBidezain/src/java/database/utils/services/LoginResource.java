@@ -7,6 +7,7 @@ package database.utils.services;
 
 import database.utils.Erabiltzailea;
 import database.utils.Erabiltzaileak;
+import database.utils.Langilea;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -58,10 +59,10 @@ public class LoginResource {
     }
 
     @POST
-    @Path("login")
+    @Path("login/erabiltzailea")
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes({"application/x-www-form-urlencode"})
-    public String login(String data) throws JAXBException {
+    public String loginErabiltzailea(String data) throws JAXBException {
         boolean loginOK = false;
         
         String username = null;
@@ -99,6 +100,66 @@ public class LoginResource {
             erabiltzaileak = (Erabiltzaileak) ju.unmarshal(string);
             
             List<Erabiltzailea> erabiltzaile_list = erabiltzaileak.getErabiltzailea();
+            
+            for(Erabiltzailea e : erabiltzaile_list){
+                if(username!=null && password!=null && e.getErabiltzailea().equals(username)/* && e.getPasswordHash().equals(password)*/){
+                    loginOK = true;
+                }
+                System.out.print(e.getAbizena());
+            }
+            
+	} catch (MalformedURLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+	} catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+	}  
+        return String.valueOf(loginOK);
+    }
+    
+    @POST
+    @Path("login/langilea")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes({"application/x-www-form-urlencode"})
+    public String loginLangilea(String data) throws JAXBException {
+        boolean loginOK = false;
+        
+        String username = null;
+        String password = null;
+        try{
+            String[] datasplit = data.split("_");
+            username = datasplit[0];
+            password = datasplit[1];
+            
+            System.out.println("********USERNAME: "+username+"***********PASSWORD: "+password);
+        }catch(ArrayIndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
+        
+        String s = "";
+        try {
+            
+            URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/database.utils.langileak");
+            URLConnection con = u.openConnection();
+	    Reader reader = new InputStreamReader(con.getInputStream());
+	    while (true) {
+	        int ch = reader.read();
+	        if (ch==-1) {
+	            break;
+	        }
+	        s = s + (char)ch;
+	    }
+            System.out.println(s);      
+            
+            Erabiltzaileak erabiltzaileak = null;
+            StringReader string = new StringReader(s);
+            JAXBContext jc = JAXBContext.newInstance(Langilea.class);
+
+            Unmarshaller ju = jc.createUnmarshaller();
+            erabiltzaileak = (Langilea) ju.unmarshal(string);
+            
+            List<Langilea> erabiltzaile_list = erabiltzaileak.getErabiltzailea();
             
             for(Erabiltzailea e : erabiltzaile_list){
                 if(username!=null && password!=null && e.getErabiltzailea().equals(username)/* && e.getPasswordHash().equals(password)*/){
