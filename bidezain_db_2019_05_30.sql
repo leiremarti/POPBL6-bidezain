@@ -17,8 +17,8 @@ CREATE TABLE erabiltzailea(
    PRIMARY KEY (`ID_erabiltzailea`)
 );
 
-DROP TABLE IF EXISTS kontaktuak;
-CREATE TABLE kontaktuak(
+DROP TABLE IF EXISTS kontaktua;
+CREATE TABLE kontaktua(
 	ID_kontaktua SMALLINT(5) UNSIGNED NOT NULL AUTO_INCREMENT,
 	kontaktua VARCHAR(30) NOT NULL,
 	deskribapena VARCHAR(250) NOT NULL,
@@ -26,8 +26,8 @@ CREATE TABLE kontaktuak(
 );
 
 
-DROP TABLE IF EXISTS aurreikuspenak;
-CREATE TABLE aurreikuspenak(
+DROP TABLE IF EXISTS aurreikuspena;
+CREATE TABLE aurreikuspena(
 	ID_aurreikuspena SMALLINT(5) UNSIGNED NOT NULL AUTO_INCREMENT,
 	errepidea VARCHAR(30) NOT NULL,
 	mota VARCHAR(150) NOT NULL,
@@ -46,15 +46,15 @@ CREATE TABLE aurreikuspenak(
    PRIMARY KEY (`ID_aurreikuspena`)
 );
 
-DROP TABLE IF EXISTS intzidentzia_motak;
-CREATE TABLE intzidentzia_motak(
+DROP TABLE IF EXISTS intzidentzia_mota;
+CREATE TABLE intzidentzia_mota(
 	ID_intzidentzia_mota SMALLINT(5) UNSIGNED NOT NULL AUTO_INCREMENT,
 	intzidentzia_mota VARCHAR(30) NOT NULL,
    PRIMARY KEY (`ID_intzidentzia_mota`)
 );
 
-DROP TABLE IF EXISTS intzidentzia_amaituak;
-CREATE TABLE intzidentzia_amaituak(
+DROP TABLE IF EXISTS intzidentzia_amaitua;
+CREATE TABLE intzidentzia_amaitua(
 	ID_intzidentzia SMALLINT(5) UNSIGNED NOT NULL AUTO_INCREMENT,
 	ID_mota SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
 	probintzia ENUM ('GIPUZKOA','BIZKAIA','ARABA') NOT NULL,
@@ -68,11 +68,11 @@ CREATE TABLE intzidentzia_amaituak(
 	longitudea DECIMAL(8,5) NOT NULL,
    PRIMARY KEY (`ID_intzidentzia`),
 	KEY `IN_AM_MOT_FK` (`ID_mota`),
-   CONSTRAINT `IN_AM_MOT_FK` FOREIGN KEY (`ID_mota`) REFERENCES `intzidentzia_motak` (`ID_intzidentzia_mota`)
+   CONSTRAINT `IN_AM_MOT_FK` FOREIGN KEY (`ID_mota`) REFERENCES `intzidentzia_mota` (`ID_intzidentzia_mota`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-DROP TABLE IF EXISTS intzidentzia_aktiboak;
-CREATE TABLE intzidentzia_aktiboak(
+DROP TABLE IF EXISTS intzidentzia_aktiboa;
+CREATE TABLE intzidentzia_aktiboa(
 	ID_intzidentzia SMALLINT(5) UNSIGNED NOT NULL AUTO_INCREMENT,
 	ID_mota SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
 	probintzia ENUM ('GIPUZKOA','BIZKAIA','ARABA') NOT NULL,
@@ -86,19 +86,19 @@ CREATE TABLE intzidentzia_aktiboak(
 	longitudea DECIMAL(8,5) NOT NULL,
    PRIMARY KEY (`ID_intzidentzia`),
 	KEY `IN_AK_MOT_FK` (`ID_mota`),
-   CONSTRAINT `IN_AK_MOT_FK` FOREIGN KEY (`ID_mota`) REFERENCES `intzidentzia_motak` (`ID_intzidentzia_mota`)
+   CONSTRAINT `IN_AK_MOT_FK` FOREIGN KEY (`ID_mota`) REFERENCES `intzidentzia_mota` (`ID_intzidentzia_mota`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-DROP TABLE IF EXISTS langile_motak;
-CREATE TABLE langile_motak(
+DROP TABLE IF EXISTS langile_mota;
+CREATE TABLE langile_mota(
 	ID_langile_mota SMALLINT(5) UNSIGNED NOT NULL AUTO_INCREMENT,
 	langile_mota VARCHAR(30) NOT NULL,
 	deskribapena VARCHAR(250) NOT NULL,
    PRIMARY KEY (`ID_langile_mota`)
 );
 
-DROP TABLE IF EXISTS langileak;
-CREATE TABLE langileak(
+DROP TABLE IF EXISTS langilea;
+CREATE TABLE langilea(
 	ID_langilea SMALLINT(5) UNSIGNED NOT NULL AUTO_INCREMENT,
 	izena VARCHAR(30) NOT NULL,
 	abizena VARCHAR(30) NOT NULL,
@@ -111,33 +111,33 @@ CREATE TABLE langileak(
 	aktibo BOOL DEFAULT TRUE,
    PRIMARY KEY (`ID_langilea`),
 	KEY `LAN_MOT_FK` (`ID_mota`),
-   CONSTRAINT `LAN_MOT_FK` FOREIGN KEY (`ID_mota`) REFERENCES `langile_motak` (`ID_langile_mota`)
+   CONSTRAINT `LAN_MOT_FK` FOREIGN KEY (`ID_mota`) REFERENCES `langile_mota` (`ID_langile_mota`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-DROP TABLE IF EXISTS aktibo_motak;
-CREATE TABLE aktibo_motak(
+DROP TABLE IF EXISTS aktibo_mota;
+CREATE TABLE aktibo_mota(
 	ID_aktibo_mota SMALLINT(5) UNSIGNED NOT NULL AUTO_INCREMENT,
 	aktibo_mota VARCHAR(30) NOT NULL,
 	deskribapena VARCHAR(250) NOT NULL,
    PRIMARY KEY (`ID_aktibo_mota`)
 );
 
-DROP TABLE IF EXISTS aktiboak;
-CREATE TABLE aktiboak(
+DROP TABLE IF EXISTS aktiboa;
+CREATE TABLE aktiboa(
 	ID_aktiboa SMALLINT(5) UNSIGNED NOT NULL AUTO_INCREMENT,
 	ID_mota SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
    PRIMARY KEY (`ID_aktiboa`),
 	KEY `AK_MOT_FK` (`ID_mota`),
-   CONSTRAINT `AK_MOT_FK` FOREIGN KEY (`ID_mota`) REFERENCES `aktibo_motak` (`ID_aktibo_mota`)
+   CONSTRAINT `AK_MOT_FK` FOREIGN KEY (`ID_mota`) REFERENCES `aktibo_mota` (`ID_aktibo_mota`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-DROP TABLE IF EXISTS langileak_aktiboak;
-CREATE TABLE langileak_aktiboak(
+DROP TABLE IF EXISTS langileak_aktiboa;
+CREATE TABLE langileak_aktiboa(
 	ID_aktiboa SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
 	ID_langilea SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
    PRIMARY KEY (`ID_aktiboa`, `ID_langilea`),
-   CONSTRAINT `AK_FK` FOREIGN KEY (`ID_aktiboa`) REFERENCES `aktiboak` (`ID_aktiboa`),
-   CONSTRAINT `LAN_FK` FOREIGN KEY (`ID_langilea`) REFERENCES `langileak` (`ID_langilea`)
+   CONSTRAINT `AK_FK` FOREIGN KEY (`ID_aktiboa`) REFERENCES `aktiboa` (`ID_aktiboa`),
+   CONSTRAINT `LAN_FK` FOREIGN KEY (`ID_langilea`) REFERENCES `langilea` (`ID_langilea`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `erabiltzailea` (`ID_erabiltzailea`, `izena`, `abizena`, `erabiltzailea`, `passwordHash`, `passwordSalt`, `eposta`, `telefonoa`, `aktibo`) VALUES (1, 'Jon', 'Braun', 'indiotxikia', 0x31000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, 0x31000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, 'jonB@gmail.com', '324124514', 1);
@@ -147,14 +147,14 @@ INSERT INTO `erabiltzailea` (`ID_erabiltzailea`, `izena`, `abizena`, `erabiltzai
 INSERT INTO `erabiltzailea` (`ID_erabiltzailea`, `izena`, `abizena`, `erabiltzailea`, `passwordHash`, `passwordSalt`, `eposta`, `telefonoa`, `aktibo`) VALUES (5, 'Inge', 'Barrero', 'ibarrero', 0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, 0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, 'ibarrero@gmail.com', '456123478', 1);
 INSERT INTO `erabiltzailea` (`ID_erabiltzailea`, `izena`, `abizena`, `erabiltzailea`, `passwordHash`, `passwordSalt`, `eposta`, `telefonoa`, `aktibo`) VALUES (6, 'Joseba', 'Barrero', 'jbarrero', 0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, 0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, 'jbarrero@gmail.com', '456123478', 1);
 
-INSERT INTO intzidentzia_motak (intzidentzia_mota) VALUES ("Meteorológica"), ("Accidente"), ("Retención"), ("Seguridad vial"),("Otras incidencias"),("Puertos de montaña"), ("Vialidad invernal tramos"),("Pruebas deportivas");
+INSERT INTO intzidentzia_mota (intzidentzia_mota) VALUES ("Meteorológica"), ("Accidente"), ("Retención"), ("Seguridad vial"),("Otras incidencias"),("Puertos de montaña"), ("Vialidad invernal tramos"),("Pruebas deportivas");
 
-INSERT INTO `langile_motak` (`ID_langile_mota`, `langile_mota`, `deskribapena`) VALUES (1, 'Gerencia', '');
-INSERT INTO `langile_motak` (`ID_langile_mota`, `langile_mota`, `deskribapena`) VALUES (2, 'Marketing y ventas', '');
-INSERT INTO `langile_motak` (`ID_langile_mota`, `langile_mota`, `deskribapena`) VALUES (3, 'SAT', '');
-INSERT INTO `langile_motak` (`ID_langile_mota`, `langile_mota`, `deskribapena`) VALUES (4, 'Sistemas de Información', '');
+INSERT INTO `langile_mota` (`ID_langile_mota`, `langile_mota`, `deskribapena`) VALUES (1, 'Gerencia', '');
+INSERT INTO `langile_mota` (`ID_langile_mota`, `langile_mota`, `deskribapena`) VALUES (2, 'Marketing y ventas', '');
+INSERT INTO `langile_mota` (`ID_langile_mota`, `langile_mota`, `deskribapena`) VALUES (3, 'SAT', '');
+INSERT INTO `langile_mota` (`ID_langile_mota`, `langile_mota`, `deskribapena`) VALUES (4, 'Sistemas de Información', '');
 
 
-INSERT INTO langileak (izena,abizena,erabiltzailea,passwordHash,passwordSalt,eposta,telefonoa,ID_mota) 
+INSERT INTO langilea (izena,abizena,erabiltzailea,passwordHash,passwordSalt,eposta,telefonoa,ID_mota) 
 VALUES ("Amaia", "Samaniego", "asamaniego",0x31000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, 0x31000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, "asamaniego@gmail.com", "687154211", 1), 
 ("Enara", "Salinas", "esalinas",0x31000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, 0x31000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, "esalinas@gmail.com", "247154211", 2)
