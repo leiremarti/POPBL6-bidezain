@@ -26,8 +26,6 @@ CREATE TABLE kontaktuak(
 );
 
 
-carretera,tipo,provincia,poblacion,diaSemana,data,lat,lng,temperatura,viento,precipitacion,kmInicial,kmFinal,itIs
-
 DROP TABLE IF EXISTS aurreikuspenak;
 CREATE TABLE aurreikuspenak(
 	ID_aurreikuspena SMALLINT(5) UNSIGNED NOT NULL AUTO_INCREMENT,
