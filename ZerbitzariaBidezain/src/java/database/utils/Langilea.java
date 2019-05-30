@@ -31,17 +31,17 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author user
  */
 @Entity
-@Table(name = "langileak")
+@Table(name = "langilea")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Langileak.findAll", query = "SELECT l FROM Langileak l"),
-    @NamedQuery(name = "Langileak.findByIDlangilea", query = "SELECT l FROM Langileak l WHERE l.iDlangilea = :iDlangilea"),
-    @NamedQuery(name = "Langileak.findByIzena", query = "SELECT l FROM Langileak l WHERE l.izena = :izena"),
-    @NamedQuery(name = "Langileak.findByAbizena", query = "SELECT l FROM Langileak l WHERE l.abizena = :abizena"),
-    @NamedQuery(name = "Langileak.findByErabiltzailea", query = "SELECT l FROM Langileak l WHERE l.erabiltzailea = :erabiltzailea"),
-    @NamedQuery(name = "Langileak.findByEposta", query = "SELECT l FROM Langileak l WHERE l.eposta = :eposta"),
-    @NamedQuery(name = "Langileak.findByTelefonoa", query = "SELECT l FROM Langileak l WHERE l.telefonoa = :telefonoa"),
-    @NamedQuery(name = "Langileak.findByAktibo", query = "SELECT l FROM Langileak l WHERE l.aktibo = :aktibo")})
+    @NamedQuery(name = "Langilea.findAll", query = "SELECT l FROM Langilea l"),
+    @NamedQuery(name = "Langilea.findByIDlangilea", query = "SELECT l FROM Langilea l WHERE l.iDlangilea = :iDlangilea"),
+    @NamedQuery(name = "Langilea.findByIzena", query = "SELECT l FROM Langilea l WHERE l.izena = :izena"),
+    @NamedQuery(name = "Langilea.findByAbizena", query = "SELECT l FROM Langilea l WHERE l.abizena = :abizena"),
+    @NamedQuery(name = "Langilea.findByErabiltzailea", query = "SELECT l FROM Langilea l WHERE l.erabiltzailea = :erabiltzailea"),
+    @NamedQuery(name = "Langilea.findByEposta", query = "SELECT l FROM Langilea l WHERE l.eposta = :eposta"),
+    @NamedQuery(name = "Langilea.findByTelefonoa", query = "SELECT l FROM Langilea l WHERE l.telefonoa = :telefonoa"),
+    @NamedQuery(name = "Langilea.findByAktibo", query = "SELECT l FROM Langilea l WHERE l.aktibo = :aktibo")})
 public class Langilea implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -218,7 +218,7 @@ public class Langilea implements Serializable {
 
     @Override
     public String toString() {
-        return "database.utils.Langileak[ iDlangilea=" + iDlangilea + " ]";
+        return "database.utils.Langilea[ iDlangilea=" + iDlangilea + " ]";
     }
     
 }
