@@ -102,7 +102,7 @@ CREATE TABLE langileak(
 	ID_langilea SMALLINT(5) UNSIGNED NOT NULL AUTO_INCREMENT,
 	izena VARCHAR(30) NOT NULL,
 	abizena VARCHAR(30) NOT NULL,
-	`erabiltzailea` DECIMAL(8,2) NOT NULL,
+	erabiltzailea VARCHAR(30) NOT NULL,
 	passwordHash BINARY(64) NOT NULL,
 	passwordSalt BINARY(64) NOT NULL,
 	eposta VARCHAR(40) NOT NULL,
@@ -148,3 +148,13 @@ INSERT INTO `erabiltzailea` (`ID_erabiltzailea`, `izena`, `abizena`, `erabiltzai
 INSERT INTO `erabiltzailea` (`ID_erabiltzailea`, `izena`, `abizena`, `erabiltzailea`, `passwordHash`, `passwordSalt`, `eposta`, `telefonoa`, `aktibo`) VALUES (6, 'Joseba', 'Barrero', 'jbarrero', 0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, 0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, 'jbarrero@gmail.com', '456123478', 1);
 
 INSERT INTO intzidentzia_motak (intzidentzia_mota) VALUES ("Meteorológica"), ("Accidente"), ("Retención"), ("Seguridad vial"),("Otras incidencias"),("Puertos de montaña"), ("Vialidad invernal tramos"),("Pruebas deportivas");
+
+INSERT INTO `langile_motak` (`ID_langile_mota`, `langile_mota`, `deskribapena`) VALUES (1, 'Gerencia', '');
+INSERT INTO `langile_motak` (`ID_langile_mota`, `langile_mota`, `deskribapena`) VALUES (2, 'Marketing y ventas', '');
+INSERT INTO `langile_motak` (`ID_langile_mota`, `langile_mota`, `deskribapena`) VALUES (3, 'SAT', '');
+INSERT INTO `langile_motak` (`ID_langile_mota`, `langile_mota`, `deskribapena`) VALUES (4, 'Sistemas de Información', '');
+
+
+INSERT INTO langileak (izena,abizena,erabiltzailea,passwordHash,passwordSalt,eposta,telefonoa,ID_mota) 
+VALUES ("Amaia", "Samaniego", "asamaniego",0x31000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, 0x31000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, "asamaniego@gmail.com", "687154211", 1), 
+("Enara", "Salinas", "esalinas",0x31000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, 0x31000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, "esalinas@gmail.com", "247154211", 2)
