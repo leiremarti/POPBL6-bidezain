@@ -28,14 +28,14 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author user
  */
 @Entity
-@Table(name = "aktibo_motak")
+@Table(name = "aktibo_mota")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "AktiboMotak.findAll", query = "SELECT a FROM AktiboMotak a"),
-    @NamedQuery(name = "AktiboMotak.findByIDaktibomota", query = "SELECT a FROM AktiboMotak a WHERE a.iDaktibomota = :iDaktibomota"),
-    @NamedQuery(name = "AktiboMotak.findByAktiboMota", query = "SELECT a FROM AktiboMotak a WHERE a.aktiboMota = :aktiboMota"),
-    @NamedQuery(name = "AktiboMotak.findByDeskribapena", query = "SELECT a FROM AktiboMotak a WHERE a.deskribapena = :deskribapena")})
-public class AktiboMotak implements Serializable {
+    @NamedQuery(name = "AktiboMota.findAll", query = "SELECT a FROM AktiboMota a"),
+    @NamedQuery(name = "AktiboMota.findByIDaktibomota", query = "SELECT a FROM AktiboMota a WHERE a.iDaktibomota = :iDaktibomota"),
+    @NamedQuery(name = "AktiboMota.findByAktiboMota", query = "SELECT a FROM AktiboMota a WHERE a.aktiboMota = :aktiboMota"),
+    @NamedQuery(name = "AktiboMota.findByDeskribapena", query = "SELECT a FROM AktiboMota a WHERE a.deskribapena = :deskribapena")})
+public class AktiboMota implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,16 +53,16 @@ public class AktiboMotak implements Serializable {
     @Column(name = "deskribapena")
     private String deskribapena;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "iDmota")
-    private Collection<Aktiboak> aktiboakCollection;
+    private Collection<Aktiboa> aktiboaCollection;
 
-    public AktiboMotak() {
+    public AktiboMota() {
     }
 
-    public AktiboMotak(Short iDaktibomota) {
+    public AktiboMota(Short iDaktibomota) {
         this.iDaktibomota = iDaktibomota;
     }
 
-    public AktiboMotak(Short iDaktibomota, String aktiboMota, String deskribapena) {
+    public AktiboMota(Short iDaktibomota, String aktiboMota, String deskribapena) {
         this.iDaktibomota = iDaktibomota;
         this.aktiboMota = aktiboMota;
         this.deskribapena = deskribapena;
@@ -93,12 +93,12 @@ public class AktiboMotak implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Aktiboak> getAktiboakCollection() {
-        return aktiboakCollection;
+    public Collection<Aktiboa> getAktiboaCollection() {
+        return aktiboaCollection;
     }
 
-    public void setAktiboakCollection(Collection<Aktiboak> aktiboakCollection) {
-        this.aktiboakCollection = aktiboakCollection;
+    public void setAktiboaCollection(Collection<Aktiboa> aktiboaCollection) {
+        this.aktiboaCollection = aktiboaCollection;
     }
 
     @Override
@@ -111,10 +111,10 @@ public class AktiboMotak implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof AktiboMotak)) {
+        if (!(object instanceof AktiboMota)) {
             return false;
         }
-        AktiboMotak other = (AktiboMotak) object;
+        AktiboMota other = (AktiboMota) object;
         if ((this.iDaktibomota == null && other.iDaktibomota != null) || (this.iDaktibomota != null && !this.iDaktibomota.equals(other.iDaktibomota))) {
             return false;
         }
@@ -123,7 +123,7 @@ public class AktiboMotak implements Serializable {
 
     @Override
     public String toString() {
-        return "database.utils.AktiboMotak[ iDaktibomota=" + iDaktibomota + " ]";
+        return "database.utils.AktiboMota[ iDaktibomota=" + iDaktibomota + " ]";
     }
     
 }

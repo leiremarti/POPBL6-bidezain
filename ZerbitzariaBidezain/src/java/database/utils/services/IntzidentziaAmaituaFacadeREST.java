@@ -5,7 +5,7 @@
  */
 package database.utils.services;
 
-import database.utils.LangileMotak;
+import database.utils.IntzidentziaAmaitua;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -24,53 +24,53 @@ import javax.ws.rs.Produces;
  * @author user
  */
 @Stateless
-@Path("database.utils.langilemotak")
-public class LangileMotakFacadeREST extends AbstractFacade<LangileMotak> {
+@Path("database.utils.intzidentziaamaitua")
+public class IntzidentziaAmaituaFacadeREST extends AbstractFacade<IntzidentziaAmaitua> {
     @PersistenceContext(unitName = "ZerbitzariaBidezainPU")
     private EntityManager em;
 
-    public LangileMotakFacadeREST() {
-        super(LangileMotak.class);
+    public IntzidentziaAmaituaFacadeREST() {
+        super(IntzidentziaAmaitua.class);
     }
 
     @POST
     @Override
     @Consumes({"application/xml", "application/json"})
-    public void create(LangileMotak entity) {
+    public void create(IntzidentziaAmaitua entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
     @Consumes({"application/xml", "application/json"})
-    public void edit(@PathParam("id") String id, LangileMotak entity) {
+    public void edit(@PathParam("id") Short id, IntzidentziaAmaitua entity) {
         super.edit(entity);
     }
 
     @DELETE
     @Path("{id}")
-    public void remove(@PathParam("id") String id) {
+    public void remove(@PathParam("id") Short id) {
         super.remove(super.find(id));
     }
 
     @GET
     @Path("{id}")
     @Produces({"application/xml", "application/json"})
-    public LangileMotak find(@PathParam("id") String id) {
+    public IntzidentziaAmaitua find(@PathParam("id") Short id) {
         return super.find(id);
     }
 
     @GET
     @Override
     @Produces({"application/xml", "application/json"})
-    public List<LangileMotak> findAll() {
+    public List<IntzidentziaAmaitua> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces({"application/xml", "application/json"})
-    public List<LangileMotak> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+    public List<IntzidentziaAmaitua> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 

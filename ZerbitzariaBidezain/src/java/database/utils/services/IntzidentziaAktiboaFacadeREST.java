@@ -5,7 +5,7 @@
  */
 package database.utils.services;
 
-import database.utils.Erabiltzailea;
+import database.utils.IntzidentziaAktiboa;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -19,33 +19,32 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.xml.bind.JAXBException;
 
 /**
  *
  * @author user
  */
 @Stateless
-@Path("database.utils.erabiltzailea")
-public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
+@Path("database.utils.intzidentziaaktiboa")
+public class IntzidentziaAktiboaFacadeREST extends AbstractFacade<IntzidentziaAktiboa> {
     @PersistenceContext(unitName = "ZerbitzariaBidezainPU")
     private EntityManager em;
 
-    public ErabiltzaileaFacadeREST() {
-        super(Erabiltzailea.class);
+    public IntzidentziaAktiboaFacadeREST() {
+        super(IntzidentziaAktiboa.class);
     }
 
     @POST
     @Override
     @Consumes({"application/xml", "application/json"})
-    public void create(Erabiltzailea entity) {
+    public void create(IntzidentziaAktiboa entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
     @Consumes({"application/xml", "application/json"})
-    public void edit(@PathParam("id") Short id, Erabiltzailea entity) {
+    public void edit(@PathParam("id") Short id, IntzidentziaAktiboa entity) {
         super.edit(entity);
     }
 
@@ -58,21 +57,21 @@ public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
     @GET
     @Path("{id}")
     @Produces({"application/xml", "application/json"})
-    public Erabiltzailea find(@PathParam("id") Short id) {
+    public IntzidentziaAktiboa find(@PathParam("id") Short id) {
         return super.find(id);
     }
 
     @GET
     @Override
-    @Produces({ "application/json", "application/xml"})
-    public List<Erabiltzailea> findAll() {
+    @Produces({"application/json"})
+    public List<IntzidentziaAktiboa> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces({"application/xml", "application/json"})
-    public List<Erabiltzailea> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+    public List<IntzidentziaAktiboa> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 
@@ -88,17 +87,16 @@ public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
         return em;
     }
     
-    
     @POST
-    @Path("baja")
+    @Path("kopuruak")
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes({"application/x-www-form-urlencode"})
-    public String bajanEman(String ids) throws JAXBException {
+    public String bajanEman() throws JAXBException {
         boolean todoOk=false;
         String idArray[] = new String[1];
         idArray[0] = ids;
         try{
-            System.err.println("EDITATUUU: "+ ids);
+            System.err.println("KOPURUAK: "+ ids);
             idArray = ids.split(";");
         }catch(ArrayIndexOutOfBoundsException e){
             System.err.println("Bakarrik balore bat dau");
@@ -118,8 +116,17 @@ public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
             
         }
         todoOk=true;
-                
-        return String.valueOf(todoOk);
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(1, 18);
+        map.put(2, 18);
+        map.put(3, 18);
+        map.put(4, 18);
+        map.put(5, 18);
+        map.put(6, 18);
+        map.put(7, 18);
+        map.put(8, 18);
+        map.put(9, 18);
+        return map.toString();
         
     }
     

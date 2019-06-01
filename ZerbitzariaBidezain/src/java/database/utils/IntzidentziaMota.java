@@ -28,13 +28,13 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author user
  */
 @Entity
-@Table(name = "intzidentzia_motak")
+@Table(name = "intzidentzia_mota")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "IntzidentziaMotak.findAll", query = "SELECT i FROM IntzidentziaMotak i"),
-    @NamedQuery(name = "IntzidentziaMotak.findByIDintzidentziamota", query = "SELECT i FROM IntzidentziaMotak i WHERE i.iDintzidentziamota = :iDintzidentziamota"),
-    @NamedQuery(name = "IntzidentziaMotak.findByIntzidentziaMota", query = "SELECT i FROM IntzidentziaMotak i WHERE i.intzidentziaMota = :intzidentziaMota")})
-public class IntzidentziaMotak implements Serializable {
+    @NamedQuery(name = "IntzidentziaMota.findAll", query = "SELECT i FROM IntzidentziaMota i"),
+    @NamedQuery(name = "IntzidentziaMota.findByIDintzidentziamota", query = "SELECT i FROM IntzidentziaMota i WHERE i.iDintzidentziamota = :iDintzidentziamota"),
+    @NamedQuery(name = "IntzidentziaMota.findByIntzidentziaMota", query = "SELECT i FROM IntzidentziaMota i WHERE i.intzidentziaMota = :intzidentziaMota")})
+public class IntzidentziaMota implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,18 +47,18 @@ public class IntzidentziaMotak implements Serializable {
     @Column(name = "intzidentzia_mota")
     private String intzidentziaMota;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "iDmota")
-    private Collection<IntzidentziaAktiboak> intzidentziaAktiboakCollection;
+    private Collection<IntzidentziaAmaitua> intzidentziaAmaituaCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "iDmota")
-    private Collection<IntzidentziaAmaituak> intzidentziaAmaituakCollection;
+    private Collection<IntzidentziaAktiboa> intzidentziaAktiboaCollection;
 
-    public IntzidentziaMotak() {
+    public IntzidentziaMota() {
     }
 
-    public IntzidentziaMotak(Short iDintzidentziamota) {
+    public IntzidentziaMota(Short iDintzidentziamota) {
         this.iDintzidentziamota = iDintzidentziamota;
     }
 
-    public IntzidentziaMotak(Short iDintzidentziamota, String intzidentziaMota) {
+    public IntzidentziaMota(Short iDintzidentziamota, String intzidentziaMota) {
         this.iDintzidentziamota = iDintzidentziamota;
         this.intzidentziaMota = intzidentziaMota;
     }
@@ -80,21 +80,21 @@ public class IntzidentziaMotak implements Serializable {
     }
 
     @XmlTransient
-    public Collection<IntzidentziaAktiboak> getIntzidentziaAktiboakCollection() {
-        return intzidentziaAktiboakCollection;
+    public Collection<IntzidentziaAmaitua> getIntzidentziaAmaituaCollection() {
+        return intzidentziaAmaituaCollection;
     }
 
-    public void setIntzidentziaAktiboakCollection(Collection<IntzidentziaAktiboak> intzidentziaAktiboakCollection) {
-        this.intzidentziaAktiboakCollection = intzidentziaAktiboakCollection;
+    public void setIntzidentziaAmaituaCollection(Collection<IntzidentziaAmaitua> intzidentziaAmaituaCollection) {
+        this.intzidentziaAmaituaCollection = intzidentziaAmaituaCollection;
     }
 
     @XmlTransient
-    public Collection<IntzidentziaAmaituak> getIntzidentziaAmaituakCollection() {
-        return intzidentziaAmaituakCollection;
+    public Collection<IntzidentziaAktiboa> getIntzidentziaAktiboaCollection() {
+        return intzidentziaAktiboaCollection;
     }
 
-    public void setIntzidentziaAmaituakCollection(Collection<IntzidentziaAmaituak> intzidentziaAmaituakCollection) {
-        this.intzidentziaAmaituakCollection = intzidentziaAmaituakCollection;
+    public void setIntzidentziaAktiboaCollection(Collection<IntzidentziaAktiboa> intzidentziaAktiboaCollection) {
+        this.intzidentziaAktiboaCollection = intzidentziaAktiboaCollection;
     }
 
     @Override
@@ -107,10 +107,10 @@ public class IntzidentziaMotak implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof IntzidentziaMotak)) {
+        if (!(object instanceof IntzidentziaMota)) {
             return false;
         }
-        IntzidentziaMotak other = (IntzidentziaMotak) object;
+        IntzidentziaMota other = (IntzidentziaMota) object;
         if ((this.iDintzidentziamota == null && other.iDintzidentziamota != null) || (this.iDintzidentziamota != null && !this.iDintzidentziamota.equals(other.iDintzidentziamota))) {
             return false;
         }
@@ -119,7 +119,7 @@ public class IntzidentziaMotak implements Serializable {
 
     @Override
     public String toString() {
-        return "database.utils.IntzidentziaMotak[ iDintzidentziamota=" + iDintzidentziamota + " ]";
+        return "database.utils.IntzidentziaMota[ iDintzidentziamota=" + iDintzidentziamota + " ]";
     }
     
 }

@@ -17,15 +17,14 @@ import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import binding.Bind;
 import binding.Erabiltzaileak;
@@ -116,33 +115,49 @@ public class Login extends HttpServlet {
 			System.out.println(username);
 			System.out.println(password);
 			
-			URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/login/login");
-			HttpURLConnection con = (HttpURLConnection) u.openConnection();
-			con.setRequestMethod("POST");
-			con.setRequestProperty("Content-Type", "application/x-www-form-urlencode");
-			String params = username+"_"+password;
-			con.setRequestProperty("Content-Length", Integer.toString(params.getBytes().length));
-			con.setUseCaches(false);
-			con.setDoInput(true);
-			con.setDoOutput(true);
+			String message = null;
 			
-			DataOutputStream dos = new DataOutputStream(con.getOutputStream());
-			dos.writeBytes(params);
-			dos.flush();
-			dos.close();
-			
-			InputStream is = con.getInputStream();
-			BufferedReader br = new BufferedReader(new InputStreamReader(is));
-			String line;
-			StringBuffer loginResponse = new StringBuffer();
-			while((line = br.readLine())!=null) {
-				loginResponse.append(line);
-				loginResponse.append('\r');
+			try {
+				JSONObject json = new JSONObject();
+				json.put("username", username);
+				json.put("password", password);
+
+				message = json.toString();
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			System.out.println(message);
+			if(message!=null) {
+				
+				URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/login/login/langilea");
+				HttpURLConnection con = (HttpURLConnection) u.openConnection();
+				con.setRequestMethod("POST");
+				con.setRequestProperty("Content-Type", "application/json");
+				con.setRequestProperty("Content-Length", Integer.toString(message.getBytes().length));
+				con.setUseCaches(false);
+				con.setDoInput(true);
+				con.setDoOutput(true);
+				
+				DataOutputStream dos = new DataOutputStream(con.getOutputStream());
+				dos.writeBytes(message);
+				dos.flush();
+				dos.close();
+				
+				InputStream is = con.getInputStream();
+				BufferedReader br = new BufferedReader(new InputStreamReader(is));
+				String line;
+				StringBuffer loginResponse = new StringBuffer();
+				while((line = br.readLine())!=null) {
+					loginResponse.append(line);
+					loginResponse.append('\r');
+				}
+				
+				br.close();
+				
+				loginOK = Boolean.parseBoolean(loginResponse.toString().replaceAll("\\r|\\n", ""));
+				
 			}
 			
-			br.close();
-			
-			loginOK = Boolean.parseBoolean(loginResponse.toString().replaceAll("\\r|\\n", ""));
 			if(loginOK) {
 				session.setAttribute("isLoged", true);
 				session.setAttribute("user", username);

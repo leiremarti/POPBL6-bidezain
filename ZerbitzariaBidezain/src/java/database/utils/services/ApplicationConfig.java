@@ -29,17 +29,18 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(database.utils.services.AktiboMotakFacadeREST.class);
-        resources.add(database.utils.services.AktiboakFacadeREST.class);
-        resources.add(database.utils.services.AurreikuspenakFacadeREST.class);
+        resources.add(database.utils.services.AktiboMotaFacadeREST.class);
+        resources.add(database.utils.services.AktiboaFacadeREST.class);
+        resources.add(database.utils.services.AurreikuspenaFacadeREST.class);
         resources.add(database.utils.services.ErabiltzaileaFacadeREST.class);
         resources.add(database.utils.services.ErabiltzaileakResource.class);
-        resources.add(database.utils.services.IntzidentziaAktiboakFacadeREST.class);
-        resources.add(database.utils.services.IntzidentziaAmaituakFacadeREST.class);
-        resources.add(database.utils.services.IntzidentziaMotakFacadeREST.class);
-        resources.add(database.utils.services.KontaktuakFacadeREST.class);
-        resources.add(database.utils.services.LangileMotakFacadeREST.class);
-        resources.add(database.utils.services.LangileakFacadeREST.class);
+        resources.add(database.utils.services.IntzidentziaAktiboaFacadeREST.class);
+        resources.add(database.utils.services.IntzidentziaAmaituaFacadeREST.class);
+        resources.add(database.utils.services.IntzidentziaMotaFacadeREST.class);
+        resources.add(database.utils.services.InzidentziakResource.class);
+        resources.add(database.utils.services.KontaktuaFacadeREST.class);
+        resources.add(database.utils.services.LangileMotaFacadeREST.class);
+        resources.add(database.utils.services.LangileaFacadeREST.class);
         resources.add(database.utils.services.LoginResource.class);
     }
     

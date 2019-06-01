@@ -629,52 +629,100 @@
 
 	<!-- Map Ajax -->
 	<script>
-		var mymap = L.map('mapid').setView([ 43.0612711, -2.5042125 ], 9);
+		$(window).on('load',	function() {
+			
+			initMap();
+			
+			var req1 = new XMLHttpRequest();
+			req1.open('GET', 'http://localhost:8080/ZerbitzariaBidezain/webresources/inzidentziak/inzidentziaKopuruak', true);
+			req1.onreadystatechange = function(aEvt) {
+				if (req1.readyState == 4) {
+					if (req1.status == 200) {
+						console.log(req1.responseText);	
+						
+					}
+					else console.log("Error loading page\n");
+				}
+			};
+			req1.send(null);
 
-		L
-				.tileLayer(
-						'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
-						{
-							maxZoom : 18,
-							attribution : 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, '
+			
+			
+			
+			
+			
+
+		});
+
+
+		function initMap(){
+			var mymap = L.map('mapid').setView([ 43.0612711, -2.5042125 ], 9);
+
+			L.tileLayer(
+				'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
+				{
+					maxZoom : 18,
+					attribution : 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, '
 									+ '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, '
 									+ 'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-							id : 'mapbox.streets'
-						}).addTo(mymap);
+					id : 'mapbox.streets'
+				}).addTo(mymap);
+			
+			mymap.on('click', onMapClick);
+			
+			
+			var customPopup = "<b>Hello world!</b><br />I am a popup.";
+			var customOptions = {
+				'maxWidth' : '500',
+				'className' : 'custom'
+			}
 
-		var customPopup = "<b>Hello world!</b><br />I am a popup.";
-		var customOptions = {
-			'maxWidth' : '500',
-			'className' : 'custom'
+			var icon = L.icon({
+				iconUrl : 'img/popup.png',
+				iconSize : [ 38, 40 ], // size of the icon
+				popupAnchor : [ 0, -15 ]
+			});
+			
+			var ic;
+
+			var req = new XMLHttpRequest();
+			req.open('GET', 'http://localhost:8080/ZerbitzariaBidezain/webresources/inzidentziak/inzidentziakMarkers', true);
+			req.onreadystatechange = function(aEvt) {
+				if (req.readyState == 4) {
+					if (req.status == 200) {
+						console.log(req.responseText);	
+						var dataSet = req.responseText;		
+						var obj = jQuery.parseJSON( dataSet );
+						$.each(obj, function(key, value) {
+							var lat = value['latitudea'];
+							var lon = value['longitudea'];
+							var herria = value['herria'];
+							var errepidea = value['errepidea'];
+							var kausa = value['kausa'];
+							var mota = value['IDintzidentzia'];
+							
+							ic =  L.icon({
+								iconUrl : 'img/'+mota+'.png',
+								iconSize : [ 38, 40 ], 
+								popupAnchor : [ 0, -15 ]
+							});							
+							
+							L.marker([ lat, lon ], {icon: ic}).addTo(mymap).bindPopup(
+									"<b>"+errepidea+" "+herria+"</b><br />Kausa:"+kausa, customOptions).openPopup();
+						});
+					}
+					else console.log("Error loading page\n");
+				}
+			};
+			req.send(null);
+			
 		}
-
-		L.marker([ 43.0612711, -2.5042125 ]).addTo(mymap).bindPopup(
-				customPopup, customOptions).openPopup();
-
-		var customPopup2 = "<b>Hello world!</b><br />I am another popup.";
-		var customOptions2 = {
-			'maxWidth' : '500',
-			'className' : 'custom'
-		}
-
-		L.marker([ 43.1118121, -2.4197103 ]).addTo(mymap).bindPopup(
-				customPopup2, customOptions2).openPopup();
-
-		L.circle([ 43.0612711, -2.5042125 ], 500, {
-			color : 'red',
-			fillColor : '#f03',
-			fillOpacity : 0.5
-		}).addTo(mymap).bindPopup("I am a circle.");
-
-		var popup = L.popup();
-
+		
 		function onMapClick(e) {
 			popup.setLatLng(e.latlng).setContent(
 					"You clicked the map at " + e.latlng.toString()).openOn(
 					mymap);
 		}
-
-		mymap.on('click', onMapClick);
 	</script>
 </body>
 

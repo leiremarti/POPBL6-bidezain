@@ -5,7 +5,7 @@
  */
 package database.utils.services;
 
-import database.utils.AktiboMotak;
+import database.utils.LangileMota;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -24,53 +24,53 @@ import javax.ws.rs.Produces;
  * @author user
  */
 @Stateless
-@Path("database.utils.aktibomotak")
-public class AktiboMotakFacadeREST extends AbstractFacade<AktiboMotak> {
+@Path("database.utils.langilemota")
+public class LangileMotaFacadeREST extends AbstractFacade<LangileMota> {
     @PersistenceContext(unitName = "ZerbitzariaBidezainPU")
     private EntityManager em;
 
-    public AktiboMotakFacadeREST() {
-        super(AktiboMotak.class);
+    public LangileMotaFacadeREST() {
+        super(LangileMota.class);
     }
 
     @POST
     @Override
     @Consumes({"application/xml", "application/json"})
-    public void create(AktiboMotak entity) {
+    public void create(LangileMota entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
     @Consumes({"application/xml", "application/json"})
-    public void edit(@PathParam("id") String id, AktiboMotak entity) {
+    public void edit(@PathParam("id") Short id, LangileMota entity) {
         super.edit(entity);
     }
 
     @DELETE
     @Path("{id}")
-    public void remove(@PathParam("id") String id) {
+    public void remove(@PathParam("id") Short id) {
         super.remove(super.find(id));
     }
 
     @GET
     @Path("{id}")
     @Produces({"application/xml", "application/json"})
-    public AktiboMotak find(@PathParam("id") String id) {
+    public LangileMota find(@PathParam("id") Short id) {
         return super.find(id);
     }
 
     @GET
     @Override
     @Produces({"application/xml", "application/json"})
-    public List<AktiboMotak> findAll() {
+    public List<LangileMota> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces({"application/xml", "application/json"})
-    public List<AktiboMotak> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+    public List<LangileMota> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 

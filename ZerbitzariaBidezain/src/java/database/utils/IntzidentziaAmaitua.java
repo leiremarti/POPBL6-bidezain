@@ -27,21 +27,21 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author user
  */
 @Entity
-@Table(name = "intzidentzia_aktiboak")
+@Table(name = "intzidentzia_amaitua")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "IntzidentziaAktiboak.findAll", query = "SELECT i FROM IntzidentziaAktiboak i"),
-    @NamedQuery(name = "IntzidentziaAktiboak.findByIDintzidentzia", query = "SELECT i FROM IntzidentziaAktiboak i WHERE i.iDintzidentzia = :iDintzidentzia"),
-    @NamedQuery(name = "IntzidentziaAktiboak.findByProbintzia", query = "SELECT i FROM IntzidentziaAktiboak i WHERE i.probintzia = :probintzia"),
-    @NamedQuery(name = "IntzidentziaAktiboak.findByKausa", query = "SELECT i FROM IntzidentziaAktiboak i WHERE i.kausa = :kausa"),
-    @NamedQuery(name = "IntzidentziaAktiboak.findByHerria", query = "SELECT i FROM IntzidentziaAktiboak i WHERE i.herria = :herria"),
-    @NamedQuery(name = "IntzidentziaAktiboak.findByIntzidentziaData", query = "SELECT i FROM IntzidentziaAktiboak i WHERE i.intzidentziaData = :intzidentziaData"),
-    @NamedQuery(name = "IntzidentziaAktiboak.findByMaila", query = "SELECT i FROM IntzidentziaAktiboak i WHERE i.maila = :maila"),
-    @NamedQuery(name = "IntzidentziaAktiboak.findByErrepidea", query = "SELECT i FROM IntzidentziaAktiboak i WHERE i.errepidea = :errepidea"),
-    @NamedQuery(name = "IntzidentziaAktiboak.findByZentzua", query = "SELECT i FROM IntzidentziaAktiboak i WHERE i.zentzua = :zentzua"),
-    @NamedQuery(name = "IntzidentziaAktiboak.findByLatitudea", query = "SELECT i FROM IntzidentziaAktiboak i WHERE i.latitudea = :latitudea"),
-    @NamedQuery(name = "IntzidentziaAktiboak.findByLongitudea", query = "SELECT i FROM IntzidentziaAktiboak i WHERE i.longitudea = :longitudea")})
-public class IntzidentziaAktiboak implements Serializable {
+    @NamedQuery(name = "IntzidentziaAmaitua.findAll", query = "SELECT i FROM IntzidentziaAmaitua i"),
+    @NamedQuery(name = "IntzidentziaAmaitua.findByIDintzidentzia", query = "SELECT i FROM IntzidentziaAmaitua i WHERE i.iDintzidentzia = :iDintzidentzia"),
+    @NamedQuery(name = "IntzidentziaAmaitua.findByProbintzia", query = "SELECT i FROM IntzidentziaAmaitua i WHERE i.probintzia = :probintzia"),
+    @NamedQuery(name = "IntzidentziaAmaitua.findByKausa", query = "SELECT i FROM IntzidentziaAmaitua i WHERE i.kausa = :kausa"),
+    @NamedQuery(name = "IntzidentziaAmaitua.findByHerria", query = "SELECT i FROM IntzidentziaAmaitua i WHERE i.herria = :herria"),
+    @NamedQuery(name = "IntzidentziaAmaitua.findByIntzidentziaData", query = "SELECT i FROM IntzidentziaAmaitua i WHERE i.intzidentziaData = :intzidentziaData"),
+    @NamedQuery(name = "IntzidentziaAmaitua.findByMaila", query = "SELECT i FROM IntzidentziaAmaitua i WHERE i.maila = :maila"),
+    @NamedQuery(name = "IntzidentziaAmaitua.findByErrepidea", query = "SELECT i FROM IntzidentziaAmaitua i WHERE i.errepidea = :errepidea"),
+    @NamedQuery(name = "IntzidentziaAmaitua.findByZentzua", query = "SELECT i FROM IntzidentziaAmaitua i WHERE i.zentzua = :zentzua"),
+    @NamedQuery(name = "IntzidentziaAmaitua.findByLatitudea", query = "SELECT i FROM IntzidentziaAmaitua i WHERE i.latitudea = :latitudea"),
+    @NamedQuery(name = "IntzidentziaAmaitua.findByLongitudea", query = "SELECT i FROM IntzidentziaAmaitua i WHERE i.longitudea = :longitudea")})
+public class IntzidentziaAmaitua implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -94,16 +94,16 @@ public class IntzidentziaAktiboak implements Serializable {
     private BigDecimal longitudea;
     @JoinColumn(name = "ID_mota", referencedColumnName = "ID_intzidentzia_mota")
     @ManyToOne(optional = false)
-    private IntzidentziaMotak iDmota;
+    private IntzidentziaMota iDmota;
 
-    public IntzidentziaAktiboak() {
+    public IntzidentziaAmaitua() {
     }
 
-    public IntzidentziaAktiboak(Short iDintzidentzia) {
+    public IntzidentziaAmaitua(Short iDintzidentzia) {
         this.iDintzidentzia = iDintzidentzia;
     }
 
-    public IntzidentziaAktiboak(Short iDintzidentzia, String probintzia, String kausa, String herria, String intzidentziaData, String maila, String errepidea, String zentzua, BigDecimal latitudea, BigDecimal longitudea) {
+    public IntzidentziaAmaitua(Short iDintzidentzia, String probintzia, String kausa, String herria, String intzidentziaData, String maila, String errepidea, String zentzua, BigDecimal latitudea, BigDecimal longitudea) {
         this.iDintzidentzia = iDintzidentzia;
         this.probintzia = probintzia;
         this.kausa = kausa;
@@ -196,11 +196,11 @@ public class IntzidentziaAktiboak implements Serializable {
         this.longitudea = longitudea;
     }
 
-    public IntzidentziaMotak getIDmota() {
+    public IntzidentziaMota getIDmota() {
         return iDmota;
     }
 
-    public void setIDmota(IntzidentziaMotak iDmota) {
+    public void setIDmota(IntzidentziaMota iDmota) {
         this.iDmota = iDmota;
     }
 
@@ -214,10 +214,10 @@ public class IntzidentziaAktiboak implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof IntzidentziaAktiboak)) {
+        if (!(object instanceof IntzidentziaAmaitua)) {
             return false;
         }
-        IntzidentziaAktiboak other = (IntzidentziaAktiboak) object;
+        IntzidentziaAmaitua other = (IntzidentziaAmaitua) object;
         if ((this.iDintzidentzia == null && other.iDintzidentzia != null) || (this.iDintzidentzia != null && !this.iDintzidentzia.equals(other.iDintzidentzia))) {
             return false;
         }
@@ -226,7 +226,7 @@ public class IntzidentziaAktiboak implements Serializable {
 
     @Override
     public String toString() {
-        return "database.utils.IntzidentziaAktiboak[ iDintzidentzia=" + iDintzidentzia + " ]";
+        return "database.utils.IntzidentziaAmaitua[ iDintzidentzia=" + iDintzidentzia + " ]";
     }
     
 }

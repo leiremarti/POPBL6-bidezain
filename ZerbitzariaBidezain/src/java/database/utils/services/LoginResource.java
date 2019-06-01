@@ -8,6 +8,7 @@ package database.utils.services;
 import database.utils.Erabiltzailea;
 import database.utils.Erabiltzaileak;
 import database.utils.Langilea;
+import database.utils.Langileak;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -15,6 +16,7 @@ import java.io.StringReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -29,6 +31,8 @@ import javax.ws.rs.core.MediaType;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * REST Web Service
@@ -61,86 +65,81 @@ public class LoginResource {
     @POST
     @Path("login/erabiltzailea")
     @Produces(MediaType.TEXT_PLAIN)
-    @Consumes({"application/x-www-form-urlencode"})
-    public String loginErabiltzailea(String data) throws JAXBException {
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String loginErabiltzailea(String data) throws JAXBException, JSONException {
         boolean loginOK = false;
         
-        String username = null;
-        String password = null;
-        try{
-            String[] datasplit = data.split("_");
-            username = datasplit[0];
-            password = datasplit[1];
-            
-            System.out.println("********USERNAME: "+username+"***********PASSWORD: "+password);
-        }catch(ArrayIndexOutOfBoundsException e){
-            e.printStackTrace();
-        }
+        JSONObject myjson = new JSONObject(data);          
         
-        String s = "";
-        try {
-            
-            URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/database.utils.erabiltzailea");
-            URLConnection con = u.openConnection();
-	    Reader reader = new InputStreamReader(con.getInputStream());
-	    while (true) {
-	        int ch = reader.read();
-	        if (ch==-1) {
-	            break;
-	        }
-	        s = s + (char)ch;
-	    }
-            System.out.println(s);      
-            
-            Erabiltzaileak erabiltzaileak = null;
-            StringReader string = new StringReader(s);
-            JAXBContext jc = JAXBContext.newInstance(Erabiltzaileak.class);
+        String username = myjson.get("username").toString();
+        String password = myjson.get("password").toString();
+        //String passwordHash = myjson.get("passwordHash").toString();
+        //String passwordSalt = myjson.get("passwordSalt").toString();
+        System.out.println("********USERNAME: "+username+"***********PASSWORD: "+password);
+       
+        if(username!=null && password!=null){
+             String s = "";
+            try {
 
-            Unmarshaller ju = jc.createUnmarshaller();
-            erabiltzaileak = (Erabiltzaileak) ju.unmarshal(string);
-            
-            List<Erabiltzailea> erabiltzaile_list = erabiltzaileak.getErabiltzailea();
-            
-            for(Erabiltzailea e : erabiltzaile_list){
-                if(username!=null && password!=null && e.getErabiltzailea().equals(username)/* && e.getPasswordHash().equals(password)*/){
-                    loginOK = true;
+                URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/database.utils.erabiltzailea");
+                URLConnection con = u.openConnection();
+                Reader reader = new InputStreamReader(con.getInputStream());
+                while (true) {
+                    int ch = reader.read();
+                    if (ch==-1) {
+                        break;
+                    }
+                    s = s + (char)ch;
                 }
-                System.out.print(e.getAbizena());
-            }
+
+                Erabiltzaileak erabiltzaileak = null;
+                StringReader string = new StringReader(s);
+                JAXBContext jc = JAXBContext.newInstance(Erabiltzaileak.class);
+
+                Unmarshaller ju = jc.createUnmarshaller();
+                erabiltzaileak = (Erabiltzaileak) ju.unmarshal(string);
+
+                List<Erabiltzailea> erabiltzaile_list = erabiltzaileak.getErabiltzailea();
+
+                for(Erabiltzailea e : erabiltzaile_list){
+                    if(username!=null && password!=null && e.getErabiltzailea().equals(username)/* && e.getPasswordHash().equals(password)*/){
+                        loginOK = true;
+                    }
+                }
+
+            } catch (MalformedURLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }  
             
-	} catch (MalformedURLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-	} catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-	}  
+        }
+       
         return String.valueOf(loginOK);
     }
     
     @POST
     @Path("login/langilea")
     @Produces(MediaType.TEXT_PLAIN)
-    @Consumes({"application/x-www-form-urlencode"})
-    public String loginLangilea(String data) throws JAXBException {
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String loginLangilea(String data) throws JAXBException, JSONException {
         boolean loginOK = false;
         
-        String username = null;
-        String password = null;
-        try{
-            String[] datasplit = data.split("_");
-            username = datasplit[0];
-            password = datasplit[1];
-            
-            System.out.println("********USERNAME: "+username+"***********PASSWORD: "+password);
-        }catch(ArrayIndexOutOfBoundsException e){
-            e.printStackTrace();
-        }
+        JSONObject myjson = new JSONObject(data);          
         
-        String s = "";
-        try {
+        String username = myjson.get("username").toString();
+        String password = myjson.get("password").toString();
+        //String passwordHash = myjson.get("passwordHash").toString();
+        //String passwordSalt = myjson.get("passwordSalt").toString();
+        System.out.println("********USERNAME: "+username+"***********PASSWORD: "+password);
+       
+        if(username!=null && password!=null){
+            String s = "";
+            try {
             
-            URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/database.utils.langileak");
+            URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/database.utils.langilea");
             URLConnection con = u.openConnection();
 	    Reader reader = new InputStreamReader(con.getInputStream());
 	    while (true) {
@@ -149,23 +148,21 @@ public class LoginResource {
 	            break;
 	        }
 	        s = s + (char)ch;
-	    }
-            System.out.println(s);      
+	    } 
             
-            Erabiltzaileak erabiltzaileak = null;
+            Langileak langileak = null;
             StringReader string = new StringReader(s);
-            JAXBContext jc = JAXBContext.newInstance(Langilea.class);
+            JAXBContext jc = JAXBContext.newInstance(Langileak.class);
 
             Unmarshaller ju = jc.createUnmarshaller();
-            erabiltzaileak = (Langilea) ju.unmarshal(string);
+            langileak = (Langileak) ju.unmarshal(string);
             
-            List<Langilea> erabiltzaile_list = erabiltzaileak.getErabiltzailea();
+            List<Langilea> langile_list = langileak.getLangilea();
             
-            for(Erabiltzailea e : erabiltzaile_list){
-                if(username!=null && password!=null && e.getErabiltzailea().equals(username)/* && e.getPasswordHash().equals(password)*/){
+            for(Langilea l : langile_list){
+                if(username!=null && password!=null && l.getErabiltzailea().equals(username)/* && e.getPasswordHash().equals(password)*/){
                     loginOK = true;
                 }
-                System.out.print(e.getAbizena());
             }
             
 	} catch (MalformedURLException e) {
@@ -175,6 +172,9 @@ public class LoginResource {
             // TODO Auto-generated catch block
             e.printStackTrace();
 	}  
+        }
+        
+        
         return String.valueOf(loginOK);
     }
     

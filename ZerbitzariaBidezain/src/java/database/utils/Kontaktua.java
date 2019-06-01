@@ -24,14 +24,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author user
  */
 @Entity
-@Table(name = "kontaktuak")
+@Table(name = "kontaktua")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Kontaktuak.findAll", query = "SELECT k FROM Kontaktuak k"),
-    @NamedQuery(name = "Kontaktuak.findByIDkontaktua", query = "SELECT k FROM Kontaktuak k WHERE k.iDkontaktua = :iDkontaktua"),
-    @NamedQuery(name = "Kontaktuak.findByKontaktua", query = "SELECT k FROM Kontaktuak k WHERE k.kontaktua = :kontaktua"),
-    @NamedQuery(name = "Kontaktuak.findByDeskribapena", query = "SELECT k FROM Kontaktuak k WHERE k.deskribapena = :deskribapena")})
-public class Kontaktuak implements Serializable {
+    @NamedQuery(name = "Kontaktua.findAll", query = "SELECT k FROM Kontaktua k"),
+    @NamedQuery(name = "Kontaktua.findByIDkontaktua", query = "SELECT k FROM Kontaktua k WHERE k.iDkontaktua = :iDkontaktua"),
+    @NamedQuery(name = "Kontaktua.findByKontaktua", query = "SELECT k FROM Kontaktua k WHERE k.kontaktua = :kontaktua"),
+    @NamedQuery(name = "Kontaktua.findByDeskribapena", query = "SELECT k FROM Kontaktua k WHERE k.deskribapena = :deskribapena")})
+public class Kontaktua implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,14 +49,14 @@ public class Kontaktuak implements Serializable {
     @Column(name = "deskribapena")
     private String deskribapena;
 
-    public Kontaktuak() {
+    public Kontaktua() {
     }
 
-    public Kontaktuak(Short iDkontaktua) {
+    public Kontaktua(Short iDkontaktua) {
         this.iDkontaktua = iDkontaktua;
     }
 
-    public Kontaktuak(Short iDkontaktua, String kontaktua, String deskribapena) {
+    public Kontaktua(Short iDkontaktua, String kontaktua, String deskribapena) {
         this.iDkontaktua = iDkontaktua;
         this.kontaktua = kontaktua;
         this.deskribapena = deskribapena;
@@ -96,10 +96,10 @@ public class Kontaktuak implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Kontaktuak)) {
+        if (!(object instanceof Kontaktua)) {
             return false;
         }
-        Kontaktuak other = (Kontaktuak) object;
+        Kontaktua other = (Kontaktua) object;
         if ((this.iDkontaktua == null && other.iDkontaktua != null) || (this.iDkontaktua != null && !this.iDkontaktua.equals(other.iDkontaktua))) {
             return false;
         }
@@ -108,7 +108,7 @@ public class Kontaktuak implements Serializable {
 
     @Override
     public String toString() {
-        return "database.utils.Kontaktuak[ iDkontaktua=" + iDkontaktua + " ]";
+        return "database.utils.Kontaktua[ iDkontaktua=" + iDkontaktua + " ]";
     }
     
 }

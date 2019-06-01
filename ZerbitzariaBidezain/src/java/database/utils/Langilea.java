@@ -6,7 +6,6 @@
 package database.utils;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -59,11 +58,11 @@ public class Langilea implements Serializable {
     @Size(min = 1, max = 30)
     @Column(name = "abizena")
     private String abizena;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 30)
     @Column(name = "erabiltzailea")
-    private BigDecimal erabiltzailea;
+    private String erabiltzailea;
     @Basic(optional = false)
     @NotNull
     @Lob
@@ -84,11 +83,11 @@ public class Langilea implements Serializable {
     private String telefonoa;
     @Column(name = "aktibo")
     private Boolean aktibo;
-    @ManyToMany(mappedBy = "langileakCollection")
-    private Collection<Aktiboak> aktiboakCollection;
+    @ManyToMany(mappedBy = "langileaCollection")
+    private Collection<Aktiboa> aktiboaCollection;
     @JoinColumn(name = "ID_mota", referencedColumnName = "ID_langile_mota")
     @ManyToOne(optional = false)
-    private LangileMotak iDmota;
+    private LangileMota iDmota;
 
     public Langilea() {
     }
@@ -97,7 +96,7 @@ public class Langilea implements Serializable {
         this.iDlangilea = iDlangilea;
     }
 
-    public Langilea(Short iDlangilea, String izena, String abizena, BigDecimal erabiltzailea, byte[] passwordHash, byte[] passwordSalt, String eposta) {
+    public Langilea(Short iDlangilea, String izena, String abizena, String erabiltzailea, byte[] passwordHash, byte[] passwordSalt, String eposta) {
         this.iDlangilea = iDlangilea;
         this.izena = izena;
         this.abizena = abizena;
@@ -131,11 +130,11 @@ public class Langilea implements Serializable {
         this.abizena = abizena;
     }
 
-    public BigDecimal getErabiltzailea() {
+    public String getErabiltzailea() {
         return erabiltzailea;
     }
 
-    public void setErabiltzailea(BigDecimal erabiltzailea) {
+    public void setErabiltzailea(String erabiltzailea) {
         this.erabiltzailea = erabiltzailea;
     }
 
@@ -180,19 +179,19 @@ public class Langilea implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Aktiboak> getAktiboakCollection() {
-        return aktiboakCollection;
+    public Collection<Aktiboa> getAktiboaCollection() {
+        return aktiboaCollection;
     }
 
-    public void setAktiboakCollection(Collection<Aktiboak> aktiboakCollection) {
-        this.aktiboakCollection = aktiboakCollection;
+    public void setAktiboaCollection(Collection<Aktiboa> aktiboaCollection) {
+        this.aktiboaCollection = aktiboaCollection;
     }
 
-    public LangileMotak getIDmota() {
+    public LangileMota getIDmota() {
         return iDmota;
     }
 
-    public void setIDmota(LangileMotak iDmota) {
+    public void setIDmota(LangileMota iDmota) {
         this.iDmota = iDmota;
     }
 

@@ -24,12 +24,12 @@ import javax.ws.rs.Produces;
  * @author user
  */
 @Stateless
-@Path("database.utils.langileak")
-public class LangileakFacadeREST extends AbstractFacade<Langilea> {
+@Path("database.utils.langilea")
+public class LangileaFacadeREST extends AbstractFacade<Langilea> {
     @PersistenceContext(unitName = "ZerbitzariaBidezainPU")
     private EntityManager em;
 
-    public LangileakFacadeREST() {
+    public LangileaFacadeREST() {
         super(Langilea.class);
     }
 

@@ -28,14 +28,14 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author user
  */
 @Entity
-@Table(name = "langile_motak")
+@Table(name = "langile_mota")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "LangileMotak.findAll", query = "SELECT l FROM LangileMotak l"),
-    @NamedQuery(name = "LangileMotak.findByIDlangilemota", query = "SELECT l FROM LangileMotak l WHERE l.iDlangilemota = :iDlangilemota"),
-    @NamedQuery(name = "LangileMotak.findByLangileMota", query = "SELECT l FROM LangileMotak l WHERE l.langileMota = :langileMota"),
-    @NamedQuery(name = "LangileMotak.findByDeskribapena", query = "SELECT l FROM LangileMotak l WHERE l.deskribapena = :deskribapena")})
-public class LangileMotak implements Serializable {
+    @NamedQuery(name = "LangileMota.findAll", query = "SELECT l FROM LangileMota l"),
+    @NamedQuery(name = "LangileMota.findByIDlangilemota", query = "SELECT l FROM LangileMota l WHERE l.iDlangilemota = :iDlangilemota"),
+    @NamedQuery(name = "LangileMota.findByLangileMota", query = "SELECT l FROM LangileMota l WHERE l.langileMota = :langileMota"),
+    @NamedQuery(name = "LangileMota.findByDeskribapena", query = "SELECT l FROM LangileMota l WHERE l.deskribapena = :deskribapena")})
+public class LangileMota implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,16 +53,16 @@ public class LangileMotak implements Serializable {
     @Column(name = "deskribapena")
     private String deskribapena;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "iDmota")
-    private Collection<Langilea> langileakCollection;
+    private Collection<Langilea> langileaCollection;
 
-    public LangileMotak() {
+    public LangileMota() {
     }
 
-    public LangileMotak(Short iDlangilemota) {
+    public LangileMota(Short iDlangilemota) {
         this.iDlangilemota = iDlangilemota;
     }
 
-    public LangileMotak(Short iDlangilemota, String langileMota, String deskribapena) {
+    public LangileMota(Short iDlangilemota, String langileMota, String deskribapena) {
         this.iDlangilemota = iDlangilemota;
         this.langileMota = langileMota;
         this.deskribapena = deskribapena;
@@ -93,12 +93,12 @@ public class LangileMotak implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Langilea> getLangileakCollection() {
-        return langileakCollection;
+    public Collection<Langilea> getLangileaCollection() {
+        return langileaCollection;
     }
 
-    public void setLangileakCollection(Collection<Langilea> langileakCollection) {
-        this.langileakCollection = langileakCollection;
+    public void setLangileaCollection(Collection<Langilea> langileaCollection) {
+        this.langileaCollection = langileaCollection;
     }
 
     @Override
@@ -111,10 +111,10 @@ public class LangileMotak implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof LangileMotak)) {
+        if (!(object instanceof LangileMota)) {
             return false;
         }
-        LangileMotak other = (LangileMotak) object;
+        LangileMota other = (LangileMota) object;
         if ((this.iDlangilemota == null && other.iDlangilemota != null) || (this.iDlangilemota != null && !this.iDlangilemota.equals(other.iDlangilemota))) {
             return false;
         }
@@ -123,7 +123,7 @@ public class LangileMotak implements Serializable {
 
     @Override
     public String toString() {
-        return "database.utils.LangileMotak[ iDlangilemota=" + iDlangilemota + " ]";
+        return "database.utils.LangileMota[ iDlangilemota=" + iDlangilemota + " ]";
     }
     
 }

@@ -28,31 +28,31 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author user
  */
 @Entity
-@Table(name = "aktiboak")
+@Table(name = "aktiboa")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Aktiboak.findAll", query = "SELECT a FROM Aktiboak a"),
-    @NamedQuery(name = "Aktiboak.findByIDaktiboa", query = "SELECT a FROM Aktiboak a WHERE a.iDaktiboa = :iDaktiboa")})
-public class Aktiboak implements Serializable {
+    @NamedQuery(name = "Aktiboa.findAll", query = "SELECT a FROM Aktiboa a"),
+    @NamedQuery(name = "Aktiboa.findByIDaktiboa", query = "SELECT a FROM Aktiboa a WHERE a.iDaktiboa = :iDaktiboa")})
+public class Aktiboa implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "ID_aktiboa")
     private Short iDaktiboa;
-    @JoinTable(name = "langileak_aktiboak", joinColumns = {
+    @JoinTable(name = "langileak_aktiboa", joinColumns = {
         @JoinColumn(name = "ID_aktiboa", referencedColumnName = "ID_aktiboa")}, inverseJoinColumns = {
         @JoinColumn(name = "ID_langilea", referencedColumnName = "ID_langilea")})
     @ManyToMany
-    private Collection<Langilea> langileakCollection;
+    private Collection<Langilea> langileaCollection;
     @JoinColumn(name = "ID_mota", referencedColumnName = "ID_aktibo_mota")
     @ManyToOne(optional = false)
-    private AktiboMotak iDmota;
+    private AktiboMota iDmota;
 
-    public Aktiboak() {
+    public Aktiboa() {
     }
 
-    public Aktiboak(Short iDaktiboa) {
+    public Aktiboa(Short iDaktiboa) {
         this.iDaktiboa = iDaktiboa;
     }
 
@@ -65,19 +65,19 @@ public class Aktiboak implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Langilea> getLangileakCollection() {
-        return langileakCollection;
+    public Collection<Langilea> getLangileaCollection() {
+        return langileaCollection;
     }
 
-    public void setLangileakCollection(Collection<Langilea> langileakCollection) {
-        this.langileakCollection = langileakCollection;
+    public void setLangileaCollection(Collection<Langilea> langileaCollection) {
+        this.langileaCollection = langileaCollection;
     }
 
-    public AktiboMotak getIDmota() {
+    public AktiboMota getIDmota() {
         return iDmota;
     }
 
-    public void setIDmota(AktiboMotak iDmota) {
+    public void setIDmota(AktiboMota iDmota) {
         this.iDmota = iDmota;
     }
 
@@ -91,10 +91,10 @@ public class Aktiboak implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Aktiboak)) {
+        if (!(object instanceof Aktiboa)) {
             return false;
         }
-        Aktiboak other = (Aktiboak) object;
+        Aktiboa other = (Aktiboa) object;
         if ((this.iDaktiboa == null && other.iDaktiboa != null) || (this.iDaktiboa != null && !this.iDaktiboa.equals(other.iDaktiboa))) {
             return false;
         }
@@ -103,7 +103,7 @@ public class Aktiboak implements Serializable {
 
     @Override
     public String toString() {
-        return "database.utils.Aktiboak[ iDaktiboa=" + iDaktiboa + " ]";
+        return "database.utils.Aktiboa[ iDaktiboa=" + iDaktiboa + " ]";
     }
     
 }

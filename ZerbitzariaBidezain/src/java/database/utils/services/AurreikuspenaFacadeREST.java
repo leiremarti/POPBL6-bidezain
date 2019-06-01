@@ -5,7 +5,7 @@
  */
 package database.utils.services;
 
-import database.utils.IntzidentziaAmaituak;
+import database.utils.Aurreikuspena;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -24,26 +24,26 @@ import javax.ws.rs.Produces;
  * @author user
  */
 @Stateless
-@Path("database.utils.intzidentziaamaituak")
-public class IntzidentziaAmaituakFacadeREST extends AbstractFacade<IntzidentziaAmaituak> {
+@Path("database.utils.aurreikuspena")
+public class AurreikuspenaFacadeREST extends AbstractFacade<Aurreikuspena> {
     @PersistenceContext(unitName = "ZerbitzariaBidezainPU")
     private EntityManager em;
 
-    public IntzidentziaAmaituakFacadeREST() {
-        super(IntzidentziaAmaituak.class);
+    public AurreikuspenaFacadeREST() {
+        super(Aurreikuspena.class);
     }
 
     @POST
     @Override
     @Consumes({"application/xml", "application/json"})
-    public void create(IntzidentziaAmaituak entity) {
+    public void create(Aurreikuspena entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
     @Consumes({"application/xml", "application/json"})
-    public void edit(@PathParam("id") Short id, IntzidentziaAmaituak entity) {
+    public void edit(@PathParam("id") Short id, Aurreikuspena entity) {
         super.edit(entity);
     }
 
@@ -56,21 +56,21 @@ public class IntzidentziaAmaituakFacadeREST extends AbstractFacade<IntzidentziaA
     @GET
     @Path("{id}")
     @Produces({"application/xml", "application/json"})
-    public IntzidentziaAmaituak find(@PathParam("id") Short id) {
+    public Aurreikuspena find(@PathParam("id") Short id) {
         return super.find(id);
     }
 
     @GET
     @Override
     @Produces({"application/xml", "application/json"})
-    public List<IntzidentziaAmaituak> findAll() {
+    public List<Aurreikuspena> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces({"application/xml", "application/json"})
-    public List<IntzidentziaAmaituak> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+    public List<Aurreikuspena> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 
