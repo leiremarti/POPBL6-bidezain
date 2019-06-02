@@ -108,9 +108,16 @@ public class IntzidentziaAktiboaFacadeREST extends AbstractFacade<IntzidentziaAk
                 Object[] o= results.get(i);
                 Integer id = (Integer)o[0];
                 Long kop = (Long)o[1];
-                System.out.println(o[0]+" "+o[1]);
                 map.put(id, kop);
             }
+            
+            Object result = em.createNativeQuery("SELECT COUNT(ID_aurreikuspena) as kont FROM aurreikuspena group by ID_mota").getSingleResult();
+            System.out.println(result);
+            Long aKop = (Long)result;
+            if(aKop>0){                
+                map.put(9, aKop);
+            }
+            
             
         } catch (NumberFormatException e){     
             System.out.println("exception");
