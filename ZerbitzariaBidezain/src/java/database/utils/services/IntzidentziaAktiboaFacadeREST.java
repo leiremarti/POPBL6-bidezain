@@ -6,7 +6,15 @@
 package database.utils.services;
 
 import database.utils.IntzidentziaAktiboa;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -19,6 +27,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import org.json.JSONObject;
 
 /**
  *
@@ -81,53 +91,46 @@ public class IntzidentziaAktiboaFacadeREST extends AbstractFacade<IntzidentziaAk
     public String countREST() {
         return String.valueOf(super.count());
     }
+    
+    @GET
+    @Path("countmotak")
+    public Response inzidentziaKopurua() throws MalformedURLException, IOException {
+        boolean todoOk=false;
+        
+        Map<Integer, Long> map = new HashMap<>();
+        EntityManager entitymanager = getEntityManager();
+                
+        try {
+                
+            List<Object[]> results = em.createNativeQuery("SELECT ID_mota, COUNT(ID_intzidentzia) as kont FROM intzidentzia_aktiboa group by ID_mota").getResultList();
+                       
+            for(int i=0; i<results.size(); i++){
+                Object[] o= results.get(i);
+                Integer id = (Integer)o[0];
+                Long kop = (Long)o[1];
+                System.out.println(o[0]+" "+o[1]);
+                map.put(id, kop);
+            }
+            
+        } catch (NumberFormatException e){     
+            System.out.println("exception");
+        }
+            
+        
+        todoOk=true;
+                
+        JSONObject jsonResponse = new JSONObject(map);
+        System.out.println(jsonResponse.toString());
+        Response.ResponseBuilder rb = Response.ok(jsonResponse.toString());
+        Response response = rb.header("Access-Control-Allow-Origin", "http://localhost:8081")
+                                .header("origin", "*")
+                            .build();
+        return response;
+        
+    }
 
     @Override
     protected EntityManager getEntityManager() {
         return em;
-    }
-    
-    @POST
-    @Path("kopuruak")
-    @Produces(MediaType.TEXT_PLAIN)
-    @Consumes({"application/x-www-form-urlencode"})
-    public String bajanEman() throws JAXBException {
-        boolean todoOk=false;
-        String idArray[] = new String[1];
-        idArray[0] = ids;
-        try{
-            System.err.println("KOPURUAK: "+ ids);
-            idArray = ids.split(";");
-        }catch(ArrayIndexOutOfBoundsException e){
-            System.err.println("Bakarrik balore bat dau");
-        }
-        
-        EntityManager entitymanager = getEntityManager();
-               
-        for(int i=0; i<idArray.length; i++){
-            
-            try {
-                Erabiltzailea e = entitymanager.find( Erabiltzailea.class, Short.parseShort(idArray[i]));
-                System.out.println( "**************************"+e );
-                e.setAktibo(false);
-            } catch (NumberFormatException e){     
-                System.out.println("exception");
-            }
-            
-        }
-        todoOk=true;
-        Map<Integer, Integer> map = new HashMap<>();
-        map.put(1, 18);
-        map.put(2, 18);
-        map.put(3, 18);
-        map.put(4, 18);
-        map.put(5, 18);
-        map.put(6, 18);
-        map.put(7, 18);
-        map.put(8, 18);
-        map.put(9, 18);
-        return map.toString();
-        
-    }
-    
+    }    
 }

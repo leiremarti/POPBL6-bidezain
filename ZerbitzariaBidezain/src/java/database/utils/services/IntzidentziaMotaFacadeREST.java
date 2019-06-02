@@ -6,7 +6,15 @@
 package database.utils.services;
 
 import database.utils.IntzidentziaMota;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -18,6 +26,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
 
 /**
  *
@@ -80,6 +89,8 @@ public class IntzidentziaMotaFacadeREST extends AbstractFacade<IntzidentziaMota>
     public String countREST() {
         return String.valueOf(super.count());
     }
+    
+    
 
     @Override
     protected EntityManager getEntityManager() {

@@ -288,7 +288,7 @@
 
 													<div class="row"
 														style="display: flex; justify-content: space-around;">
-														<div class="h5 mb-0 font-weight-bold text-gray-800">10</div>
+														<div class="h5 mb-0 font-weight-bold text-gray-800" id="num1">0</div>
 														<div class="col-auto">
 															<i class="fas fa-snowflake fa-2x text-gray-300"></i>
 														</div>
@@ -316,7 +316,7 @@
 													</div>
 
 													<div class="row">
-														<div class="h5 mb-0 font-weight-bold text-gray-800">20</div>
+														<div class="h5 mb-0 font-weight-bold text-gray-800" id="num2">0</div>
 														<div class="col-auto">
 															<i class="fas fa-car-crash fa-2x text-gray-300"></i>
 														</div>
@@ -344,7 +344,7 @@
 													</div>
 
 													<div class="row">
-														<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">9</div>
+														<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" id="num3">0</div>
 														<div class="col-auto">
 															<i class="fas fa-traffic-light fa-2x text-gray-300"></i>
 														</div>
@@ -377,7 +377,7 @@
 
 													<div class="row"
 														style="display: flex; justify-content: space-around;">
-														<div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+														<div class="h5 mb-0 font-weight-bold text-gray-800" id="num4">0</div>
 														<div class="col-auto">
 															<i class="fas fa-shield-alt fa-2x text-gray-300"></i>
 														</div>
@@ -405,7 +405,7 @@
 
 													<div class="row"
 														style="display: flex; justify-content: space-around;">
-														<div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+														<div class="h5 mb-0 font-weight-bold text-gray-800" id="num6">0</div>
 														<div class="col-auto">
 															<i class="fas fa-mountain fa-2x text-gray-300"></i>
 														</div>
@@ -431,7 +431,7 @@
 
 													<div class="row"
 														style="display: flex; justify-content: space-around;">
-														<div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+														<div class="h5 mb-0 font-weight-bold text-gray-800" id="num7">0</div>
 														<div class="col-auto">
 															<i class="fas fa-snowplow fa-2x text-gray-300"></i>
 														</div>
@@ -463,7 +463,7 @@
 
 													<div class="row"
 														style="display: flex; justify-content: space-around;">
-														<div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+														<div class="h5 mb-0 font-weight-bold text-gray-800" id="num8">0</div>
 														<div class="col-auto">
 															<i class="fas fa-running fa-2x text-gray-300"></i>
 														</div>
@@ -490,7 +490,7 @@
 
 													<div class="row"
 														style="display: flex; justify-content: space-around;">
-														<div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+														<div class="h5 mb-0 font-weight-bold text-gray-800" id="num5">0</div>
 														<div class="col-auto">
 															<i class="fas fa-exclamation-circle fa-2x text-gray-300"></i>
 														</div>
@@ -519,7 +519,7 @@
 
 													<div class="row"
 														style="display: flex; justify-content: space-around;">
-														<div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+														<div class="h5 mb-0 font-weight-bold text-gray-800" id="num9">0</div>
 														<div class="col-auto">
 															<i class="fas fa-eye fa-2x text-gray-300"></i>
 														</div>
@@ -634,22 +634,20 @@
 			initMap();
 			
 			var req1 = new XMLHttpRequest();
-			req1.open('GET', 'http://localhost:8080/ZerbitzariaBidezain/webresources/inzidentziak/inzidentziaKopuruak', true);
+			req1.open('GET', 'http://localhost:8080/ZerbitzariaBidezain/webresources/database.utils.intzidentziaaktiboa/countmotak', true);
 			req1.onreadystatechange = function(aEvt) {
 				if (req1.readyState == 4) {
 					if (req1.status == 200) {
-						console.log(req1.responseText);	
-						
+						var obj = jQuery.parseJSON( req1.responseText );
+						console.log(obj);
+						$.each( obj, function( key, value ) {
+							$("#num"+key).html(value);
+						});
 					}
 					else console.log("Error loading page\n");
 				}
 			};
-			req1.send(null);
-
-			
-			
-			
-			
+			req1.send(null);			
 			
 
 		});
