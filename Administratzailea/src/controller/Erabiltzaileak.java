@@ -62,7 +62,7 @@ public class Erabiltzaileak extends HttpServlet {
 		
 		
 
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/tables.html");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/erabiltzaileak.jsp");
 		dispatcher.forward(request, response);	
 	}
 
@@ -115,6 +115,7 @@ public class Erabiltzaileak extends HttpServlet {
 
 				br.close();
 				System.out.println(loginResponse.toString());
+				request.setAttribute("success", checkboxClicked.length+" erabiltzaile ondo eman dira bajan.");
 				request.setAttribute("jsonMessage", loginResponse.toString());
 			}
 			
@@ -122,7 +123,7 @@ public class Erabiltzaileak extends HttpServlet {
 		}
 		
 			
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/tables.html");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/erabiltzaileak");
 		dispatcher.forward(request, response);	
 	}
 }

@@ -6,7 +6,12 @@
 package database.utils.services;
 
 import database.utils.Aurreikuspena;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -18,6 +23,10 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  *
@@ -86,4 +95,68 @@ public class AurreikuspenaFacadeREST extends AbstractFacade<Aurreikuspena> {
         return em;
     }
     
+    @GET
+    @Path("aurreikuspenak")
+  //  @Produces({"application/json"})
+    public Response filteredAurreikuspenak() {
+        List<Object[]> filtered = new ArrayList<>();
+        EntityManager entitymanager = getEntityManager();
+        JSONArray jobject = new JSONArray();
+        
+        filtered = em.createNativeQuery("SELECT errepidea,probintzia,herria,astekoEguna,`data`,hasieraKm,amaieraKm FROM aurreikuspena WHERE itIs = 1").getResultList();
+            
+        int i=0;
+        for(Object[] o : filtered){
+            JSONArray json_array = new JSONArray();
+            json_array.put(o[0]);
+            json_array.put(o[1]);
+            json_array.put(o[2]);
+            json_array.put(astekoeguna((String)o[3]));
+            json_array.put(o[4]);
+            json_array.put(o[5]);
+            json_array.put(o[6]);
+            System.out.print(json_array);
+            /*String eguna = a.getAstekoEguna(1);
+            a.setAstekoEguna(astekoeguna(eguna));*/
+            jobject.put(json_array);
+            i++;
+        }
+          
+       
+        System.out.print(jobject);
+        
+        Response.ResponseBuilder rb = Response.ok(jobject.toString());
+        Response response = rb.header("Access-Control-Allow-Origin", "http://localhost:8081")
+                                .header("origin", "*")
+                            .build();
+        return response;
+        
+        //return fresh;
+    }
+
+    private String astekoeguna(String e) {
+        
+        String eguna = "Astelehena";
+        switch(e){
+            case "AR":
+                eguna = "Asteartea";
+                break;
+            case "AZ":
+                eguna = "Asteazkena";
+                break;
+            case "OG":
+                eguna = "Osteguna";
+                break;
+            case "OR":
+                eguna = "Ostirala";
+                break;
+            case "LR":
+                eguna = "Larunbata";
+                break;
+            case "IG":
+                eguna = "Igandea";
+                break;    
+        }
+        return eguna;
+    }
 }

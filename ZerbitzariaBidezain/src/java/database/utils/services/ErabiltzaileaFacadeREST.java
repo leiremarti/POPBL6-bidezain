@@ -9,6 +9,7 @@ import database.utils.Erabiltzailea;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -20,6 +21,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.xml.bind.JAXBException;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  *
@@ -37,8 +40,9 @@ public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
 
     @POST
     @Override
-    @Consumes({"application/xml", "application/json"})
+    @Consumes("application/json")
     public void create(Erabiltzailea entity) {
+        System.out.println("****************"+entity.toString());
         super.create(entity);
     }
 
@@ -123,4 +127,45 @@ public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
         
     }
     
+    @POST
+    @Path("pwdHash")
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
+    public JSONObject getHash(String username) {
+        JSONObject object = new JSONObject();
+        EntityManager em = getEntityManager();
+        Object o = em.createNativeQuery("SELECT passwordHash FROM erabiltzailea WHERE erabiltzailea = '"+username+"'").getSingleResult();
+        System.out.print(o);
+        return object;
+    }
+    
+    @POST
+    @Path("exists")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String erabiltzaileaExists(String data) throws JSONException {
+        boolean erabiltzaileaExists = true;
+        boolean epostaExists = true;
+        JSONObject object = new JSONObject(data);
+        String email = object.getString("eposta");
+        String erabiltzailea = object.getString("erabiltzailea");
+        
+        EntityManager entitymanager = getEntityManager();
+        try{            
+            Object o = em.createNativeQuery("SELECT * FROM erabiltzailea WHERE erabiltzailea = '"+erabiltzailea+"'").getSingleResult();
+        }catch(NoResultException e){
+            erabiltzaileaExists = false;
+        }
+        try{            
+            Object o2 = em.createNativeQuery("SELECT * FROM erabiltzailea WHERE eposta = '"+email+"'").getSingleResult();
+        }catch(NoResultException e){
+            epostaExists = false;
+        }
+        
+        JSONObject o = new JSONObject();
+        o.put("erabiltzailea", erabiltzaileaExists);
+        o.put("eposta", epostaExists);
+        
+        return o.toString();
+    }
 }

@@ -55,24 +55,22 @@
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				href="index.html">
+				href="home">
 				<div class="sidebar-brand-icon">
 					<img src="img/BIDEZAIN.png" alt="Smiley face" height="42"
 						width="42">
 					<!--<i   class="fas fa-laugh-wink" src=""></i>-->
 				</div>
-				<div class="sidebar-brand-text mx-3">
-					SB Admin <sup>2</sup>
-				</div>
+				<div class="sidebar-brand-text mx-3">Bidezain</div>
 			</a>
 
 			<!-- Divider -->
 			<hr class="sidebar-divider my-0">
 
 			<!-- Nav Item - Adnimistratzailea -->
-			<li class="nav-item active"><a class="nav-link"
-				href="index.html"> <i class="fas fa-fw fa-briefcase"></i> <span>Administratzailea</span></a>
-			</li>
+			<li class="nav-item active"><a class="nav-link" href="home">
+					<i class="fas fa-fw fa-briefcase"></i> <span>Administratzailea</span>
+			</a></li>
 
 			<!-- Divider -->
 			<hr class="sidebar-divider">
@@ -133,47 +131,9 @@
 						<i class="fa fa-bars"></i>
 					</button>
 
-					<!-- Topbar Search -->
-					<form
-						class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-						<div class="input-group">
-							<input type="text" class="form-control bg-light border-0 small"
-								placeholder="Search for..." aria-label="Search"
-								aria-describedby="basic-addon2">
-							<div class="input-group-append">
-								<button class="btn btn-primary" type="button">
-									<i class="fas fa-search fa-sm"></i>
-								</button>
-							</div>
-						</div>
-					</form>
 
 					<!-- Topbar Navbar -->
 					<ul class="navbar-nav ml-auto">
-
-						<!-- Nav Item - Search Dropdown (Visible Only XS) -->
-						<li class="nav-item dropdown no-arrow d-sm-none"><a
-							class="nav-link dropdown-toggle" href="#" id="searchDropdown"
-							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> <i class="fas fa-search fa-fw"></i>
-						</a> <!-- Dropdown - Messages -->
-							<div
-								class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-								aria-labelledby="searchDropdown">
-								<form class="form-inline mr-auto w-100 navbar-search">
-									<div class="input-group">
-										<input type="text"
-											class="form-control bg-light border-0 small"
-											placeholder="Search for..." aria-label="Search"
-											aria-describedby="basic-addon2">
-										<div class="input-group-append">
-											<button class="btn btn-primary" type="button">
-												<i class="fas fa-search fa-sm"></i>
-											</button>
-										</div>
-									</div>
-								</form>
-							</div></li>
 
 
 						<div class="topbar-divider d-none d-sm-block"></div>
@@ -192,16 +152,6 @@
 							<div
 								class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
 								aria-labelledby="userDropdown">
-								<a class="dropdown-item" href="#"> <i
-									class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
-								</a> <a class="dropdown-item" href="#"> <i
-									class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-									Settings
-								</a> <a class="dropdown-item" href="#"> <i
-									class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-									Activity Log
-								</a>
-								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="#" data-toggle="modal"
 									data-target="#logoutModal"> <i
 									class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -288,7 +238,8 @@
 
 													<div class="row"
 														style="display: flex; justify-content: space-around;">
-														<div class="h5 mb-0 font-weight-bold text-gray-800" id="num1">0</div>
+														<div class="h5 mb-0 font-weight-bold text-gray-800"
+															id="num1">0</div>
 														<div class="col-auto">
 															<i class="fas fa-snowflake fa-2x text-gray-300"></i>
 														</div>
@@ -316,7 +267,8 @@
 													</div>
 
 													<div class="row">
-														<div class="h5 mb-0 font-weight-bold text-gray-800" id="num2">0</div>
+														<div class="h5 mb-0 font-weight-bold text-gray-800"
+															id="num2">0</div>
 														<div class="col-auto">
 															<i class="fas fa-car-crash fa-2x text-gray-300"></i>
 														</div>
@@ -344,7 +296,8 @@
 													</div>
 
 													<div class="row">
-														<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" id="num3">0</div>
+														<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
+															id="num3">0</div>
 														<div class="col-auto">
 															<i class="fas fa-traffic-light fa-2x text-gray-300"></i>
 														</div>
@@ -377,7 +330,8 @@
 
 													<div class="row"
 														style="display: flex; justify-content: space-around;">
-														<div class="h5 mb-0 font-weight-bold text-gray-800" id="num4">0</div>
+														<div class="h5 mb-0 font-weight-bold text-gray-800"
+															id="num4">0</div>
 														<div class="col-auto">
 															<i class="fas fa-shield-alt fa-2x text-gray-300"></i>
 														</div>
@@ -405,7 +359,8 @@
 
 													<div class="row"
 														style="display: flex; justify-content: space-around;">
-														<div class="h5 mb-0 font-weight-bold text-gray-800" id="num6">0</div>
+														<div class="h5 mb-0 font-weight-bold text-gray-800"
+															id="num6">0</div>
 														<div class="col-auto">
 															<i class="fas fa-mountain fa-2x text-gray-300"></i>
 														</div>
@@ -431,7 +386,8 @@
 
 													<div class="row"
 														style="display: flex; justify-content: space-around;">
-														<div class="h5 mb-0 font-weight-bold text-gray-800" id="num7">0</div>
+														<div class="h5 mb-0 font-weight-bold text-gray-800"
+															id="num7">0</div>
 														<div class="col-auto">
 															<i class="fas fa-snowplow fa-2x text-gray-300"></i>
 														</div>
@@ -463,7 +419,8 @@
 
 													<div class="row"
 														style="display: flex; justify-content: space-around;">
-														<div class="h5 mb-0 font-weight-bold text-gray-800" id="num8">0</div>
+														<div class="h5 mb-0 font-weight-bold text-gray-800"
+															id="num8">0</div>
 														<div class="col-auto">
 															<i class="fas fa-running fa-2x text-gray-300"></i>
 														</div>
@@ -490,7 +447,8 @@
 
 													<div class="row"
 														style="display: flex; justify-content: space-around;">
-														<div class="h5 mb-0 font-weight-bold text-gray-800" id="num5">0</div>
+														<div class="h5 mb-0 font-weight-bold text-gray-800"
+															id="num5">0</div>
 														<div class="col-auto">
 															<i class="fas fa-exclamation-circle fa-2x text-gray-300"></i>
 														</div>
@@ -519,7 +477,8 @@
 
 													<div class="row"
 														style="display: flex; justify-content: space-around;">
-														<div class="h5 mb-0 font-weight-bold text-gray-800" id="num9">0</div>
+														<div class="h5 mb-0 font-weight-bold text-gray-800"
+															id="num9">0</div>
 														<div class="col-auto">
 															<i class="fas fa-eye fa-2x text-gray-300"></i>
 														</div>
@@ -585,12 +544,11 @@
 						<span aria-hidden="true">×</span>
 					</button>
 				</div>
-				<div class="modal-body">Select "Logout" below if you are ready
-					to end your current session.</div>
+				<div class="modal-body">Irteteko sakatu "Logout" botoia.</div>
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal">Cancel</button>
-					<a class="btn btn-primary" href="login.html">Logout</a>
+					<a class="btn btn-primary" href="login">Logout</a>
 				</div>
 			</div>
 		</div>
@@ -629,46 +587,52 @@
 
 	<!-- Map Ajax -->
 	<script>
-		$(window).on('load',	function() {
-			
-			initMap();
-			
-			var req1 = new XMLHttpRequest();
-			req1.open('GET', 'http://localhost:8080/ZerbitzariaBidezain/webresources/database.utils.intzidentziaaktiboa/countmotak', true);
-			req1.onreadystatechange = function(aEvt) {
-				if (req1.readyState == 4) {
-					if (req1.status == 200) {
-						var obj = jQuery.parseJSON( req1.responseText );
-						console.log(obj);
-						$.each( obj, function( key, value ) {
-							$("#num"+key).html(value);
+		$(window)
+				.on(
+						'load',
+						function() {
+
+							initMap();
+
+							var req1 = new XMLHttpRequest();
+							req1
+									.open(
+											'GET',
+											'http://localhost:8080/ZerbitzariaBidezain/webresources/database.utils.intzidentziaaktiboa/countmotak',
+											true);
+							req1.onreadystatechange = function(aEvt) {
+								if (req1.readyState == 4) {
+									if (req1.status == 200) {
+										var obj = jQuery
+												.parseJSON(req1.responseText);
+										console.log(obj);
+										$.each(obj, function(key, value) {
+											$("#num" + key).html(value);
+										});
+									} else
+										console.log("Error loading page\n");
+								}
+							};
+							req1.send(null);
+
 						});
-					}
-					else console.log("Error loading page\n");
-				}
-			};
-			req1.send(null);			
-			
 
-		});
-
-
-		function initMap(){
+		function initMap() {
 			var mymap = L.map('mapid').setView([ 43.0612711, -2.5042125 ], 9);
 
-			L.tileLayer(
-				'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
-				{
-					maxZoom : 18,
-					attribution : 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, '
-									+ '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, '
-									+ 'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-					id : 'mapbox.streets'
-				}).addTo(mymap);
-			
+			L
+					.tileLayer(
+							'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
+							{
+								maxZoom : 18,
+								attribution : 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, '
+										+ '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, '
+										+ 'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+								id : 'mapbox.streets'
+							}).addTo(mymap);
+
 			mymap.on('click', onMapClick);
-			
-			
+
 			var customPopup = "<b>Hello world!</b><br />I am a popup.";
 			var customOptions = {
 				'maxWidth' : '500',
@@ -680,17 +644,21 @@
 				iconSize : [ 38, 40 ], // size of the icon
 				popupAnchor : [ 0, -15 ]
 			});
-			
+
 			var ic;
 
 			var req = new XMLHttpRequest();
-			req.open('GET', 'http://localhost:8080/ZerbitzariaBidezain/webresources/inzidentziak/inzidentziakMarkers', true);
+			req
+					.open(
+							'GET',
+							'http://localhost:8080/ZerbitzariaBidezain/webresources/inzidentziak/inzidentziakMarkers',
+							true);
 			req.onreadystatechange = function(aEvt) {
 				if (req.readyState == 4) {
 					if (req.status == 200) {
-						console.log(req.responseText);	
-						var dataSet = req.responseText;		
-						var obj = jQuery.parseJSON( dataSet );
+						console.log(req.responseText);
+						var dataSet = req.responseText;
+						var obj = jQuery.parseJSON(dataSet);
 						$.each(obj, function(key, value) {
 							var lat = value['latitudea'];
 							var lon = value['longitudea'];
@@ -698,24 +666,28 @@
 							var errepidea = value['errepidea'];
 							var kausa = value['kausa'];
 							var mota = value['IDintzidentzia'];
-							
-							ic =  L.icon({
-								iconUrl : 'img/'+mota+'.png',
-								iconSize : [ 38, 40 ], 
+
+							ic = L.icon({
+								iconUrl : 'img/' + mota + '.png',
+								iconSize : [ 38, 40 ],
 								popupAnchor : [ 0, -15 ]
-							});							
-							
-							L.marker([ lat, lon ], {icon: ic}).addTo(mymap).bindPopup(
-									"<b>"+errepidea+" "+herria+"</b><br />Kausa:"+kausa, customOptions).openPopup();
+							});
+
+							L.marker([ lat, lon ], {
+								icon : ic
+							}).addTo(mymap).bindPopup(
+									"<b>" + errepidea + " " + herria
+											+ "</b><br />Kausa:" + kausa,
+									customOptions).openPopup();
 						});
-					}
-					else console.log("Error loading page\n");
+					} else
+						console.log("Error loading page\n");
 				}
 			};
 			req.send(null);
-			
+
 		}
-		
+
 		function onMapClick(e) {
 			popup.setLatLng(e.latlng).setContent(
 					"You clicked the map at " + e.latlng.toString()).openOn(

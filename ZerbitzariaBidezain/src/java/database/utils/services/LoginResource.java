@@ -63,7 +63,7 @@ public class LoginResource {
     }
 
     @POST
-    @Path("login/erabiltzailea")
+    @Path("erabiltzailea")
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
     public String loginErabiltzailea(String data) throws JAXBException, JSONException {
@@ -72,7 +72,7 @@ public class LoginResource {
         JSONObject myjson = new JSONObject(data);          
         
         String username = myjson.get("username").toString();
-        String password = myjson.get("password").toString();
+        String password = myjson.get("passwordHash").toString();
         //String passwordHash = myjson.get("passwordHash").toString();
         //String passwordSalt = myjson.get("passwordSalt").toString();
         System.out.println("********USERNAME: "+username+"***********PASSWORD: "+password);
@@ -121,7 +121,7 @@ public class LoginResource {
     }
     
     @POST
-    @Path("login/langilea")
+    @Path("langilea")
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
     public String loginLangilea(String data) throws JAXBException, JSONException {
@@ -129,10 +129,8 @@ public class LoginResource {
         
         JSONObject myjson = new JSONObject(data);          
         
-        String username = myjson.get("username").toString();
-        String password = myjson.get("password").toString();
-        //String passwordHash = myjson.get("passwordHash").toString();
-        //String passwordSalt = myjson.get("passwordSalt").toString();
+        String username = myjson.get("erabiltzailea").toString();
+        String password = myjson.get("passwordHash").toString();
         System.out.println("********USERNAME: "+username+"***********PASSWORD: "+password);
        
         if(username!=null && password!=null){
@@ -160,9 +158,14 @@ public class LoginResource {
             List<Langilea> langile_list = langileak.getLangilea();
             
             for(Langilea l : langile_list){
-                if(username!=null && password!=null && l.getErabiltzailea().equals(username)/* && e.getPasswordHash().equals(password)*/){
+                if(l.getErabiltzailea().equals(username) && l.getPasswordHash().equals(password)){
                     loginOK = true;
+                }/*else if(!l.getPasswordHash().equals(password)){
+                    
                 }
+                else{
+                    
+                }*/
             }
             
 	} catch (MalformedURLException e) {
@@ -173,7 +176,6 @@ public class LoginResource {
             e.printStackTrace();
 	}  
         }
-        
         
         return String.valueOf(loginOK);
     }

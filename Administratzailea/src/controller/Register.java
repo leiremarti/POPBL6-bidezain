@@ -53,7 +53,7 @@ public class Register extends HttpServlet {
 		;
 
 
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/register.html");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/register.jsp");
 		dispatcher.forward(request, response);	
 	}
 

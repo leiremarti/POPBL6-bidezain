@@ -42,6 +42,7 @@ public class ApplicationConfig extends Application {
         resources.add(database.utils.services.LangileMotaFacadeREST.class);
         resources.add(database.utils.services.LangileaFacadeREST.class);
         resources.add(database.utils.services.LoginResource.class);
+        resources.add(database.utils.services.RegisterResource.class);
     }
     
 }

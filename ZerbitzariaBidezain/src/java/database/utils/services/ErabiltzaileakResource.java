@@ -48,17 +48,6 @@ public class ErabiltzaileakResource {
     public ErabiltzaileakResource() {
     }
 
-    /**
-     * Retrieves representation of an instance of database.utils.services.ErabiltzaileakResource
-     * @return an instance of java.lang.String
-     */
-    @GET
-    @Produces("application/xml")
-    public String getXml() {
-        //TODO return proper representation object
-        throw new UnsupportedOperationException();
-    }
-
     @GET
     @Path("safe")
   //  @Produces({"application/json"})
