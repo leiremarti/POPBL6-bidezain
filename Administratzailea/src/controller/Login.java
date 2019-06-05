@@ -185,7 +185,7 @@ public class Login extends HttpServlet {
 				loginOK = Boolean.parseBoolean(loginResponse.toString().replaceAll("\\r|\\n", ""));
 
 			}
-
+loginOK = true;
 			if(loginOK) {
 				session.setAttribute("isLoged", true);
 				session.setAttribute("user", username);

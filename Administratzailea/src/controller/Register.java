@@ -131,11 +131,11 @@ public class Register extends HttpServlet {
 			JSONObject o = null ;
 			try {
 				o = new JSONObject(loginResponse.toString());
+				registerOK = Boolean.getBoolean((String) o.get("regOK"));
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 			System.out.println(o.toString());
-
 
 		}
 
@@ -143,7 +143,7 @@ public class Register extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/home");
 		}
 		else {
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/register.jsp");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("register");
 			dispatcher.forward(request, response);
 		}
 

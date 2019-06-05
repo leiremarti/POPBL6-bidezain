@@ -76,7 +76,7 @@
 			<hr class="sidebar-divider">
 
 			<!-- Heading -->
-			<div class="sidebar-heading">Interface</div>
+			<div class="sidebar-heading">Aukerak</div>
 
 			<!-- Nav Item - Charts -->
 			<li class="nav-item"><a class="nav-link" href="erabiltzaileak">
@@ -98,7 +98,7 @@
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Administratzaile aukerak:</h6>
-						<a class="collapse-item" href="buttons.html">Langilea gehitu</a> <a
+						<a class="collapse-item" href="register">Langilea gehitu</a> <a
 							class="collapse-item" href="cards.html">Besteak</a>
 					</div>
 				</div></li>

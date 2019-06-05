@@ -123,7 +123,7 @@ public class Erabiltzaileak extends HttpServlet {
 		}
 		
 			
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/erabiltzaileak");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/erabiltzaileak.jsp");
 		dispatcher.forward(request, response);	
 	}
 }

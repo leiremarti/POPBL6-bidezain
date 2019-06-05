@@ -2,9 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-
 <!DOCTYPE html>
-
 <head>
 
 <meta charset="utf-8">
@@ -14,21 +12,33 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>SB Admin 2 - Tables</title>
+<title>SB Admin 2 - Adnimistratzailea</title>
 
-<!-- Custom fonts for this template -->
+<!-- Custom fonts for this template-->
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
 	type="text/css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
 
-<!-- Custom styles for this template -->
+<!-- Custom styles for this template-->
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
-<!-- Custom styles for this page -->
-<link href="vendor/datatables/dataTables.bootstrap4.min.css"
-	rel="stylesheet">
+
+<link rel="stylesheet"
+	href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+	integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+	crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+	integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+	crossorigin=""></script>
+
+
+<!-- link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,900" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700" rel="stylesheet"-->
+
+
+
 
 </head>
 
@@ -156,41 +166,60 @@
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
+					<!-- Content Row -->
+					<div class="row">
+
+						<!-- Content Column -->
+						<div class="col-lg-12 mb-4">
+
+							<!-- Color System -->
+							<div class="row">
+
+								<c:if test="${not empty requestScope.success}">
+									<div class="col-lg-4 mb-4">
+										<div class="card bg-danger text-white shadow">
+											<div class="card-body">
+
+												<div class="col-lg-4 mb-4">
+													<div class="card bg-success text-white shadow">
+														<div class="card-body">
+															<c:out value="${requestScope.success}" />
+														</div>
+													</div>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</c:if>
+
+							</div>
+
+						</div>
+
+
+					</div>
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">Erabiltzaileak</h1>
-					<p class="mb-4">Bidezain produktuaren erabiltzaileen zerrenda.
+					<h1 class="h3 mb-2 text-gray-800">Aurreikuspenak</h1>
+					<p class="mb-4">
+						<b>Adimen Artifizial</b> bitartez aurreikusitako intzidentziak.
 					</p>
 
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
-						<form class="erabiltzaileak" method="POST">
-							<div class="card-header py-3">
-
-								<div class="row">
-									<div class="col-lg-6">
-										<h6 class="m-0 font-weight-bold text-primary">DataTables
-											Example</h6>
-									</div>
-									<div class="col-lg-6"
-										style="display: flex; justify-content: flex-end;">
-										<button class="btn btn-primary pull-right" name="bajan_eman"
-											value="baja">Bajan eman</button>
-									</div>
-
-								</div>
-
-
+						<div class="card-header py-3">
+							<h6 class="m-0 font-weight-bold text-primary">DataTables
+								Example</h6>
+						</div>
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-bordered" id="myDataTable"
+									width="100%" cellspacing="0"></table>
 							</div>
-							<div class="card-body">
-								<div class="table-responsive">
-
-									<table class="table table-bordered" id="myDataTable"
-										width="100%" cellspacing="0"></table>
-								</div>
-							</div>
-						</form>
+						</div>
 					</div>
+
 
 				</div>
 				<!-- /.container-fluid -->
@@ -202,7 +231,7 @@
 			<footer class="sticky-footer bg-white">
 				<div class="container my-auto">
 					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; Your Website 2019</span>
+						<span>Copyright &copy; Bidezain 2019</span>
 					</div>
 				</div>
 			</footer>
@@ -251,74 +280,60 @@
 	<!-- Custom scripts for all pages-->
 	<script src="js/sb-admin-2.min.js"></script>
 
+
 	<!-- Page level plugins -->
 	<script src="vendor/datatables/jquery.dataTables.min.js"></script>
 	<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 	<!-- Page level custom scripts -->
 	<script src="js/demo/datatables-demo.js"></script>
-
-
-
 	<script>
-	
-	$( window ).on('load',function() {
-		
-		//Iristen da web xerbitzaria, baÃ±o honek xml bat bueltatzen dionez faio bat ematen do. Saiau Zerbitzaritio Json bat lortzen.
-		/*
-		$.ajax({
-			url : "http://localhost:8080/ZerbitzariaBidezain/webresources/erabiltzaileak/safe",
-		    type: "GET",
-		    dataType: "jsonp",
-	        cors: false ,
-	        secure: false,
-	        headers: {
-	          	'Access-Control-Allow-Origin': '*',
-	          	'Origin': 'localhost:8080',
-	        },
-	        beforeSend: function (xhr) {
-	          	xhr.setRequestHeader ("Authorization", "Basic " + btoa(""));
-	        },
-			success : function(responseText) {
-				console.log(responseText);
-			},
-			error: function(xhr) {
-				console.log("AAROREAA");
-				console.log(xhr);
-		    }
-		});		
-		*/
-		
-		var req = new XMLHttpRequest();
-		req.open('GET', 'http://localhost:8080/ZerbitzariaBidezain/webresources/erabiltzaileak/safe', true);
-		req.onreadystatechange = function (aEvt) {
-		  if (req.readyState == 4) {
-		     if(req.status == 200){
+		$(window)
+				.on(
+						'load',
+						function() {
 
-			     console.log(req.responseText);
-			     var dataSet = req.responseText;
-		    	 table = $('#myDataTable').DataTable( {  	 		
-		   	 		
-		 	        columns: [
-		 	            { title: "Izena" },
-		 	            { title: "Abizena" },
-		 	            { title: "Erabiltzailea" },
-		 	            { title: "E-posta" },
-		 	            { title: "Telefonoa" },
-		 	            { title: "Altan/bajan" }
-		 	        ],
-		 	        data: JSON.parse(dataSet)
-		 	    } );
-		     }
-		    			    	 
-		     else console.log("Error loading page\n");
-		  }
-		};
-		req.send(null);
-		   	 	
-		
-	});
-  </script>
+							var req = new XMLHttpRequest();
+							req
+									.open(
+											'GET',
+											'http://localhost:8080/ZerbitzariaBidezain/webresources/database.utils.aurreikuspena/aurreikuspenak',
+											true);
+							req.onreadystatechange = function(aEvt) {
+								if (req.readyState == 4) {
+									if (req.status == 200) {
+
+										console.log(req.responseText);
+										var dataSet = req.responseText;
+										table = $('#myDataTable').DataTable({
+
+											columns : [ {
+												title : "Errepidea"
+											}, {
+												title : "Probintzia"
+											}, {
+												title : "Herria"
+											}, {
+												title : "Asteko eguna"
+											}, {
+												title : "Data"
+											}, {
+												title : "Hasiera Kilometroa"
+											}, {
+												title : "Amaiera Kilometroa"
+											} ],
+											data : JSON.parse(dataSet)
+										});
+									}
+
+									else
+										console.log("Error loading page\n");
+								}
+							};
+							req.send(null);
+
+						});
+	</script>
 </body>
 
 </html>

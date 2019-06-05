@@ -54,33 +54,30 @@
 					<div class="card-body p-0">
 						<!-- Nested Row within Card Body -->
 						<div class="row">
-							<div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+							<div class="col-lg-6 d-none d-lg-block "><img alt="register" src="img/laptop.png"></img></div>
 							<div class="col-lg-6">
 								<div class="p-5">
 									<div class="text-center">
-										<h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+										<h1 class="h4 text-gray-900 mb-4">Saioa hasi</h1>
 									</div>
 									<form class="user" method="POST">
 										<div class="form-group">
 											<input type="text" class="form-control form-control-user"
 												name="username" id="exampleInputEmail"
-												aria-describedby="emailHelp" placeholder="Enter Username..."
+												aria-describedby="emailHelp" placeholder="Erabiltzailea"
 												required>
 										</div>
 										<div class="form-group">
 											<input type="password" class="form-control form-control-user"
 												name="password" id="exampleInputPassword"
-												placeholder="Password" required>
+												placeholder="Pasahitza" required>
 										</div>
 										<button type="submit" name="action" value="login"
 											class="btn btn-primary btn-user btn-block">Login</button>
 										<hr>
 										<div class="text-center">
-											<a class="small" href="forgot-password.html">Forgot
-												Password?</a>
-										</div>
-										<div class="text-center">
-											<a class="small" href="register">Create an Account!</a>
+											<a class="small" href="forgot-password.html">Pasahitza
+												ahaztu zaizu?</a>
 										</div>
 									</form>
 								</div>

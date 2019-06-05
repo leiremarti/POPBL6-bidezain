@@ -26,7 +26,7 @@ public class Aurreikuspenak extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/aurreikuspenak.html");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/aurreikuspenak.jsp");
 		dispatcher.forward(request, response);	
 	}
 

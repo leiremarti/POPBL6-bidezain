@@ -182,7 +182,6 @@ public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
     @Produces(MediaType.APPLICATION_JSON)
     public String createNew(String berria) throws JSONException {
                 
-        System.out.println("****************"+berria);
         boolean regOK = false;
         boolean erabiltzaileaExists = true;
         boolean epostaExists = true;
@@ -211,6 +210,7 @@ public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
         
         if(!epostaExists && !erabiltzaileaExists){
             regOK=true;
+            message = "Erregistroa OK!";
             entitymanager.createNativeQuery("INSERT INTO erabiltzailea (izena,abizena,erabiltzailea,passwordHash, passwordSalt,eposta,telefonoa) VALUES (?,?,?,?,?,?,?)")
                 .setParameter(1, obj.get("izena"))
                 .setParameter(2, obj.get("abizena"))
