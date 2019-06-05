@@ -27,6 +27,10 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.mindrot.jbcrypt.BCrypt;
+
 import binding.Bind;
 import binding.Erabiltzaileak;
 import binding.Erabiltzaileak.Erabiltzailea;
@@ -63,7 +67,7 @@ public class Register extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		boolean registerOK = false;
-		
+
 		String action = request.getParameter("action");
 		String izena = request.getParameter("izena");
 		String abizena = request.getParameter("abizena");
@@ -84,18 +88,34 @@ public class Register extends HttpServlet {
 			System.out.println(password);
 			System.out.println(passwordRepeat);
 
-			URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/register/register");
+			JSONObject object = new JSONObject();
+			try {
+				object.put("izena", izena);
+				object.put("abizena", abizena);
+				object.put("eposta", email);
+				object.put("erabiltzailea", username);
+				String passwordHash = BCrypt.hashpw(password, BCrypt.gensalt(12));
+				object.put("passwordHash", passwordHash);
+				object.put("telefonoa", "");
+				object.put("ID_mota", 1);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+
+			// URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/register/erabiltzailea");
+			URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/register/langilea");
+			//URL   u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/database.utils.erabiltzailea/create");
+
 			HttpURLConnection con = (HttpURLConnection) u.openConnection();
 			con.setRequestMethod("POST");
-			con.setRequestProperty("Content-Type", "application/x-www-form-urlencode");
-			String params = username+"_"+password;
-			con.setRequestProperty("Content-Length", Integer.toString(params.getBytes().length));
+			con.setRequestProperty("Content-Type", "application/json");
+			con.setRequestProperty("Content-Length", Integer.toString(object.toString().getBytes().length));
 			con.setUseCaches(false);
 			con.setDoInput(true);
 			con.setDoOutput(true);
 
 			DataOutputStream dos = new DataOutputStream(con.getOutputStream());
-			dos.writeBytes(params);
+			dos.writeBytes(object.toString());
 			dos.flush();
 			dos.close();
 
@@ -107,22 +127,26 @@ public class Register extends HttpServlet {
 				loginResponse.append(line);
 				loginResponse.append('\r');
 			}
-
 			br.close();
-			registerOK = Boolean.parseBoolean(loginResponse.toString());
-			System.out.println(registerOK);
+			JSONObject o = null ;
+			try {
+				o = new JSONObject(loginResponse.toString());
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			System.out.println(o.toString());
 
 
 		}
 
 		if(registerOK) {
-			response.sendRedirect(request.getContextPath() + "/erabiltzaileak");
+			response.sendRedirect(request.getContextPath() + "/home");
 		}
 		else {
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/register.html");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/register.jsp");
 			dispatcher.forward(request, response);
 		}
-		
+
 	}
 
 }

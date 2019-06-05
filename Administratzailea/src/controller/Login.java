@@ -52,6 +52,7 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		/*
 		String s = "";
 		try {
 
@@ -74,7 +75,6 @@ public class Login extends HttpServlet {
 		}
 		System.out.println("***********"+s);
 
-		/*
 
 		String s = "";
 		try {
@@ -143,7 +143,9 @@ public class Login extends HttpServlet {
 				JSONObject json = new JSONObject();
 				json.put("erabiltzailea", username);
 				
-				byte[] passwordHash = BCrypt.hashpw(arg0, arg1);
+
+				//String passwordHash1 = BCrypt.hashpw(password);
+				String passwordHash = BCrypt.hashpw(password, BCrypt.gensalt(12));
 				
 				json.put("passwordHash", passwordHash);
 				System.out.println(passwordHash);

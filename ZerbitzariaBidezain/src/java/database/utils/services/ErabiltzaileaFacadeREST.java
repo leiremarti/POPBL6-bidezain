@@ -10,6 +10,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.persistence.NonUniqueResultException;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -152,20 +153,83 @@ public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
         
         EntityManager entitymanager = getEntityManager();
         try{            
-            Object o = em.createNativeQuery("SELECT * FROM erabiltzailea WHERE erabiltzailea = '"+erabiltzailea+"'").getSingleResult();
+            Object o = entitymanager.createNativeQuery("SELECT * FROM erabiltzailea WHERE erabiltzailea = '"+erabiltzailea+"'").getSingleResult();
         }catch(NoResultException e){
             erabiltzaileaExists = false;
+        }catch(NonUniqueResultException e){
+            erabiltzaileaExists = false;
+            System.out.println("Erabiltzailea errepikatuta!");
         }
         try{            
-            Object o2 = em.createNativeQuery("SELECT * FROM erabiltzailea WHERE eposta = '"+email+"'").getSingleResult();
+            Object o2 = entitymanager.createNativeQuery("SELECT * FROM erabiltzailea WHERE eposta = '"+email+"'").getSingleResult();
         }catch(NoResultException e){
             epostaExists = false;
+        }catch(NonUniqueResultException e){            
+            epostaExists = false;
+            System.out.println("Eposta errepikatuta!");
         }
         
         JSONObject o = new JSONObject();
         o.put("erabiltzailea", erabiltzaileaExists);
         o.put("eposta", epostaExists);
         
+        return o.toString();
+    }
+    
+    @POST
+    @Path("create")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String createNew(String berria) throws JSONException {
+                
+        System.out.println("****************"+berria);
+        boolean regOK = false;
+        boolean erabiltzaileaExists = true;
+        boolean epostaExists = true;
+        JSONObject obj = new JSONObject(berria);
+        String email = obj.getString("eposta");
+        String erabiltzailea = obj.getString("erabiltzailea");
+        String message = "";
+        EntityManager entitymanager = getEntityManager();
+                
+        try{            
+            Object o = entitymanager.createNativeQuery("SELECT * FROM erabiltzailea WHERE erabiltzailea = '"+erabiltzailea+"'").getSingleResult();
+        }catch(NoResultException e){
+            erabiltzaileaExists = false;
+        }catch(NonUniqueResultException e){
+            erabiltzaileaExists = false;
+            System.out.println("Erabiltzailea errepikatuta!");
+        }
+        try{            
+            Object o2 = entitymanager.createNativeQuery("SELECT * FROM erabiltzailea WHERE eposta = '"+email+"'").getSingleResult();
+        }catch(NoResultException e){
+            epostaExists = false;
+        }catch(NonUniqueResultException e){            
+            epostaExists = false;
+            System.out.println("Eposta errepikatuta!");
+        }        
+        
+        if(!epostaExists && !erabiltzaileaExists){
+            regOK=true;
+            entitymanager.createNativeQuery("INSERT INTO erabiltzailea (izena,abizena,erabiltzailea,passwordHash, passwordSalt,eposta,telefonoa) VALUES (?,?,?,?,?,?,?)")
+                .setParameter(1, obj.get("izena"))
+                .setParameter(2, obj.get("abizena"))
+                .setParameter(3, obj.get("erabiltzailea"))
+                .setParameter(4, obj.get("passwordHash"))
+                .setParameter(5, obj.get("passwordHash"))
+                .setParameter(6, obj.get("eposta"))
+                .setParameter(7, obj.get("telefonoa"))
+                .executeUpdate();
+            
+        }else if(epostaExists){
+            message = "Eposta errepikatuta.";
+        }else if(erabiltzaileaExists){
+            message = "Erabiltzailea errepikatuta.";
+        }
+        
+        JSONObject o = new JSONObject();
+        o.put("message", message);
+        o.put("regOK", regOK);
         return o.toString();
     }
 }
