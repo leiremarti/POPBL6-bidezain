@@ -50,7 +50,16 @@ public class IntzidentziaAktiboaFacadeREST extends AbstractFacade<IntzidentziaAk
     public void create(IntzidentziaAktiboa entity) {
         super.create(entity);
     }
-
+    /*
+    @POST
+    @Path("createDatabase")
+    @Consumes("application/json")
+    public void createAll(List<IntzidentziaAktiboa> list) {
+        for(IntzidentziaAktiboa ia : list){
+            create(ia);
+        }
+    }
+/*/
     @PUT
     @Path("{id}")
     @Consumes({"application/xml", "application/json"})
@@ -61,7 +70,20 @@ public class IntzidentziaAktiboaFacadeREST extends AbstractFacade<IntzidentziaAk
     @DELETE
     @Path("{id}")
     public void remove(@PathParam("id") Short id) {
+        System.out.print(id);
         super.remove(super.find(id));
+    }
+    
+    @DELETE
+    @Path("deleteAll")
+    public void removeAll() {
+        
+        List<IntzidentziaAktiboa> li = findAll();
+        
+        for(int i=1; i<=li.size(); i++){
+            remove((short)i);
+        }
+        
     }
 
     @GET

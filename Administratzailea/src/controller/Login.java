@@ -30,7 +30,9 @@ import org.mindrot.jbcrypt.BCrypt;
 import binding.Bind;
 import binding.Erabiltzaileak;
 import binding.Erabiltzaileak.Erabiltzailea;
+import encrypt.Encrypter;
 import passwordDecoder.HashGenerator;
+import sun.security.krb5.EncryptedData;
 
 
 /**
@@ -39,6 +41,8 @@ import passwordDecoder.HashGenerator;
 @WebServlet("/login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	boolean loginOK;
+	String encrypterKey = "mysecretencrypter";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -52,67 +56,6 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		/*
-		String s = "";
-		try {
-
-			URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/register/getKey");
-			URLConnection con = u.openConnection();
-			Reader reader = new InputStreamReader(con.getInputStream());
-			while (true) {
-				int ch = reader.read();
-				if (ch==-1) {
-					break;
-				}
-				s = s + (char)ch;
-			}
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println("***********"+s);
-
-
-		String s = "";
-		try {
-			//URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/login/login");
-
-			URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/database.utils.erabiltzailea");
-			URLConnection con = u.openConnection();
-			               Reader reader = new InputStreamReader(con.getInputStream());
-			               while (true) {
-			                 int ch = reader.read();
-			                 if (ch==-1) {
-			                   break;
-			                 }
-			                 s = s + (char)ch;
-			               }
-			} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			}
-		System.out.println(s);
-
-		if(s != null) {
-			Bind b = new Bind();
-			Erabiltzaileak erabiltzaileak = b.bindErabiltzaileak(s);
-
-			for(Erabiltzailea e : erabiltzaileak.getErabiltzailea()) {
-				if(e.getErabiltzailea().equals(username)) {
-					System.out.println(e.getIzena()+" erabiltzailea logeatzen saiatzen");
-				}
-			}
-		}*/
-
-
-		/*
-		 */
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/login.jsp");
 		dispatcher.forward(request, response);	
 	}
@@ -122,7 +65,8 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		boolean loginOK = false;
+		String message = "";
+		loginOK = false;
 
 		String action = request.getParameter("action");
 		String username = request.getParameter("username");
@@ -137,37 +81,24 @@ public class Login extends HttpServlet {
 			System.out.println(username);
 			System.out.println(password);
 
-			String message = null;
+			Encrypter en = new Encrypter(encrypterKey);
+			JSONObject json = new JSONObject();
 
 			try {
-				JSONObject json = new JSONObject();
-				json.put("erabiltzailea", username);
-				
-
-				//String passwordHash1 = BCrypt.hashpw(password);
-				String passwordHash = BCrypt.hashpw(password, BCrypt.gensalt(12));
-				
-				json.put("passwordHash", passwordHash);
-				System.out.println(passwordHash);
-
-				message = json.toString();
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-			System.out.println(message);
-			if(message!=null) {
+				json.put("erabiltzailea", en.encrypt(username));
+				json.put("password", en.encrypt(password));
 
 				URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/login/langilea");
 				HttpURLConnection con = (HttpURLConnection) u.openConnection();
 				con.setRequestMethod("POST");
 				con.setRequestProperty("Content-Type", "application/json");
-				con.setRequestProperty("Content-Length", Integer.toString(message.getBytes().length));
+				con.setRequestProperty("Content-Length", Integer.toString(json.toString().getBytes().length));
 				con.setUseCaches(false);
 				con.setDoInput(true);
 				con.setDoOutput(true);
 
 				DataOutputStream dos = new DataOutputStream(con.getOutputStream());
-				dos.writeBytes(message);
+				dos.writeBytes(json.toString());
 				dos.flush();
 				dos.close();
 
@@ -182,22 +113,29 @@ public class Login extends HttpServlet {
 
 				br.close();
 
-				loginOK = Boolean.parseBoolean(loginResponse.toString().replaceAll("\\r|\\n", ""));
-
+				String ans = en.decrypt(loginResponse.toString());
+				loginOK = Boolean.valueOf(ans);
+				System.out.println(loginOK);
+			} catch (JSONException | java.io.IOException e) {
+				message = "Ezin izan da logeatu. Arazo bat egon da.";
 			}
-loginOK = true;
+
 			if(loginOK) {
+				message = "Login OK!";
 				session.setAttribute("isLoged", true);
 				session.setAttribute("user", username);
-				request.setAttribute("success", "Wellcome "+username+"!");
+				request.setAttribute("message", message);
 				response.sendRedirect(request.getContextPath() + "/home");
+			}
+			else {
+				message = "Incorrect username or password.";
 			}
 
 		}
 
 		if(!loginOK) {
 			session.setAttribute("isLoged", false);
-			request.setAttribute("error", "Incorrect userame or password.");
+			request.setAttribute("error", message);
 			doGet(request, response);
 		}
 

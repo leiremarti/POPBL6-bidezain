@@ -9,6 +9,7 @@ import database.utils.Erabiltzailea;
 import database.utils.Erabiltzaileak;
 import database.utils.Langilea;
 import database.utils.Langileak;
+import encrypt.Encrypter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -18,6 +19,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
+import javax.validation.Valid;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.PathParam;
@@ -33,6 +35,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  * REST Web Service
@@ -69,12 +72,13 @@ public class LoginResource {
     public String loginErabiltzailea(String data) throws JAXBException, JSONException {
         boolean loginOK = false;
         
-        JSONObject myjson = new JSONObject(data);          
+        JSONObject myjson = new JSONObject(data); 
         
-        String username = myjson.get("username").toString();
-        String password = myjson.get("passwordHash").toString();
-        //String passwordHash = myjson.get("passwordHash").toString();
-        //String passwordSalt = myjson.get("passwordSalt").toString();
+        Encrypter en = new Encrypter("mysecretencrypter");                
+        
+        String username = en.decrypt(myjson.getString("erabiltzailea"));
+        String password = en.decrypt(myjson.getString("password"));
+        
         System.out.println("********USERNAME: "+username+"***********PASSWORD: "+password);
        
         if(username!=null && password!=null){
@@ -102,8 +106,10 @@ public class LoginResource {
                 List<Erabiltzailea> erabiltzaile_list = erabiltzaileak.getErabiltzailea();
 
                 for(Erabiltzailea e : erabiltzaile_list){
-                    if(username!=null && password!=null && e.getErabiltzailea().equals(username)/* && e.getPasswordHash().equals(password)*/){
+                    if(username!=null && password!=null && e.getAktibo() && e.getErabiltzailea().equals(username) && e.getPasswordHash().equals(BCrypt.hashpw(password, e.getPasswordSalt().toString()))){
                         loginOK = true;
+                        System.out.println("OK!");
+                        break;
                     }
                 }
 
@@ -117,20 +123,22 @@ public class LoginResource {
             
         }
        
-        return String.valueOf(loginOK);
+        return String.valueOf(loginOK);//en.encrypt(String.valueOf(loginOK));
     }
     
     @POST
     @Path("langilea")
     @Produces(MediaType.TEXT_PLAIN)
-    @Consumes(MediaType.APPLICATION_JSON)
+  //  @Consumes(MediaType.APPLICATION_JSON)
     public String loginLangilea(String data) throws JAXBException, JSONException {
         boolean loginOK = false;
         
         JSONObject myjson = new JSONObject(data);          
         
-        String username = myjson.get("erabiltzailea").toString();
-        String password = myjson.get("passwordHash").toString();
+        Encrypter en = new Encrypter("mysecretencrypter");                
+        
+        String username = en.decrypt(myjson.getString("erabiltzailea"));
+        String password = en.decrypt(myjson.getString("password"));
         System.out.println("********USERNAME: "+username+"***********PASSWORD: "+password);
        
         if(username!=null && password!=null){
@@ -158,14 +166,11 @@ public class LoginResource {
             List<Langilea> langile_list = langileak.getLangilea();
             
             for(Langilea l : langile_list){
-                if(l.getErabiltzailea().equals(username) && l.getPasswordHash().equals(password)){
+                if(username!=null && password!=null && l.getAktibo() && l.getErabiltzailea().equals(username) && l.getPasswordHash().equals(BCrypt.hashpw(password, l.getPasswordSalt().toString()))){
                     loginOK = true;
-                }/*else if(!l.getPasswordHash().equals(password)){
-                    
+                    System.out.println("OK!");
+                    break;
                 }
-                else{
-                    
-                }*/
             }
             
 	} catch (MalformedURLException e) {
@@ -177,16 +182,9 @@ public class LoginResource {
 	}  
         }
         
-        return String.valueOf(loginOK);
+        return en.encrypt(String.valueOf(loginOK));
     }
     
-    /**
-     * PUT method for updating or creating an instance of LoginResource
-     * @param content representation for the resource
-     * @return an HTTP response with content of the updated or created resource.
-     */
-    @PUT
-    @Consumes("application/json")
-    public void putJson(String content) {
-    }
 }
+
+

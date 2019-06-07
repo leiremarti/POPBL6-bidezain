@@ -18,5 +18,7 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jaxb-api-2.2.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/java-json.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jbcrypt-0.4.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/objectdb.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/validation-api-1.0.0.GA.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

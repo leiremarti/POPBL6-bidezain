@@ -8,6 +8,8 @@ package database.utils.services;
 import database.utils.Erabiltzailea;
 import database.utils.Erabiltzaileak;
 import database.utils.IntzidentziaAktiboa;
+import database.utils.Langilea;
+import encrypt.Encrypter;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -24,6 +26,7 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.validation.Valid;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.PathParam;
@@ -64,27 +67,48 @@ public class RegisterResource {
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
     public String registerErabiltzailea(String data) throws JAXBException, JSONException, MalformedURLException, IOException {
-        boolean registerOK = false;
-            System.out.println("**********************");
+              System.out.println("*******************************"+data);
+        JSONObject data_json = new JSONObject(data);        
+        boolean registerOK = false; 
         
-        JSONObject data_json = new JSONObject(data);
+        Encrypter e = new Encrypter("mysecretencrypter");
+        data_json.put("erabiltzailea", e.decrypt(data_json.getString("erabiltzailea")));
+        data_json.put("izena", e.decrypt(data_json.getString("izena")));
+        data_json.put("abizena", e.decrypt(data_json.getString("abizena")));
+        data_json.put("passwordHash", e.decrypt(data_json.getString("passwordHash")));
+        data_json.put("eposta", e.decrypt(data_json.getString("eposta")));
+        data_json.put("telefonoa", e.decrypt(data_json.getString("telefonoa")));
+              System.out.println("*******************************"+data_json);
+        
         create(data_json, "erabiltzailea");
         registerOK = true;
          
-        return String.valueOf(registerOK);
+        return String.valueOf(e.encrypt(String.valueOf(registerOK)));
     }
     
     @POST
     @Path("langilea")
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String registerLangilea(String data) throws JAXBException, JSONException, MalformedURLException, IOException {
-              
+    public String registerLangilea(/*@Valid Langilea*/String data) throws JAXBException, JSONException, MalformedURLException, IOException {
+              //System.out.println("*******************************"+data.getAbizena());
         JSONObject data_json = new JSONObject(data);
+        Encrypter e = new Encrypter("mysecretencrypter");
+        data_json.put("erabiltzailea", e.decrypt(data_json.getString("erabiltzailea")));
+        data_json.put("izena", e.decrypt(data_json.getString("izena")));
+        data_json.put("abizena", e.decrypt(data_json.getString("abizena")));
+        data_json.put("passwordHash", e.decrypt(data_json.getString("passwordHash")));
+        data_json.put("eposta", e.decrypt(data_json.getString("eposta")));
+        data_json.put("telefonoa", e.decrypt(data_json.getString("telefonoa")));
+        System.out.println("*******************************"+data_json);
         
         JSONObject erantzuna = create(data_json, "langilea");
+        String value = String.valueOf((boolean)erantzuna.get("regOK"));                        
+        erantzuna.put("regOK", String.valueOf(e.encrypt(value)));
+        erantzuna.put("message", e.encrypt((String)erantzuna.get("message")));
+				System.out.println(erantzuna.toString());
                 
-        return erantzuna.toString();
+        return String.valueOf(erantzuna.toString());
     }
     
     private JSONObject create(JSONObject object, String type) throws ProtocolException, IOException, JSONException{

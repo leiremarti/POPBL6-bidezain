@@ -156,6 +156,22 @@
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
+					<c:if test="${not empty requestScope.error}">
+						<div class="col-lg-4 mb-4">
+							<div class="card bg-danger text-white shadow">
+								<div class="card-body">
+									<c:out value="${requestScope.error}" />
+								</div>
+							</div>
+						</div>
+					</c:if>
+					<c:if test="${not empty requestScope.message}">
+						<div class="card bg-success text-white shadow">
+							<div class="card-body">
+								<c:out value="${requestScope.message}" />
+							</div>
+						</div>
+					</c:if>
 
 					<!-- Page Heading -->
 					<h1 class="h3 mb-2 text-gray-800">Erabiltzaileak</h1>
@@ -261,64 +277,50 @@
 
 
 	<script>
-	
-	$( window ).on('load',function() {
-		
-		//Iristen da web xerbitzaria, baÃ±o honek xml bat bueltatzen dionez faio bat ematen do. Saiau Zerbitzaritio Json bat lortzen.
-		/*
-		$.ajax({
-			url : "http://localhost:8080/ZerbitzariaBidezain/webresources/erabiltzaileak/safe",
-		    type: "GET",
-		    dataType: "jsonp",
-	        cors: false ,
-	        secure: false,
-	        headers: {
-	          	'Access-Control-Allow-Origin': '*',
-	          	'Origin': 'localhost:8080',
-	        },
-	        beforeSend: function (xhr) {
-	          	xhr.setRequestHeader ("Authorization", "Basic " + btoa(""));
-	        },
-			success : function(responseText) {
-				console.log(responseText);
-			},
-			error: function(xhr) {
-				console.log("AAROREAA");
-				console.log(xhr);
-		    }
-		});		
-		*/
-		
-		var req = new XMLHttpRequest();
-		req.open('GET', 'http://localhost:8080/ZerbitzariaBidezain/webresources/erabiltzaileak/safe', true);
-		req.onreadystatechange = function (aEvt) {
-		  if (req.readyState == 4) {
-		     if(req.status == 200){
+		$(window)
+				.on(
+						'load',
+						function() {
 
-			     console.log(req.responseText);
-			     var dataSet = req.responseText;
-		    	 table = $('#myDataTable').DataTable( {  	 		
-		   	 		
-		 	        columns: [
-		 	            { title: "Izena" },
-		 	            { title: "Abizena" },
-		 	            { title: "Erabiltzailea" },
-		 	            { title: "E-posta" },
-		 	            { title: "Telefonoa" },
-		 	            { title: "Altan/bajan" }
-		 	        ],
-		 	        data: JSON.parse(dataSet)
-		 	    } );
-		     }
-		    			    	 
-		     else console.log("Error loading page\n");
-		  }
-		};
-		req.send(null);
-		   	 	
-		
-	});
-  </script>
+							var req = new XMLHttpRequest();
+							req
+									.open(
+											'GET',
+											'http://localhost:8080/ZerbitzariaBidezain/webresources/erabiltzaileak/safe',
+											true);
+							req.onreadystatechange = function(aEvt) {
+								if (req.readyState == 4) {
+									if (req.status == 200) {
+
+										console.log(req.responseText);
+										var dataSet = JSON.parse(req.responseText);
+										table = $('#myDataTable').DataTable({
+
+											columns : [ {
+												title : "Izena"
+											}, {
+												title : "Abizena"
+											}, {
+												title : "Erabiltzailea"
+											}, {
+												title : "E-posta"
+											}, {
+												title : "Telefonoa"
+											}, {
+												title : "Altan/bajan"
+											} ],
+											data : dataSet
+										});
+									}
+
+									else
+										console.log("Error loading page\n");
+								}
+							};
+							req.send(null);
+
+						});
+	</script>
 </body>
 
 </html>

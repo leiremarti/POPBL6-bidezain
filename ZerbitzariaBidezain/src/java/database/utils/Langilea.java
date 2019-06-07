@@ -6,7 +6,6 @@
 package database.utils;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -23,7 +21,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -66,13 +63,15 @@ public class Langilea implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Lob
+    @Size(min = 1, max = 2147483647)
     @Column(name = "passwordHash")
-    private byte[] passwordHash;
+    private String passwordHash;
     @Basic(optional = false)
     @NotNull
     @Lob
+    @Size(min = 1, max = 2147483647)
     @Column(name = "passwordSalt")
-    private byte[] passwordSalt;
+    private String passwordSalt;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 40)
@@ -83,8 +82,6 @@ public class Langilea implements Serializable {
     private String telefonoa;
     @Column(name = "aktibo")
     private Boolean aktibo;
-    @ManyToMany(mappedBy = "langileaCollection")
-    private Collection<Aktiboa> aktiboaCollection;
     @JoinColumn(name = "ID_mota", referencedColumnName = "ID_langile_mota")
     @ManyToOne(optional = false)
     private LangileMota iDmota;
@@ -96,7 +93,7 @@ public class Langilea implements Serializable {
         this.iDlangilea = iDlangilea;
     }
 
-    public Langilea(Short iDlangilea, String izena, String abizena, String erabiltzailea, byte[] passwordHash, byte[] passwordSalt, String eposta) {
+    public Langilea(Short iDlangilea, String izena, String abizena, String erabiltzailea, String passwordHash, String passwordSalt, String eposta) {
         this.iDlangilea = iDlangilea;
         this.izena = izena;
         this.abizena = abizena;
@@ -138,19 +135,19 @@ public class Langilea implements Serializable {
         this.erabiltzailea = erabiltzailea;
     }
 
-    public byte[] getPasswordHash() {
+    public String getPasswordHash() {
         return passwordHash;
     }
 
-    public void setPasswordHash(byte[] passwordHash) {
+    public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
     }
 
-    public byte[] getPasswordSalt() {
+    public String getPasswordSalt() {
         return passwordSalt;
     }
 
-    public void setPasswordSalt(byte[] passwordSalt) {
+    public void setPasswordSalt(String passwordSalt) {
         this.passwordSalt = passwordSalt;
     }
 
@@ -176,15 +173,6 @@ public class Langilea implements Serializable {
 
     public void setAktibo(Boolean aktibo) {
         this.aktibo = aktibo;
-    }
-
-    @XmlTransient
-    public Collection<Aktiboa> getAktiboaCollection() {
-        return aktiboaCollection;
-    }
-
-    public void setAktiboaCollection(Collection<Aktiboa> aktiboaCollection) {
-        this.aktiboaCollection = aktiboaCollection;
     }
 
     public LangileMota getIDmota() {
@@ -217,7 +205,7 @@ public class Langilea implements Serializable {
 
     @Override
     public String toString() {
-        return "database.utils.Langilea[ iDlangilea=" + iDlangilea + " ]";
+        return "utils.Langilea[ iDlangilea=" + iDlangilea + " ]";
     }
     
 }

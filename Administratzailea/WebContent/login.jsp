@@ -33,20 +33,6 @@
 		<!-- Outer Row -->
 		<div class="row justify-content-center">
 
-			<c:if test="${not empty requestScope.error}">
-				<div class="col-lg-4 mb-4">
-					<div class="card bg-danger text-white shadow">
-						<div class="card-body">
-							<c:out value="${requestScope.error}" />
-						</div>
-					</div>
-				</div>
-			</c:if>
-			<c:if test="${not empty requestScope.message}">
-				<p class="message">
-					<c:out value="${requestScope.message}" />
-				</p>
-			</c:if>
 
 			<div class="col-xl-10 col-lg-12 col-md-9">
 
@@ -54,7 +40,9 @@
 					<div class="card-body p-0">
 						<!-- Nested Row within Card Body -->
 						<div class="row">
-							<div class="col-lg-6 d-none d-lg-block "><img alt="register" src="img/laptop.png"></img></div>
+							<div class="col-lg-6 d-none d-lg-block ">
+								<img alt="register" src="img/laptop.png"></img>
+							</div>
 							<div class="col-lg-6">
 								<div class="p-5">
 									<div class="text-center">
@@ -80,6 +68,20 @@
 												ahaztu zaizu?</a>
 										</div>
 									</form>
+									<div>
+										<p>
+											<c:if test="${not empty requestScope.error}">
+												<div class="col-lg-12 mb-4">
+													<div class="card bg-danger text-white shadow">
+														<div class="card-body">
+															<c:out value="${requestScope.error}" />
+														</div>
+													</div>
+												</div>
+											</c:if>
+										</p>
+									</div>
+
 								</div>
 							</div>
 						</div>

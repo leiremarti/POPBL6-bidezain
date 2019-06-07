@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.StringReader;
+import java.io.StringWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -29,7 +30,11 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.core.Response;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * REST Web Service
@@ -51,12 +56,13 @@ public class ErabiltzaileakResource {
     @GET
     @Path("safe")
   //  @Produces({"application/json"})
-    public Response safeFindAll() {
+    public Response safeFindAll() throws JSONException, MalformedURLException, JAXBException {
         List<Erabiltzailea> fresh = new ArrayList<>();
-        
+            System.out.println("+++++++++++++++++++++++++++++++++++");  
         String s = "";
         try {
             
+            //URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/database.utils.erabiltzailea/noHash");
             URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/database.utils.erabiltzailea");
             URLConnection con = u.openConnection();
 	    Reader reader = new InputStreamReader(con.getInputStream());
@@ -67,8 +73,11 @@ public class ErabiltzaileakResource {
 	        }
 	        s = s + (char)ch;
 	    }
-            System.out.println(s);      
+            System.out.println("-->"+s);      
             
+         //   JSONArray array = new JSONArray(s);
+            
+           
             Erabiltzaileak erabiltzaileak = null;
             StringReader string = new StringReader(s);
             JAXBContext jc = JAXBContext.newInstance(Erabiltzaileak.class);
@@ -79,25 +88,43 @@ public class ErabiltzaileakResource {
             List<Erabiltzailea> erabiltzaile_list = erabiltzaileak.getErabiltzailea();
             
             for(Erabiltzailea e : erabiltzaile_list){
-            byte[] data = new byte[0];
-            e.setPasswordHash(data);
-            e.setPasswordSalt(data);
-            fresh.add(e);            
-        }
+                e.setPasswordHash(null);
+                e.setPasswordSalt(null);
+              //  e.setIDerabiltzailea(null);
+                fresh.add(e);            
+            }
+            
+            
             
 	} catch (MalformedURLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
 	} catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
-	} catch (JAXBException ex) {  
-            Logger.getLogger(ErabiltzaileakResource.class.getName()).log(Level.SEVERE, null, ex);
-        }  
+	}  
         
         Erabiltzaileak erabiltzaileak = new Erabiltzaileak();
         erabiltzaileak.setErabiltzailea(fresh);
-        
+       /* String xmlContent = null;
+        try
+        {
+            JAXBContext jaxbContext = JAXBContext.newInstance(Erabiltzaileak.class);
+            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+            jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+            StringWriter sw = new StringWriter();
+            jaxbMarshaller.marshal(erabiltzaileak, sw);
+            xmlContent = sw.toString();
+            System.out.println( xmlContent );
+ 
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+        */    
+       /* JSONObject resp = new JSONObject(erabiltzaileak);
+        String send = resp.toString();
+        send = send.replace("{", "[");
+        send = send.replace("}", "]");
+            System.out.println("+++++++++++++++++++++++++++++++++++"+resp.toString()); */
+            System.out.println("+++++++++++++++++++++++++++++++++++"+erabiltzaileak.toString()); 
         Response.ResponseBuilder rb = Response.ok(erabiltzaileak.toString());
         Response response = rb.header("Access-Control-Allow-Origin", "http://localhost:8081")
                                 .header("origin", "*")

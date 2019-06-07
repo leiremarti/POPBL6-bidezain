@@ -20,12 +20,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import binding.Bind;
+import encrypt.Encrypter;
 
 
 @WebServlet("/erabiltzaileak")
 public class Erabiltzaileak extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	String encrypterKey = "mysecretencrypter";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -39,29 +44,6 @@ public class Erabiltzaileak extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String s = "";
-		/*try {
-			URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/erabiltzaileak/safe");
-			URLConnection con = u.openConnection();
-			               Reader reader = new InputStreamReader(con.getInputStream());
-			               while (true) {
-			                 int ch = reader.read();
-			                 if (ch==-1) {
-			                   break;
-			                 }
-			                 s = s + (char)ch;
-			               }
-			} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			}*/
-		System.out.println(s);
-		
-		
-
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/erabiltzaileak.jsp");
 		dispatcher.forward(request, response);	
 	}
@@ -70,8 +52,6 @@ public class Erabiltzaileak extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
 		String[] checkboxClicked = request.getParameterValues("button_clicked");
 		String buttonClicked = request.getParameter("bajan_eman");
 		
@@ -83,17 +63,18 @@ public class Erabiltzaileak extends HttpServlet {
 			System.out.println(checkboxClicked);
 			
 			if(checkboxClicked!=null) {
-				String send=checkboxClicked[0];
-				for(int i=1; i<checkboxClicked.length; i++) {
+				JSONArray array = new JSONArray();
+				for(int i=0; i<checkboxClicked.length; i++) {
 					System.out.println(checkboxClicked[i]+" naiz");
-					send+=";"+checkboxClicked[i];
+					array.put(checkboxClicked[i]);
 				}
 				
-
+				Encrypter en = new Encrypter(encrypterKey);
+				String send = en.encrypt(array.toString());
 				URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/database.utils.erabiltzailea/baja") ;
 				HttpURLConnection con = (HttpURLConnection) u.openConnection();
 				con.setRequestMethod("POST");
-				con.setRequestProperty("Content-Type", "application/x-www-form-urlencode");
+				con.setRequestProperty("Content-Type", "text/plain");
 				con.setRequestProperty("Content-Length", Integer.toString(send.getBytes().length));
 				con.setUseCaches(false);
 				con.setDoInput(true);
@@ -114,9 +95,11 @@ public class Erabiltzaileak extends HttpServlet {
 				}
 
 				br.close();
-				System.out.println(loginResponse.toString());
-				request.setAttribute("success", checkboxClicked.length+" erabiltzaile ondo eman dira bajan.");
-				request.setAttribute("jsonMessage", loginResponse.toString());
+				String jsonMessage = en.decrypt(loginResponse.toString());
+				System.out.println(jsonMessage);
+				
+				request.setAttribute("message", checkboxClicked.length+" erabiltzaile ondo eman dira bajan.");
+				request.setAttribute("jsonMessage", jsonMessage);
 			}
 			
 			

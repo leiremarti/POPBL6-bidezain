@@ -7,6 +7,8 @@ package database.utils;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,6 +23,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.json.JSONException;
+import org.json.JSONObject;
+import utils.Raiz;
 
 /**
  *
@@ -226,7 +231,22 @@ public class IntzidentziaAktiboa implements Serializable {
 
     @Override
     public String toString() {
-        return "database.utils.IntzidentziaAktiboa[ iDintzidentzia=" + iDintzidentzia + " ]";
+        JSONObject json = new JSONObject();
+        try {
+                json.put("herria", this.herria);
+                json.put("iDmota", this.iDmota);
+                json.put("intzidentziaData", this.intzidentziaData);
+                json.put("longitudea", this.longitudea);
+                json.put("longitudea", this.longitudea);
+                json.put("maila", this.maila);
+                json.put("probintzia", this.probintzia);
+                json.put("zentzua", this.zentzua);
+                json.put("iDintzidentzia", this.iDintzidentzia);
+                json.put("errepidea", this.errepidea);
+            } catch (JSONException ex) {
+                Logger.getLogger(Raiz.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        return json.toString();
     }
     
 }

@@ -3,46 +3,52 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package database.utils;
+package binding;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
 
 /**
  *
  * @author user
  */
 @Entity
-@Table(name = "erabiltzailea")
+@Table(name = "langilea")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Erabiltzailea.findAll", query = "SELECT e FROM Erabiltzailea e"),
-    @NamedQuery(name = "Erabiltzailea.findByIDerabiltzailea", query = "SELECT e FROM Erabiltzailea e WHERE e.iDerabiltzailea = :iDerabiltzailea"),
-    @NamedQuery(name = "Erabiltzailea.findByIzena", query = "SELECT e FROM Erabiltzailea e WHERE e.izena = :izena"),
-    @NamedQuery(name = "Erabiltzailea.findByAbizena", query = "SELECT e FROM Erabiltzailea e WHERE e.abizena = :abizena"),
-    @NamedQuery(name = "Erabiltzailea.findByErabiltzailea", query = "SELECT e FROM Erabiltzailea e WHERE e.erabiltzailea = :erabiltzailea"),
-    @NamedQuery(name = "Erabiltzailea.findByEposta", query = "SELECT e FROM Erabiltzailea e WHERE e.eposta = :eposta"),
-    @NamedQuery(name = "Erabiltzailea.findByTelefonoa", query = "SELECT e FROM Erabiltzailea e WHERE e.telefonoa = :telefonoa"),
-    @NamedQuery(name = "Erabiltzailea.findByAktibo", query = "SELECT e FROM Erabiltzailea e WHERE e.aktibo = :aktibo")})
-public class Erabiltzailea implements Serializable {
+    @NamedQuery(name = "Langilea.findAll", query = "SELECT l FROM Langilea l"),
+    @NamedQuery(name = "Langilea.findByIDlangilea", query = "SELECT l FROM Langilea l WHERE l.iDlangilea = :iDlangilea"),
+    @NamedQuery(name = "Langilea.findByIzena", query = "SELECT l FROM Langilea l WHERE l.izena = :izena"),
+    @NamedQuery(name = "Langilea.findByAbizena", query = "SELECT l FROM Langilea l WHERE l.abizena = :abizena"),
+    @NamedQuery(name = "Langilea.findByErabiltzailea", query = "SELECT l FROM Langilea l WHERE l.erabiltzailea = :erabiltzailea"),
+    @NamedQuery(name = "Langilea.findByEposta", query = "SELECT l FROM Langilea l WHERE l.eposta = :eposta"),
+    @NamedQuery(name = "Langilea.findByTelefonoa", query = "SELECT l FROM Langilea l WHERE l.telefonoa = :telefonoa"),
+    @NamedQuery(name = "Langilea.findByAktibo", query = "SELECT l FROM Langilea l WHERE l.aktibo = :aktibo")})
+public class Langilea implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "ID_erabiltzailea")
-    private Short iDerabiltzailea;
+    @Column(name = "ID_langilea")
+    private Short iDlangilea;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
@@ -61,13 +67,13 @@ public class Erabiltzailea implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Lob
-    @Size(min = 1, max = 2147483647)
     @Column(name = "passwordHash")
-    private String passwordHash;
+    private byte[] passwordHash;
+    @Basic(optional = false)
+    @NotNull
     @Lob
-    @Size(max = 2147483647)
     @Column(name = "passwordSalt")
-    private String passwordSalt;
+    private byte[] passwordSalt;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 40)
@@ -78,29 +84,35 @@ public class Erabiltzailea implements Serializable {
     private String telefonoa;
     @Column(name = "aktibo")
     private Boolean aktibo;
+    @ManyToMany(mappedBy = "langileaCollection")
+    private Collection<Aktiboa> aktiboaCollection;
+    @JoinColumn(name = "ID_mota", referencedColumnName = "ID_langile_mota")
+    @ManyToOne(optional = false)
+    private LangileMota iDmota;
 
-    public Erabiltzailea() {
+    public Langilea() {
     }
 
-    public Erabiltzailea(Short iDerabiltzailea) {
-        this.iDerabiltzailea = iDerabiltzailea;
+    public Langilea(Short iDlangilea) {
+        this.iDlangilea = iDlangilea;
     }
 
-    public Erabiltzailea(Short iDerabiltzailea, String izena, String abizena, String erabiltzailea, String passwordHash, String eposta) {
-        this.iDerabiltzailea = iDerabiltzailea;
+    public Langilea(Short iDlangilea, String izena, String abizena, String erabiltzailea, byte[] passwordHash, byte[] passwordSalt, String eposta) {
+        this.iDlangilea = iDlangilea;
         this.izena = izena;
         this.abizena = abizena;
         this.erabiltzailea = erabiltzailea;
         this.passwordHash = passwordHash;
+        this.passwordSalt = passwordSalt;
         this.eposta = eposta;
     }
 
-    public Short getIDerabiltzailea() {
-        return iDerabiltzailea;
+    public Short getIDlangilea() {
+        return iDlangilea;
     }
 
-    public void setIDerabiltzailea(Short iDerabiltzailea) {
-        this.iDerabiltzailea = iDerabiltzailea;
+    public void setIDlangilea(Short iDlangilea) {
+        this.iDlangilea = iDlangilea;
     }
 
     public String getIzena() {
@@ -127,19 +139,19 @@ public class Erabiltzailea implements Serializable {
         this.erabiltzailea = erabiltzailea;
     }
 
-    public String getPasswordHash() {
+    public byte[] getPasswordHash() {
         return passwordHash;
     }
 
-    public void setPasswordHash(String passwordHash) {
+    public void setPasswordHash(byte[] passwordHash) {
         this.passwordHash = passwordHash;
     }
 
-    public String getPasswordSalt() {
+    public byte[] getPasswordSalt() {
         return passwordSalt;
     }
 
-    public void setPasswordSalt(String passwordSalt) {
+    public void setPasswordSalt(byte[] passwordSalt) {
         this.passwordSalt = passwordSalt;
     }
 
@@ -167,21 +179,38 @@ public class Erabiltzailea implements Serializable {
         this.aktibo = aktibo;
     }
 
+    @XmlTransient
+    public Collection<Aktiboa> getAktiboaCollection() {
+        return aktiboaCollection;
+    }
+
+    public void setAktiboaCollection(Collection<Aktiboa> aktiboaCollection) {
+        this.aktiboaCollection = aktiboaCollection;
+    }
+
+    public LangileMota getIDmota() {
+        return iDmota;
+    }
+
+    public void setIDmota(LangileMota iDmota) {
+        this.iDmota = iDmota;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (iDerabiltzailea != null ? iDerabiltzailea.hashCode() : 0);
+        hash += (iDlangilea != null ? iDlangilea.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Erabiltzailea)) {
+        if (!(object instanceof Langilea)) {
             return false;
         }
-        Erabiltzailea other = (Erabiltzailea) object;
-        if ((this.iDerabiltzailea == null && other.iDerabiltzailea != null) || (this.iDerabiltzailea != null && !this.iDerabiltzailea.equals(other.iDerabiltzailea))) {
+        Langilea other = (Langilea) object;
+        if ((this.iDlangilea == null && other.iDlangilea != null) || (this.iDlangilea != null && !this.iDlangilea.equals(other.iDlangilea))) {
             return false;
         }
         return true;
@@ -189,9 +218,7 @@ public class Erabiltzailea implements Serializable {
 
     @Override
     public String toString() {
-        String alta = this.aktibo?("<input type='checkbox' name='button_clicked' value='"+this.iDerabiltzailea+"'>Altan"):("<p style='color:red'>Bajan</p>");
-        String resp = "[\""+this.izena+"\",\""+this.abizena+"\",\""+this.erabiltzailea+"\",\""+this.eposta+"\",\""+this.telefonoa+"\",\""+alta+"\"]";
-        return resp; 
+        return "database.utils.Langilea[ iDlangilea=" + iDlangilea + " ]";
     }
     
 }

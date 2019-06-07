@@ -175,23 +175,23 @@
 							<!-- Color System -->
 							<div class="row">
 
-								<c:if test="${not empty requestScope.success}">
+								<c:if test="${not empty requestScope.error}">
 									<div class="col-lg-4 mb-4">
 										<div class="card bg-danger text-white shadow">
 											<div class="card-body">
-
-												<div class="col-lg-4 mb-4">
-													<div class="card bg-success text-white shadow">
-														<div class="card-body">
-															<c:out value="${requestScope.success}" />
-														</div>
-													</div>
-												</div>
-
+												<c:out value="${requestScope.error}" />
 											</div>
 										</div>
 									</div>
 								</c:if>
+								<c:if test="${not empty requestScope.message}">
+									<div class="card bg-success text-white shadow">
+										<div class="card-body">
+											<c:out value="${requestScope.message}" />
+										</div>
+									</div>
+								</c:if>
+
 
 							</div>
 

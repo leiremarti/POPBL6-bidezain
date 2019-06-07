@@ -23,6 +23,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -163,16 +164,21 @@ public class LangileaFacadeREST extends AbstractFacade<Langilea> {
         if(!epostaExists && !erabiltzaileaExists){
             regOK = true;
             message = "Erregistroa OK!";
+            String pwdSalt = BCrypt.gensalt(16);
+            String pwdHashed = BCrypt.hashpw((String)obj.get("passwordHash"), pwdSalt);
+            
             entitymanager.createNativeQuery("INSERT INTO langilea (izena,abizena,erabiltzailea,passwordHash, passwordSalt,eposta,telefonoa, ID_mota) VALUES (?,?,?,?,?,?,?,?)")
                 .setParameter(1, obj.get("izena"))
                 .setParameter(2, obj.get("abizena"))
                 .setParameter(3, obj.get("erabiltzailea"))
-                .setParameter(4, obj.get("passwordHash"))
-                .setParameter(5, obj.get("passwordHash"))
+                .setParameter(4, pwdHashed)
+                .setParameter(5, pwdSalt)
                 .setParameter(6, obj.get("eposta"))
                 .setParameter(7, obj.get("telefonoa"))
                 .setParameter(8, obj.get("ID_mota"))
                 .executeUpdate();
+        }else if(epostaExists && erabiltzaileaExists){
+            message = "Eposta eta erabiltzailea errepikatuta.";
         }else if(epostaExists){
             message = "Eposta errepikatuta.";
         }else if(erabiltzaileaExists){

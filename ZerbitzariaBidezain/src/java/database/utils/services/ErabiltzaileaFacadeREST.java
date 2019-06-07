@@ -6,6 +6,7 @@
 package database.utils.services;
 
 import database.utils.Erabiltzailea;
+import encrypt.Encrypter;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -22,8 +23,10 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.xml.bind.JAXBException;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -43,7 +46,6 @@ public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
     @Override
     @Consumes("application/json")
     public void create(Erabiltzailea entity) {
-        System.out.println("****************"+entity.toString());
         super.create(entity);
     }
 
@@ -96,25 +98,21 @@ public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
     
     @POST
     @Path("baja")
-    @Produces(MediaType.TEXT_PLAIN)
-    @Consumes({"application/x-www-form-urlencode"})
-    public String bajanEman(String ids) throws JAXBException {
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.TEXT_PLAIN)
+    public String bajanEman(String ids) throws JAXBException, JSONException {
         boolean todoOk=false;
-        String idArray[] = new String[1];
-        idArray[0] = ids;
-        try{
-            System.err.println("EDITATUUU: "+ ids);
-            idArray = ids.split(";");
-        }catch(ArrayIndexOutOfBoundsException e){
-            System.err.println("Bakarrik balore bat dau");
-        }
+        Encrypter en = new Encrypter("mysecretencrypter");
+        JSONArray array = new JSONArray(en.decrypt(ids));
+                System.out.println( "**************************"+array.toString() );
         
         EntityManager entitymanager = getEntityManager();
                
-        for(int i=0; i<idArray.length; i++){
+        for(int i=0; i<array.length(); i++){
             
             try {
-                Erabiltzailea e = entitymanager.find( Erabiltzailea.class, Short.parseShort(idArray[i]));
+                System.out.println( "**************************"+ array.get(i) );
+                Erabiltzailea e = entitymanager.find( Erabiltzailea.class, Short.parseShort((String)array.get(i)));
                 System.out.println( "**************************"+e );
                 e.setAktibo(false);
             } catch (NumberFormatException e){     
@@ -127,6 +125,18 @@ public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
         return String.valueOf(todoOk);
         
     }
+    /*
+    @GET
+    @Path("noHash")
+    @Produces(MediaType.APPLICATION_JSON)
+    public JSONObject noHash() {
+        EntityManager em = getEntityManager();
+        List<Erabiltzailea> o = em.createNativeQuery("SELECT izena,abizena,erabiltzailea,eposta,telefonoa,aktibo FROM erabiltzailea").getResultList();
+        System.out.print("--->"+o.get(0).getAbizena());
+        JSONObject object = new JSONObject(o);
+        return object;
+    }
+    
     
     @POST
     @Path("pwdHash")
@@ -137,6 +147,7 @@ public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
         EntityManager em = getEntityManager();
         Object o = em.createNativeQuery("SELECT passwordHash FROM erabiltzailea WHERE erabiltzailea = '"+username+"'").getSingleResult();
         System.out.print(o);
+       // object 
         return object;
     }
     
@@ -174,7 +185,7 @@ public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
         o.put("eposta", epostaExists);
         
         return o.toString();
-    }
+    }*/
     
     @POST
     @Path("create")
@@ -193,6 +204,7 @@ public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
                 
         try{            
             Object o = entitymanager.createNativeQuery("SELECT * FROM erabiltzailea WHERE erabiltzailea = '"+erabiltzailea+"'").getSingleResult();
+            System.out.println("asklndcsjñ<fndskfn<ska. ->>"+o);
         }catch(NoResultException e){
             erabiltzaileaExists = false;
         }catch(NonUniqueResultException e){
@@ -211,16 +223,21 @@ public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
         if(!epostaExists && !erabiltzaileaExists){
             regOK=true;
             message = "Erregistroa OK!";
+            String pwdSalt = BCrypt.gensalt(16);
+            String pwdHashed = BCrypt.hashpw((String)obj.get("passwordHash"), pwdSalt);
+            
             entitymanager.createNativeQuery("INSERT INTO erabiltzailea (izena,abizena,erabiltzailea,passwordHash, passwordSalt,eposta,telefonoa) VALUES (?,?,?,?,?,?,?)")
                 .setParameter(1, obj.get("izena"))
                 .setParameter(2, obj.get("abizena"))
                 .setParameter(3, obj.get("erabiltzailea"))
-                .setParameter(4, obj.get("passwordHash"))
-                .setParameter(5, obj.get("passwordHash"))
+                .setParameter(4, pwdHashed.getBytes())
+                .setParameter(5, pwdSalt.getBytes())
                 .setParameter(6, obj.get("eposta"))
                 .setParameter(7, obj.get("telefonoa"))
                 .executeUpdate();
             
+        }else if(epostaExists && erabiltzaileaExists){
+            message = "Eposta eta erabiltzailea errepikatuta.";
         }else if(epostaExists){
             message = "Eposta errepikatuta.";
         }else if(erabiltzaileaExists){
