@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.NonUniqueResultException;
 import javax.persistence.PersistenceContext;
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -132,20 +133,16 @@ public class LangileaFacadeREST extends AbstractFacade<Langilea> {
     @Path("create")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public String createNew(String berria) throws JSONException {
-        
-        System.out.println("****************"+berria);
+    public String createNew(@Valid Langilea berria) throws JSONException {
         boolean regOK = false;
         boolean erabiltzaileaExists = true;
         boolean epostaExists = true;
-        JSONObject obj = new JSONObject(berria);
-        String email = obj.getString("eposta");
+        
         String message = "";
-        String erabiltzailea = obj.getString("erabiltzailea");
         EntityManager entitymanager = getEntityManager();
                 
         try{            
-            Object o = entitymanager.createNativeQuery("SELECT * FROM langilea WHERE erabiltzailea = '"+erabiltzailea+"'").getSingleResult();
+            Object o = entitymanager.createNativeQuery("SELECT * FROM langilea WHERE erabiltzailea = '"+berria.getErabiltzailea()+"'").getSingleResult();
         }catch(NoResultException e){
             erabiltzaileaExists = false;
         }catch(NonUniqueResultException e){
@@ -153,7 +150,7 @@ public class LangileaFacadeREST extends AbstractFacade<Langilea> {
             System.out.println("Erabiltzailea errepikatuta!");
         }
         try{            
-            Object o2 = entitymanager.createNativeQuery("SELECT * FROM langilea WHERE eposta = '"+email+"'").getSingleResult();
+            Object o2 = entitymanager.createNativeQuery("SELECT * FROM langilea WHERE eposta = '"+berria.getEposta()+"'").getSingleResult();
         }catch(NoResultException e){
             epostaExists = false;
         }catch(NonUniqueResultException e){            
@@ -162,21 +159,25 @@ public class LangileaFacadeREST extends AbstractFacade<Langilea> {
         }        
         
         if(!epostaExists && !erabiltzaileaExists){
-            regOK = true;
+            regOK=true;
             message = "Erregistroa OK!";
             String pwdSalt = BCrypt.gensalt(16);
-            String pwdHashed = BCrypt.hashpw((String)obj.get("passwordHash"), pwdSalt);
+            String pwdHashed = BCrypt.hashpw(berria.getPasswordHash(), pwdSalt);
             
             entitymanager.createNativeQuery("INSERT INTO langilea (izena,abizena,erabiltzailea,passwordHash, passwordSalt,eposta,telefonoa, ID_mota) VALUES (?,?,?,?,?,?,?,?)")
-                .setParameter(1, obj.get("izena"))
-                .setParameter(2, obj.get("abizena"))
-                .setParameter(3, obj.get("erabiltzailea"))
-                .setParameter(4, pwdHashed)
-                .setParameter(5, pwdSalt)
-                .setParameter(6, obj.get("eposta"))
-                .setParameter(7, obj.get("telefonoa"))
-                .setParameter(8, obj.get("ID_mota"))
-                .executeUpdate();
+                .setParameter(1, berria.getIzena())
+                .setParameter(2, berria.getAbizena())
+                .setParameter(3, berria.getErabiltzailea())
+                .setParameter(4, pwdHashed.getBytes())
+                .setParameter(5, pwdSalt.getBytes())
+                .setParameter(6, berria.getEposta())
+                .setParameter(7, berria.getTelefonoa())
+                .setParameter(8, 1)
+                .executeUpdate();           
+            
+           /* em.getTransaction().begin();
+            em.persist(berria);
+            em.getTransaction().commit();*/
         }else if(epostaExists && erabiltzaileaExists){
             message = "Eposta eta erabiltzailea errepikatuta.";
         }else if(epostaExists){

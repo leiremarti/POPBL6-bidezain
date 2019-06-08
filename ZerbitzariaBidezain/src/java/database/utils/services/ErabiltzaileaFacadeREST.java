@@ -13,6 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.NonUniqueResultException;
 import javax.persistence.PersistenceContext;
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -37,6 +38,7 @@ import org.mindrot.jbcrypt.BCrypt;
 public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
     @PersistenceContext(unitName = "ZerbitzariaBidezainPU")
     private EntityManager em;
+    private static final String encrypterKey = "mysecretencrypter";
 
     public ErabiltzaileaFacadeREST() {
         super(Erabiltzailea.class);
@@ -102,18 +104,15 @@ public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
     @Consumes(MediaType.TEXT_PLAIN)
     public String bajanEman(String ids) throws JAXBException, JSONException {
         boolean todoOk=false;
-        Encrypter en = new Encrypter("mysecretencrypter");
+        Encrypter en = new Encrypter(encrypterKey);
         JSONArray array = new JSONArray(en.decrypt(ids));
-                System.out.println( "**************************"+array.toString() );
         
         EntityManager entitymanager = getEntityManager();
                
         for(int i=0; i<array.length(); i++){
             
             try {
-                System.out.println( "**************************"+ array.get(i) );
                 Erabiltzailea e = entitymanager.find( Erabiltzailea.class, Short.parseShort((String)array.get(i)));
-                System.out.println( "**************************"+e );
                 e.setAktibo(false);
             } catch (NumberFormatException e){     
                 System.out.println("exception");
@@ -191,6 +190,66 @@ public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
     @Path("create")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
+    public String createNew(@Valid Erabiltzailea berria) throws JSONException {                
+        boolean regOK = false;
+        boolean erabiltzaileaExists = true;
+        boolean epostaExists = true;
+        
+        String message = "";
+        EntityManager entitymanager = getEntityManager();
+                
+        try{            
+            Object o = entitymanager.createNativeQuery("SELECT * FROM erabiltzailea WHERE erabiltzailea = '"+berria.getErabiltzailea()+"'").getSingleResult();
+        }catch(NoResultException e){
+            erabiltzaileaExists = false;
+        }catch(NonUniqueResultException e){
+            erabiltzaileaExists = false;
+            System.out.println("Erabiltzailea errepikatuta!");
+        }
+        try{            
+            Object o2 = entitymanager.createNativeQuery("SELECT * FROM erabiltzailea WHERE eposta = '"+berria.getEposta()+"'").getSingleResult();
+        }catch(NoResultException e){
+            epostaExists = false;
+        }catch(NonUniqueResultException e){            
+            epostaExists = false;
+            System.out.println("Eposta errepikatuta!");
+        }        
+        
+        if(!epostaExists && !erabiltzaileaExists){
+            regOK=true;
+            message = "Erregistroa OK!";
+            String pwdSalt = BCrypt.gensalt(16);
+            String pwdHashed = BCrypt.hashpw(berria.getPasswordHash(), pwdSalt);
+            
+            entitymanager.createNativeQuery("INSERT INTO erabiltzailea (izena,abizena,erabiltzailea,passwordHash, passwordSalt,eposta,telefonoa) VALUES (?,?,?,?,?,?,?)")
+                .setParameter(1, berria.getIzena())
+                .setParameter(2, berria.getAbizena())
+                .setParameter(3, berria.getErabiltzailea())
+                .setParameter(4, pwdHashed.getBytes())
+                .setParameter(5, pwdSalt.getBytes())
+                .setParameter(6, berria.getEposta())
+                .setParameter(7, berria.getTelefonoa())
+                .executeUpdate();
+            
+        }else if(epostaExists && erabiltzaileaExists){
+            message = "Eposta eta erabiltzailea errepikatuta.";
+        }else if(epostaExists){
+            message = "Eposta errepikatuta.";
+        }else if(erabiltzaileaExists){
+            message = "Erabiltzailea errepikatuta.";
+        }
+        
+        JSONObject o = new JSONObject();
+        o.put("message", message);
+        o.put("regOK", regOK);
+        return o.toString();
+    }
+    
+    /*
+     @POST
+    @Path("create")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public String createNew(String berria) throws JSONException {
                 
         boolean regOK = false;
@@ -249,4 +308,6 @@ public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
         o.put("regOK", regOK);
         return o.toString();
     }
+    
+    */
 }

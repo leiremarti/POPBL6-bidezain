@@ -49,7 +49,7 @@ public class Register extends HttpServlet {
 	private static final int MIN_STRENGTH = 7;
 	String message;
 	boolean registerOK;
-	String encrypterKey = "mysecretencrypter";
+	private static final String encrypterKey = "mysecretencrypter";
 	
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -89,7 +89,7 @@ public class Register extends HttpServlet {
 		if(action!=null && action.equals("register")) {
 			
 			if(calculatePasswordStrength(password)>=MIN_STRENGTH) {
-				registerAction(izena, abizena, email, username, password);
+				System.out.println(registerAction(izena, abizena, email, username, password));
 			}else {
 				message = "Pasahitza ez da nahikoa indartsua. Gutxienez 8 karaktere izan behar ditu.";
 			}
@@ -97,19 +97,19 @@ public class Register extends HttpServlet {
 			
 		}
 
-		if(registerOK) {
-			session.setAttribute("isLoged", true);
-			session.setAttribute("user", username);
-			request.setAttribute("message", message);
-			response.sendRedirect(request.getContextPath() + "/home");
-		}
-		else {
-			System.out.println(message);
+		if(!registerOK) {
+			System.out.println("Message: "+message);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/register");
 			session.setAttribute("isLoged", false);
 			request.setAttribute("error", message);
 			response.sendRedirect(request.getContextPath() + "/register");
-		//	dispatcher.forward(request, response);
+		//	dispatcher.forward(request, response);	
+			
+		}else {
+			session.setAttribute("isLoged", true);
+			session.setAttribute("user", username);
+			request.setAttribute("message", message);
+			response.sendRedirect(request.getContextPath() + "/home");
 		}
 
 	}
@@ -126,42 +126,26 @@ public class Register extends HttpServlet {
 			object.put("erabiltzailea", e.encrypt(username));
 			object.put("passwordHash", e.encrypt(password)); //Erregistratzerakoan pasahitza normal pasatzen da, soilik enkriptatuta
 			object.put("telefonoa", "");
+			object.put("passwordSalt", "notgonnause");
 			object.put("ID_mota", 1);
 		} catch (JSONException e1) {
 			e1.printStackTrace();
 		}
 
-
+		System.out.println(object.toString());
 		try {
-
-			/*	Langilea l = new Langilea();
-			l.setIzena(izena);
-			l.setAbizena(abizena);
-			l.setEposta(email);
-			l.setErabiltzailea(username);
-			l.setPasswordHash(password.getBytes());
-			l.setTelefonoa("");
-		//	l.setIDmota(1);
-			JAXBContext jaxbContext = JAXBContext.newInstance(Langilea.class);
-            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-            jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-            StringWriter sw = new StringWriter();
-			jaxbMarshaller.marshal(l, sw);
-			System.out.println(sw.toString());*/  
 
 			URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/register/langilea");
 
 			HttpURLConnection con = (HttpURLConnection) u.openConnection();
 			con.setRequestMethod("POST");
 			con.setRequestProperty("Content-Type", "application/json");
-			//con.setRequestProperty("Content-Length", Integer.toString(sw.toString().getBytes().length));
 			con.setRequestProperty("Content-Length", Integer.toString(object.toString().getBytes().length));
 			con.setUseCaches(false);
 			con.setDoInput(true);
 			con.setDoOutput(true);
 
 			DataOutputStream dos = new DataOutputStream(con.getOutputStream());
-			//dos.writeBytes(sw.toString());
 			dos.writeBytes(object.toString());
 			dos.flush();
 			dos.close();

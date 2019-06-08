@@ -179,25 +179,47 @@ public class InzidentziakResource {
     public Response markersFindAll() throws MalformedURLException, IOException {
        // List<Erabiltzailea> fresh = new ArrayList<>();
         
-        String s = "";
-        URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/database.utils.intzidentziaaktiboa");
-            URLConnection con = u.openConnection();
-	    Reader reader = new InputStreamReader(con.getInputStream());
-	    while (true) {
-	        int ch = reader.read();
-	        if (ch==-1) {
-	            break;
-	        }
-	        s = s + (char)ch;
-	    }
-                    System.out.print(s);
-        Response.ResponseBuilder rb = Response.ok(s);
+        String send = getAllIntzidentziaAktiboak();
+        System.out.println(getAllAurreikuspenak());
+        Response.ResponseBuilder rb = Response.ok(send);
         Response response = rb.header("Access-Control-Allow-Origin", "http://localhost:8081")
                                 .header("origin", "*")
                             .build();
         return response;
         
         //return fresh;
+    }
+    
+    private String getAllIntzidentziaAktiboak() throws MalformedURLException, IOException{
+        String s = "";
+        URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/database.utils.intzidentziaaktiboa");
+        URLConnection con = u.openConnection();
+	Reader reader = new InputStreamReader(con.getInputStream());
+	while (true) {
+	    int ch = reader.read();
+	    if (ch==-1) {
+	        break;
+            }
+            s = s + (char)ch;
+	}
+        System.out.print(s);
+        return s;
+    }
+    
+    private String getAllAurreikuspenak() throws MalformedURLException, IOException{
+        String s = "";
+        URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/database.utils.aurreikuspena");
+        URLConnection con = u.openConnection();
+	Reader reader = new InputStreamReader(con.getInputStream());
+	while (true) {
+	    int ch = reader.read();
+	    if (ch==-1) {
+	        break;
+            }
+            s = s + (char)ch;
+	}
+        System.out.print(s);
+        return s;
     }
     
     /*

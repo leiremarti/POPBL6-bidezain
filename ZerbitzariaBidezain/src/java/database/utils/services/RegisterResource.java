@@ -55,6 +55,7 @@ public class RegisterResource {
 
     @Context
     private UriInfo context;
+    private static final String encrypterKey = "mysecretencrypter";
 
     /**
      * Creates a new instance of RegisterResource
@@ -67,23 +68,24 @@ public class RegisterResource {
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
     public String registerErabiltzailea(String data) throws JAXBException, JSONException, MalformedURLException, IOException {
-              System.out.println("*******************************"+data);
-        JSONObject data_json = new JSONObject(data);        
-        boolean registerOK = false; 
+        JSONObject data_json = new JSONObject(data);         
+        Encrypter e = new Encrypter(encrypterKey);
         
-        Encrypter e = new Encrypter("mysecretencrypter");
         data_json.put("erabiltzailea", e.decrypt(data_json.getString("erabiltzailea")));
         data_json.put("izena", e.decrypt(data_json.getString("izena")));
         data_json.put("abizena", e.decrypt(data_json.getString("abizena")));
         data_json.put("passwordHash", e.decrypt(data_json.getString("passwordHash")));
         data_json.put("eposta", e.decrypt(data_json.getString("eposta")));
         data_json.put("telefonoa", e.decrypt(data_json.getString("telefonoa")));
-              System.out.println("*******************************"+data_json);
+              System.out.println("*************ERABILTZAILEA REG******************"+data);
         
-        create(data_json, "erabiltzailea");
-        registerOK = true;
+        JSONObject erantzuna = create(data_json, "erabiltzailea");
+        String value = String.valueOf((boolean)erantzuna.get("regOK"));                        
+        erantzuna.put("regOK", String.valueOf(e.encrypt(value)));
+        erantzuna.put("message", e.encrypt((String)erantzuna.get("message")));
+				System.out.println(erantzuna.toString());
          
-        return String.valueOf(e.encrypt(String.valueOf(registerOK)));
+        return String.valueOf(erantzuna.toString());
     }
     
     @POST
@@ -91,9 +93,10 @@ public class RegisterResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public String registerLangilea(/*@Valid Langilea*/String data) throws JAXBException, JSONException, MalformedURLException, IOException {
-              //System.out.println("*******************************"+data.getAbizena());
+        
         JSONObject data_json = new JSONObject(data);
-        Encrypter e = new Encrypter("mysecretencrypter");
+        Encrypter e = new Encrypter(encrypterKey);
+        
         data_json.put("erabiltzailea", e.decrypt(data_json.getString("erabiltzailea")));
         data_json.put("izena", e.decrypt(data_json.getString("izena")));
         data_json.put("abizena", e.decrypt(data_json.getString("abizena")));
@@ -101,7 +104,14 @@ public class RegisterResource {
         data_json.put("eposta", e.decrypt(data_json.getString("eposta")));
         data_json.put("telefonoa", e.decrypt(data_json.getString("telefonoa")));
         System.out.println("*******************************"+data_json);
-        
+       /* 
+        Langilea langilea = null;
+        StringReader string = new StringReader(data_json.toString());
+        JAXBContext jc = JAXBContext.newInstance(Langilea.class);
+        Unmarshaller ju = jc.createUnmarshaller();
+        langilea = (Langilea) ju.unmarshal(string);
+        System.out.println("*******************************"+langilea.getAbizena());
+        */
         JSONObject erantzuna = create(data_json, "langilea");
         String value = String.valueOf((boolean)erantzuna.get("regOK"));                        
         erantzuna.put("regOK", String.valueOf(e.encrypt(value)));

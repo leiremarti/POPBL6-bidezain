@@ -47,6 +47,7 @@ public class LoginResource {
 
     @Context
     private UriInfo context;
+    private static final String encrypterKey = "mysecretencrypter";
 
     /**
      * Creates a new instance of LoginResource
@@ -74,7 +75,7 @@ public class LoginResource {
         
         JSONObject myjson = new JSONObject(data); 
         
-        Encrypter en = new Encrypter("mysecretencrypter");                
+        Encrypter en = new Encrypter(encrypterKey);                
         
         String username = en.decrypt(myjson.getString("erabiltzailea"));
         String password = en.decrypt(myjson.getString("password"));
@@ -135,7 +136,7 @@ public class LoginResource {
         
         JSONObject myjson = new JSONObject(data);          
         
-        Encrypter en = new Encrypter("mysecretencrypter");                
+        Encrypter en = new Encrypter(encrypterKey);                
         
         String username = en.decrypt(myjson.getString("erabiltzailea"));
         String password = en.decrypt(myjson.getString("password"));
