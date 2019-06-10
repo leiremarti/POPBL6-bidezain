@@ -31,99 +31,99 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "aktibo_mota")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "AktiboMota.findAll", query = "SELECT a FROM AktiboMota a"),
-    @NamedQuery(name = "AktiboMota.findByIDaktibomota", query = "SELECT a FROM AktiboMota a WHERE a.iDaktibomota = :iDaktibomota"),
-    @NamedQuery(name = "AktiboMota.findByAktiboMota", query = "SELECT a FROM AktiboMota a WHERE a.aktiboMota = :aktiboMota"),
-    @NamedQuery(name = "AktiboMota.findByDeskribapena", query = "SELECT a FROM AktiboMota a WHERE a.deskribapena = :deskribapena")})
+	@NamedQuery(name = "AktiboMota.findAll", query = "SELECT a FROM AktiboMota a"),
+	@NamedQuery(name = "AktiboMota.findByIDaktibomota", query = "SELECT a FROM AktiboMota a WHERE a.iDaktibomota = :iDaktibomota"),
+	@NamedQuery(name = "AktiboMota.findByAktiboMota", query = "SELECT a FROM AktiboMota a WHERE a.aktiboMota = :aktiboMota"),
+	@NamedQuery(name = "AktiboMota.findByDeskribapena", query = "SELECT a FROM AktiboMota a WHERE a.deskribapena = :deskribapena")})
 public class AktiboMota implements Serializable {
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "ID_aktibo_mota")
-    private Short iDaktibomota;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
-    @Column(name = "aktibo_mota")
-    private String aktiboMota;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 250)
-    @Column(name = "deskribapena")
-    private String deskribapena;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "iDmota")
-    private Collection<Aktiboa> aktiboaCollection;
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Basic(optional = false)
+	@Column(name = "ID_aktibo_mota")
+	private Short iDaktibomota;
+	@Basic(optional = false)
+	@NotNull
+	@Size(min = 1, max = 30)
+	@Column(name = "aktibo_mota")
+	private String aktiboMota;
+	@Basic(optional = false)
+	@NotNull
+	@Size(min = 1, max = 250)
+	@Column(name = "deskribapena")
+	private String deskribapena;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "iDmota")
+	private Collection<Aktiboa> aktiboaCollection;
 
-    public AktiboMota() {
-    }
+	public AktiboMota() {
+	}
 
-    public AktiboMota(Short iDaktibomota) {
-        this.iDaktibomota = iDaktibomota;
-    }
+	public AktiboMota(Short iDaktibomota) {
+		this.iDaktibomota = iDaktibomota;
+	}
 
-    public AktiboMota(Short iDaktibomota, String aktiboMota, String deskribapena) {
-        this.iDaktibomota = iDaktibomota;
-        this.aktiboMota = aktiboMota;
-        this.deskribapena = deskribapena;
-    }
+	public AktiboMota(Short iDaktibomota, String aktiboMota, String deskribapena) {
+		this.iDaktibomota = iDaktibomota;
+		this.aktiboMota = aktiboMota;
+		this.deskribapena = deskribapena;
+	}
 
-    public Short getIDaktibomota() {
-        return iDaktibomota;
-    }
+	public Short getIDaktibomota() {
+		return iDaktibomota;
+	}
 
-    public void setIDaktibomota(Short iDaktibomota) {
-        this.iDaktibomota = iDaktibomota;
-    }
+	public void setIDaktibomota(Short iDaktibomota) {
+		this.iDaktibomota = iDaktibomota;
+	}
 
-    public String getAktiboMota() {
-        return aktiboMota;
-    }
+	public String getAktiboMota() {
+		return aktiboMota;
+	}
 
-    public void setAktiboMota(String aktiboMota) {
-        this.aktiboMota = aktiboMota;
-    }
+	public void setAktiboMota(String aktiboMota) {
+		this.aktiboMota = aktiboMota;
+	}
 
-    public String getDeskribapena() {
-        return deskribapena;
-    }
+	public String getDeskribapena() {
+		return deskribapena;
+	}
 
-    public void setDeskribapena(String deskribapena) {
-        this.deskribapena = deskribapena;
-    }
+	public void setDeskribapena(String deskribapena) {
+		this.deskribapena = deskribapena;
+	}
 
-    @XmlTransient
-    public Collection<Aktiboa> getAktiboaCollection() {
-        return aktiboaCollection;
-    }
+	@XmlTransient
+	public Collection<Aktiboa> getAktiboaCollection() {
+		return aktiboaCollection;
+	}
 
-    public void setAktiboaCollection(Collection<Aktiboa> aktiboaCollection) {
-        this.aktiboaCollection = aktiboaCollection;
-    }
+	public void setAktiboaCollection(Collection<Aktiboa> aktiboaCollection) {
+		this.aktiboaCollection = aktiboaCollection;
+	}
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (iDaktibomota != null ? iDaktibomota.hashCode() : 0);
-        return hash;
-    }
+	@Override
+	public int hashCode() {
+		int hash = 0;
+		hash += (iDaktibomota != null ? iDaktibomota.hashCode() : 0);
+		return hash;
+	}
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof AktiboMota)) {
-            return false;
-        }
-        AktiboMota other = (AktiboMota) object;
-        if ((this.iDaktibomota == null && other.iDaktibomota != null) || (this.iDaktibomota != null && !this.iDaktibomota.equals(other.iDaktibomota))) {
-            return false;
-        }
-        return true;
-    }
+	@Override
+	public boolean equals(Object object) {
 
-    @Override
-    public String toString() {
-        return "database.utils.AktiboMota[ iDaktibomota=" + iDaktibomota + " ]";
-    }
-    
+		if (!(object instanceof AktiboMota)) {
+			return false;
+		}
+		AktiboMota other = (AktiboMota) object;
+		if ((this.iDaktibomota == null && other.iDaktibomota != null) || (this.iDaktibomota != null && !this.iDaktibomota.equals(other.iDaktibomota))) {
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "database.utils.AktiboMota[ iDaktibomota=" + iDaktibomota + " ]";
+	}
+
 }

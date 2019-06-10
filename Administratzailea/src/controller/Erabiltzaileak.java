@@ -71,7 +71,7 @@ public class Erabiltzaileak extends HttpServlet {
 				
 				Encrypter en = new Encrypter(encrypterKey);
 				String send = en.encrypt(array.toString());
-				URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/database.utils.erabiltzailea/baja") ;
+				URL u = new URL("http://localhost:8080/BidezainZerbitzaria/webresources/database.utils.erabiltzailea/baja") ;
 				HttpURLConnection con = (HttpURLConnection) u.openConnection();
 				con.setRequestMethod("POST");
 				con.setRequestProperty("Content-Type", "text/plain");

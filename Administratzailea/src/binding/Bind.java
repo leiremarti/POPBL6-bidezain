@@ -17,13 +17,11 @@ public class Bind {
 		
 		try {
 
-			//File f = new File("erabiltzaileak.xml");
 			StringReader string = new StringReader(xmlCode);
 			JAXBContext jc = JAXBContext.newInstance(Erabiltzaileak.class);
 
 			Unmarshaller ju = jc.createUnmarshaller();
 			erabiltzaileak = (Erabiltzaileak) ju.unmarshal(string);
-			//System.out.println(erabiltzaileak);
 
 		} catch (JAXBException e) {
 			e.printStackTrace();
@@ -32,10 +30,4 @@ public class Bind {
 		return erabiltzaileak;
 	}
 	
-	/*public static void main(String[] args) {
-		System.out.println("HASI");
-		Bind b = new Bind();
-		b.bindErabiltzaileak();
-		System.out.println("AMAITU");
-	}*/
 }

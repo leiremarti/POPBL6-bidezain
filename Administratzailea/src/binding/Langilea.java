@@ -34,191 +34,191 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "langilea")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Langilea.findAll", query = "SELECT l FROM Langilea l"),
-    @NamedQuery(name = "Langilea.findByIDlangilea", query = "SELECT l FROM Langilea l WHERE l.iDlangilea = :iDlangilea"),
-    @NamedQuery(name = "Langilea.findByIzena", query = "SELECT l FROM Langilea l WHERE l.izena = :izena"),
-    @NamedQuery(name = "Langilea.findByAbizena", query = "SELECT l FROM Langilea l WHERE l.abizena = :abizena"),
-    @NamedQuery(name = "Langilea.findByErabiltzailea", query = "SELECT l FROM Langilea l WHERE l.erabiltzailea = :erabiltzailea"),
-    @NamedQuery(name = "Langilea.findByEposta", query = "SELECT l FROM Langilea l WHERE l.eposta = :eposta"),
-    @NamedQuery(name = "Langilea.findByTelefonoa", query = "SELECT l FROM Langilea l WHERE l.telefonoa = :telefonoa"),
-    @NamedQuery(name = "Langilea.findByAktibo", query = "SELECT l FROM Langilea l WHERE l.aktibo = :aktibo")})
+	@NamedQuery(name = "Langilea.findAll", query = "SELECT l FROM Langilea l"),
+	@NamedQuery(name = "Langilea.findByIDlangilea", query = "SELECT l FROM Langilea l WHERE l.iDlangilea = :iDlangilea"),
+	@NamedQuery(name = "Langilea.findByIzena", query = "SELECT l FROM Langilea l WHERE l.izena = :izena"),
+	@NamedQuery(name = "Langilea.findByAbizena", query = "SELECT l FROM Langilea l WHERE l.abizena = :abizena"),
+	@NamedQuery(name = "Langilea.findByErabiltzailea", query = "SELECT l FROM Langilea l WHERE l.erabiltzailea = :erabiltzailea"),
+	@NamedQuery(name = "Langilea.findByEposta", query = "SELECT l FROM Langilea l WHERE l.eposta = :eposta"),
+	@NamedQuery(name = "Langilea.findByTelefonoa", query = "SELECT l FROM Langilea l WHERE l.telefonoa = :telefonoa"),
+	@NamedQuery(name = "Langilea.findByAktibo", query = "SELECT l FROM Langilea l WHERE l.aktibo = :aktibo")})
 public class Langilea implements Serializable {
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "ID_langilea")
-    private Short iDlangilea;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
-    @Column(name = "izena")
-    private String izena;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
-    @Column(name = "abizena")
-    private String abizena;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
-    @Column(name = "erabiltzailea")
-    private String erabiltzailea;
-    @Basic(optional = false)
-    @NotNull
-    @Lob
-    @Column(name = "passwordHash")
-    private byte[] passwordHash;
-    @Basic(optional = false)
-    @NotNull
-    @Lob
-    @Column(name = "passwordSalt")
-    private byte[] passwordSalt;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 40)
-    @Column(name = "eposta")
-    private String eposta;
-    @Size(max = 9)
-    @Column(name = "telefonoa")
-    private String telefonoa;
-    @Column(name = "aktibo")
-    private Boolean aktibo;
-    @ManyToMany(mappedBy = "langileaCollection")
-    private Collection<Aktiboa> aktiboaCollection;
-    @JoinColumn(name = "ID_mota", referencedColumnName = "ID_langile_mota")
-    @ManyToOne(optional = false)
-    private LangileMota iDmota;
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Basic(optional = false)
+	@Column(name = "ID_langilea")
+	private Short iDlangilea;
+	@Basic(optional = false)
+	@NotNull
+	@Size(min = 1, max = 30)
+	@Column(name = "izena")
+	private String izena;
+	@Basic(optional = false)
+	@NotNull
+	@Size(min = 1, max = 30)
+	@Column(name = "abizena")
+	private String abizena;
+	@Basic(optional = false)
+	@NotNull
+	@Size(min = 1, max = 30)
+	@Column(name = "erabiltzailea")
+	private String erabiltzailea;
+	@Basic(optional = false)
+	@NotNull
+	@Lob
+	@Column(name = "passwordHash")
+	private byte[] passwordHash;
+	@Basic(optional = false)
+	@NotNull
+	@Lob
+	@Column(name = "passwordSalt")
+	private byte[] passwordSalt;
+	@Basic(optional = false)
+	@NotNull
+	@Size(min = 1, max = 40)
+	@Column(name = "eposta")
+	private String eposta;
+	@Size(max = 9)
+	@Column(name = "telefonoa")
+	private String telefonoa;
+	@Column(name = "aktibo")
+	private Boolean aktibo;
+	@ManyToMany(mappedBy = "langileaCollection")
+	private Collection<Aktiboa> aktiboaCollection;
+	@JoinColumn(name = "ID_mota", referencedColumnName = "ID_langile_mota")
+	@ManyToOne(optional = false)
+	private LangileMota iDmota;
 
-    public Langilea() {
-    }
+	public Langilea() {
+	}
 
-    public Langilea(Short iDlangilea) {
-        this.iDlangilea = iDlangilea;
-    }
+	public Langilea(Short iDlangilea) {
+		this.iDlangilea = iDlangilea;
+	}
 
-    public Langilea(Short iDlangilea, String izena, String abizena, String erabiltzailea, byte[] passwordHash, byte[] passwordSalt, String eposta) {
-        this.iDlangilea = iDlangilea;
-        this.izena = izena;
-        this.abizena = abizena;
-        this.erabiltzailea = erabiltzailea;
-        this.passwordHash = passwordHash;
-        this.passwordSalt = passwordSalt;
-        this.eposta = eposta;
-    }
+	public Langilea(Short iDlangilea, String izena, String abizena, String erabiltzailea, byte[] passwordHash, byte[] passwordSalt, String eposta) {
+		this.iDlangilea = iDlangilea;
+		this.izena = izena;
+		this.abizena = abizena;
+		this.erabiltzailea = erabiltzailea;
+		this.passwordHash = passwordHash;
+		this.passwordSalt = passwordSalt;
+		this.eposta = eposta;
+	}
 
-    public Short getIDlangilea() {
-        return iDlangilea;
-    }
+	public Short getIDlangilea() {
+		return iDlangilea;
+	}
 
-    public void setIDlangilea(Short iDlangilea) {
-        this.iDlangilea = iDlangilea;
-    }
+	public void setIDlangilea(Short iDlangilea) {
+		this.iDlangilea = iDlangilea;
+	}
 
-    public String getIzena() {
-        return izena;
-    }
+	public String getIzena() {
+		return izena;
+	}
 
-    public void setIzena(String izena) {
-        this.izena = izena;
-    }
+	public void setIzena(String izena) {
+		this.izena = izena;
+	}
 
-    public String getAbizena() {
-        return abizena;
-    }
+	public String getAbizena() {
+		return abizena;
+	}
 
-    public void setAbizena(String abizena) {
-        this.abizena = abizena;
-    }
+	public void setAbizena(String abizena) {
+		this.abizena = abizena;
+	}
 
-    public String getErabiltzailea() {
-        return erabiltzailea;
-    }
+	public String getErabiltzailea() {
+		return erabiltzailea;
+	}
 
-    public void setErabiltzailea(String erabiltzailea) {
-        this.erabiltzailea = erabiltzailea;
-    }
+	public void setErabiltzailea(String erabiltzailea) {
+		this.erabiltzailea = erabiltzailea;
+	}
 
-    public byte[] getPasswordHash() {
-        return passwordHash;
-    }
+	public byte[] getPasswordHash() {
+		return passwordHash;
+	}
 
-    public void setPasswordHash(byte[] passwordHash) {
-        this.passwordHash = passwordHash;
-    }
+	public void setPasswordHash(byte[] passwordHash) {
+		this.passwordHash = passwordHash;
+	}
 
-    public byte[] getPasswordSalt() {
-        return passwordSalt;
-    }
+	public byte[] getPasswordSalt() {
+		return passwordSalt;
+	}
 
-    public void setPasswordSalt(byte[] passwordSalt) {
-        this.passwordSalt = passwordSalt;
-    }
+	public void setPasswordSalt(byte[] passwordSalt) {
+		this.passwordSalt = passwordSalt;
+	}
 
-    public String getEposta() {
-        return eposta;
-    }
+	public String getEposta() {
+		return eposta;
+	}
 
-    public void setEposta(String eposta) {
-        this.eposta = eposta;
-    }
+	public void setEposta(String eposta) {
+		this.eposta = eposta;
+	}
 
-    public String getTelefonoa() {
-        return telefonoa;
-    }
+	public String getTelefonoa() {
+		return telefonoa;
+	}
 
-    public void setTelefonoa(String telefonoa) {
-        this.telefonoa = telefonoa;
-    }
+	public void setTelefonoa(String telefonoa) {
+		this.telefonoa = telefonoa;
+	}
 
-    public Boolean getAktibo() {
-        return aktibo;
-    }
+	public Boolean getAktibo() {
+		return aktibo;
+	}
 
-    public void setAktibo(Boolean aktibo) {
-        this.aktibo = aktibo;
-    }
+	public void setAktibo(Boolean aktibo) {
+		this.aktibo = aktibo;
+	}
 
-    @XmlTransient
-    public Collection<Aktiboa> getAktiboaCollection() {
-        return aktiboaCollection;
-    }
+	@XmlTransient
+	public Collection<Aktiboa> getAktiboaCollection() {
+		return aktiboaCollection;
+	}
 
-    public void setAktiboaCollection(Collection<Aktiboa> aktiboaCollection) {
-        this.aktiboaCollection = aktiboaCollection;
-    }
+	public void setAktiboaCollection(Collection<Aktiboa> aktiboaCollection) {
+		this.aktiboaCollection = aktiboaCollection;
+	}
 
-    public LangileMota getIDmota() {
-        return iDmota;
-    }
+	public LangileMota getIDmota() {
+		return iDmota;
+	}
 
-    public void setIDmota(LangileMota iDmota) {
-        this.iDmota = iDmota;
-    }
+	public void setIDmota(LangileMota iDmota) {
+		this.iDmota = iDmota;
+	}
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (iDlangilea != null ? iDlangilea.hashCode() : 0);
-        return hash;
-    }
+	@Override
+	public int hashCode() {
+		int hash = 0;
+		hash += (iDlangilea != null ? iDlangilea.hashCode() : 0);
+		return hash;
+	}
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Langilea)) {
-            return false;
-        }
-        Langilea other = (Langilea) object;
-        if ((this.iDlangilea == null && other.iDlangilea != null) || (this.iDlangilea != null && !this.iDlangilea.equals(other.iDlangilea))) {
-            return false;
-        }
-        return true;
-    }
+	@Override
+	public boolean equals(Object object) {
 
-    @Override
-    public String toString() {
-        return "database.utils.Langilea[ iDlangilea=" + iDlangilea + " ]";
-    }
-    
+		if (!(object instanceof Langilea)) {
+			return false;
+		}
+		Langilea other = (Langilea) object;
+		if ((this.iDlangilea == null && other.iDlangilea != null) || (this.iDlangilea != null && !this.iDlangilea.equals(other.iDlangilea))) {
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "database.utils.Langilea[ iDlangilea=" + iDlangilea + " ]";
+	}
+
 }

@@ -90,6 +90,7 @@ public class Register extends HttpServlet {
 			
 			if(calculatePasswordStrength(password)>=MIN_STRENGTH) {
 				System.out.println(registerAction(izena, abizena, email, username, password));
+				message = "Langile berria ondo sortu da.";
 			}else {
 				message = "Pasahitza ez da nahikoa indartsua. Gutxienez 8 karaktere izan behar ditu.";
 			}
@@ -106,9 +107,10 @@ public class Register extends HttpServlet {
 		//	dispatcher.forward(request, response);	
 			
 		}else {
-			session.setAttribute("isLoged", true);
-			session.setAttribute("user", username);
-			request.setAttribute("message", message);
+			System.out.println("Message: "+message);
+			//session.setAttribute("isLoged", true);
+			//session.setAttribute("user", username);
+			request.setAttribute("success", message);
 			response.sendRedirect(request.getContextPath() + "/home");
 		}
 
@@ -135,7 +137,7 @@ public class Register extends HttpServlet {
 		System.out.println(object.toString());
 		try {
 
-			URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/register/langilea");
+			URL u = new URL("http://localhost:8080/BidezainZerbitzaria/webresources/register/langilea");
 
 			HttpURLConnection con = (HttpURLConnection) u.openConnection();
 			con.setRequestMethod("POST");

@@ -176,18 +176,10 @@
 							<div class="row">
 
 								<c:if test="${not empty requestScope.success}">
-									<div class="col-lg-4 mb-4">
-										<div class="card bg-danger text-white shadow">
+									<div class="col-lg-12 mb-4">
+										<div class="card bg-success text-white shadow">
 											<div class="card-body">
-
-												<div class="col-lg-4 mb-4">
-													<div class="card bg-success text-white shadow">
-														<div class="card-body">
-															<c:out value="${requestScope.success}" />
-														</div>
-													</div>
-												</div>
-
+												<c:out value="${requestScope.success}" />
 											</div>
 										</div>
 									</div>
@@ -594,7 +586,7 @@
 							req1
 									.open(
 											'GET',
-											'http://localhost:8080/ZerbitzariaBidezain/webresources/database.utils.intzidentziaaktiboa/countmotak',
+											'http://localhost:8080/BidezainZerbitzaria/webresources/database.utils.intzidentziaaktiboa/countmotak',
 											true);
 							req1.onreadystatechange = function(aEvt) {
 								if (req1.readyState == 4) {
@@ -647,7 +639,7 @@
 			req
 					.open(
 							'GET',
-							'http://localhost:8080/ZerbitzariaBidezain/webresources/inzidentziak/inzidentziakMarkers',
+							'http://localhost:8080/BidezainZerbitzaria/webresources/inzidentziak/inzidentziakMarkers',
 							true);
 			req.onreadystatechange = function(aEvt) {
 				if (req.readyState == 4) {

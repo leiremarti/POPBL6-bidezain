@@ -31,7 +31,6 @@ import binding.Bind;
 import binding.Erabiltzaileak;
 import binding.Erabiltzaileak.Erabiltzailea;
 import encrypt.Encrypter;
-import passwordDecoder.HashGenerator;
 import sun.security.krb5.EncryptedData;
 
 
@@ -88,7 +87,7 @@ public class Login extends HttpServlet {
 				json.put("erabiltzailea", en.encrypt(username));
 				json.put("password", en.encrypt(password));
 
-				URL u = new URL("http://localhost:8080/ZerbitzariaBidezain/webresources/login/langilea");
+				URL u = new URL("http://localhost:8080/BidezainZerbitzaria/webresources/login/langilea");
 				HttpURLConnection con = (HttpURLConnection) u.openConnection();
 				con.setRequestMethod("POST");
 				con.setRequestProperty("Content-Type", "application/json");

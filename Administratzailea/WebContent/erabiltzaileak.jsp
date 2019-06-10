@@ -286,7 +286,7 @@
 							req
 									.open(
 											'GET',
-											'http://localhost:8080/ZerbitzariaBidezain/webresources/erabiltzaileak/safe',
+											'http://localhost:8080/BidezainZerbitzaria/webresources/erabiltzaileak/safe',
 											true);
 							req.onreadystatechange = function(aEvt) {
 								if (req.readyState == 4) {

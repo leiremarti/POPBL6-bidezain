@@ -297,7 +297,7 @@
 							req
 									.open(
 											'GET',
-											'http://localhost:8080/ZerbitzariaBidezain/webresources/database.utils.aurreikuspena/aurreikuspenak',
+											'http://localhost:8080/BidezainZerbitzaria/webresources/database.utils.aurreikuspena/aurreikuspenak',
 											true);
 							req.onreadystatechange = function(aEvt) {
 								if (req.readyState == 4) {
