@@ -105,6 +105,11 @@ public class IntzidentziaAktiboaFacadeREST extends AbstractFacade<IntzidentziaAk
         return em;
     }
     
+    /**
+     * 
+     * Intzidentzia mota bakoitza datu basean zenbat aldiz dauden bueltatzen du.
+     * 
+     */
     @GET
     @Path("countmotak")
     public Response inzidentziaKopurua() throws MalformedURLException, IOException {
@@ -149,11 +154,17 @@ public class IntzidentziaAktiboaFacadeREST extends AbstractFacade<IntzidentziaAk
         
     }
     
+    /**
+     * 
+     * JSON bidez pasatako Intzidentzia talde bat datu basera gordetzen du.
+     * @return
+     *     possible object is
+     *     {@link Response }
+     */
     @POST
     @Path("createall")
     @Consumes("application/json")
     public void createAll(String inzidentziaAktiboak) throws JAXBException, JSONException{
-            System.out.println("<<<<---------->>>>"+inzidentziaAktiboak);
         JSONObject o = new JSONObject(inzidentziaAktiboak);
         JSONArray array = (JSONArray) o.get("intzidentziak");
         int length = array.length();
@@ -165,7 +176,6 @@ public class IntzidentziaAktiboaFacadeREST extends AbstractFacade<IntzidentziaAk
             Integer id = (Integer)motaOb.get("IDintzidentziamota");
             m.setIDintzidentziamota(id.shortValue());
             m.setIntzidentziaMota((String)motaOb.get("intzidentziaMota"));
-            System.out.println(m.toString());
             String s = ob.toString();            
             IntzidentziaAktiboa ia = gson.fromJson(s, IntzidentziaAktiboa.class);
             ia.setIDmota(m);
@@ -174,9 +184,5 @@ public class IntzidentziaAktiboaFacadeREST extends AbstractFacade<IntzidentziaAk
 
         }
         
-       /* JAXBContext jaxbContext = JAXBContext.newInstance(IntzidentziaAktiboak.class);
-        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-        StringReader sreader = new StringReader(xmlString);
-        IntzidentziaAktiboak person = (IntzidentziaAktiboak) unmarshaller.unmarshal(sreader);*/
     }
 }

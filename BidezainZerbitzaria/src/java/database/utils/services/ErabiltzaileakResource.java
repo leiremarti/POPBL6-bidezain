@@ -55,14 +55,12 @@ public class ErabiltzaileakResource {
 
     @GET
     @Path("safe")
-  //  @Produces({"application/json"})
     public Response safeFindAll() throws JSONException, MalformedURLException, JAXBException {
         List<Erabiltzailea> fresh = new ArrayList<>();
             System.out.println("+++++++++++++++++++++++++++++++++++");  
         String s = "";
         try {
             
-            //URL u = new URL("http://localhost:8080/BidezainZerbitzaria/webresources/database.utils.erabiltzailea/noHash");
             URL u = new URL("http://localhost:8080/BidezainZerbitzaria/webresources/database.utils.erabiltzailea");
             URLConnection con = u.openConnection();
 	    Reader reader = new InputStreamReader(con.getInputStream());
@@ -73,10 +71,7 @@ public class ErabiltzaileakResource {
 	        }
 	        s = s + (char)ch;
 	    }
-            System.out.println("-->"+s);      
-            
-         //   JSONArray array = new JSONArray(s);
-            
+            System.out.println("-->"+s);                 
            
             Erabiltzaileak erabiltzaileak = null;
             StringReader string = new StringReader(s);
@@ -90,7 +85,6 @@ public class ErabiltzaileakResource {
             for(Erabiltzailea e : erabiltzaile_list){
                 e.setPasswordHash(null);
                 e.setPasswordSalt(null);
-              //  e.setIDerabiltzailea(null);
                 fresh.add(e);            
             }
             
@@ -104,34 +98,12 @@ public class ErabiltzaileakResource {
         
         Erabiltzaileak erabiltzaileak = new Erabiltzaileak();
         erabiltzaileak.setErabiltzailea(fresh);
-       /* String xmlContent = null;
-        try
-        {
-            JAXBContext jaxbContext = JAXBContext.newInstance(Erabiltzaileak.class);
-            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-            jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-            StringWriter sw = new StringWriter();
-            jaxbMarshaller.marshal(erabiltzaileak, sw);
-            xmlContent = sw.toString();
-            System.out.println( xmlContent );
- 
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
-        */    
-       /* JSONObject resp = new JSONObject(erabiltzaileak);
-        String send = resp.toString();
-        send = send.replace("{", "[");
-        send = send.replace("}", "]");
-            System.out.println("+++++++++++++++++++++++++++++++++++"+resp.toString()); */
-            System.out.println("+++++++++++++++++++++++++++++++++++"+erabiltzaileak.toString()); 
+        
         Response.ResponseBuilder rb = Response.ok(erabiltzaileak.toString());
         Response response = rb.header("Access-Control-Allow-Origin", "http://localhost:8081")
                                 .header("origin", "*")
                             .build();
         return response;
-        
-        //return fresh;
     }
     
     /**

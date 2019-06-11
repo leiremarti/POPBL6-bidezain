@@ -97,6 +97,17 @@ public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
         return em;
     }
     
+    /**
+     * Erabiltzailea bajan emateko erabiltzen da
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String}
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     */
     @POST
     @Path("baja")
     @Produces(MediaType.APPLICATION_JSON)
@@ -123,131 +134,19 @@ public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
         return String.valueOf(todoOk);
         
     }
-    /*
-    @GET
-    @Path("noHash")
-    @Produces(MediaType.APPLICATION_JSON)
-    public JSONObject noHash() {
-        EntityManager em = getEntityManager();
-        List<Erabiltzailea> o = em.createNativeQuery("SELECT izena,abizena,erabiltzailea,eposta,telefonoa,aktibo FROM erabiltzailea").getResultList();
-        System.out.print("--->"+o.get(0).getAbizena());
-        JSONObject object = new JSONObject(o);
-        return object;
-    }
     
-    
+    /**
+     * Datu basean erabiltzailea berri bat sortzen du 
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Erabiltzailea}
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     */
     @POST
-    @Path("pwdHash")
-    @Consumes(MediaType.TEXT_PLAIN)
-    @Produces(MediaType.APPLICATION_JSON)
-    public JSONObject getHash(String username) {
-        JSONObject object = new JSONObject();
-        EntityManager em = getEntityManager();
-        Object o = em.createNativeQuery("SELECT passwordHash FROM erabiltzailea WHERE erabiltzailea = '"+username+"'").getSingleResult();
-        System.out.print(o);
-       // object 
-        return object;
-    }
-    
-    @POST
-    @Path("exists")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public String erabiltzaileaExists(String data) throws JSONException {
-        boolean erabiltzaileaExists = true;
-        boolean epostaExists = true;
-        JSONObject object = new JSONObject(data);
-        String email = object.getString("eposta");
-        String erabiltzailea = object.getString("erabiltzailea");
-        
-        EntityManager entitymanager = getEntityManager();
-        try{            
-            Object o = entitymanager.createNativeQuery("SELECT * FROM erabiltzailea WHERE erabiltzailea = '"+erabiltzailea+"'").getSingleResult();
-        }catch(NoResultException e){
-            erabiltzaileaExists = false;
-        }catch(NonUniqueResultException e){
-            erabiltzaileaExists = false;
-            System.out.println("Erabiltzailea errepikatuta!");
-        }
-        try{            
-            Object o2 = entitymanager.createNativeQuery("SELECT * FROM erabiltzailea WHERE eposta = '"+email+"'").getSingleResult();
-        }catch(NoResultException e){
-            epostaExists = false;
-        }catch(NonUniqueResultException e){            
-            epostaExists = false;
-            System.out.println("Eposta errepikatuta!");
-        }
-        
-        JSONObject o = new JSONObject();
-        o.put("erabiltzailea", erabiltzaileaExists);
-        o.put("eposta", epostaExists);
-        
-        return o.toString();
-    }*/
-    
-    
-    /*
-    @POST
-    @Path("create")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public String createNew(@Valid Erabiltzailea berria) throws JSONException {                
-        boolean regOK = false;
-        boolean erabiltzaileaExists = true;
-        boolean epostaExists = true;
-        
-        String message = "";
-        EntityManager entitymanager = getEntityManager();
-                
-        try{            
-            Object o = entitymanager.createNativeQuery("SELECT * FROM erabiltzailea WHERE erabiltzailea = '"+berria.getErabiltzailea()+"'").getSingleResult();
-        }catch(NoResultException e){
-            erabiltzaileaExists = false;
-        }catch(NonUniqueResultException e){
-            erabiltzaileaExists = false;
-            System.out.println("Erabiltzailea errepikatuta!");
-        }
-        try{            
-            Object o2 = entitymanager.createNativeQuery("SELECT * FROM erabiltzailea WHERE eposta = '"+berria.getEposta()+"'").getSingleResult();
-        }catch(NoResultException e){
-            epostaExists = false;
-        }catch(NonUniqueResultException e){            
-            epostaExists = false;
-            System.out.println("Eposta errepikatuta!");
-        }        
-        
-        if(!epostaExists && !erabiltzaileaExists){
-            regOK=true;
-            message = "Erregistroa OK!";
-            String pwdSalt = BCrypt.gensalt(16);
-            String pwdHashed = BCrypt.hashpw(berria.getPasswordHash(), pwdSalt);
-            
-            entitymanager.createNativeQuery("INSERT INTO erabiltzailea (izena,abizena,erabiltzailea,passwordHash, passwordSalt,eposta,telefonoa) VALUES (?,?,?,?,?,?,?)")
-                .setParameter(1, berria.getIzena())
-                .setParameter(2, berria.getAbizena())
-                .setParameter(3, berria.getErabiltzailea())
-                .setParameter(4, pwdHashed.getBytes())
-                .setParameter(5, pwdSalt.getBytes())
-                .setParameter(6, berria.getEposta())
-                .setParameter(7, berria.getTelefonoa())
-                .executeUpdate();
-            
-        }else if(epostaExists && erabiltzaileaExists){
-            message = "Eposta eta erabiltzailea errepikatuta.";
-        }else if(epostaExists){
-            message = "Eposta errepikatuta.";
-        }else if(erabiltzaileaExists){
-            message = "Erabiltzailea errepikatuta.";
-        }
-        
-        JSONObject o = new JSONObject();
-        o.put("message", message);
-        o.put("regOK", regOK);
-        return o.toString();
-    }
-    */
-    
-     @POST
     @Path("create")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)

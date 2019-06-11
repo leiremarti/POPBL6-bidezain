@@ -10,15 +10,33 @@ import java.util.Base64;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
+/**
+ * Pasahitzak enkriptatzeko erabiltzen diren funtzioak definitzen dira.
+ * @author user
+ */
 public class Encrypter {
 	
-	SecretKeySpec secretKey;
+    SecretKeySpec secretKey;
     byte[] key;
  
+    /**
+     * Encrypter klase berri bat sortzeko metodoa, pasahitzari klabe sekretua zehaztuz
+     *
+     *@param value
+     *     allowed object is
+     *     {@link String }
+     */
     public Encrypter(String secret) {
     	setKey(secret);
     }
     
+    /**
+     * Pasahitzari klabe sekretu bat ezartzen duen metodoa
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     */
     public void setKey(String myKey)
     {
         MessageDigest sha = null;
@@ -37,6 +55,17 @@ public class Encrypter {
         }
     }
  
+    /**
+     * pasahitza enkriptatzen duen metodoa
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     * @return
+     *     possible object is
+     *     {@link String }
+     */
     public String encrypt(String strToEncrypt)
     {
         try
@@ -52,6 +81,17 @@ public class Encrypter {
         return null;
     }
  
+    /**
+     * pasahitza desenkriptatzen duen metodoa
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     */
     public String decrypt(String strToDecrypt)
     {
         try

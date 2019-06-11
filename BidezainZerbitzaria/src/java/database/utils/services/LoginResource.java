@@ -38,7 +38,7 @@ import org.json.JSONObject;
 import org.mindrot.jbcrypt.BCrypt;
 
 /**
- * REST Web Service
+ * REST Web Service Login erabiltzen diren zerbitzuak
  *
  * @author user
  */
@@ -56,8 +56,10 @@ public class LoginResource {
     }
 
     /**
-     * Retrieves representation of an instance of database.utils.services.LoginResource
-     * @return an instance of java.lang.String
+     * Json String bat bueltatzen du
+     * @return
+     *     possible object is
+     *     {@link String }
      */
     @GET
     @Produces("application/json")
@@ -66,6 +68,16 @@ public class LoginResource {
         throw new UnsupportedOperationException();
     }
 
+    /**
+     * Erabiltzailea logeatzeko erabiltzen den zerbitzua
+     * @param value
+     *     allowed object is
+     *     {@link String}
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     */
     @POST
     @Path("erabiltzailea")
     @Produces(MediaType.TEXT_PLAIN)
@@ -127,10 +139,19 @@ public class LoginResource {
         return en.encrypt(String.valueOf(loginOK));//String.valueOf(loginOK);//
     }
     
+    /**
+     * Langilea logeatzeko erabiltzen den zerbitzua
+     * @param value
+     *     allowed object is
+     *     {@link String}
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     */
     @POST
     @Path("langilea")
     @Produces(MediaType.TEXT_PLAIN)
-  //  @Consumes(MediaType.APPLICATION_JSON)
     public String loginLangilea(String data) throws JAXBException, JSONException {
         boolean loginOK = false;
         

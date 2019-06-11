@@ -67,7 +67,7 @@ import utils.Raiz;
 import utils.Raiz.IncidenciaGeolocalizada;
 
 /**
- * REST Web Service
+ * REST Web Service Intzidentziak kargatzeko erabiltzen diren zerbitzuak
  *
  * @author user
  */
@@ -77,6 +77,7 @@ public class InzidentziakResource {
     @Context
     private UriInfo context;
     private Object JDBCTutorialUtilities;
+    private static final String encrypterKey = "mysecretencrypter";
 
     /**
      * Creates a new instance of InzidentziakResource
@@ -84,9 +85,12 @@ public class InzidentziakResource {
     public InzidentziakResource() {
     }
 
-    /**
-     * Retrieves representation of an instance of database.utils.services.InzidentziakResource
-     * @return an instance of java.lang.String
+   /**
+     * Json String bat bueltatzen du
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
      */
     @GET
     @Produces("application/json")
@@ -100,12 +104,12 @@ public class InzidentziakResource {
         Raiz person = (Raiz) unmarshaller.unmarshal(sreader);
         
         JSONObject inzidentziak_json = getInzidentziakOK(person.getIncidenciaGeolocalizada());
-        Encrypter en = new Encrypter("mysecretencrypter");
+        Encrypter en = new Encrypter(encrypterKey);
         return inzidentziak_json.toString();//en.encrypt(inzidentziak_json.toString());
     }
     
     /**
-     * Retrieves representation of an instance of database.utils.services.InzidentziakResource
+     * Eusko Jaurlaritzaren web orritik XML bat irakurri eta datubasean ordetzen du.
      * @return an instance of java.lang.String
      */
     @POST
@@ -114,7 +118,6 @@ public class InzidentziakResource {
     @Produces("application/json")
     public String toDatabase(String s) throws JAXBException, IOException, MalformedURLException, KeyManagementException, NoSuchAlgorithmException, JSONException {
         
-        System.out.print("->:"+s);
         String xmlString = getXml();
         
         JSONObject object = new JSONObject(xmlString);
@@ -166,6 +169,16 @@ public class InzidentziakResource {
         return xmlString;
     }
     
+     /**
+     * Datu basean valido dauden intzidentziak JSONObject bezala batean bueltatzen ditu
+     * @param value
+     *     allowed object is
+     *     {@link List<IncidenciaGeolocalizada>}
+     * 
+     * @return
+     *     possible object is
+     *     {@link JSONObject }
+     */
     private JSONObject getInzidentziakOK(List<IncidenciaGeolocalizada> list) throws JSONException{
         boolean ok = true;
         List<IntzidentziaAktiboa> new_list = new ArrayList<>();
@@ -202,6 +215,12 @@ public class InzidentziakResource {
         
     }
 
+    /**
+     * Trafikoko web orrialdetik intzidentzien xml hartzen du 
+     * @return
+     *     possible object is
+     *     {@link String }
+     */
     private String getXMLFromOutside() throws MalformedURLException, IOException, KeyManagementException, NoSuchAlgorithmException{
         URL u = new URL("https://www.trafikoa.eus/servicios/IncidenciasTDT/IncidenciasTrafikoTDTGeo");
         TrustManager[] trustAllCerts = new TrustManager[] {
@@ -248,13 +267,18 @@ public class InzidentziakResource {
                     return s;
     }
     
+    /**
+     * Mapan markers-ak jartzeko
+     * @return
+     *     possible object is
+     *     {@link Response }
+     */
     @GET
     @Path("inzidentziakMarkers")
-    //@Produces({"application/json"})
     public Response markersFindAll() throws MalformedURLException, IOException {
-       // List<Erabiltzailea> fresh = new ArrayList<>();
         
         String send = getAllIntzidentziaAktiboak();
+       // send += getAllAurreikuspenak();
         System.out.println(getAllAurreikuspenak());
         Response.ResponseBuilder rb = Response.ok(send);
         Response response = rb.header("Access-Control-Allow-Origin", "http://localhost:8081")
@@ -262,9 +286,14 @@ public class InzidentziakResource {
                             .build();
         return response;
         
-        //return fresh;
     }
     
+    /**
+     * Intzidentzia aktibo guztiak bueltatzen ditu
+     * @return
+     *     possible object is
+     *     {@link String }
+     */
     private String getAllIntzidentziaAktiboak() throws MalformedURLException, IOException{
         String s = "";
         URL u = new URL("http://localhost:8080/BidezainZerbitzaria/webresources/database.utils.intzidentziaaktiboa");
@@ -277,10 +306,15 @@ public class InzidentziakResource {
             }
             s = s + (char)ch;
 	}
-        System.out.print(s);
         return s;
     }
     
+    /**
+     * Aurreikuspen guztiak bueltatzen dituen metodoak
+     * @return
+     *     possible object is
+     *     {@link String }
+     */
     private String getAllAurreikuspenak() throws MalformedURLException, IOException{
         String s = "";
         URL u = new URL("http://localhost:8080/BidezainZerbitzaria/webresources/database.utils.aurreikuspena");
@@ -293,7 +327,6 @@ public class InzidentziakResource {
             }
             s = s + (char)ch;
 	}
-        System.out.print(s);
         return s;
     }
     
@@ -335,121 +368,5 @@ public class InzidentziakResource {
         
         return intzidentziaMota;
     }
-    
-    /*
-    @POST
-    @Path("refresh")
-    @Produces("text/plain")
-    public String refreshIntzidentziak() throws JSONException, JAXBException, IOException, MalformedURLException, KeyManagementException, NoSuchAlgorithmException {
-        System.out.print("++++++++");
-        JSONObject obj = new JSONObject(getXml());
-        System.out.println(obj.getJSONArray("inzidentziaAktiboak"));
-        
-        URL url = new URL("http://localhost:8080/BidezainZerbitzaria/webresources/database.utils.intzidentziaaktiboa/deleteAll");
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod("DELETE");
-        int responseCode = connection.getResponseCode();
-        
-        return "aaa";
-    }
-    */
-    
-    /*
-    @GET
-    @Path("inzidentziaKopuruak")
- //   @Produces({"application/json"})
-    public Response inzidentziaKopuruak() throws MalformedURLException, IOException, SQLException {
-       // List<Erabiltzailea> fresh = new ArrayList<>();
-        
-        String s = "";
-        URL u = new URL("http://localhost:8080/BidezainZerbitzaria/webresources/database.utils.intzidentziaaktiboa");
-            URLConnection con = u.openConnection();
-	    Reader reader = new InputStreamReader(con.getInputStream());
-	    while (true) {
-	        int ch = reader.read();
-	        if (ch==-1) {
-	            break;
-	        }
-	        s = s + (char)ch;
-	    }
-        System.out.print(s);
-        
-        //mota bakoitza bere kopurukin biali
-        /*
-        QUERY:
-        SELECT ID_mota, COUNT(ID_intzidentzia) FROM intzidentzia_aktiboa GROUP BY ID_mota
-        https://docs.oracle.com/javase/tutorial/jdbc/basics/processingsqlstatements.html
-        
-        
-        Statement stmt = null;
-        String query = "SELECT ID_mota, COUNT(ID_intzidentzia) FROM intzidentzia_aktiboa GROUP BY ID_mota";
-        try {
-            stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-            while (rs.next()) {
-                String coffeeName = rs.getString("COF_NAME");
-                int supplierID = rs.getInt("SUP_ID");
-                float price = rs.getFloat("PRICE");
-                int sales = rs.getInt("SALES");
-                int total = rs.getInt("TOTAL");
-                System.out.println(coffeeName + "\t" + supplierID +
-                                   "\t" + price + "\t" + sales +
-                                   "\t" + total);
-            }
-        } catch (SQLException e ) {
-            JDBCTutorialUtilities.printSQLException(e);
-        } finally {
-            if (stmt != null) { stmt.close(); }
-        }
-        
-        
-        Map<Integer, Integer> map = new HashMap<>();
-        map.put(1, 18);
-        map.put(2, 18);
-        map.put(3, 18);
-        map.put(4, 18);
-        map.put(5, 18);
-        map.put(6, 18);
-        map.put(7, 18);
-        map.put(8, 18);
-        map.put(9, 18);
-        List<Integer> list = new ArrayList<>();
-        list.add(18);
-        
-        Response.ResponseBuilder rb = Response.ok(map.toString());
-        Response response = rb.header("Access-Control-Allow-Origin", "http://localhost:8081")
-                                .header("origin", "*")
-                            .build();
-        return response;
-        
-        //return fresh;
-    }
-    
-    public Connection getConnection() throws SQLException {
-
-    Connection conn = null;
-    Properties connectionProps = new Properties();
-    connectionProps.put("user", this.userName);
-    connectionProps.put("password", this.password);
-
-    if (this.dbms.equals("mysql")) {
-        conn = DriverManager.getConnection(
-                   "jdbc:" + this.dbms + "://" +
-                   this.serverName +
-                   ":" + this.portNumber + "/",
-                   connectionProps);
-    } else if (this.dbms.equals("derby")) {
-        conn = DriverManager.getConnection(
-                   "jdbc:" + this.dbms + ":" +
-                   this.dbName +
-                   ";create=true",
-                   connectionProps);
-    }
-    System.out.println("Connected to database");
-    return conn;
-}
-    
-    */
-    
-   
+       
 }

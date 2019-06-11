@@ -61,10 +61,18 @@ public class AurreikuspenaFacadeREST extends AbstractFacade<Aurreikuspena> {
         super.create(entity);
     }
     
+    /**
+     * Aurreikuspenak banaka generatu beharrean, JSON bitartezko estruktura bateko Aurreikuspen guztiak generatzen ditu.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String}
+     */
     @POST
     @Path("createall")
     @Consumes("application/json")
     public void createAll(String entity) throws JSONException, IOException, MalformedURLException, JAXBException {
+        System.out.print("--->>>"+entity);
         JSONObject o = new JSONObject(entity);
         JSONArray array = (JSONArray) o.get("aurreikuspenak");
         int length = array.length();
@@ -159,7 +167,17 @@ public class AurreikuspenaFacadeREST extends AbstractFacade<Aurreikuspena> {
     protected EntityManager getEntityManager() {
         return em;
     }
-    
+    /**
+     * Aurreikuspenak filtratzen ditu
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String}
+     * 
+     * @return
+     *     possible object is
+     *     {@link Response }
+     */
     @GET
     @Path("aurreikuspenak")
     public Response filteredAurreikuspenak() {
@@ -193,7 +211,14 @@ public class AurreikuspenaFacadeREST extends AbstractFacade<Aurreikuspena> {
                             .build();
         return response;
     }
-
+    
+/**
+     * Asteko eguna bueltatzen duen metodoa.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     */
     private String astekoeguna(String e) {
         
         String eguna = "AL";
@@ -220,6 +245,13 @@ public class AurreikuspenaFacadeREST extends AbstractFacade<Aurreikuspena> {
         return eguna;
     }
     
+    /**
+     * Intzidentzia motaren arabera IntzidentziaMota klaseko objektu bat bueltatzen du.
+     * 
+     * @return
+     *     possible object is
+     *     {@link IntzidentziaMota }
+     */
     private IntzidentziaMota getIntzidentziaMota(String mota) throws MalformedURLException, IOException, JAXBException, JSONException {
         
         String s="";

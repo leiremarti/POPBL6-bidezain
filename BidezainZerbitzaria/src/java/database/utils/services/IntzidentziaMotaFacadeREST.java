@@ -62,7 +62,6 @@ public class IntzidentziaMotaFacadeREST extends AbstractFacade<IntzidentziaMota>
     
     @GET
     @Path("getintzidentziamota/{mota}")
-   // @Consumes("text/plain")
     @Produces("application/xml")
     public IntzidentziaMota getIntzidentziaMota(@PathParam("mota") String mota) {
         

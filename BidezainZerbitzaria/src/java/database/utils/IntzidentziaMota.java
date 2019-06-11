@@ -132,6 +132,7 @@ public class IntzidentziaMota implements Serializable {
         return true;
     }
 
+    /*
     @Override
     public String toString() {
         JSONObject o = new JSONObject();
@@ -144,5 +145,5 @@ public class IntzidentziaMota implements Serializable {
         System.out.println(o.toString());
         return o.toString();
     }
-    
+    */
 }

@@ -93,6 +93,17 @@ public class LangileaFacadeREST extends AbstractFacade<Langilea> {
         return em;
     }
  
+    /**
+     * Langile datu basean ea existitzen den konprobatzen du. Langilea json objektu bezala pasatzen zaio, eta json objetu bezala
+     * bueltatzen du.
+     * @param value
+     *     allowed object is
+     *     {@link String}
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     */
     @POST
     @Path("exists")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -128,70 +139,18 @@ public class LangileaFacadeREST extends AbstractFacade<Langilea> {
         
         return o.toString();
     }
-    /*
-    @POST
-    @Path("create")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public String createNew(@Valid Langilea berria) throws JSONException {
-        boolean regOK = false;
-        boolean erabiltzaileaExists = true;
-        boolean epostaExists = true;
-        
-        String message = "";
-        EntityManager entitymanager = getEntityManager();
-                
-        try{            
-            Object o = entitymanager.createNativeQuery("SELECT * FROM langilea WHERE erabiltzailea = '"+berria.getErabiltzailea()+"'").getSingleResult();
-        }catch(NoResultException e){
-            erabiltzaileaExists = false;
-        }catch(NonUniqueResultException e){
-            erabiltzaileaExists = false;
-            System.out.println("Erabiltzailea errepikatuta!");
-        }
-        try{            
-            Object o2 = entitymanager.createNativeQuery("SELECT * FROM langilea WHERE eposta = '"+berria.getEposta()+"'").getSingleResult();
-        }catch(NoResultException e){
-            epostaExists = false;
-        }catch(NonUniqueResultException e){            
-            epostaExists = false;
-            System.out.println("Eposta errepikatuta!");
-        }        
-        
-        if(!epostaExists && !erabiltzaileaExists){
-            regOK=true;
-            message = "Erregistroa OK!";
-            String pwdSalt = BCrypt.gensalt(16);
-            String pwdHashed = BCrypt.hashpw(berria.getPasswordHash(), pwdSalt);
-            
-            entitymanager.createNativeQuery("INSERT INTO langilea (izena,abizena,erabiltzailea,passwordHash, passwordSalt,eposta,telefonoa, ID_mota) VALUES (?,?,?,?,?,?,?,?)")
-                .setParameter(1, berria.getIzena())
-                .setParameter(2, berria.getAbizena())
-                .setParameter(3, berria.getErabiltzailea())
-                .setParameter(4, pwdHashed.getBytes())
-                .setParameter(5, pwdSalt.getBytes())
-                .setParameter(6, berria.getEposta())
-                .setParameter(7, berria.getTelefonoa())
-                .setParameter(8, 1)
-                .executeUpdate();           
-            
-           /* em.getTransaction().begin();
-            em.persist(berria);
-            em.getTransaction().commit();*//*
-        }else if(epostaExists && erabiltzaileaExists){
-            message = "Eposta eta erabiltzailea errepikatuta.";
-        }else if(epostaExists){
-            message = "Eposta errepikatuta.";
-        }else if(erabiltzaileaExists){
-            message = "Erabiltzailea errepikatuta.";
-        }
-        
-        JSONObject o = new JSONObject();
-        o.put("message", message);
-        o.put("regOK", regOK);
-        return o.toString();
-    }*/
-
+    
+    /**
+     * Datu basean langile berri bat sortzen du. Langilea json objektu bezala pasatzen zaio, eta json objetu bezala
+     * bueltatzen du.
+     * @param value
+     *     allowed object is
+     *     {@link Langilea}
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     */
     @POST
     @Path("create")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -241,9 +200,6 @@ public class LangileaFacadeREST extends AbstractFacade<Langilea> {
                 .setParameter(8, 1)
                 .executeUpdate();           
             
-           /* em.getTransaction().begin();
-            em.persist(berria);
-            em.getTransaction().commit();*/
         }else if(epostaExists && erabiltzaileaExists){
             message = "Eposta eta erabiltzailea errepikatuta.";
         }else if(epostaExists){

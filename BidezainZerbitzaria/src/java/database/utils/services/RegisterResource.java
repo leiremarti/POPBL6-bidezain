@@ -45,7 +45,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * REST Web Service
+ * REST Web Service Registratzeko erabiltzen diren zerbitzuak
  *
  * @author user
  */
@@ -62,6 +62,18 @@ public class RegisterResource {
     public RegisterResource() {
     }
     
+    
+    /**
+     * Erabiltzailea erregistratzerako erabiltzen den zerbitzua
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String}
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     */
     @POST
     @Path("erabiltzailea")
     @Produces(MediaType.TEXT_PLAIN)
@@ -76,7 +88,6 @@ public class RegisterResource {
         data_json.put("passwordHash", e.decrypt(data_json.getString("passwordHash")));
         data_json.put("eposta", e.decrypt(data_json.getString("eposta")));
         data_json.put("telefonoa", e.decrypt(data_json.getString("telefonoa")));
-              System.out.println("*************ERABILTZAILEA REG******************"+data);
         
         JSONObject erantzuna = create(data_json, "erabiltzailea");
         String value = String.valueOf((boolean)erantzuna.get("regOK"));                        
@@ -87,6 +98,17 @@ public class RegisterResource {
         return String.valueOf(String.valueOf(e.encrypt(value)));
     }
     
+     /**
+     * Langilea erregistratzerako erabiltzen den zerbitzua
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String}
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     */
     @POST
     @Path("langilea")
     @Produces(MediaType.APPLICATION_JSON)
@@ -102,15 +124,6 @@ public class RegisterResource {
         data_json.put("passwordHash", e.decrypt(data_json.getString("passwordHash")));
         data_json.put("eposta", e.decrypt(data_json.getString("eposta")));
         data_json.put("telefonoa", e.decrypt(data_json.getString("telefonoa")));
-        System.out.println("*******************************"+data_json);
-       /* 
-        Langilea langilea = null;
-        StringReader string = new StringReader(data_json.toString());
-        JAXBContext jc = JAXBContext.newInstance(Langilea.class);
-        Unmarshaller ju = jc.createUnmarshaller();
-        langilea = (Langilea) ju.unmarshal(string);
-        System.out.println("*******************************"+langilea.getAbizena());
-        */
         JSONObject erantzuna = create(data_json, "langilea");
         String value = String.valueOf((boolean)erantzuna.get("regOK"));                        
         erantzuna.put("regOK", String.valueOf(e.encrypt(value)));
@@ -120,6 +133,17 @@ public class RegisterResource {
         return String.valueOf(erantzuna.toString());
     }
     
+     /**
+     * Langilea edo erabiltzailea bere REST zerbitzura zuzenduz erregistroa sortzen duen metodoa
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String}
+     * 
+     * @return
+     *     possible object is
+     *     {@link JSONObject }
+     */
     private JSONObject create(JSONObject object, String type) throws ProtocolException, IOException, JSONException{
         
        URL u = new URL("http://localhost:8080/BidezainZerbitzaria/webresources/database.utils."+type+"/create");
