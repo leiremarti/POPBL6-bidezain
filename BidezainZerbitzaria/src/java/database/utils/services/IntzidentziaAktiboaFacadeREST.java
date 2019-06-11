@@ -129,7 +129,7 @@ public class IntzidentziaAktiboaFacadeREST extends AbstractFacade<IntzidentziaAk
                 map.put(id, kop);
             }
             
-            Object result = em.createNativeQuery("SELECT COUNT(ID_aurreikuspena) as kont FROM aurreikuspenagit commit").getSingleResult();
+            Object result = em.createNativeQuery("SELECT COUNT(ID_aurreikuspena) as kont FROM aurreikuspena").getSingleResult();
             System.out.println(result);
             Long aKop = (Long)result;
             if(aKop>0){                
