@@ -124,7 +124,7 @@ public class IntzidentziaAktiboaFacadeREST extends AbstractFacade<IntzidentziaAk
                 map.put(id, kop);
             }
             
-            Object result = em.createNativeQuery("SELECT COUNT(ID_aurreikuspena) as kont FROM aurreikuspena group by ID_mota").getSingleResult();
+            Object result = em.createNativeQuery("SELECT COUNT(ID_aurreikuspena) as kont FROM aurreikuspenagit commit").getSingleResult();
             System.out.println(result);
             Long aKop = (Long)result;
             if(aKop>0){                
@@ -153,21 +153,24 @@ public class IntzidentziaAktiboaFacadeREST extends AbstractFacade<IntzidentziaAk
     @Path("createall")
     @Consumes("application/json")
     public void createAll(String inzidentziaAktiboak) throws JAXBException, JSONException{
+            System.out.println("<<<<---------->>>>"+inzidentziaAktiboak);
         JSONObject o = new JSONObject(inzidentziaAktiboak);
         JSONArray array = (JSONArray) o.get("intzidentziak");
         int length = array.length();
-        System.out.println("---"+length+"--->>>>>"+array.toString());
         for(int i=0; i<length ; i++){            
             Gson gson = new Gson();
             JSONObject ob = array.getJSONObject(i);
-            String mota = ob.get("IDmota").toString();
-            IntzidentziaMota m = gson.fromJson(mota, IntzidentziaMota.class);
+            JSONObject motaOb = new JSONObject(ob.get("IDmota").toString());
+            IntzidentziaMota m = new IntzidentziaMota();
+            Integer id = (Integer)motaOb.get("IDintzidentziamota");
+            m.setIDintzidentziamota(id.shortValue());
+            m.setIntzidentziaMota((String)motaOb.get("intzidentziaMota"));
             System.out.println(m.toString());
             String s = ob.toString();            
             IntzidentziaAktiboa ia = gson.fromJson(s, IntzidentziaAktiboa.class);
             ia.setIDmota(m);
             System.out.println(ia.toString());
-          //  create(ia);
+            create(ia);
 
         }
         

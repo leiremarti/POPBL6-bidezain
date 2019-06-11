@@ -7,6 +7,8 @@ package database.utils;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,6 +24,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  *
@@ -130,7 +134,15 @@ public class IntzidentziaMota implements Serializable {
 
     @Override
     public String toString() {
-        return "database.utils.IntzidentziaMota[ iDintzidentziamota=" + iDintzidentziamota + " ]";
+        JSONObject o = new JSONObject();
+        try {
+            o.put("ID_intzidentzia_mota", this.iDintzidentziamota);
+            o.put("intzidentzia_mota", this.intzidentziaMota);
+        } catch (JSONException ex) {
+            Logger.getLogger(IntzidentziaMota.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println(o.toString());
+        return o.toString();
     }
     
 }

@@ -185,6 +185,8 @@ public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
         return o.toString();
     }*/
     
+    
+    /*
     @POST
     @Path("create")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -243,8 +245,8 @@ public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
         o.put("regOK", regOK);
         return o.toString();
     }
+    */
     
-    /*
      @POST
     @Path("create")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -308,5 +310,5 @@ public class ErabiltzaileaFacadeREST extends AbstractFacade<Erabiltzailea> {
         return o.toString();
     }
     
-    */
+    
 }

@@ -110,21 +110,20 @@ public class InzidentziakResource {
      */
     @POST
     @Path("todatabase")
+    @Consumes("text/plain")
     @Produces("application/json")
-    public String toDatabase() throws JAXBException, IOException, MalformedURLException, KeyManagementException, NoSuchAlgorithmException, JSONException {
+    public String toDatabase(String s) throws JAXBException, IOException, MalformedURLException, KeyManagementException, NoSuchAlgorithmException, JSONException {
         
+        System.out.print("->:"+s);
         String xmlString = getXml();
         
         JSONObject object = new JSONObject(xmlString);
         JSONArray array_inzidentziak = object.getJSONArray("inzidentziaAktiboak");
-               
-      //  List<IntzidentziaAktiboa> intzidentziak_list = new ArrayList<>();
-        
         JSONArray array_send = new JSONArray();
         int length = array_inzidentziak.length();
         for(int i=0; i<(length-1); i++){
-            JSONObject o = array_inzidentziak.getJSONObject(i);
             
+            JSONObject o = array_inzidentziak.getJSONObject(i);            
             IntzidentziaAktiboa ia = new IntzidentziaAktiboa();
             ia.setErrepidea((String)o.get("errepidea"));
             ia.setZentzua((String)o.get("zentzua"));
@@ -139,43 +138,30 @@ public class InzidentziakResource {
             if(mota.contains(" ")){
                 mota = mota.replace(" ", "_");
             }
-            ia.setIDmota(getIntzidentziaMota(mota));
-            
+            ia.setIDmota(getIntzidentziaMota(mota));            
             o = new JSONObject(ia);
-           // intzidentziak_list.add(ia);
             array_send.put(o);
         }
         
         JSONObject send = new JSONObject();
         send.put("intzidentziak", array_send);
         
-       /* IntzidentziaAktiboak iak = new IntzidentziaAktiboak();
-        iak.setIntzidentziaAktiboa(intzidentziak_list);
-        */
-      /*  JAXBContext jaxbContext = JAXBContext.newInstance(IntzidentziaAktiboak.class);
-        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        StringWriter sw = new StringWriter();
-        jaxbMarshaller.marshal(iak, sw);
-        String xmlContent = sw.toString();*/
-        
-            System.out.print("->:"+send.toString());
-            
-            URL u = new URL("http://localhost:8080/BidezainZerbitzaria/webresources/database.utils.intzidentziaaktiboa/createall");
+        System.out.print("->:"+send.toString());
+        URL u = new URL("http://localhost:8080/BidezainZerbitzaria/webresources/database.utils.intzidentziaaktiboa/createall");
 
-            HttpURLConnection con = (HttpURLConnection) u.openConnection();
-            con.setRequestMethod("POST");
-            con.setRequestProperty("Content-Type", "application/json");
-            con.setRequestProperty("Content-Length", Integer.toString(send.toString().getBytes().length));
-            con.setUseCaches(false);
-            con.setDoInput(true);
-            con.setDoOutput(true);
-
-            DataOutputStream dos = new DataOutputStream(con.getOutputStream());
-            dos.writeBytes(send.toString());
-            dos.flush();
-            dos.close();
+        HttpURLConnection con = (HttpURLConnection) u.openConnection();
+        con.setRequestMethod("POST");
+        con.setRequestProperty("Content-Type", "application/json");
+        con.setRequestProperty("Content-Length", Integer.toString(send.toString().getBytes().length));
+        con.setUseCaches(false);
+        con.setDoInput(true);
+        con.setDoOutput(true);
         
+        DataOutputStream dos = new DataOutputStream(con.getOutputStream());
+        dos.writeBytes(send.toString());
+        dos.flush();
+        dos.close();
+       
         
         return xmlString;
     }
