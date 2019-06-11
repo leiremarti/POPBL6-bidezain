@@ -7,13 +7,20 @@ package database.utils.services;
 
 import database.utils.Erabiltzaileak;
 import database.utils.IntzidentziaAktiboa;
+import database.utils.IntzidentziaAktiboak;
+import database.utils.IntzidentziaMota;
+import database.utils.IntzidentziaMotak;
 import database.utils.Langilea;
 import database.utils.Langileak;
 import encrypt.Encrypter;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.StringReader;
+import java.io.StringWriter;
 import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -50,6 +57,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -84,7 +92,6 @@ public class InzidentziakResource {
     @Produces("application/json")
     public String getXml() throws JAXBException, IOException, MalformedURLException, KeyManagementException, NoSuchAlgorithmException, JSONException {
         
-                    System.out.print("++++++++++++++++++++++++++++++++++++");
         String xmlString = getXMLFromOutside();
         
         JAXBContext jaxbContext = JAXBContext.newInstance(Raiz.class);
@@ -93,37 +100,114 @@ public class InzidentziakResource {
         Raiz person = (Raiz) unmarshaller.unmarshal(sreader);
         
         JSONObject inzidentziak_json = getInzidentziakOK(person.getIncidenciaGeolocalizada());
-        System.out.print(inzidentziak_json.toString());
-       // Encrypter en = new Encrypter("mysecretencrypter");
+        Encrypter en = new Encrypter("mysecretencrypter");
         return inzidentziak_json.toString();//en.encrypt(inzidentziak_json.toString());
     }
     
-    private JSONObject getInzidentziakOK(List<IncidenciaGeolocalizada> list) throws JSONException{
+    /**
+     * Retrieves representation of an instance of database.utils.services.InzidentziakResource
+     * @return an instance of java.lang.String
+     */
+    @POST
+    @Path("todatabase")
+    @Produces("application/json")
+    public String toDatabase() throws JAXBException, IOException, MalformedURLException, KeyManagementException, NoSuchAlgorithmException, JSONException {
         
+        String xmlString = getXml();
+        
+        JSONObject object = new JSONObject(xmlString);
+        JSONArray array_inzidentziak = object.getJSONArray("inzidentziaAktiboak");
+               
+      //  List<IntzidentziaAktiboa> intzidentziak_list = new ArrayList<>();
+        
+        JSONArray array_send = new JSONArray();
+        int length = array_inzidentziak.length();
+        for(int i=0; i<(length-1); i++){
+            JSONObject o = array_inzidentziak.getJSONObject(i);
+            
+            IntzidentziaAktiboa ia = new IntzidentziaAktiboa();
+            ia.setErrepidea((String)o.get("errepidea"));
+            ia.setZentzua((String)o.get("zentzua"));
+            ia.setIntzidentziaData((String)o.get("intzidentziaData"));
+            ia.setKausa((String)o.get("kausa"));
+            ia.setMaila(maila((String)o.get("maila")));
+            ia.setProbintzia((String)o.get("probintzia"));
+            ia.setHerria((String)o.get("herria"));
+            ia.setLatitudea(new BigDecimal((String)o.get("latitudea")));
+            ia.setLongitudea(new BigDecimal((String)o.get("longitudea")));
+            String mota = (String)o.get("tipo");
+            if(mota.contains(" ")){
+                mota = mota.replace(" ", "_");
+            }
+            ia.setIDmota(getIntzidentziaMota(mota));
+            
+            o = new JSONObject(ia);
+           // intzidentziak_list.add(ia);
+            array_send.put(o);
+        }
+        
+        JSONObject send = new JSONObject();
+        send.put("intzidentziak", array_send);
+        
+       /* IntzidentziaAktiboak iak = new IntzidentziaAktiboak();
+        iak.setIntzidentziaAktiboa(intzidentziak_list);
+        */
+      /*  JAXBContext jaxbContext = JAXBContext.newInstance(IntzidentziaAktiboak.class);
+        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+        StringWriter sw = new StringWriter();
+        jaxbMarshaller.marshal(iak, sw);
+        String xmlContent = sw.toString();*/
+        
+            System.out.print("->:"+send.toString());
+            
+            URL u = new URL("http://localhost:8080/BidezainZerbitzaria/webresources/database.utils.intzidentziaaktiboa/createall");
+
+            HttpURLConnection con = (HttpURLConnection) u.openConnection();
+            con.setRequestMethod("POST");
+            con.setRequestProperty("Content-Type", "application/json");
+            con.setRequestProperty("Content-Length", Integer.toString(send.toString().getBytes().length));
+            con.setUseCaches(false);
+            con.setDoInput(true);
+            con.setDoOutput(true);
+
+            DataOutputStream dos = new DataOutputStream(con.getOutputStream());
+            dos.writeBytes(send.toString());
+            dos.flush();
+            dos.close();
+        
+        
+        return xmlString;
+    }
+    
+    private JSONObject getInzidentziakOK(List<IncidenciaGeolocalizada> list) throws JSONException{
+        boolean ok = true;
         List<IntzidentziaAktiboa> new_list = new ArrayList<>();
         JSONArray array = new JSONArray();
         for(IncidenciaGeolocalizada ig : list){
             
-            if(!ig.getTipo().equals("Vialidad invernal tramos") || (ig.getTipo().equals("Puertos de montaÃ±a") && !ig.getNivel().contains("abierto"))){
-                IntzidentziaAktiboa i = new IntzidentziaAktiboa();
-                i.setErrepidea(ig.getCarretera());
-                i.setHerria(ig.getPoblacion());
-
-
-                i.setIDmota(null);
-                i.setIntzidentziaData(ig.getFechahoraIni());
-                i.setKausa(ig.getCausa());
-                i.setLatitudea(new BigDecimal(Float.toString(ig.getLatitud())));
-                i.setLongitudea(new BigDecimal(Float.toString(ig.getLongitud())));
-                i.setMaila(ig.getNivel());
-                i.setProbintzia(ig.getProvincia());
-                i.setZentzua(ig.getSentido());
-                new_list.add(i);
-                JSONObject o = new JSONObject(i);
-                o.put("tipo", ig.getTipo());
-                array.put(o);
+            if(ig.getTipo().equals("Vialidad invernal tramos")) ok = false;
+            if(ig.getTipo().equals("Puertos de montaÃ±a") && ig.getNivel().contains("Abierto")){
+                ok = false;
             }
             
+            if(ok){
+                 IntzidentziaAktiboa i = new IntzidentziaAktiboa();
+                        i.setErrepidea(ig.getCarretera());
+                        i.setHerria(ig.getPoblacion());
+                        i.setIDmota(null);
+                        i.setIntzidentziaData(ig.getFechahoraIni());
+                        i.setKausa(ig.getCausa());
+                        i.setLatitudea(new BigDecimal(Float.toString(ig.getLatitud())));
+                        i.setLongitudea(new BigDecimal(Float.toString(ig.getLongitud())));
+                        i.setMaila(ig.getNivel());
+                        i.setProbintzia(ig.getProvincia());
+                        i.setZentzua(ig.getSentido());
+                        new_list.add(i);
+                        JSONObject o = new JSONObject(i);
+                        o.put("tipo", ig.getTipo());
+                        array.put(o);
+            }
         }
         
          JSONObject inzidentziak_json = new JSONObject();
@@ -225,6 +309,45 @@ public class InzidentziakResource {
 	}
         System.out.print(s);
         return s;
+    }
+    
+    private String maila(String m) {
+        
+        String eguna = "Astelehena";
+        switch(m){
+            case "Negro":
+                eguna = "Beltza";
+                break;
+            case "Amarillo":
+                eguna = "Horia";
+                break;
+            case "Blanco":
+                eguna = "Zuria";
+                break;  
+        }
+        return eguna;
+    }
+    
+    private IntzidentziaMota getIntzidentziaMota(String mota) throws MalformedURLException, IOException, JAXBException, JSONException {
+        
+        String s="";
+        URL u = new URL("http://localhost:8080/BidezainZerbitzaria/webresources/database.utils.intzidentziamota/getintzidentziamota/"+mota);
+        URLConnection con = u.openConnection();
+	    Reader reader = new InputStreamReader(con.getInputStream());
+	    while (true) {
+	        int ch = reader.read();
+	        if (ch==-1) {
+	            break;
+	        }
+	        s = s + (char)ch;
+	    } 
+                
+        JAXBContext jaxbContext = JAXBContext.newInstance(IntzidentziaMota.class);
+        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+        StringReader sreader = new StringReader(s);
+        IntzidentziaMota intzidentziaMota = (IntzidentziaMota) unmarshaller.unmarshal(sreader);
+        
+        return intzidentziaMota;
     }
     
     /*

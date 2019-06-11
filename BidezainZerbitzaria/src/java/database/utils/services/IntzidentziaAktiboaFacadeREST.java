@@ -5,8 +5,13 @@
  */
 package database.utils.services;
 
+import com.google.gson.Gson;
 import database.utils.IntzidentziaAktiboa;
+import database.utils.IntzidentziaAktiboak;
+import database.utils.IntzidentziaMota;
 import java.io.IOException;
+import java.io.Reader;
+import java.io.StringReader;
 import java.net.MalformedURLException;
 import java.util.HashMap;
 import java.util.List;
@@ -14,6 +19,7 @@ import java.util.Map;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -23,7 +29,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
+import utils.Raiz;
 
 /**
  *
@@ -43,6 +55,7 @@ public class IntzidentziaAktiboaFacadeREST extends AbstractFacade<IntzidentziaAk
     @Override
     @Consumes({"application/xml", "application/json"})
     public void create(IntzidentziaAktiboa entity) {
+            System.out.print("CREATE:"+entity.toString());
         super.create(entity);
     }
 
@@ -134,5 +147,33 @@ public class IntzidentziaAktiboaFacadeREST extends AbstractFacade<IntzidentziaAk
                             .build();
         return response;
         
+    }
+    
+    @POST
+    @Path("createall")
+    @Consumes("application/json")
+    public void createAll(String inzidentziaAktiboak) throws JAXBException, JSONException{
+        JSONObject o = new JSONObject(inzidentziaAktiboak);
+        JSONArray array = (JSONArray) o.get("intzidentziak");
+        int length = array.length();
+        System.out.println("---"+length+"--->>>>>"+array.toString());
+        for(int i=0; i<length ; i++){            
+            Gson gson = new Gson();
+            JSONObject ob = array.getJSONObject(i);
+            String mota = ob.get("IDmota").toString();
+            IntzidentziaMota m = gson.fromJson(mota, IntzidentziaMota.class);
+            System.out.println(m.toString());
+            String s = ob.toString();            
+            IntzidentziaAktiboa ia = gson.fromJson(s, IntzidentziaAktiboa.class);
+            ia.setIDmota(m);
+            System.out.println(ia.toString());
+          //  create(ia);
+
+        }
+        
+       /* JAXBContext jaxbContext = JAXBContext.newInstance(IntzidentziaAktiboak.class);
+        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+        StringReader sreader = new StringReader(xmlString);
+        IntzidentziaAktiboak person = (IntzidentziaAktiboak) unmarshaller.unmarshal(sreader);*/
     }
 }

@@ -84,7 +84,7 @@ public class RegisterResource {
         erantzuna.put("message", e.encrypt((String)erantzuna.get("message")));
 				System.out.println(erantzuna.toString());
          
-        return String.valueOf(erantzuna.toString());
+        return String.valueOf(String.valueOf(e.encrypt(value)));
     }
     
     @POST

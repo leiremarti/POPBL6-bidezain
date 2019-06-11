@@ -53,17 +53,14 @@ public class Aurreikuspena implements Serializable {
     @Column(name = "ID_aurreikuspena")
     private Short iDaurreikuspena;
     @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 30)
     @Column(name = "errepidea")
     private String errepidea;
     @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 9)
     @Column(name = "probintzia")
     private String probintzia;
     @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 150)
     @Column(name = "herria")
     private String herria;
@@ -71,37 +68,29 @@ public class Aurreikuspena implements Serializable {
     @Column(name = "astekoEguna")
     private String astekoEguna;
     @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 30)
     @Column(name = "data")
     private String data;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
-    @NotNull
     @Column(name = "lat")
     private BigDecimal lat;
     @Basic(optional = false)
-    @NotNull
     @Column(name = "lng")
     private BigDecimal lng;
     @Basic(optional = false)
-    @NotNull
     @Column(name = "tenperatura")
     private float tenperatura;
     @Basic(optional = false)
-    @NotNull
     @Column(name = "haizea")
     private float haizea;
     @Basic(optional = false)
-    @NotNull
     @Column(name = "prezipitazioa")
     private float prezipitazioa;
     @Basic(optional = false)
-    @NotNull
     @Column(name = "hasieraKm")
     private float hasieraKm;
     @Basic(optional = false)
-    @NotNull
     @Column(name = "amaieraKm")
     private float amaieraKm;
     @Column(name = "itIs")

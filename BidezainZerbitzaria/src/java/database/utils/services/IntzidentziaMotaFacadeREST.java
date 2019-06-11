@@ -59,10 +59,33 @@ public class IntzidentziaMotaFacadeREST extends AbstractFacade<IntzidentziaMota>
     public IntzidentziaMota find(@PathParam("id") Short id) {
         return super.find(id);
     }
+    
+    @GET
+    @Path("getintzidentziamota/{mota}")
+   // @Consumes("text/plain")
+    @Produces("application/xml")
+    public IntzidentziaMota getIntzidentziaMota(@PathParam("mota") String mota) {
+        
+        if(mota.contains("_")){
+            mota = mota.replace("_", " ");
+        }
+        EntityManager entitymanager = getEntityManager();
+        List<Object[]> results = em.createNativeQuery("SELECT ID_intzidentzia_mota,`intzidentzia_mota` FROM intzidentzia_mota where intzidentzia_mota = '"+mota+"'").getResultList();
+        
+        IntzidentziaMota in = null;
+        for(int i=0; i<results.size(); i++){
+                Object[] o= results.get(i);
+                Integer id = (Integer)o[0];
+                String mot = (String)o[1];
+                in = new IntzidentziaMota(id.shortValue(), mot);
+            }
+        
+        return in;
+    }
 
     @GET
     @Override
-    @Produces({"application/xml", "application/json"})
+    @Produces("application/json")
     public List<IntzidentziaMota> findAll() {
         return super.findAll();
     }

@@ -124,7 +124,7 @@ public class LoginResource {
             
         }
        
-        return String.valueOf(loginOK);//en.encrypt(String.valueOf(loginOK));
+        return en.encrypt(String.valueOf(loginOK));//String.valueOf(loginOK);//
     }
     
     @POST

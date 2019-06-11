@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "intzidentziaAktiboa"
 })
-@XmlRootElement(name = "intzidentziaAktiboas")
+@XmlRootElement(name = "intzidentziaAktiboak")
 public class IntzidentziaAktiboak {
 
     protected List<IntzidentziaAktiboa> intzidentziaAktiboa;
@@ -39,13 +39,17 @@ public class IntzidentziaAktiboak {
     @Override
     public String toString() {
         
-        String resp = "[";
-        IntzidentziaAktiboa azkena = intzidentziaAktiboa.get(intzidentziaAktiboa.size()-1);
-        for(IntzidentziaAktiboa i : intzidentziaAktiboa){
-            resp = resp.concat(i.toString());
-            if(i != azkena)resp = resp.concat(",");
+        String resp = null;
+        if(intzidentziaAktiboa!=null && intzidentziaAktiboa.size()>0){
+            resp = "[";
+            IntzidentziaAktiboa azkena = intzidentziaAktiboa.get(intzidentziaAktiboa.size()-1);
+            for(IntzidentziaAktiboa i : intzidentziaAktiboa){
+                resp = resp.concat(i.toString());
+                if(i != azkena)resp = resp.concat(",");
+            }
+            resp = resp.concat("]");
         }
-        resp = resp.concat("]");
+        
         return resp; //To change body of generated methods, choose Tools | Templates.
     }
 
