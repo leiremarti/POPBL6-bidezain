@@ -6,22 +6,39 @@ import java.util.List;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+
+/**
+ * Erabiltzaileen bind-a egiteko erabiltzen den klasea.
+ * @author user
+ */
 public class Bind {
 	
+    /**
+     * Bind klase berri bat sortzeko metodoa
+     */
 	public Bind() {
 		
 	}
 	
+    /**
+     * 
+     * 
+     * @return
+     *     possible object is
+     *     {@link Erabiltzaileak }
+     */
 	public Erabiltzaileak bindErabiltzaileak(String xmlCode) {
 		Erabiltzaileak erabiltzaileak = null;
 		
 		try {
 
+			//File f = new File("erabiltzaileak.xml");
 			StringReader string = new StringReader(xmlCode);
 			JAXBContext jc = JAXBContext.newInstance(Erabiltzaileak.class);
 
 			Unmarshaller ju = jc.createUnmarshaller();
 			erabiltzaileak = (Erabiltzaileak) ju.unmarshal(string);
+			//System.out.println(erabiltzaileak);
 
 		} catch (JAXBException e) {
 			e.printStackTrace();
@@ -30,4 +47,10 @@ public class Bind {
 		return erabiltzaileak;
 	}
 	
+	/*public static void main(String[] args) {
+		System.out.println("HASI");
+		Bind b = new Bind();
+		b.bindErabiltzaileak();
+		System.out.println("AMAITU");
+	}*/
 }

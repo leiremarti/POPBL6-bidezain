@@ -98,8 +98,7 @@
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Administratzaile aukerak:</h6>
-						<a class="collapse-item" href="register">Langilea gehitu</a> <a
-							class="collapse-item" href="cards.html">Besteak</a>
+						<a class="collapse-item" href="register">Langilea gehitu</a>
 					</div>
 				</div></li>
 

@@ -42,6 +42,7 @@ import encrypt.Encrypter;
 
 /**
  * Servlet implementation class FirstServlet
+ * Web orrialdean register kargatzen duen klasea
  */
 @WebServlet("/register")
 public class Register extends HttpServlet {
@@ -49,9 +50,10 @@ public class Register extends HttpServlet {
 	private static final int MIN_STRENGTH = 7;
 	String message;
 	boolean registerOK;
-	private static final String encrypterKey = "mysecretencrypter";
+	String encrypterKey = "mysecretencrypter";
 	
 	/**
+	 * Register HttpServlet sortzen da
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public Register() {
@@ -61,7 +63,12 @@ public class Register extends HttpServlet {
 	}
 
 	/**
+	 * Register orritik GET petizioak jasotzen ditu
+	 * 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @param value
+     *     allowed object is
+     *     {@link HttpServletRequest, HttpServletResponse}
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		;
@@ -72,7 +79,11 @@ public class Register extends HttpServlet {
 	}
 
 	/**
+	 * Register POST petizioak jasotzen ditu
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @param value
+     *     allowed object is
+     *     {@link HttpServletRequest, HttpServletResponse}
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 
@@ -89,8 +100,7 @@ public class Register extends HttpServlet {
 		if(action!=null && action.equals("register")) {
 			
 			if(calculatePasswordStrength(password)>=MIN_STRENGTH) {
-				System.out.println(registerAction(izena, abizena, email, username, password));
-				message = "Langile berria ondo sortu da.";
+				registerAction(izena, abizena, email, username, password);
 			}else {
 				message = "Pasahitza ez da nahikoa indartsua. Gutxienez 8 karaktere izan behar ditu.";
 			}
@@ -98,24 +108,33 @@ public class Register extends HttpServlet {
 			
 		}
 
-		if(!registerOK) {
-			System.out.println("Message: "+message);
+		if(registerOK) {
+			session.setAttribute("isLoged", true);
+			session.setAttribute("user", username);
+			request.setAttribute("message", message);
+			response.sendRedirect(request.getContextPath() + "/home");
+		}
+		else {
+			System.out.println(message);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/register");
 			session.setAttribute("isLoged", false);
 			request.setAttribute("error", message);
 			response.sendRedirect(request.getContextPath() + "/register");
-		//	dispatcher.forward(request, response);	
-			
-		}else {
-			System.out.println("Message: "+message);
-			//session.setAttribute("isLoged", true);
-			//session.setAttribute("user", username);
-			request.setAttribute("success", message);
-			response.sendRedirect(request.getContextPath() + "/home");
+		//	dispatcher.forward(request, response);
 		}
 
 	}
 
+	/**
+     * pertsona bat erregistratzeko erabiltzen den metodoa 
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String, String, String, String, String }
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     */
 	private boolean registerAction(String izena, String abizena, String email, String username, String password) {
 		Encrypter e = new Encrypter(encrypterKey);
 
@@ -128,26 +147,42 @@ public class Register extends HttpServlet {
 			object.put("erabiltzailea", e.encrypt(username));
 			object.put("passwordHash", e.encrypt(password)); //Erregistratzerakoan pasahitza normal pasatzen da, soilik enkriptatuta
 			object.put("telefonoa", "");
-			object.put("passwordSalt", "notgonnause");
 			object.put("ID_mota", 1);
 		} catch (JSONException e1) {
 			e1.printStackTrace();
 		}
 
-		System.out.println(object.toString());
+
 		try {
+
+			/*	Langilea l = new Langilea();
+			l.setIzena(izena);
+			l.setAbizena(abizena);
+			l.setEposta(email);
+			l.setErabiltzailea(username);
+			l.setPasswordHash(password.getBytes());
+			l.setTelefonoa("");
+		//	l.setIDmota(1);
+			JAXBContext jaxbContext = JAXBContext.newInstance(Langilea.class);
+            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+            jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+            StringWriter sw = new StringWriter();
+			jaxbMarshaller.marshal(l, sw);
+			System.out.println(sw.toString());*/  
 
 			URL u = new URL("http://localhost:8080/BidezainZerbitzaria/webresources/register/langilea");
 
 			HttpURLConnection con = (HttpURLConnection) u.openConnection();
 			con.setRequestMethod("POST");
 			con.setRequestProperty("Content-Type", "application/json");
+			//con.setRequestProperty("Content-Length", Integer.toString(sw.toString().getBytes().length));
 			con.setRequestProperty("Content-Length", Integer.toString(object.toString().getBytes().length));
 			con.setUseCaches(false);
 			con.setDoInput(true);
 			con.setDoOutput(true);
 
 			DataOutputStream dos = new DataOutputStream(con.getOutputStream());
+			//dos.writeBytes(sw.toString());
 			dos.writeBytes(object.toString());
 			dos.flush();
 			dos.close();
@@ -177,6 +212,16 @@ public class Register extends HttpServlet {
 		return registerOK;
 	}
 
+	/**
+     * erabiltzailearen pasahitza kalkulatzen du 
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     * @return
+     *     possible object is
+     *     {@link int }
+     */
 	public int calculatePasswordStrength(String password){
 
 		int iPasswordScore = 0;

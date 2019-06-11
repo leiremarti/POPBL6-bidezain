@@ -26,13 +26,18 @@ import org.json.JSONObject;
 import binding.Bind;
 import encrypt.Encrypter;
 
-
+/**
+ * Servlet implementation class Aurreikuspenak
+ * Web orrialdean erabiltzaileak kargatzen duen klasea
+ * @author user
+ */
 @WebServlet("/erabiltzaileak")
 public class Erabiltzaileak extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	String encrypterKey = "mysecretencrypter";
 
 	/**
+	 * Erabiltzaileak HttpServlet sortzen da
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public Erabiltzaileak() {
@@ -40,7 +45,12 @@ public class Erabiltzaileak extends HttpServlet {
 	}
 
 	/**
+	 * Erabiltzaileak orritik GET petizioak jasotzen ditu
+	 * 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @param value
+     *     allowed object is
+     *     {@link HttpServletRequest, HttpServletResponse}
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -49,7 +59,12 @@ public class Erabiltzaileak extends HttpServlet {
 	}
 
 	/**
+	 * 
+	 * Erabiltzaileak POST petizioak jasotzen ditu
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @param value
+     *     allowed object is
+     *     {@link HttpServletRequest, HttpServletResponse}
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String[] checkboxClicked = request.getParameterValues("button_clicked");

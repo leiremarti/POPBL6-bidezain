@@ -36,6 +36,8 @@ import sun.security.krb5.EncryptedData;
 
 /**
  * Servlet implementation class FirstServlet
+ * Web orrialdean Login kargatzen duen klasea
+ * @author user
  */
 @WebServlet("/login")
 public class Login extends HttpServlet {
@@ -44,6 +46,7 @@ public class Login extends HttpServlet {
 	String encrypterKey = "mysecretencrypter";
 
 	/**
+	 * Login HttpServlet sortzen da
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public Login() {
@@ -51,7 +54,12 @@ public class Login extends HttpServlet {
 	}
 
 	/**
+	 * Login orritik GET petizioak jasotzen ditu
+	 * 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @param value
+     *     allowed object is
+     *     {@link HttpServletRequest, HttpServletResponse}
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -60,7 +68,11 @@ public class Login extends HttpServlet {
 	}
 
 	/**
+	 * Login POST petizioak jasotzen ditu
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @param value
+     *     allowed object is
+     *     {@link HttpServletRequest, HttpServletResponse}
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

@@ -33,13 +33,6 @@
 	integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
 	crossorigin=""></script>
 
-
-<!-- link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,900" rel="stylesheet">
-	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700" rel="stylesheet"-->
-
-
-
-
 </head>
 
 <body id="page-top">
@@ -98,8 +91,7 @@
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Administratzaile aukerak:</h6>
-						<a class="collapse-item" href="register">Langilea gehitu</a> <a
-							class="collapse-item" href="cards.html">Besteak</a>
+						<a class="collapse-item" href="register">Langilea gehitu</a> 
 					</div>
 				</div></li>
 
@@ -191,12 +183,8 @@
 										</div>
 									</div>
 								</c:if>
-
-
 							</div>
-
 						</div>
-
 
 					</div>
 
